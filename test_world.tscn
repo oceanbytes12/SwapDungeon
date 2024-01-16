@@ -23,3 +23,19 @@ texture = ExtResource("3_qmp1m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy"]
 shape = SubResource("CapsuleShape2D_62c5h")
+
+[node name="AkListener2D" type="AkListener2D" parent="."]
+
+[node name="AkBank_Init" type="AkBank" parent="."]
+bank = {
+"id": 1355168291,
+"name": "Init"
+}
+load_on = 1
+
+[node name="AkBank_Main" type="AkBank" parent="."]
+bank = {
+"id": 3161908922,
+"name": "Main"
+}
+load_on = 1
