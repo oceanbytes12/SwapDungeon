@@ -1,18 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://byyhoslc8srjf"]
+[gd_scene load_steps=10 format=3 uid="uid://byyhoslc8srjf"]
 
-[ext_resource type="PackedScene" uid="uid://cqauvklo0l13j" path="res://unit.tscn" id="1_6h8ll"]
 [ext_resource type="Script" path="res://Dummy.gd" id="2_mmfk1"]
 [ext_resource type="Texture2D" uid="uid://dkl6n1av0tykp" path="res://Art/combatDummy.png" id="3_qmp1m"]
+[ext_resource type="Script" path="res://StateUnit.gd" id="4_x3823"]
+[ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="5_4cu2s"]
+[ext_resource type="Script" path="res://StateMachine.gd" id="6_forsn"]
+[ext_resource type="Script" path="res://States/EnemyFollow.gd" id="7_6givt"]
+[ext_resource type="Script" path="res://States/EnemyIdle.gd" id="7_ct1x6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62c5h"]
 radius = 7.0
 height = 32.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5sf51"]
+
 [node name="TestWorld" type="Node2D"]
 y_sort_enabled = true
-
-[node name="Unit" parent="." instance=ExtResource("1_6h8ll")]
-position = Vector2(-2, -2)
 
 [node name="Dummy" type="CharacterBody2D" parent="."]
 position = Vector2(71, 1)
@@ -23,3 +26,31 @@ texture = ExtResource("3_qmp1m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy"]
 shape = SubResource("CapsuleShape2D_62c5h")
+
+[node name="Camera2D" type="Camera2D" parent="Dummy"]
+position_smoothing_enabled = true
+
+[node name="StateUnit" type="CharacterBody2D" parent="."]
+position = Vector2(-157, -3)
+script = ExtResource("4_x3823")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateUnit"]
+shape = SubResource("CapsuleShape2D_5sf51")
+
+[node name="Sprite2D" type="Sprite2D" parent="StateUnit"]
+texture = ExtResource("5_4cu2s")
+region_enabled = true
+region_rect = Rect2(38, 0, 20, 28)
+
+[node name="StateMachine" type="Node" parent="StateUnit" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_forsn")
+initial_state = NodePath("EnemyFollow")
+
+[node name="idle" type="Node" parent="StateUnit/StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("7_ct1x6")
+enemy = NodePath("../..")
+
+[node name="EnemyFollow" type="Node" parent="StateUnit/StateMachine" node_paths=PackedStringArray("enemy", "player")]
+script = ExtResource("7_6givt")
+enemy = NodePath("../..")
+player = NodePath("../../../Dummy")
