@@ -27,30 +27,18 @@ texture = ExtResource("3_qmp1m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy"]
 shape = SubResource("CapsuleShape2D_62c5h")
 
-[node name="Camera2D" type="Camera2D" parent="Dummy"]
-position_smoothing_enabled = true
+[node name="AkListener2D" type="AkListener2D" parent="."]
 
-[node name="StateUnit" type="CharacterBody2D" parent="."]
-position = Vector2(-157, -3)
-script = ExtResource("4_x3823")
+[node name="AkBank_Init" type="AkBank" parent="."]
+bank = {
+"id": 1355168291,
+"name": "Init"
+}
+load_on = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StateUnit"]
-shape = SubResource("CapsuleShape2D_5sf51")
-
-[node name="Sprite2D" type="Sprite2D" parent="StateUnit"]
-texture = ExtResource("5_4cu2s")
-region_enabled = true
-region_rect = Rect2(38, 0, 20, 28)
-
-[node name="StateMachine" type="Node" parent="StateUnit" node_paths=PackedStringArray("initial_state")]
-script = ExtResource("6_forsn")
-initial_state = NodePath("EnemyFollow")
-
-[node name="idle" type="Node" parent="StateUnit/StateMachine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("7_ct1x6")
-enemy = NodePath("../..")
-
-[node name="EnemyFollow" type="Node" parent="StateUnit/StateMachine" node_paths=PackedStringArray("enemy", "player")]
-script = ExtResource("7_6givt")
-enemy = NodePath("../..")
-player = NodePath("../../../Dummy")
+[node name="AkBank_Main" type="AkBank" parent="."]
+bank = {
+"id": 3161908922,
+"name": "Main"
+}
+load_on = 1

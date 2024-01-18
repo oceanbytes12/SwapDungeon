@@ -1,0 +1,14 @@
+Event	ID	Name			Wwise Object Path	Notes
+	27511013	Play_Test_Beep			\Default Work Unit\Play_Test_Beep	
+	356218121	Play_3D_Test_Beep			\Default Work Unit\Play_3D_Test_Beep	
+	618533600	Stop_3D_Test_Beep_loop			\Default Work Unit\Stop_3D_Test_Beep_loop	
+	646803528	Stop_Test_Beep_loop			\Default Work Unit\Stop_Test_Beep_loop	
+	2277864726	Play_3D_Test_Beep_loop			\Default Work Unit\Play_3D_Test_Beep_loop	
+	2850136426	Play_Test_Beep_loop			\Default Work Unit\Play_Test_Beep_loop	
+
+Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
+	79038726	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\TestFiles\3DTestFiles\3D_Test_Beep\Tone Generator	
+	283319715	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\TestFiles\Test_Beep\Tone Generator	
+	887559946	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\TestFiles\Test_Beep_loop\Tone Generator	
+	1068792302	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\TestFiles\3DTestFiles\3D_Test_Beep_loop\Tone Generator	
+
