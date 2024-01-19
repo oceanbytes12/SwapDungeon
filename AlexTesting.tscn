@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvn5ridq36mbs"]
+
+[ext_resource type="PackedScene" uid="uid://dhds8focy23er" path="res://dummy.tscn" id="1_0dxna"]
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://unit_sm.tscn" id="2_t27ly"]
+
+[node name="AlexTesting" type="Node2D"]
+
+[node name="Dummy" parent="." instance=ExtResource("1_0dxna")]
+
+[node name="Camera2D" type="Camera2D" parent="Dummy"]
+position_smoothing_enabled = true
+
+[node name="UnitSM" parent="." instance=ExtResource("2_t27ly")]
+
+[node name="SM" parent="UnitSM" index="2" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Follow")
+
+[node name="Follow" parent="UnitSM/SM" index="0" node_paths=PackedStringArray("player")]
+player = NodePath("../../../Dummy")
+
+[node name="Idle" parent="UnitSM/SM" index="1" node_paths=PackedStringArray("player")]
+player = NodePath("../../../Dummy")
+
+[editable path="UnitSM"]
