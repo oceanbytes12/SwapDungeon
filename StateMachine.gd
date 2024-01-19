@@ -29,10 +29,12 @@ func _physics_process(delta):
 
 func on_child_transition(state, new_state_name):
 	var new_state = states.get(new_state_name)
+	print(current_state)
 
-	if current_state:
-		current_state.Exit()
+	current_state.Exit()
 	
 	new_state.Enter()
 	
 	current_state = new_state
+
+
