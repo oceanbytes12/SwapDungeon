@@ -35,9 +35,10 @@ enemy = NodePath("../..")
 script = ExtResource("4_0f0vw")
 enemy = NodePath("../..")
 
-[node name="SighRange" type="Area2D" parent="."]
+[node name="SightRange" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SighRange"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
 shape = SubResource("CircleShape2D_5cwag")
 
-[connection signal="body_entered" from="SighRange" to="." method="_on_sigh_range_body_entered"]
+[connection signal="body_entered" from="SightRange" to="SM" method="_on_sight_range_body_entered"]
+[connection signal="body_exited" from="SightRange" to="SM" method="_on_sight_range_body_exited"]
