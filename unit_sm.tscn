@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=9 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="1_sn0oo"]
 [ext_resource type="Script" path="res://StateUnit.gd" id="1_x62eg"]
 [ext_resource type="Script" path="res://StateMachine.gd" id="2_fiy1u"]
 [ext_resource type="Script" path="res://States/EnemyFollow.gd" id="3_3qhkf"]
 [ext_resource type="Script" path="res://States/EnemyIdle.gd" id="4_0f0vw"]
+[ext_resource type="Script" path="res://States/EnemyAttack.gd" id="6_00by8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pv03d"]
 radius = 7.0
@@ -33,6 +34,10 @@ enemy = NodePath("../..")
 
 [node name="Idle" type="Node" parent="SM" node_paths=PackedStringArray("enemy")]
 script = ExtResource("4_0f0vw")
+enemy = NodePath("../..")
+
+[node name="Attack" type="Node" parent="SM" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_00by8")
 enemy = NodePath("../..")
 
 [node name="SightRange" type="Area2D" parent="."]
