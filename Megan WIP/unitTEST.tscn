@@ -172,8 +172,12 @@ shape = SubResource("CircleShape2D_4np5g")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="MovementTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="body_entered" from="SenseRange" to="." method="_on_sense_range_body_entered"]
 [connection signal="body_exited" from="SenseRange" to="." method="_on_sense_range_body_exited"]
 [connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

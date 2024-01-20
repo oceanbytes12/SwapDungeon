@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 # MY CHANGES
-@export var distance_buffer = 15
+@export var distance_buffer = 15 # Stopping distance from movement target
 
+@onready var movement_timer = $MovementTimer
 @onready var box = get_node("UI/SelectedPanel")
 @onready var target = global_position
 
@@ -28,6 +29,7 @@ func _physics_process(delta):
 		move_and_slide()
 	else:
 		$AnimationPlayer.stop()
+		movement_timer.stop()
 	# END CHANGES
 	
 """	# Keyboard movement
@@ -62,6 +64,15 @@ func set_selected(value):
 func _input(event):
 	if event.is_action_pressed("RightClick"):
 		follow_cursor = true
+
 	if event.is_action_released("RightClick"):
 		follow_cursor = false
+		if (selected == true):
+			movement_timer.start()
+
+
+# Fixes issue with units getting stuck, jittering
+func _on_movement_timer_timeout():
+	target = global_position
+	
 # END CHANGES
