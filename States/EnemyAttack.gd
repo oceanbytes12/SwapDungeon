@@ -2,7 +2,7 @@ extends State
 class_name EnemyAttack
 signal Attacked
 
-@export var enemy : CharacterBody2D
+@export var own_body : CharacterBody2D
 @export var move_speed := 40.0
 @export var attack_range := 40.0
 @export var attack_cooldown := 1.0
@@ -20,7 +20,7 @@ func Update(delta: float, target: CharacterBody2D):
 	if not target:
 		Transitioned.emit("Idle")
 		return
-	var target_vector = target.global_position - enemy.global_position
+	var target_vector = target.global_position - own_body.global_position
 	var target_distance = target_vector.length()
 	if colldown_time > 0:
 		colldown_time -= delta
@@ -29,4 +29,4 @@ func Update(delta: float, target: CharacterBody2D):
 
 
 func Physics_Update(delta: float, target: CharacterBody2D):
-	enemy.velocity = Vector2()
+	own_body.velocity = Vector2()

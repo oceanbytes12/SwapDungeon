@@ -1,7 +1,7 @@
 extends Node
 
 @export var initial_state : State
-@export var enemy : CharacterBody2D
+@export var own_body : CharacterBody2D
 
 var current_state : State
 var states : Dictionary = {}
@@ -33,8 +33,8 @@ func on_child_transition(new_state_name):
 	current_state = new_state
 
 func _on_sight_range_body_entered(body):
-	var check1 = body.is_in_group("Friendly") and enemy.is_in_group("Enemy")
-	var check2 = body.is_in_group("Enemy") and enemy.is_in_group("Friendly")
+	var check1 = body.is_in_group("Friendly") and own_body.is_in_group("Enemy")
+	var check2 = body.is_in_group("Enemy") and own_body.is_in_group("Friendly")
 	if check1 or check2:
 		if targets.is_empty():
 			current_target = body
