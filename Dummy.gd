@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var speed = 200
+@export var speed = 100
 var idle = true
 var hit = false
 
@@ -27,9 +27,9 @@ func _physics_process(delta):
 func take_hit(hit_position):
 	var direction = (global_position-hit_position).normalized()
 	velocity = direction * 100
-	print(velocity)
 	hit = true
 	$StunTimer.start()
+	$AnimationPlayer.play("hitAnimation")
 
 
 func _on_stun_timer_timeout():
