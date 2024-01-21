@@ -5,7 +5,7 @@ signal Attacked
 @export var enemy : CharacterBody2D
 @export var move_speed := 40.0
 @export var attack_range := 40.0
-@export var attack_cooldown := 2.0
+@export var attack_cooldown := 1.0
 
 var colldown_time := 0.0
 
@@ -24,10 +24,8 @@ func Update(delta: float, target: CharacterBody2D):
 	var target_distance = target_vector.length()
 	if colldown_time > 0:
 		colldown_time -= delta
-	elif target_distance > attack_range:
-		Transitioned.emit("Follow")
 	else:
-		make_attack()
+		Transitioned.emit("Follow")
 
 
 func Physics_Update(delta: float, target: CharacterBody2D):

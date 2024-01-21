@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=17 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="1_sn0oo"]
 [ext_resource type="Script" path="res://StateUnit.gd" id="1_x62eg"]
@@ -6,27 +6,113 @@
 [ext_resource type="Script" path="res://States/EnemyFollow.gd" id="3_3qhkf"]
 [ext_resource type="Script" path="res://States/EnemyIdle.gd" id="4_0f0vw"]
 [ext_resource type="Script" path="res://States/EnemyAttack.gd" id="6_00by8"]
+[ext_resource type="Script" path="res://States/EnemyStun.gd" id="7_s86pe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pv03d"]
 radius = 7.0
 
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrtso"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
 radius = 129.004
 
-[node name="UnitSM" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_h2q2f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:material:shader_parameter/flash_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ofoju"]
+resource_name = "hitAnimation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:material:shader_parameter/flash_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_x8van"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_bix4b"]
+resource_name = "HeadPop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, -17), Vector2(0, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rt51"]
+_data = {
+"HeadPop": SubResource("Animation_bix4b"),
+"RESET": SubResource("Animation_h2q2f"),
+"hitAnimation": SubResource("Animation_ofoju"),
+"new_animation": SubResource("Animation_x8van")
+}
+
+[node name="UnitSM" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_x62eg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_pv03d")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Body" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_nrtso")
+position = Vector2(0.5, 6)
 texture = ExtResource("1_sn0oo")
 region_enabled = true
-region_rect = Rect2(38, 0, 21, 29)
+region_rect = Rect2(38, 16, 21, 13)
 
-[node name="SM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_sn0oo")
+region_enabled = true
+region_rect = Rect2(38, 0, 20, 16)
+
+[node name="SM" type="Node" parent="." node_paths=PackedStringArray("initial_state", "enemy")]
 script = ExtResource("2_fiy1u")
 initial_state = NodePath("Idle")
+enemy = NodePath("..")
 
 [node name="Follow" type="Node" parent="SM" node_paths=PackedStringArray("enemy")]
 script = ExtResource("3_3qhkf")
@@ -39,7 +125,10 @@ enemy = NodePath("../..")
 [node name="Attack" type="Node" parent="SM" node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_00by8")
 enemy = NodePath("../..")
-attack_cooldown = 1.0
+
+[node name="Stun" type="Node" parent="SM" node_paths=PackedStringArray("enemy")]
+script = ExtResource("7_s86pe")
+enemy = NodePath("../..")
 
 [node name="SightRange" type="Area2D" parent="."]
 
@@ -51,6 +140,13 @@ shape = SubResource("CircleShape2D_5cwag")
 [node name="AttackPoint" type="Marker2D" parent="AttackCenter"]
 position = Vector2(22, 0)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4rt51")
+}
+speed_scale = 2.0
+
+[connection signal="Hit" from="." to="SM" method="_on_unit_sm_hit"]
 [connection signal="Attacked" from="SM/Attack" to="." method="_on_attack_attacked"]
 [connection signal="body_entered" from="SightRange" to="SM" method="_on_sight_range_body_entered"]
 [connection signal="body_exited" from="SightRange" to="SM" method="_on_sight_range_body_exited"]

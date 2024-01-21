@@ -1,6 +1,7 @@
 extends Node
 
 @export var initial_state : State
+@export var enemy : CharacterBody2D
 
 var current_state : State
 var states : Dictionary = {}
@@ -32,7 +33,9 @@ func on_child_transition(new_state_name):
 	current_state = new_state
 
 func _on_sight_range_body_entered(body):
-	if body.is_in_group("Friendly"):
+	var check1 = body.is_in_group("Friendly") and enemy.is_in_group("Enemy")
+	var check2 = body.is_in_group("Enemy") and enemy.is_in_group("Friendly")
+	if check1 or check2:
 		if targets.is_empty():
 			current_target = body
 		targets[body.name] = body
@@ -47,3 +50,11 @@ func _on_sight_range_body_exited(body):
 			# this is trash we should add a way to check for closest
 			for target in targets:
 				current_target = targets.get(target)
+
+
+func _on_unit_sm_hit(direction):
+	var new_state = states.get("Stun")
+	current_state.Exit()
+	new_state.direction = direction
+	new_state.Enter()
+	current_state = new_state
