@@ -72,7 +72,4 @@ position = Vector2(229, -8)
 [node name="Camera2D" type="Camera2D" parent="Dummy"]
 position_smoothing_enabled = true
 
-[node name="Dummy2" parent="." groups=["Friendly"] instance=ExtResource("1_0dxna")]
-position = Vector2(139, -95)
-
 [node name="UnitSM" parent="." instance=ExtResource("2_t27ly")]

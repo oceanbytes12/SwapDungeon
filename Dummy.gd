@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var speed = 200
 var idle = true
+var hit = false
 
 func _physics_process(delta):
 	var direction_x = Input.get_axis("ui_left", "ui_right")
@@ -17,6 +18,19 @@ func _physics_process(delta):
 		idle = true
 		#$AnimationPlayer.play("Idle")
 
-
-	velocity = direction * speed
+	if not hit:
+		velocity = direction * speed
+	else:
+		velocity *= 0.95
 	move_and_slide()
+
+func take_hit(hit_position):
+	var direction = (global_position-hit_position).normalized()
+	velocity = direction * 100
+	print(velocity)
+	hit = true
+	$StunTimer.start()
+
+
+func _on_stun_timer_timeout():
+	hit= false

@@ -39,11 +39,18 @@ enemy = NodePath("../..")
 [node name="Attack" type="Node" parent="SM" node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_00by8")
 enemy = NodePath("../..")
+attack_cooldown = 1.0
 
 [node name="SightRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
 shape = SubResource("CircleShape2D_5cwag")
 
+[node name="AttackCenter" type="Marker2D" parent="."]
+
+[node name="AttackPoint" type="Marker2D" parent="AttackCenter"]
+position = Vector2(22, 0)
+
+[connection signal="Attacked" from="SM/Attack" to="." method="_on_attack_attacked"]
 [connection signal="body_entered" from="SightRange" to="SM" method="_on_sight_range_body_entered"]
 [connection signal="body_exited" from="SightRange" to="SM" method="_on_sight_range_body_exited"]
