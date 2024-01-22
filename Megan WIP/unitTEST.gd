@@ -69,6 +69,9 @@ func _input(event):
 		follow_cursor = false
 		if (selected == true):
 			movement_timer.start()
+			
+	if event.is_action_pressed("LeftClick"):
+		set_selected(false)
 
 
 # Fixes issue with units getting stuck, jittering
