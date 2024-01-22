@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://euthq0sc4lsx"]
+
+[ext_resource type="Script" path="res://Megan WIP/Party.gd" id="1_0auq1"]
+[ext_resource type="PackedScene" uid="uid://bmvqback4mte1" path="res://Megan WIP/unitTEST.tscn" id="2_o4wcb"]
+
+[node name="Party" type="Node2D"]
+script = ExtResource("1_0auq1")
+
+[node name="Character1" type="Node2D" parent="."]
+
+[node name="UnitTEST" parent="Character1" instance=ExtResource("2_o4wcb")]
+
+[node name="Character2" type="Node2D" parent="."]
+position = Vector2(0, 45)
+
+[node name="UnitTEST" parent="Character2" instance=ExtResource("2_o4wcb")]
+
+[node name="Character3" type="Node2D" parent="."]
+position = Vector2(0, 90)
+
+[node name="UnitTEST" parent="Character3" instance=ExtResource("2_o4wcb")]
+
+[node name="Character4" type="Node2D" parent="."]
+position = Vector2(0, 135)
