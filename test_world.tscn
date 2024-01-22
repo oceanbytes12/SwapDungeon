@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://byyhoslc8srjf"]
+[gd_scene load_steps=3 format=3 uid="uid://byyhoslc8srjf"]
 
 [ext_resource type="PackedScene" uid="uid://dhds8focy23er" path="res://dummy.tscn" id="1_wrw5k"]
+[ext_resource type="PackedScene" uid="uid://cxnhaqggcn6a2" path="res://Scene/player_unit.tscn" id="2_kuwao"]
 
 [node name="TestWorld" type="Node2D"]
 y_sort_enabled = true
@@ -22,3 +23,6 @@ bank = {
 "name": "Main"
 }
 load_on = 1
+
+[node name="PlayerUnit" parent="." instance=ExtResource("2_kuwao")]
+position = Vector2(-158, 1)

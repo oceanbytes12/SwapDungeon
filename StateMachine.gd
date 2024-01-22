@@ -58,3 +58,11 @@ func _on_unit_sm_hit(direction):
 	new_state.direction = direction
 	new_state.Enter()
 	current_state = new_state
+
+
+func _on_player_unit_walk_command(click_position):
+	var new_state = states.get("Walk")
+	current_state.Exit()
+	new_state.Enter()
+	current_state = new_state
+	current_state.target_position = click_position

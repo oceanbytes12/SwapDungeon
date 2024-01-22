@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmvqback4mte1"]
+[gd_scene load_steps=11 format=3 uid="uid://bmvqback4mte1"]
 
 [ext_resource type="Script" path="res://Megan WIP/unitTEST.gd" id="1_vwfet"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_2crv7"]
@@ -88,12 +88,6 @@ border_color = Color(0.180005, 0.180005, 0.180005, 1)
 radius = 6.0
 height = 26.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_c4te3"]
-radius = 81.0987
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4np5g"]
-radius = 30.0
-
 [node name="UnitTEST" type="CharacterBody2D"]
 script = ExtResource("1_vwfet")
 distance_buffer = 20
@@ -152,32 +146,7 @@ show_percentage = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hh6ob")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-
-[node name="AttackPosition" type="Marker2D" parent="."]
-position = Vector2(16, 0)
-
-[node name="SenseRange" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SenseRange"]
-shape = SubResource("CircleShape2D_c4te3")
-
-[node name="AttackRange" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-shape = SubResource("CircleShape2D_4np5g")
-
-[node name="Timer" type="Timer" parent="."]
-
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 3.0
 
-[connection signal="body_entered" from="SenseRange" to="." method="_on_sense_range_body_entered"]
-[connection signal="body_exited" from="SenseRange" to="." method="_on_sense_range_body_exited"]
-[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
-[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
