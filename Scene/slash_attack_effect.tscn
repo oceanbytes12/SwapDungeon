@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsdxhoy0u55kv"]
+[gd_scene load_steps=7 format=3 uid="uid://bsdxhoy0u55kv"]
 
 [ext_resource type="Texture2D" uid="uid://bbltt3vtbeo47" path="res://Art/SwordAttack.png" id="1_nrbou"]
 [ext_resource type="Script" path="res://Scene/slash_attack_effect.gd" id="2_21l2s"]
@@ -25,6 +25,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ux32w"]
+size = Vector2(28, 53)
+
 [node name="SlashAttackEffect" type="AnimatedSprite2D"]
 position = Vector2(13, 0)
 sprite_frames = SubResource("SpriteFrames_fa8dv")
@@ -32,4 +35,11 @@ animation = &"Slash"
 autoplay = "Slash"
 script = ExtResource("2_21l2s")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, -0.5)
+shape = SubResource("RectangleShape2D_ux32w")
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
