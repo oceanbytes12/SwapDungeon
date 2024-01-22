@@ -3,15 +3,21 @@ extends CharacterBody2D
 @onready var attackPostion = $AttackCenter/AttackPoint
 @onready var attackScene = preload("res://Scene/slash_attack_effect.tscn")
 signal Hit
+var direction
 
 func _process(_delta):
 	var target = $SM.current_target
 	if target:
 		$AttackCenter.look_at(target.global_position)
+	
 	if velocity.x < 0:
-		scale.x = -1
+		$Art/Body.flip_h = true
+		$Art/Head.flip_h = true
 	elif velocity.x > 0:
-		scale.x = 1
+		$Art/Body.flip_h = false
+		$Art/Head.flip_h = false
+		
+		
 
 func _physics_process(_delta):
 	move_and_slide()

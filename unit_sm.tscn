@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=19 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="1_sn0oo"]
 [ext_resource type="Script" path="res://StateUnit.gd" id="1_x62eg"]
 [ext_resource type="Script" path="res://StateMachine.gd" id="2_fiy1u"]
 [ext_resource type="Script" path="res://States/EnemyFollow.gd" id="3_3qhkf"]
+[ext_resource type="Shader" path="res://hitEffect.gdshader" id="3_yfop7"]
 [ext_resource type="Script" path="res://States/EnemyIdle.gd" id="4_0f0vw"]
 [ext_resource type="Script" path="res://States/EnemyAttack.gd" id="6_00by8"]
 [ext_resource type="Script" path="res://States/EnemyStun.gd" id="7_s86pe"]
@@ -25,6 +26,11 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nrtso"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykg6r"]
+shader = ExtResource("3_yfop7")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
@@ -64,6 +70,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Art/Head:material:shader_parameter/flash_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ofoju"]
 resource_name = "hitAnimation"
@@ -74,6 +92,18 @@ tracks/0/path = NodePath("Art/Body:material:shader_parameter/flash_opacity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Art/Head:material:shader_parameter/flash_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -116,6 +146,7 @@ region_enabled = true
 region_rect = Rect2(3, 39, 8, 20)
 
 [node name="Head" type="Sprite2D" parent="Art"]
+material = SubResource("ShaderMaterial_ykg6r")
 position = Vector2(0, -14)
 texture = ExtResource("1_sn0oo")
 region_enabled = true
