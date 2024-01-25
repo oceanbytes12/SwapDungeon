@@ -2,8 +2,6 @@ extends Control
 
 class_name HeroUI
 
-var TargetPosition : Vector2
-var hasTargetPostion = false
 var isBeingDragged = false
 var FOLLOW_SPEED = 10
 
@@ -25,15 +23,11 @@ func _ready():
 func _process(delta):
 	if(isBeingDragged):
 		global_position = get_global_mouse_position()
-	elif hasTargetPostion:
-		global_position = global_position.lerp(TargetPosition, delta * FOLLOW_SPEED)
+	else:
+		position = position.lerp(Vector2.ZERO, delta * FOLLOW_SPEED)
 		
 func ToggleDrag(isDragged):
 	isBeingDragged = isDragged
-	
-	if(isDragged):
-		TargetPosition = global_position
-		hasTargetPostion = true
 
 func _on_area_2d_mouse_entered():
 	Globals._SetSelectedHero(self)

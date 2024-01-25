@@ -87,3 +87,9 @@ func _HandleLeftClickUp():
 		if(selectedPanel):
 			selectedPanel._AddHero(draggedHero)
 		draggedHero = null
+
+func _GetChildNodeOfType(parent, DesiredClass):
+	var desired_children = []
+	for child in parent.get_children():
+		if is_instance_of(child, DesiredClass):
+			return child

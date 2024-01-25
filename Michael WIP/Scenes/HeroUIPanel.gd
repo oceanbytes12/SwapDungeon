@@ -2,8 +2,6 @@ extends Control
 
 class_name HeroUIPanel
 
-@export var HeldHero : HeroUI
-
 func _ready():
 	call_deferred("_AddStartingHero")
 
@@ -13,29 +11,25 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	Globals._SetSelectedHeroPanel(null)
 
+func GetHeldHero() -> HeroUI:
+	return Globals._GetChildNodeOfType(self, HeroUI) as HeroUI
+
 func _AddStartingHero():
-	if(HeldHero):
-		HeldHero.TargetPosition = global_position
-		HeldHero.hasTargetPostion = true
-		HeldHero.global_position = global_position
+	if(GetHeldHero()):
+		GetHeldHero().position = Vector2.ZERO
 
 func _AddHero(newHero):
 	#If we had a hero,
 	#Inform them to go where the new hero was.
-	if(HeldHero):
-		HeldHero.TargetPosition = newHero.TargetPosition
+	if(GetHeldHero()):
 		var newHeroParent = newHero.get_parent()
 		if(newHeroParent!=null):
 			print("Reparenting Held Hero")
-			HeldHero.reparent(newHeroParent)
+			GetHeldHero().reparent(newHeroParent)
 		else:
 			print("Can't reparent held hero, new hero has no parent.")
-	
+
 	print("Reparenting New Hero")
 	newHero.reparent(self)
 	
-	#Add the current hero.
-	newHero.hasTargetPostion = true
-	newHero.TargetPosition = global_position
-	
-	HeldHero = newHero
+	print(name, " is now holding: ", GetHeldHero())
