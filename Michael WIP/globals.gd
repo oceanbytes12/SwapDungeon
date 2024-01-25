@@ -10,7 +10,8 @@ var heroIconInstances = []
 
 enum HeroTypes { 
 	Warrior = 0, 
-	Mage = 1 
+	Mage = 1,
+	Archer = 2 
 }
 
 #Returns a random hero type from those in the game.

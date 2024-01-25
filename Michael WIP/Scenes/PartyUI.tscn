@@ -61,3 +61,9 @@ layout_mode = 2
 
 [node name="HeroPanelRandom3" parent="HeroTiles/NewHeroRoster/NewHeroBG/NewHeroContainer" instance=ExtResource("3_8f2bs")]
 layout_mode = 2
+
+[node name="HeroPanelRandom4" parent="HeroTiles/NewHeroRoster/NewHeroBG/NewHeroContainer" instance=ExtResource("3_8f2bs")]
+layout_mode = 2
+
+[node name="HeroPanelRandom5" parent="HeroTiles/NewHeroRoster/NewHeroBG/NewHeroContainer" instance=ExtResource("3_8f2bs")]
+layout_mode = 2
