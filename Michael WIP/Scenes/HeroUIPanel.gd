@@ -19,16 +19,23 @@ func _AddStartingHero():
 		HeldHero.hasTargetPostion = true
 		HeldHero.global_position = global_position
 
-func _AddHero(hero):
+func _AddHero(newHero):
 	#If we had a hero,
 	#Inform them to go where the new hero was.
 	if(HeldHero):
-		HeldHero.TargetPosition = hero.TargetPosition
+		HeldHero.TargetPosition = newHero.TargetPosition
+		var newHeroParent = newHero.get_parent()
+		if(newHeroParent!=null):
+			print("Reparenting Held Hero")
+			HeldHero.reparent(newHeroParent)
+		else:
+			print("Can't reparent held hero, new hero has no parent.")
 	
-	hero.reparent(self)
+	print("Reparenting New Hero")
+	newHero.reparent(self)
 	
 	#Add the current hero.
-	hero.hasTargetPostion = true
-	hero.TargetPosition = global_position
+	newHero.hasTargetPostion = true
+	newHero.TargetPosition = global_position
 	
-	HeldHero = hero
+	HeldHero = newHero

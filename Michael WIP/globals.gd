@@ -22,10 +22,11 @@ func _GetRandomHeroType():
 func _GetIconInstanceOfType(HeroType):
 	for HeroIcon in heroIconScenes:
 		if(HeroIcon.resource_path.contains(HeroType)):
-			print("Found an icon for: ", HeroType)
+			#print("Found an icon for: ", HeroType)
 			return HeroIcon.instantiate()
 		else:
-			print("No find here: ", HeroType)
+			#print("No find here: ", HeroType)
+			pass
 
 func _ready():
 	_LoadHeroIconPackedScenes()

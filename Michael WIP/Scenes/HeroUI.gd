@@ -14,13 +14,13 @@ func _ready():
 	HeroType = Globals._GetRandomHeroType()
 	HeroIcon = Globals._GetIconInstanceOfType(HeroType)
 	if(HeroIcon):
-		print("Made an icon of a random hero!")
+		#print("Made an icon of a random hero!")
 		add_child(HeroIcon)
 		HeroIcon.position = Vector2.ZERO
 	else:
 		print("Failed to get a random hero.")
-	#Sprite.texture = HeroSprites[HeroType]
-	#HeroType.keys()[randi() % HeroType.size()]
+	var randomHeroNum = RandomNumberGenerator.new().randf()
+	name = HeroType + str(randomHeroNum)
 
 func _process(delta):
 	if(isBeingDragged):
