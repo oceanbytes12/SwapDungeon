@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var attackPostion = $AttackCenter/AttackPoint
-@onready var attackScene = preload("res://Scene/slash_attack_effect.tscn")
+@onready var attackScene = preload("res://Scenes/Attacks/SlashAttack/slash_attack_effect.tscn")
 signal Hit
 var direction
 

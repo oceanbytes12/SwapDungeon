@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ceyeak3ionm2v"]
 
-[ext_resource type="PackedScene" uid="uid://bsdxhoy0u55kv" path="res://Scene/slash_attack_effect.tscn" id="1_c5ufq"]
+[ext_resource type="PackedScene" uid="uid://bsdxhoy0u55kv" path="res://Scenes/Attacks/SlashAttack/slash_attack_effect.tscn" id="1_c5ufq"]
 
 [node name="ArrowEffect" instance=ExtResource("1_c5ufq")]
 

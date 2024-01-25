@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cqauvklo0l13j"]
 
-[ext_resource type="Script" path="res://Code/Unit.gd" id="1_sp27m"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/Unit.gd" id="1_sp27m"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_gd6du"]
 
 [sub_resource type="Animation" id="Animation_wcrx5"]

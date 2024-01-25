@@ -1,13 +1,13 @@
 [gd_scene load_steps=19 format=3 uid="uid://c4dyy4kax1ogv"]
 
-[ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="1_sn0oo"]
-[ext_resource type="Script" path="res://StateUnit.gd" id="1_x62eg"]
-[ext_resource type="Script" path="res://StateMachine.gd" id="2_fiy1u"]
-[ext_resource type="Script" path="res://States/EnemyFollow.gd" id="3_3qhkf"]
-[ext_resource type="Shader" path="res://hitEffect.gdshader" id="3_yfop7"]
-[ext_resource type="Script" path="res://States/EnemyIdle.gd" id="4_0f0vw"]
-[ext_resource type="Script" path="res://States/EnemyAttack.gd" id="6_00by8"]
-[ext_resource type="Script" path="res://States/EnemyStun.gd" id="7_s86pe"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ft0sp"]
+[ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_nu0w1"]
+[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_spybr"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/StateMachine.gd" id="4_mbm05"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyFollow.gd" id="5_bf3th"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyIdle.gd" id="6_bjb5g"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyAttack.gd" id="7_o8q00"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyStun.gd" id="8_gqa3m"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -30,7 +30,7 @@ shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ykg6r"]
-shader = ExtResource("3_yfop7")
+shader = ExtResource("3_spybr")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
@@ -110,33 +110,33 @@ _data = {
 }
 
 [node name="UnitSM" type="CharacterBody2D"]
-script = ExtResource("1_x62eg")
+script = ExtResource("1_ft0sp")
 
 [node name="Art" type="Node2D" parent="."]
 position = Vector2(0, 3)
 
 [node name="Shadow" type="Sprite2D" parent="Art"]
 position = Vector2(0, 6)
-texture = ExtResource("1_sn0oo")
+texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(42, 46, 12, 8)
 
 [node name="Body" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_nrtso")
-texture = ExtResource("1_sn0oo")
+texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(40, 16, 16, 12)
 
 [node name="Weapon" type="Sprite2D" parent="Art"]
 position = Vector2(9, -8)
-texture = ExtResource("1_sn0oo")
+texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(3, 39, 8, 20)
 
 [node name="Head" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_ykg6r")
 position = Vector2(0, -14)
-texture = ExtResource("1_sn0oo")
+texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(38, 0, 20, 16)
 
@@ -146,24 +146,24 @@ position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_pv03d")
 
 [node name="SM" type="Node" parent="." node_paths=PackedStringArray("initial_state", "own_body")]
-script = ExtResource("2_fiy1u")
+script = ExtResource("4_mbm05")
 initial_state = NodePath("Idle")
 own_body = NodePath("..")
 
 [node name="Follow" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("3_3qhkf")
+script = ExtResource("5_bf3th")
 own_body = NodePath("../..")
 
 [node name="Idle" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("4_0f0vw")
+script = ExtResource("6_bjb5g")
 own_body = NodePath("../..")
 
 [node name="Attack" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("6_00by8")
+script = ExtResource("7_o8q00")
 own_body = NodePath("../..")
 
 [node name="Stun" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("7_s86pe")
+script = ExtResource("8_gqa3m")
 own_body = NodePath("../..")
 
 [node name="SightRange" type="Area2D" parent="."]

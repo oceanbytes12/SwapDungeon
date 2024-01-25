@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bsdxhoy0u55kv"]
 
 [ext_resource type="Texture2D" uid="uid://bbltt3vtbeo47" path="res://Art/SwordAttack.png" id="1_nrbou"]
-[ext_resource type="Script" path="res://Scene/slash_attack_effect.gd" id="2_21l2s"]
+[ext_resource type="Script" path="res://Scenes/Attacks/SlashAttack/slash_attack_effect.gd" id="2_21l2s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhbib"]
 atlas = ExtResource("1_nrbou")

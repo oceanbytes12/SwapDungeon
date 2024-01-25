@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var attackScene = preload("res://Scene/slash_attack_effect.tscn")
+@onready var attackScene = preload("res://Scenes/Attacks/SlashAttack/slash_attack_effect.tscn")
 @export var speed = 100
 @onready var attackPostion = $AttackCenter/AttackPoint
 var idle = true
