@@ -8,6 +8,8 @@ y_sort_enabled = true
 
 [node name="Dummy" parent="." instance=ExtResource("1_g4xsj")]
 
+[node name="Camera2D" type="Camera2D" parent="Dummy"]
+
 [node name="AkListener2D" type="AkListener2D" parent="."]
 
 [node name="AkBank_Init" type="AkBank" parent="."]
@@ -26,3 +28,4 @@ load_on = 1
 
 [node name="PlayerUnit" parent="." instance=ExtResource("2_ixj5o")]
 position = Vector2(-158, 1)
+speed = null

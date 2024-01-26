@@ -33,9 +33,7 @@ func on_child_transition(new_state_name):
 	current_state = new_state
 
 func _on_sight_range_body_entered(body):
-	var check1 = body.is_in_group("Friendly") and own_body.is_in_group("Enemy")
-	var check2 = body.is_in_group("Enemy") and own_body.is_in_group("Friendly")
-	if check1 or check2:
+	if body.is_in_group("unit") and body.teamColor != own_body.teamColor:
 		if targets.is_empty():
 			current_target = body
 		targets[body.name] = body
@@ -59,8 +57,7 @@ func _on_unit_sm_hit(direction):
 	new_state.Enter()
 	current_state = new_state
 
-
-func _on_player_unit_walk_command(click_position):
+func _on_base_unit_walk_command(click_position):
 	var new_state = states.get("Walk")
 	current_state.Exit()
 	new_state.Enter()

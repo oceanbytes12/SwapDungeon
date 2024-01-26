@@ -72,6 +72,6 @@ movie_quit_on_finish = true
 [node name="AttackCenter" type="Marker2D" parent="."]
 
 [node name="AttackPoint" type="Marker2D" parent="AttackCenter"]
-position = Vector2(38, 0)
+position = Vector2(27, 0)
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

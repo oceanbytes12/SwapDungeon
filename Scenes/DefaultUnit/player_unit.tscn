@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cxnhaqggcn6a2"]
 
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/unit_sm.tscn" id="1_fuund"]
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_fuund"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/player_unit.gd" id="2_hun7b"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerWalk.gd" id="3_detb6"]
 
@@ -41,14 +41,16 @@ border_color = Color(0.180005, 0.180005, 0.180005, 1)
 
 [node name="PlayerUnit" instance=ExtResource("1_fuund")]
 script = ExtResource("2_hun7b")
-distance_buffer = 15
-speed = 200
+speed = null
 
-[node name="Body" parent="Art" index="1"]
+[node name="Body" parent="Art" index="2"]
 material = SubResource("ShaderMaterial_ukn5o")
 
-[node name="Head" parent="Art" index="3"]
+[node name="Head" parent="Art" index="4"]
 position = Vector2(0, -8)
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = true
 
 [node name="Walk" type="Node" parent="SM" index="4" node_paths=PackedStringArray("own_body")]
 script = ExtResource("3_detb6")
@@ -73,8 +75,5 @@ theme_override_styles/background = SubResource("StyleBoxFlat_c0arr")
 theme_override_styles/fill = SubResource("StyleBoxFlat_m6b7b")
 value = 50.0
 show_percentage = false
-
-[node name="MovementTimer" type="Timer" parent="." index="7"]
-wait_time = 3.0
 
 [connection signal="WalkCommand" from="." to="SM" method="_on_player_unit_walk_command"]
