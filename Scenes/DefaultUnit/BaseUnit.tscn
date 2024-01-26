@@ -144,6 +144,7 @@ region_enabled = true
 region_rect = Rect2(38, 0, 20, 16)
 
 [node name="BlueHat" type="Sprite2D" parent="Art"]
+visible = false
 position = Vector2(0, -19)
 texture = ExtResource("2_nu0w1")
 region_enabled = true

@@ -61,7 +61,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_8iq15")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qaq"]
-bg_color = Color(0.247059, 0.498039, 0.972549, 0.431373)
+bg_color = Color(0.258824, 0.972549, 0.470588, 0.431373)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -83,14 +83,20 @@ layer_0/tile_data = PackedInt32Array(327688, 196609, 1, 262152, 196609, 1, 19661
 
 [node name="Units" type="Node" parent="."]
 
+[node name="BaseUnit" parent="Units" instance=ExtResource("2_t27ly")]
+teamColor = "red"
+
+[node name="BaseUnit2" parent="Units" instance=ExtResource("2_t27ly")]
+teamColor = "blue"
+
 [node name="UnitSM" parent="Units" instance=ExtResource("2_t27ly")]
 teamColor = "blue"
-controllable = true
+
+[node name="BaseUnit3" parent="Units" instance=ExtResource("2_t27ly")]
 
 [node name="UnitSM2" parent="Units" instance=ExtResource("2_t27ly")]
 position = Vector2(45, -1)
 teamColor = "red"
-controllable = true
 
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("3_crcg2")
