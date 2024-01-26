@@ -7,25 +7,25 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="PartyManager" type="Node" parent="." node_paths=PackedStringArray("spawnPositions", "partyPanels")]
+[node name="BattleLoader" type="Node" parent="." node_paths=PackedStringArray("spawnPositions", "partyPanels")]
 script = ExtResource("1_l2sur")
 spawnPositions = [NodePath("SpawnPositions/SpawnPosition1"), NodePath("SpawnPositions/SpawnPosition2"), NodePath("SpawnPositions/SpawnPosition3")]
 partyPanels = [NodePath("../GameUI/PartyBattleUI/PartyInBattleUI/HeroSlot1"), NodePath("../GameUI/PartyBattleUI/PartyInBattleUI/HeroSlot2"), NodePath("../GameUI/PartyBattleUI/PartyInBattleUI/HeroSlot3")]
 
-[node name="Party" type="Node2D" parent="PartyManager"]
+[node name="Party" type="Node2D" parent="BattleLoader"]
 
-[node name="SpawnPositions" type="Node2D" parent="PartyManager"]
+[node name="SpawnPositions" type="Node2D" parent="BattleLoader"]
 
-[node name="SpawnPosition1" type="Node2D" parent="PartyManager/SpawnPositions"]
+[node name="SpawnPosition1" type="Node2D" parent="BattleLoader/SpawnPositions"]
 position = Vector2(36, 32)
 
-[node name="SpawnPosition2" type="Node2D" parent="PartyManager/SpawnPositions"]
+[node name="SpawnPosition2" type="Node2D" parent="BattleLoader/SpawnPositions"]
 position = Vector2(36, 93)
 
-[node name="SpawnPosition3" type="Node2D" parent="PartyManager/SpawnPositions"]
+[node name="SpawnPosition3" type="Node2D" parent="BattleLoader/SpawnPositions"]
 position = Vector2(36, 155)
 
-[node name="GameUI" type="Node2D" parent="."]
+[node name="GameUI" type="CanvasLayer" parent="."]
 
 [node name="BattleSimulatorUI" type="Control" parent="GameUI"]
 layout_mode = 3
@@ -53,16 +53,16 @@ text = "Enemies Dead"
 
 [node name="PartyRosterUI" type="Control" parent="GameUI" node_paths=PackedStringArray("SlidingUI")]
 layout_mode = 3
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 200.0
-offset_right = 479.0
-offset_bottom = 272.0
+anchor_bottom = 1.0
+offset_left = -239.5
+offset_top = -72.0
+offset_right = 239.5
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("2_6nyc5")
 SlidingUI = NodePath("RosterUI")
@@ -122,7 +122,7 @@ offset_bottom = 40.0
 script = ExtResource("2_6nyc5")
 SlidingUI = NodePath("PartyInBattleUI")
 
-[node name="StartButtonButton" type="Button" parent="GameUI/PartyBattleUI"]
+[node name="StartBattleButton" type="Button" parent="GameUI/PartyBattleUI"]
 layout_mode = 0
 offset_left = 86.0
 offset_top = 131.0
@@ -216,25 +216,25 @@ offset_top = 93.0
 offset_right = 346.0
 offset_bottom = 93.0
 
-[connection signal="move_To_Ready_Screen" from="PartyManager" to="GameUI/PartyBattleUI" method="slide_in"]
-[connection signal="move_To_Ready_Screen" from="PartyManager" to="GameUI/PartyAddUI" method="slide_out"]
-[connection signal="pressed" from="GameUI/BattleSimulatorUI/Button" to="PartyManager" method="_UnLoadHeros"]
+[connection signal="move_To_Ready_Screen" from="BattleLoader" to="GameUI/PartyBattleUI" method="slide_in"]
+[connection signal="move_To_Ready_Screen" from="BattleLoader" to="GameUI/PartyAddUI" method="slide_out"]
+[connection signal="pressed" from="GameUI/BattleSimulatorUI/Button" to="BattleLoader" method="_UnLoadHeros"]
 [connection signal="pressed" from="GameUI/BattleSimulatorUI/Button" to="GameUI/BattleSimulatorUI" method="slide_out"]
 [connection signal="pressed" from="GameUI/BattleSimulatorUI/Button" to="GameUI/PartyRosterUI" method="slide_in"]
 [connection signal="pressed" from="GameUI/BattleSimulatorUI/Button" to="GameUI/PartyAddUI" method="slide_in"]
-[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom" to="PartyManager" method="_FinishPartyAddition"]
-[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom2" to="PartyManager" method="_FinishPartyAddition"]
-[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom3" to="PartyManager" method="_FinishPartyAddition"]
-[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom4" to="PartyManager" method="_FinishPartyAddition"]
-[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom5" to="PartyManager" method="_FinishPartyAddition"]
-[connection signal="pressed" from="GameUI/PartyBattleUI/StartButtonButton" to="PartyManager" method="_LoadHeros"]
-[connection signal="pressed" from="GameUI/PartyBattleUI/StartButtonButton" to="GameUI/BattleSimulatorUI" method="slide_in"]
-[connection signal="pressed" from="GameUI/PartyBattleUI/StartButtonButton" to="GameUI/PartyRosterUI" method="slide_out"]
-[connection signal="pressed" from="GameUI/PartyBattleUI/StartButtonButton" to="GameUI/PartyBattleUI" method="slide_out"]
+[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom" to="BattleLoader" method="_FinishPartyAddition"]
+[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom2" to="BattleLoader" method="_FinishPartyAddition"]
+[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom3" to="BattleLoader" method="_FinishPartyAddition"]
+[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom4" to="BattleLoader" method="_FinishPartyAddition"]
+[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom5" to="BattleLoader" method="_FinishPartyAddition"]
+[connection signal="pressed" from="GameUI/PartyBattleUI/StartBattleButton" to="BattleLoader" method="_LoadHeros"]
+[connection signal="pressed" from="GameUI/PartyBattleUI/StartBattleButton" to="GameUI/BattleSimulatorUI" method="slide_in"]
+[connection signal="pressed" from="GameUI/PartyBattleUI/StartBattleButton" to="GameUI/PartyRosterUI" method="slide_out"]
+[connection signal="pressed" from="GameUI/PartyBattleUI/StartBattleButton" to="GameUI/PartyBattleUI" method="slide_out"]
 [connection signal="on_tween_in_start" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot1" method="_spawnHeroUI"]
 [connection signal="on_tween_in_start" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot2" method="_spawnHeroUI"]
 [connection signal="on_tween_in_start" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot3" method="_spawnHeroUI"]
 [connection signal="on_tween_out_finish" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot1" method="_despawnHeroUI"]
 [connection signal="on_tween_out_finish" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot2" method="_despawnHeroUI"]
 [connection signal="on_tween_out_finish" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot3" method="_despawnHeroUI"]
-[connection signal="pressed" from="GameUI/PartyAddUI/SkipButton" to="PartyManager" method="_FinishPartyAddition"]
+[connection signal="pressed" from="GameUI/PartyAddUI/SkipButton" to="BattleLoader" method="_FinishPartyAddition"]
