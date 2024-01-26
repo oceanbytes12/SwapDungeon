@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @export var teamColor : String
 @export var controllable: bool
+@export var walkSpeed: float
+@export var runSpeed: float
+@export var weaponRange: float
 
 signal Hit
 signal WalkCommand
