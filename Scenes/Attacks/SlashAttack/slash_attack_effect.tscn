@@ -22,7 +22,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Slash",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v20ub"]

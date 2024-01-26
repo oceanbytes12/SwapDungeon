@@ -5,12 +5,12 @@ class_name EnemyStun
 @export var stunTime := 0.5
 @export var stunKnockback := 50
 var stunClock
-var direction
+var hit_direction
 
 
 func Enter():
 	stunClock = stunTime
-	own_body.velocity = direction * stunKnockback
+	own_body.velocity = hit_direction * stunKnockback
 
 func Update(delta: float, _target: CharacterBody2D):
 	if stunClock > 0:

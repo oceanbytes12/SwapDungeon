@@ -1,6 +1,8 @@
 extends Node2D
 
 var units = [] # All the units in player's party
+var selected_units = []
+var is_Ctrl_pressed = false
 
 func _ready():
 	for child in $Units.get_children():
@@ -22,9 +24,11 @@ func _on_camera_area_selected(object):
 	
 	area.append(Vector2(min(start.x, end.x), min(start.y, end.y)))
 	area.append(Vector2(max(start.x, end.x), max(start.y, end.y)))
-	var ut = get_units_in_area(area)
+	selected_units = get_units_in_area(area)
 	
-	for u in units: # Deselect all units
-		u.set_selected(false)
-	for u in ut: # Select the units in selection box
+	# If player is pressing ctrl, don't deselect already selected units 
+	if (!is_Ctrl_pressed):
+		for u in units: # Deselect all units
+			u.set_selected(false)
+	for u in selected_units: # Select the units in selection box
 		u.set_selected(true)

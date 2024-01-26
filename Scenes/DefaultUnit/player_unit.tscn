@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxnhaqggcn6a2"]
+[gd_scene load_steps=11 format=3 uid="uid://cxnhaqggcn6a2"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_fuund"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/player_unit.gd" id="2_hun7b"]
+[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_5n22m"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerWalk.gd" id="3_detb6"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
@@ -24,6 +25,12 @@ shader = SubResource("Shader_2y081")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ndou"]
+resource_local_to_scene = true
+shader = ExtResource("3_5n22m")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtbfg"]
 bg_color = Color(0, 0.392157, 1, 0)
 border_width_left = 3
@@ -41,31 +48,29 @@ border_color = Color(0.180005, 0.180005, 0.180005, 1)
 
 [node name="PlayerUnit" instance=ExtResource("1_fuund")]
 script = ExtResource("2_hun7b")
-speed = null
+speed = 200
 
 [node name="Body" parent="Art" index="2"]
 material = SubResource("ShaderMaterial_ukn5o")
 
-[node name="Head" parent="Art" index="4"]
+[node name="Head" parent="Art" index="3"]
+material = SubResource("ShaderMaterial_4ndou")
 position = Vector2(0, -8)
 
-[node name="CollisionShape2D" parent="." index="1"]
-visible = true
-
-[node name="Walk" type="Node" parent="SM" index="4" node_paths=PackedStringArray("own_body")]
+[node name="Walk2" type="Node" parent="SM" index="4" node_paths=PackedStringArray("own_body")]
 script = ExtResource("3_detb6")
 own_body = NodePath("../..")
 
-[node name="UI" type="Node2D" parent="." index="6"]
+[node name="UI2" type="Node2D" parent="." index="6"]
 
-[node name="SelectedPanel" type="Panel" parent="UI" index="0"]
+[node name="SelectedPanel" type="Panel" parent="UI2" index="0"]
 offset_left = -12.0
 offset_top = -19.0
 offset_right = 16.0
 offset_bottom = 16.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jtbfg")
 
-[node name="HealthBar" type="ProgressBar" parent="UI" index="1"]
+[node name="HealthBar" type="ProgressBar" parent="UI2" index="1"]
 offset_left = -10.0
 offset_top = -26.0
 offset_right = -6.0

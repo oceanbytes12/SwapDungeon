@@ -12,12 +12,15 @@ func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name] = child
-			child.Transitioned.connect(on_child_transition)
+			child.Transitioned.connect(on_state_change)
 	if initial_state:
 		initial_state.Enter()
 		current_state = initial_state
 
 func _process(delta):
+	if current_target != null and current_target.is_dead:
+		targets.erase(current_target)
+		find_target()
 	if current_state:
 		current_state.Update(delta, current_target)
 
@@ -25,12 +28,19 @@ func _physics_process(delta):
 	if current_state:
 		current_state.Physics_Update(delta, current_target)
 
-
-func on_child_transition(new_state_name):
+func on_state_change(new_state_name):
 	var new_state = states.get(new_state_name)
 	current_state.Exit()
 	new_state.Enter()
 	current_state = new_state
+
+func find_target():
+	if targets.is_empty():
+		current_target = null
+	else:
+		# this is trash we should add a way to check for closest
+		for target in targets:
+			current_target = targets.get(target)
 
 func _on_sight_range_body_entered(body):
 	if body.is_in_group("unit") and body.teamColor != own_body.teamColor:
@@ -38,28 +48,24 @@ func _on_sight_range_body_entered(body):
 			current_target = body
 		targets[body.name] = body
 
-
 func _on_sight_range_body_exited(body):
-	if body.is_in_group("Friendly"):
-		targets.erase(body.name)
-		if targets.is_empty():
-			current_target = null
-		else:
-			# this is trash we should add a way to check for closest
-			for target in targets:
-				current_target = targets.get(target)
-
+	targets.erase(body.name)
+	find_target()
 
 func _on_unit_sm_hit(direction):
-	var new_state = states.get("Stun")
-	current_state.Exit()
-	new_state.direction = direction
-	new_state.Enter()
-	current_state = new_state
+	if current_state.name != "Dead":
+		var new_state = states.get("Stun")
+		current_state.Exit()
+		new_state.hit_direction = direction
+		new_state.Enter()
+		current_state = new_state
+
 
 func _on_base_unit_walk_command(click_position):
-	var new_state = states.get("Walk")
-	current_state.Exit()
-	new_state.Enter()
-	current_state = new_state
-	current_state.target_position = click_position
+	if current_state.name != "Dead":
+		on_state_change("Walk")
+		current_state.target_position = click_position
+
+
+func _on_base_unit_died():
+	on_state_change("Dead")

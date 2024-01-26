@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=24 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ft0sp"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_nu0w1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyAttack.gd" id="7_o8q00"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyStun.gd" id="8_gqa3m"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerWalk.gd" id="9_cbxsc"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyDead.gd" id="11_73he8"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -112,6 +113,13 @@ _data = {
 "new_animation": SubResource("Animation_x8van")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcve7"]
+bg_color = Color(0.890196, 0, 0.105882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kmei"]
+bg_color = Color(0, 0.760784, 0.235294, 1)
+border_color = Color(0.180005, 0.180005, 0.180005, 1)
+
 [node name="BaseUnit" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_ft0sp")
 
@@ -160,7 +168,6 @@ region_rect = Rect2(7, 12, 18, 7)
 [node name="Weapon" parent="." instance=ExtResource("4_abvut")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_pv03d")
 
@@ -189,6 +196,10 @@ own_body = NodePath("../..")
 script = ExtResource("9_cbxsc")
 own_body = NodePath("../..")
 
+[node name="Dead" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
+script = ExtResource("11_73he8")
+own_body = NodePath("../..")
+
 [node name="SightRange" type="Area2D" parent="."]
 visible = false
 
@@ -201,8 +212,25 @@ libraries = {
 }
 speed_scale = 2.0
 
+[node name="UI" type="Node2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+offset_left = -12.0
+offset_top = -26.0
+offset_right = -8.0
+offset_bottom = 1.0
+scale = Vector2(6.2, 0.160001)
+theme_override_styles/background = SubResource("StyleBoxFlat_qcve7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8kmei")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[connection signal="Died" from="." to="SM" method="_on_base_unit_died"]
 [connection signal="Hit" from="." to="SM" method="_on_unit_sm_hit"]
 [connection signal="WalkCommand" from="." to="SM" method="_on_base_unit_walk_command"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="Attacked" from="SM/Attack" to="Weapon" method="_on_attack_attacked"]
 [connection signal="body_entered" from="SightRange" to="SM" method="_on_sight_range_body_entered"]
 [connection signal="body_exited" from="SightRange" to="SM" method="_on_sight_range_body_exited"]
