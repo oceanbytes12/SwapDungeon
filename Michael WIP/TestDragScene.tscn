@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://7qwj3bxgjdri"]
+
+[ext_resource type="PackedScene" uid="uid://bcv6oeol4qxn3" path="res://Michael WIP/Scenes/dragged_item.tscn" id="1_k7nro"]
+[ext_resource type="PackedScene" uid="uid://bordqigg6rlth" path="res://Michael WIP/Scenes/drop_space.tscn" id="2_452ak"]
+
+[node name="TestDragScene" type="Node2D"]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="DraggedItem" parent="CanvasLayer2" instance=ExtResource("1_k7nro")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="DropSpace" parent="CanvasLayer" instance=ExtResource("2_452ak")]

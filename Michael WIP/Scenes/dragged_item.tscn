@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcv6oeol4qxn3"]
+
+[ext_resource type="Script" path="res://Michael WIP/Draggable.gd" id="1_ao58g"]
+[ext_resource type="Texture2D" uid="uid://bgj3lppidx4yv" path="res://icon.svg" id="2_76kly"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5ab4"]
+size = Vector2(128, 133)
+
+[node name="DraggedItem" type="Node2D"]
+position = Vector2(276, 134)
+script = ExtResource("1_ao58g")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_76kly")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_m5ab4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_select_area_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_select_area_body_exited"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_select_area_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_select_area_mouse_exited"]
