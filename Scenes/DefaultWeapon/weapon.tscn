@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://yvo3r23olkdw"]
+
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/Weapon.gd" id="1_uinfu"]
+[ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_avc4h"]
+
+[node name="Weapon" type="Marker2D"]
+script = ExtResource("1_uinfu")
+
+[node name="AttackPoint" type="Marker2D" parent="."]
+position = Vector2(22, 0)
+
+[node name="Art" type="Sprite2D" parent="."]
+position = Vector2(9, 0)
+texture = ExtResource("2_avc4h")
+region_enabled = true
+region_rect = Rect2(3, 39, 8, 20)

@@ -3,8 +3,7 @@ extends CharacterBody2D
 @export var teamColor : String
 @export var controllable: bool
 
-@onready var attackPostion = $AttackCenter/AttackPoint
-@onready var attackScene = preload("res://Scenes/Attacks/SlashAttack/slash_attack_effect.tscn")
+@onready var weapon = $Weapon
 @onready var target = global_position
 
 signal Hit
@@ -23,6 +22,7 @@ func set_selected(value):
 
 func _ready():
 	set_selected(selected)
+	weapon.teamColor = teamColor
 	if teamColor == "blue":
 		$Art/BlueHat.visible = true
 		$Art/RedHat.visible = false
@@ -34,7 +34,7 @@ func _ready():
 func _process(_delta):
 	target = $SM.current_target
 	if target:
-		$AttackCenter.look_at(target.global_position)
+		weapon.look_at(target.global_position)
 	if velocity.x < 0:
 		$Art/Body.flip_h = true
 		$Art/Head.flip_h = true
@@ -54,14 +54,6 @@ func _input(event):
 			WalkCommand.emit(get_global_mouse_position())
 	if event.is_action_pressed("LeftClick"):
 		set_selected(false)
-		
-
-func _on_attack_attacked():
-	var attackNode = attackScene.instantiate()
-	attackNode.global_position = attackPostion.global_position
-	attackNode.rotation = $AttackCenter.rotation
-	attackNode.source_team_color = teamColor
-	get_parent().add_child(attackNode)
 
 func take_hit(hit_position):
 	var direction = (global_position-hit_position).normalized()

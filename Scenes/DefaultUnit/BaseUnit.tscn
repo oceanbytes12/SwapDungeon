@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=21 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ft0sp"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_nu0w1"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_spybr"]
+[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="4_abvut"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/StateMachine.gd" id="4_mbm05"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyFollow.gd" id="5_bf3th"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyIdle.gd" id="6_bjb5g"]
@@ -31,6 +32,7 @@ shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ykg6r"]
+resource_local_to_scene = true
 shader = ExtResource("3_spybr")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -134,12 +136,6 @@ texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(40, 16, 16, 12)
 
-[node name="Weapon" type="Sprite2D" parent="Art"]
-position = Vector2(9, -8)
-texture = ExtResource("2_nu0w1")
-region_enabled = true
-region_rect = Rect2(3, 39, 8, 20)
-
 [node name="Head" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_ykg6r")
 position = Vector2(0, -14)
@@ -159,6 +155,8 @@ position = Vector2(0, -19)
 texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(7, 12, 18, 7)
+
+[node name="Weapon" parent="." instance=ExtResource("4_abvut")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -196,11 +194,6 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
 shape = SubResource("CircleShape2D_5cwag")
 
-[node name="AttackCenter" type="Marker2D" parent="."]
-
-[node name="AttackPoint" type="Marker2D" parent="AttackCenter"]
-position = Vector2(22, 0)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4rt51")
@@ -209,6 +202,6 @@ speed_scale = 2.0
 
 [connection signal="Hit" from="." to="SM" method="_on_unit_sm_hit"]
 [connection signal="WalkCommand" from="." to="SM" method="_on_base_unit_walk_command"]
-[connection signal="Attacked" from="SM/Attack" to="." method="_on_attack_attacked"]
+[connection signal="Attacked" from="SM/Attack" to="Weapon" method="_on_attack_attacked"]
 [connection signal="body_entered" from="SightRange" to="SM" method="_on_sight_range_body_entered"]
 [connection signal="body_exited" from="SightRange" to="SM" method="_on_sight_range_body_exited"]
