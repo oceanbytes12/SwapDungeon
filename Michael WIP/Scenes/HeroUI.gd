@@ -4,11 +4,10 @@ class_name HeroUI
 
 var isBeingDragged = false
 var FOLLOW_SPEED = 10
-
 var HeroType 
 var HeroIcon
 
-func _ready():
+func _generateRandomHero():
 	HeroType = Globals._GetRandomHeroType()
 	HeroIcon = Globals._GetIconInstanceOfType(HeroType)
 	if(HeroIcon):

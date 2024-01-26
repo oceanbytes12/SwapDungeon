@@ -1,26 +1,34 @@
 extends Control
 
 var tween : Tween
-signal on_tween_finish
+signal on_tween_in_finish
+signal on_tween_out_finish
 var RotDuration : float = 0.2
 
 @onready var Delay : float = randf_range(0.1,0.3)
 @onready var MoveDuration : float = randf_range(0.1,0.3)
 @onready var InitialX : float = position.x
-@onready var SlidingImage : TextureRect = $SlidingImage
+@export var SlidingUI : Control
+@export var Automatic : bool
 
 func _ready():
 	position.x = get_viewport_rect().size.x 
-	SlidingImage.rotation_degrees = 20
-	rotation
-	slide_in()
+	if(Automatic):
+		slide_in()
+		
+func slide_out():
+	tween = create_tween()
+	tween.tween_property(self, "position:x", get_viewport_rect().size.x, MoveDuration).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT).set_delay(Delay)
+	tween.tween_callback(inform_slide_in_finish)
 
 func slide_in():
-	tween = create_tween() # Creates a new tween
-	tween.tween_property(self, "position:x", InitialX+5, MoveDuration).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT).set_delay(Delay)
-	tween.chain().tween_property(SlidingImage, "rotation_degrees", 0, RotDuration).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_callback(inform_finish)
+	tween = create_tween()
+	tween.tween_property(self, "position:x", InitialX, MoveDuration).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT).set_delay(Delay)
+	tween.tween_callback(inform_slide_out_finish)
 	
-func inform_finish():
-	emit_signal("on_tween_finish")
+func inform_slide_in_finish():
+	emit_signal("on_tween_in_finish")
+	
+func inform_slide_out_finish():
+	emit_signal("on_tween_out_finish")
 	

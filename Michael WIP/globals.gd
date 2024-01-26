@@ -4,9 +4,7 @@ var isDragging = false
 var selectedHero : HeroUI
 var draggedHero : HeroUI
 var selectedPanel : HeroUIPanel
-
 var heroIconScenes = []
-var heroIconInstances = []
 
 enum HeroTypes { 
 	Warrior = 0, 
@@ -28,6 +26,7 @@ func _GetIconInstanceOfType(HeroType):
 		else:
 			#print("No find here: ", HeroType)
 			pass
+
 
 func _ready():
 	_LoadHeroIconPackedScenes()
@@ -89,8 +88,12 @@ func _HandleLeftClickUp():
 			selectedPanel._AddHero(draggedHero)
 		draggedHero = null
 
-func _GetChildNodeOfType(parent, DesiredClass):
+func _GetChildNodeOfType(parent, DesiredClass, allowInvisible = false):
 	var desired_children = []
 	for child in parent.get_children():
 		if is_instance_of(child, DesiredClass):
-			return child
+			if(allowInvisible or child.visible):
+				return child
+				
+			
+
