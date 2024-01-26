@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdf66a53p3661"]
+
+[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="1_1pi1d"]
+
+[node name="Bow" instance=ExtResource("1_1pi1d")]
+
+[node name="Art" parent="." index="1"]
+position = Vector2(9, 4)
+region_rect = Rect2(17, 37, 10, 22)

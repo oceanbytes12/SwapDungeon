@@ -9,16 +9,16 @@ var target_position : Vector2
 var timeout_timer : float
 
 
-func Enter():
+func Enter(_target):
 	timeout_timer = timeout
 
-func Update(delta: float, target: CharacterBody2D):
+func Update(delta: float, _target: CharacterBody2D):
 	if timeout_timer > 0:
 		timeout_timer -= delta
 	else:
 		Transitioned.emit("Idle")
 
-func Physics_Update(delta: float, target: CharacterBody2D):
+func Physics_Update(_delta: float, _target: CharacterBody2D):
 	var target_vector = target_position - own_body.global_position
 	var target_distance = target_vector.length()
 	if target_distance <= distance_buffer:

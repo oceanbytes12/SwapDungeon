@@ -1,0 +1,43 @@
+extends Marker2D
+@onready var attackScene = preload("res://Scenes/Attacks/SlashAttack/slash_attack_effect.tscn")
+@export var own_body : CharacterBody2D
+@export var attackState : State
+
+var target
+func _ready():
+	attackState.Attacked.connect(_on_attack_attacked)
+	attackState.Targetted.connect(_on_target)
+	attackState.Untarget.connect(_on_untarget)
+	own_body.Died.connect(_on_body_died)
+
+func _process(_delta):
+	var direction = Vector2.RIGHT.rotated(rotation)
+	if direction.x > 0:
+		$Art.flip_v = false
+		$Art.position = $RightOffset.position
+	else:
+		$Art.flip_v = true
+		$Art.position = $LeftOffset.position
+
+	if target:
+		look_at(target.global_position)
+	elif own_body.velocity.x > 0:
+		look_at(Vector2.RIGHT+global_position)
+	else:
+		look_at(Vector2.LEFT+global_position)
+
+func _on_attack_attacked():
+	var attackNode = attackScene.instantiate()
+	attackNode.global_position = $AttackPoint.global_position
+	attackNode.rotation = rotation
+	attackNode.source_team_color = own_body.teamColor
+	get_parent().get_parent().add_child(attackNode)
+
+func _on_target(t):
+	target = t
+
+func _on_body_died():
+	$Art.visible = false
+
+func _on_untarget():
+	target = null

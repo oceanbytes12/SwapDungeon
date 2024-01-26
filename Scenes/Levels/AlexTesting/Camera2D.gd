@@ -19,7 +19,7 @@ func _ready():
 	draw_area(false) # Prevents box from being drawn on load. Can also do this by setting default size to 0 in Inspector
 
 # Handle mouse input
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("LeftClick"):
 		start = mousePosGlobal
 		startV = mousePos

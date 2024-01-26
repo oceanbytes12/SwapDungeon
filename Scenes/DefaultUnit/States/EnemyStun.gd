@@ -8,7 +8,7 @@ var stunClock
 var hit_direction
 
 
-func Enter():
+func Enter(_target):
 	stunClock = stunTime
 	own_body.velocity = hit_direction * stunKnockback
 
@@ -18,5 +18,5 @@ func Update(delta: float, _target: CharacterBody2D):
 	else:
 		Transitioned.emit("Idle")
 
-func Physics_Update(delta: float, target: CharacterBody2D):
+func Physics_Update(_delta: float, _target: CharacterBody2D):
 	own_body.velocity *= 0.95

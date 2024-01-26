@@ -1,9 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=27 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ft0sp"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_nu0w1"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_spybr"]
-[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="4_abvut"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/StateMachine.gd" id="4_mbm05"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyFollow.gd" id="5_bf3th"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyIdle.gd" id="6_bjb5g"]
@@ -72,6 +71,22 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_itt8p"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.123542, -0.152962]
+}
+
 [sub_resource type="Animation" id="Animation_ofoju"]
 resource_name = "hitAnimation"
 tracks/0/type = "value"
@@ -99,22 +114,6 @@ tracks/1/keys = {
 "values": [1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_itt8p"]
-resource_name = "Walk"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Art:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.123542, -0.152962]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4rt51"]
 _data = {
 "RESET": SubResource("Animation_h2q2f"),
@@ -128,6 +127,96 @@ bg_color = Color(0.890196, 0, 0.105882, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kmei"]
 bg_color = Color(0, 0.760784, 0.235294, 1)
 border_color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[sub_resource type="Animation" id="Animation_80goa"]
+resource_name = "Die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Art/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -14), Vector2(0, -18), Vector2(0, -10), Vector2(0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Art/Head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.57657, 3.14159]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Art/Body:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_psedn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Art/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Art/Head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_s08ro"]
 resource_name = "Walk"
@@ -164,6 +253,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qn2uv"]
 _data = {
+"Die": SubResource("Animation_80goa"),
+"RESET": SubResource("Animation_psedn"),
 "Walk": SubResource("Animation_s08ro"),
 "WalkFast": SubResource("Animation_5chxr")
 }
@@ -185,7 +276,6 @@ region_rect = Rect2(43, 32, 12, 8)
 
 [node name="Art" type="Node2D" parent="."]
 position = Vector2(0, 3)
-rotation = 0.120626
 
 [node name="Body" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_nrtso")
@@ -213,8 +303,6 @@ position = Vector2(0, -19)
 texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(7, 12, 18, 7)
-
-[node name="Weapon" parent="." instance=ExtResource("4_abvut")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -279,12 +367,14 @@ show_percentage = false
 libraries = {
 "": SubResource("AnimationLibrary_qn2uv")
 }
+speed_scale = 2.0
 
 [connection signal="Died" from="." to="SM" method="_on_base_unit_died"]
 [connection signal="Hit" from="." to="SM" method="_on_unit_sm_hit"]
 [connection signal="WalkCommand" from="." to="SM" method="_on_base_unit_walk_command"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="Attacked" from="SM/Attack" to="Weapon" method="_on_attack_attacked"]
 [connection signal="body_entered" from="SightRange" to="SM" method="_on_sight_range_body_entered"]
 [connection signal="body_exited" from="SightRange" to="SM" method="_on_sight_range_body_exited"]
+[connection signal="body_shape_entered" from="SightRange" to="SM" method="_on_sight_range_body_shape_entered"]
+[connection signal="body_shape_exited" from="SightRange" to="SM" method="_on_sight_range_body_shape_exited"]

@@ -1,6 +1,8 @@
 extends State
 class_name EnemyAttack
 signal Attacked
+signal Targetted
+signal Untarget
 
 @export var own_body : CharacterBody2D
 @export var move_speed := 40.0
@@ -13,20 +15,22 @@ func make_attack():
 	Attacked.emit()
 	colldown_time = attack_cooldown
 	
-func Enter():
+func Enter(target):
+	Targetted.emit(target)
 	make_attack()
+
+func Exit():
+	Untarget.emit()
 
 func Update(delta: float, target: CharacterBody2D):
 	if not target:
 		Transitioned.emit("Idle")
 		return
-	var target_vector = target.global_position - own_body.global_position
-	var target_distance = target_vector.length()
 	if colldown_time > 0:
 		colldown_time -= delta
 	else:
 		Transitioned.emit("Follow")
 
 
-func Physics_Update(delta: float, target: CharacterBody2D):
+func Physics_Update(_delta: float, _target: CharacterBody2D):
 	own_body.velocity = Vector2()

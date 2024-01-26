@@ -11,7 +11,7 @@ func randomize_wander():
 	move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	wander_time = randf_range(1, 3)
 	
-func Enter():
+func Enter(_target):
 	randomize_wander()
 
 func Update(delta: float, target: CharacterBody2D):
@@ -23,5 +23,5 @@ func Update(delta: float, target: CharacterBody2D):
 		else:
 			randomize_wander()
 
-func Physics_Update(delta: float, target: CharacterBody2D):
+func Physics_Update(_delta: float, _target: CharacterBody2D):
 	own_body.velocity = move_direction * move_speed

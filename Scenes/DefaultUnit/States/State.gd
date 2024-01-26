@@ -4,7 +4,7 @@ class_name State
 signal Transitioned
 
 
-func Enter():
+func Enter(_target):
 	pass
 
 

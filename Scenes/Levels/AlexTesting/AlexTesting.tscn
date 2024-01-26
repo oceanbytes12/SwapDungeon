@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_ah53m"]
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/DungeonTiles.png" id="1_w28te"]
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="2_t27ly"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="3_crcg2"]
+[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Meleer.tscn" id="4_kkry8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iq15"]
 texture = ExtResource("1_w28te")
@@ -84,41 +84,32 @@ layer_0/tile_data = PackedInt32Array(327688, 196609, 1, 262152, 196609, 1, 19661
 [node name="Units" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Blue1" parent="Units" instance=ExtResource("2_t27ly")]
-position = Vector2(-144, -57)
+[node name="Meleer" parent="Units" instance=ExtResource("4_kkry8")]
+position = Vector2(86, -17)
+teamColor = "red"
+
+[node name="Meleer2" parent="Units" instance=ExtResource("4_kkry8")]
+position = Vector2(114, 19)
+teamColor = "red"
+
+[node name="Meleer3" parent="Units" instance=ExtResource("4_kkry8")]
+position = Vector2(70, 37)
+teamColor = "red"
+
+[node name="Meleer4" parent="Units" instance=ExtResource("4_kkry8")]
+position = Vector2(-117, -49)
 teamColor = "blue"
 controllable = true
 
-[node name="Blue2" parent="Units" instance=ExtResource("2_t27ly")]
-position = Vector2(-147, 42)
+[node name="Meleer5" parent="Units" instance=ExtResource("4_kkry8")]
+position = Vector2(-82, 64)
 teamColor = "blue"
 controllable = true
 
-[node name="Blue3" parent="Units" instance=ExtResource("2_t27ly")]
-position = Vector2(-198, -22)
+[node name="Meleer6" parent="Units" instance=ExtResource("4_kkry8")]
+position = Vector2(-85, -2)
 teamColor = "blue"
 controllable = true
-
-[node name="Blue4" parent="Units" instance=ExtResource("2_t27ly")]
-position = Vector2(-198, 39)
-teamColor = "blue"
-controllable = true
-
-[node name="Red1" parent="Units" instance=ExtResource("2_t27ly")]
-position = Vector2(81, -6)
-teamColor = "red"
-
-[node name="Red2" parent="Units" instance=ExtResource("2_t27ly")]
-position = Vector2(84, 40)
-teamColor = "red"
-
-[node name="Red3" parent="Units" instance=ExtResource("2_t27ly")]
-position = Vector2(76, -57)
-teamColor = "red"
-
-[node name="Red4" parent="Units" instance=ExtResource("2_t27ly")]
-position = Vector2(132, -9)
-teamColor = "red"
 
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("3_crcg2")

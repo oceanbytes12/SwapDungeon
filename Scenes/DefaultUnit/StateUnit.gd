@@ -3,9 +3,6 @@ extends CharacterBody2D
 @export var teamColor : String
 @export var controllable: bool
 
-@onready var weapon = $Weapon
-@onready var target = global_position
-
 signal Hit
 signal WalkCommand
 signal AttackCommand
@@ -16,6 +13,7 @@ var follow_cursor = false
 var is_cursor_over = false
 var is_Ctrl_pressed = false
 var is_dead = false
+@onready var state_machine = $SM
 
 func set_selected(value):
 	if controllable:
@@ -26,7 +24,6 @@ func set_selected(value):
 
 func _ready():
 	set_selected(selected)
-	weapon.teamColor = teamColor
 	if teamColor == "blue":
 		$Art/BlueHat.visible = true
 		$Art/RedHat.visible = false
@@ -36,16 +33,10 @@ func _ready():
 	
 
 func _process(_delta):
-	target = $SM.current_target
-	if target:
-		weapon.look_at(target.global_position)
-	elif velocity.x > 0:
-		weapon.look_at(Vector2.RIGHT+global_position)
-	else:
-		weapon.look_at(Vector2.LEFT+global_position)
-	if velocity.length() < 15:
+	
+	if velocity.length() < 15 and velocity.length() > 5:
 		$MovementAnimations.play("Walk")
-	else:
+	elif velocity.length() >= 15:
 		$MovementAnimations.play("WalkFast")
 	if velocity.x < 0:
 		$Art/Body.flip_h = true
@@ -83,8 +74,12 @@ func take_hit(hit_position):
 	if $UI/HealthBar.value <= 0:
 		is_dead = true
 		$UI/HealthBar.visible = false
+		$CollisionShape2D.queue_free()
+		$Art/BlueHat.visible = false
+		$Art/RedHat.visible = false
 		Died.emit()
-		queue_free()
+		$MovementAnimations.play("Die")
+		#queue_free()
 	else:
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction)
