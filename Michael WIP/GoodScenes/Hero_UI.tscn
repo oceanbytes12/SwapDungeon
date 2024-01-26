@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4ykfble4676d"]
 
-[ext_resource type="Script" path="res://Michael WIP/Scenes/HeroUI.gd" id="1_m42dq"]
+[ext_resource type="Script" path="res://Michael WIP/GoodScenes/HeroUI.gd" id="1_ebayj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aps2w"]
 size = Vector2(32, 32)
@@ -12,7 +12,7 @@ offset_left = 120.0
 offset_top = 96.0
 offset_right = 160.0
 offset_bottom = 136.0
-script = ExtResource("1_m42dq")
+script = ExtResource("1_ebayj")
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="."]

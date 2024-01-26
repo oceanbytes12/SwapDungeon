@@ -23,7 +23,10 @@ func _LoadHeros():
 		if(!currentEnum):
 			continue
 		
+		#Swap this out for a reference to a real hero!
 		var newHero = Globals._GetIconInstanceOfType(currentEnum)
+		
+		#Position them properly
 		newHero.z_index = -1000
 		PartyParent.add_child(newHero)
 		newHero.global_position = spawnPositions[heroEnumIndex].global_position
@@ -32,3 +35,8 @@ func _LoadHeros():
 func _FinishPartyAddition():
 	print("Finishing Addition")
 	emit_signal("move_To_Ready_Screen")
+
+func _UnLoadHeros():
+	for n in PartyParent.get_children():
+		PartyParent.remove_child(n)
+		n.queue_free() 

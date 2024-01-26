@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Michael WIP/Scenes/HeroSpawner.gd" id="1_c4jvp"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/SlideInUI.gd" id="2_kcx55"]
-[ext_resource type="PackedScene" uid="uid://broi4uqvo8xf2" path="res://Michael WIP/GoodScenes/Hero_Panel_Random.tscn" id="3_8f2bs"]
+[ext_resource type="PackedScene" uid="uid://broi4uqvo8xf2" path="res://Michael WIP/GoodScenes/Hero_UI_Panel.tscn" id="3_8f2bs"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="6_rq2m3"]
 
 [node name="LevelReadyUI" type="Node2D"]
@@ -177,21 +177,18 @@ offset_right = 96.0
 offset_bottom = 53.0
 grow_horizontal = 0
 grow_vertical = 0
-StartWithRandomHero = true
 
 [node name="HeroSlot2" parent="PartyAddUI/HeroAddUI" instance=ExtResource("3_8f2bs")]
 offset_left = 236.0
 offset_top = 93.0
 offset_right = 236.0
 offset_bottom = 93.0
-StartWithRandomHero = true
 
 [node name="HeroSlot3" parent="PartyAddUI/HeroAddUI" instance=ExtResource("3_8f2bs")]
 offset_left = 346.0
 offset_top = 93.0
 offset_right = 346.0
 offset_bottom = 93.0
-StartWithRandomHero = true
 
 [connection signal="move_To_Ready_Screen" from="PartyManager" to="PartyBattleUI" method="slide_in"]
 [connection signal="move_To_Ready_Screen" from="PartyManager" to="PartyAddUI" method="slide_out"]

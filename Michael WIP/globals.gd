@@ -5,17 +5,31 @@ var selectedHero : HeroUI
 var draggedHero : HeroUI
 var selectedPanel : HeroUIPanel
 var heroIconScenes = []
-
-enum HeroTypes { 
+var path = "res://Michael WIP/HeroIcons/"
+enum HeroTypes 
+{ 
 	Warrior = 0, 
 	Mage = 1,
 	Archer = 2 
 }
 
+enum UpgradedHeroTypes
+{
+	Maurader = 0,
+	ArchWizard = 1,
+	Sniper = 2
+}
+
 #Returns a random hero type from those in the game.
 func _GetRandomHeroType():
 	var randomIndex = randi() % Globals.HeroTypes.size()
-	return Globals.HeroTypes.keys()[randomIndex]
+	return _GetHeroTypeAtIndex(randomIndex)
+
+func _GetHeroTypeAtIndex(index):
+	return HeroTypes.keys()[index]
+
+func _GetUpgradedHeroTypeAtIndex(index):
+	return UpgradedHeroTypes.keys()[index]
 
 #Grabs an icon for that hero as a Sprite2D instance
 func _GetIconInstanceOfType(HeroType):
@@ -27,12 +41,10 @@ func _GetIconInstanceOfType(HeroType):
 			#print("No find here: ", HeroType)
 			pass
 
-
 func _ready():
 	_LoadHeroIconPackedScenes()
 
 func _LoadHeroIconPackedScenes():
-	var path = "res://Scene/HeroIcons/"
 	var dir = DirAccess.open(path) 
 	dir.open(path)
 	
@@ -50,10 +62,10 @@ func _LoadHeroIconPackedScenes():
 func _SetSelectedHero(newHero):
 	#print("Setting Target Hero: ", newHero)
 	
-	if(selectedHero):
+	if(selectedHero != null):
 		selectedHero.scale = Vector2.ONE
 		
-	if(newHero):
+	if(newHero != null):
 		newHero.scale = Vector2.ONE * 1.1
 	
 	selectedHero = newHero
@@ -94,6 +106,3 @@ func _GetChildNodeOfType(parent, DesiredClass, allowInvisible = false):
 		if is_instance_of(child, DesiredClass):
 			if(allowInvisible or child.visible):
 				return child
-				
-			
-

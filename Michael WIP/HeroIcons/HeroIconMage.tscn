@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvueiwa1b75ce"]
+[gd_scene load_steps=2 format=3 uid="uid://bkw2ig8q2brc5"]
 
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="1_y1jlj"]
 
-[node name="HeroSpriteMage" type="Sprite2D"]
+[node name="HeroSpriteArchMage" type="Sprite2D"]
 z_index = 1
 texture = ExtResource("1_y1jlj")
 region_enabled = true

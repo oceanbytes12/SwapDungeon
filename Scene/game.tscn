@@ -1,7 +1,240 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7po3d3msqaln"]
+[gd_scene load_steps=5 format=3 uid="uid://c7po3d3msqaln"]
 
-[ext_resource type="PackedScene" uid="uid://joeur5hoiann" path="res://Michael WIP/Scenes/PartyUI.tscn" id="1_qbdkn"]
+[ext_resource type="Script" path="res://Michael WIP/Scenes/HeroSpawner.gd" id="1_l2sur"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/SlideInUI.gd" id="2_6nyc5"]
+[ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="3_e6vio"]
+[ext_resource type="PackedScene" uid="uid://broi4uqvo8xf2" path="res://Michael WIP/GoodScenes/Hero_UI_Panel.tscn" id="4_fc71f"]
 
 [node name="Game" type="Node2D"]
 
-[node name="GameUI" parent="." instance=ExtResource("1_qbdkn")]
+[node name="PartyManager" type="Node" parent="." node_paths=PackedStringArray("spawnPositions", "partyPanels")]
+script = ExtResource("1_l2sur")
+spawnPositions = [NodePath("SpawnPositions/SpawnPosition1"), NodePath("SpawnPositions/SpawnPosition2"), NodePath("SpawnPositions/SpawnPosition3")]
+partyPanels = [NodePath("../GameUI/PartyBattleUI/PartyInBattleUI/HeroSlot1"), NodePath("../GameUI/PartyBattleUI/PartyInBattleUI/HeroSlot2"), NodePath("../GameUI/PartyBattleUI/PartyInBattleUI/HeroSlot3")]
+
+[node name="Party" type="Node2D" parent="PartyManager"]
+
+[node name="SpawnPositions" type="Node2D" parent="PartyManager"]
+
+[node name="SpawnPosition1" type="Node2D" parent="PartyManager/SpawnPositions"]
+position = Vector2(36, 32)
+
+[node name="SpawnPosition2" type="Node2D" parent="PartyManager/SpawnPositions"]
+position = Vector2(36, 93)
+
+[node name="SpawnPosition3" type="Node2D" parent="PartyManager/SpawnPositions"]
+position = Vector2(36, 155)
+
+[node name="GameUI" type="Node2D" parent="."]
+
+[node name="BattleSimulatorUI" type="Control" parent="GameUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_6nyc5")
+
+[node name="Button" type="Button" parent="GameUI/BattleSimulatorUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 424.0
+offset_top = 160.0
+offset_right = 472.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemies Dead"
+
+[node name="PartyRosterUI" type="Control" parent="GameUI" node_paths=PackedStringArray("SlidingUI")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 200.0
+offset_right = 479.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_6nyc5")
+SlidingUI = NodePath("RosterUI")
+Automatic = true
+
+[node name="RosterUI" type="NinePatchRect" parent="GameUI/PartyRosterUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_e6vio")
+region_rect = Rect2(70, 68, 54, 54)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="NewHeroContainer" type="GridContainer" parent="GameUI/PartyRosterUI/RosterUI"]
+custom_minimum_size = Vector2(72, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 36.0
+offset_right = 472.0
+offset_bottom = 52.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 50
+columns = 9
+
+[node name="HeroPanelRandom" parent="GameUI/PartyRosterUI/RosterUI/NewHeroContainer" instance=ExtResource("4_fc71f")]
+layout_mode = 2
+
+[node name="HeroPanelRandom2" parent="GameUI/PartyRosterUI/RosterUI/NewHeroContainer" instance=ExtResource("4_fc71f")]
+layout_mode = 2
+
+[node name="HeroPanelRandom3" parent="GameUI/PartyRosterUI/RosterUI/NewHeroContainer" instance=ExtResource("4_fc71f")]
+layout_mode = 2
+
+[node name="HeroPanelRandom4" parent="GameUI/PartyRosterUI/RosterUI/NewHeroContainer" instance=ExtResource("4_fc71f")]
+layout_mode = 2
+
+[node name="HeroPanelRandom5" parent="GameUI/PartyRosterUI/RosterUI/NewHeroContainer" instance=ExtResource("4_fc71f")]
+layout_mode = 2
+
+[node name="PartyBattleUI" type="Control" parent="GameUI" node_paths=PackedStringArray("SlidingUI")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_6nyc5")
+SlidingUI = NodePath("PartyInBattleUI")
+
+[node name="StartButtonButton" type="Button" parent="GameUI/PartyBattleUI"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 131.0
+offset_right = 132.0
+offset_bottom = 162.0
+text = "Start"
+icon_alignment = 1
+expand_icon = true
+
+[node name="PartyInBattleUI" type="Control" parent="GameUI/PartyBattleUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HeroSlot1" parent="GameUI/PartyBattleUI/PartyInBattleUI" instance=ExtResource("4_fc71f")]
+offset_left = 36.0
+offset_top = 32.0
+offset_right = 36.0
+offset_bottom = 32.0
+
+[node name="HeroSlot2" parent="GameUI/PartyBattleUI/PartyInBattleUI" instance=ExtResource("4_fc71f")]
+offset_left = 36.0
+offset_top = 93.0
+offset_right = 36.0
+offset_bottom = 93.0
+
+[node name="HeroSlot3" parent="GameUI/PartyBattleUI/PartyInBattleUI" instance=ExtResource("4_fc71f")]
+offset_left = 36.0
+offset_top = 155.0
+offset_right = 36.0
+offset_bottom = 155.0
+
+[node name="PartyAddUI" type="Control" parent="GameUI" node_paths=PackedStringArray("SlidingUI")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_6nyc5")
+SlidingUI = NodePath("../PartyBattleUI/PartyInBattleUI")
+Automatic = true
+
+[node name="SkipButton" type="Button" parent="GameUI/PartyAddUI"]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 162.0
+offset_right = 467.0
+offset_bottom = 193.0
+text = "Done"
+icon_alignment = 1
+expand_icon = true
+
+[node name="AddNewPartyMember" type="Label" parent="GameUI/PartyAddUI"]
+layout_mode = 0
+offset_left = 132.0
+offset_right = 346.0
+offset_bottom = 69.0
+text = "ADD NEW PARTY MEMBER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HeroAddUI" type="Control" parent="GameUI/PartyAddUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HeroSlot1" parent="GameUI/PartyAddUI/HeroAddUI" instance=ExtResource("4_fc71f")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 53.0
+offset_right = 96.0
+offset_bottom = 53.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HeroSlot2" parent="GameUI/PartyAddUI/HeroAddUI" instance=ExtResource("4_fc71f")]
+offset_left = 236.0
+offset_top = 93.0
+offset_right = 236.0
+offset_bottom = 93.0
+
+[node name="HeroSlot3" parent="GameUI/PartyAddUI/HeroAddUI" instance=ExtResource("4_fc71f")]
+offset_left = 346.0
+offset_top = 93.0
+offset_right = 346.0
+offset_bottom = 93.0
+
+[connection signal="move_To_Ready_Screen" from="PartyManager" to="GameUI/PartyBattleUI" method="slide_in"]
+[connection signal="move_To_Ready_Screen" from="PartyManager" to="GameUI/PartyAddUI" method="slide_out"]
+[connection signal="pressed" from="GameUI/BattleSimulatorUI/Button" to="PartyManager" method="_UnLoadHeros"]
+[connection signal="pressed" from="GameUI/BattleSimulatorUI/Button" to="GameUI/BattleSimulatorUI" method="slide_out"]
+[connection signal="pressed" from="GameUI/BattleSimulatorUI/Button" to="GameUI/PartyRosterUI" method="slide_in"]
+[connection signal="pressed" from="GameUI/BattleSimulatorUI/Button" to="GameUI/PartyAddUI" method="slide_in"]
+[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom" to="PartyManager" method="_FinishPartyAddition"]
+[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom2" to="PartyManager" method="_FinishPartyAddition"]
+[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom3" to="PartyManager" method="_FinishPartyAddition"]
+[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom4" to="PartyManager" method="_FinishPartyAddition"]
+[connection signal="onEmptyHeroPanelFilled" from="GameUI/PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom5" to="PartyManager" method="_FinishPartyAddition"]
+[connection signal="pressed" from="GameUI/PartyBattleUI/StartButtonButton" to="PartyManager" method="_LoadHeros"]
+[connection signal="pressed" from="GameUI/PartyBattleUI/StartButtonButton" to="GameUI/BattleSimulatorUI" method="slide_in"]
+[connection signal="pressed" from="GameUI/PartyBattleUI/StartButtonButton" to="GameUI/PartyRosterUI" method="slide_out"]
+[connection signal="pressed" from="GameUI/PartyBattleUI/StartButtonButton" to="GameUI/PartyBattleUI" method="slide_out"]
+[connection signal="on_tween_in_start" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot1" method="_spawnHeroUI"]
+[connection signal="on_tween_in_start" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot2" method="_spawnHeroUI"]
+[connection signal="on_tween_in_start" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot3" method="_spawnHeroUI"]
+[connection signal="on_tween_out_finish" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot1" method="_despawnHeroUI"]
+[connection signal="on_tween_out_finish" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot2" method="_despawnHeroUI"]
+[connection signal="on_tween_out_finish" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroAddUI/HeroSlot3" method="_despawnHeroUI"]
+[connection signal="pressed" from="GameUI/PartyAddUI/SkipButton" to="PartyManager" method="_FinishPartyAddition"]

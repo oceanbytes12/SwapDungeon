@@ -6,9 +6,14 @@ var isBeingDragged = false
 var FOLLOW_SPEED = 10
 var HeroType 
 var HeroIcon
+var usedByParty = false
 
 func _generateRandomHero():
-	HeroType = Globals._GetRandomHeroType()
+	_CreateHeroOfType(Globals._GetRandomHeroType())
+
+func _CreateHeroOfType(NewHeroType):
+	HeroType = NewHeroType
+	
 	HeroIcon = Globals._GetIconInstanceOfType(HeroType)
 	if(HeroIcon):
 		#print("Made an icon of a random hero!")
@@ -21,10 +26,12 @@ func _generateRandomHero():
 
 func _process(delta):
 	if(isBeingDragged):
+		HeroIcon.z_index = 1000
 		global_position = get_global_mouse_position()
 	else:
+		HeroIcon.z_index = 1
 		position = position.lerp(Vector2.ZERO, delta * FOLLOW_SPEED)
-		
+
 func ToggleDrag(isDragged):
 	isBeingDragged = isDragged
 
