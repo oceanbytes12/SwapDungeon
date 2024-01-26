@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=26 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ft0sp"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_nu0w1"]
@@ -44,9 +44,6 @@ height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
 radius = 129.004
-
-[sub_resource type="Animation" id="Animation_bix4b"]
-resource_name = "HeadPop"
 
 [sub_resource type="Animation" id="Animation_h2q2f"]
 length = 0.001
@@ -102,15 +99,27 @@ tracks/1/keys = {
 "values": [1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_x8van"]
-resource_name = "new_animation"
+[sub_resource type="Animation" id="Animation_itt8p"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.123542, -0.152962]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4rt51"]
 _data = {
-"HeadPop": SubResource("Animation_bix4b"),
 "RESET": SubResource("Animation_h2q2f"),
-"hitAnimation": SubResource("Animation_ofoju"),
-"new_animation": SubResource("Animation_x8van")
+"Walk": SubResource("Animation_itt8p"),
+"hitAnimation": SubResource("Animation_ofoju")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcve7"]
@@ -120,23 +129,63 @@ bg_color = Color(0.890196, 0, 0.105882, 1)
 bg_color = Color(0, 0.760784, 0.235294, 1)
 border_color = Color(0.180005, 0.180005, 0.180005, 1)
 
+[sub_resource type="Animation" id="Animation_s08ro"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.139626, -0.139626]
+}
+
+[sub_resource type="Animation" id="Animation_5chxr"]
+resource_name = "WalkFast"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.139626, -0.139626]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qn2uv"]
+_data = {
+"Walk": SubResource("Animation_s08ro"),
+"WalkFast": SubResource("Animation_5chxr")
+}
+
 [node name="BaseUnit" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_ft0sp")
 
-[node name="Art" type="Node2D" parent="."]
-position = Vector2(0, 3)
-
-[node name="Selection" type="Sprite2D" parent="Art"]
-position = Vector2(0, 7)
+[node name="Selection" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
 texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(40, 49, 20, 13)
 
-[node name="Shadow" type="Sprite2D" parent="Art"]
-position = Vector2(0, 6)
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 9)
 texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(43, 32, 12, 8)
+
+[node name="Art" type="Node2D" parent="."]
+position = Vector2(0, 3)
+rotation = 0.120626
 
 [node name="Body" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_nrtso")
@@ -206,7 +255,7 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
 shape = SubResource("CircleShape2D_5cwag")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="EffectAnimations" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4rt51")
 }
@@ -215,16 +264,21 @@ speed_scale = 2.0
 [node name="UI" type="Node2D" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="UI"]
-offset_left = -12.0
-offset_top = -26.0
-offset_right = -8.0
-offset_bottom = 1.0
+offset_left = -9.0
+offset_top = -24.0
+offset_right = -6.0
+offset_bottom = -10.0
 scale = Vector2(6.2, 0.160001)
 theme_override_styles/background = SubResource("StyleBoxFlat_qcve7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8kmei")
 step = 1.0
 value = 100.0
 show_percentage = false
+
+[node name="MovementAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qn2uv")
+}
 
 [connection signal="Died" from="." to="SM" method="_on_base_unit_died"]
 [connection signal="Hit" from="." to="SM" method="_on_unit_sm_hit"]

@@ -20,9 +20,9 @@ var is_dead = false
 func set_selected(value):
 	if controllable:
 		selected = value
-		$Art/Selection.visible = value
+		$Selection.visible = value
 	else:
-		$Art/Selection.visible = false
+		$Selection.visible = false
 
 func _ready():
 	set_selected(selected)
@@ -38,9 +38,15 @@ func _ready():
 func _process(_delta):
 	target = $SM.current_target
 	if target:
-		var pos = target.global_position
-		if pos:
-			weapon.look_at(pos)
+		weapon.look_at(target.global_position)
+	elif velocity.x > 0:
+		weapon.look_at(Vector2.RIGHT+global_position)
+	else:
+		weapon.look_at(Vector2.LEFT+global_position)
+	if velocity.length() < 15:
+		$MovementAnimations.play("Walk")
+	else:
+		$MovementAnimations.play("WalkFast")
 	if velocity.x < 0:
 		$Art/Body.flip_h = true
 		$Art/Head.flip_h = true
@@ -82,4 +88,4 @@ func take_hit(hit_position):
 	else:
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction)
-		$AnimationPlayer.play("hitAnimation")
+		$EffectAnimations.play("hitAnimation")

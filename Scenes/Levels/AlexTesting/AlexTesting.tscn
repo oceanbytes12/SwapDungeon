@@ -95,7 +95,12 @@ teamColor = "blue"
 controllable = true
 
 [node name="Blue3" parent="Units" instance=ExtResource("2_t27ly")]
-position = Vector2(-143, -2)
+position = Vector2(-198, -22)
+teamColor = "blue"
+controllable = true
+
+[node name="Blue4" parent="Units" instance=ExtResource("2_t27ly")]
+position = Vector2(-198, 39)
 teamColor = "blue"
 controllable = true
 
@@ -108,7 +113,11 @@ position = Vector2(84, 40)
 teamColor = "red"
 
 [node name="Red3" parent="Units" instance=ExtResource("2_t27ly")]
-position = Vector2(81, -74)
+position = Vector2(76, -57)
+teamColor = "red"
+
+[node name="Red4" parent="Units" instance=ExtResource("2_t27ly")]
+position = Vector2(132, -9)
 teamColor = "red"
 
 [node name="Camera" type="Camera2D" parent="."]

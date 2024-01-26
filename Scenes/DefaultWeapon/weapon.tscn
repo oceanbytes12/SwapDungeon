@@ -7,10 +7,16 @@
 script = ExtResource("1_uinfu")
 
 [node name="AttackPoint" type="Marker2D" parent="."]
-position = Vector2(22, 0)
+position = Vector2(16, 0)
 
 [node name="Art" type="Sprite2D" parent="."]
-position = Vector2(9, 0)
+position = Vector2(9, -3)
 texture = ExtResource("2_avc4h")
 region_enabled = true
 region_rect = Rect2(3, 39, 8, 20)
+
+[node name="LeftOffset" type="Marker2D" parent="."]
+position = Vector2(9, 4)
+
+[node name="RightOffset" type="Marker2D" parent="."]
+position = Vector2(9, -3)
