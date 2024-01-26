@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 signal WalkCommand
 
-# MY CHANGES
 @export var distance_buffer = 15 # Stopping distance from movement target
 
 @onready var movement_timer = $MovementTimer
@@ -11,16 +10,17 @@ signal WalkCommand
 
 var selected = false
 var follow_cursor = false
-# END CHANGES
+var is_cursor_over = false
+var is_Ctrl_pressed = false
+
 
 @export var speed = 200
 
-var idle = true
 
 func _physics_process(delta):
 	move_and_slide()
-	## MY CHANGES
-	## Right click mouse movement
+
+	## Right click mouse movement (if not using State Machine)
 	#if follow_cursor == true:
 		#if selected:
 			#target = get_global_mouse_position()
@@ -33,10 +33,8 @@ func _physics_process(delta):
 	#else:
 		#$AnimationPlayer.stop()
 		#movement_timer.stop()
-	## END CHANGES
-	
-	
-# MY CHANGES
+
+
 func _ready():
 	set_selected(selected)
 
@@ -47,6 +45,11 @@ func set_selected(value):
 
 
 func _input(event):
+	if event.is_action_pressed("Ctrl"):
+		is_Ctrl_pressed = true
+	if event.is_action_released("Ctrl"):
+		is_Ctrl_pressed = false
+	
 	if event.is_action_pressed("RightClick"):
 		follow_cursor = true
 
@@ -57,11 +60,24 @@ func _input(event):
 			WalkCommand.emit(get_global_mouse_position())
 			
 	if event.is_action_pressed("LeftClick"):
-		set_selected(false)
+		# If player is pressing ctrl, don't deselect already selected units 
+		if (!is_Ctrl_pressed):
+			# Making sure we deselect if the user clicked elsewhere
+			set_selected(false)
+		
+		# Select just this unit if the cursor is over it
+		if (is_cursor_over):
+			set_selected(true)
 
 
 # Fixes issue with units getting stuck, jittering
 func _on_movement_timer_timeout():
 	target = global_position
 	
-# END CHANGES
+
+func _on_mouse_entered():
+	is_cursor_over = true
+
+
+func _on_mouse_exited():
+	is_cursor_over = false
