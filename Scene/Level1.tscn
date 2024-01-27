@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn8y8e1qbyjbj"]
+[gd_scene load_steps=10 format=3 uid="uid://dn8y8e1qbyjbj"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_73el5"]
+[ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="2_fmgx0"]
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/DungeonTiles.png" id="2_jqxwu"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Meleer.tscn" id="3_8hcev"]
 [ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Ranger.tscn" id="4_jfoga"]
@@ -74,8 +75,10 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="AlexTesting" type="Node2D"]
+[node name="Level1" type="Node2D"]
 script = ExtResource("1_73el5")
+
+[node name="SpawnPositions" parent="." instance=ExtResource("2_fmgx0")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_xah6e")

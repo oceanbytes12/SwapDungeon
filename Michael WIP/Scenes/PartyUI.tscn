@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://joeur5hoiann"]
 
-[ext_resource type="Script" path="res://Michael WIP/Scenes/HeroSpawner.gd" id="1_c4jvp"]
+[ext_resource type="Script" path="res://Michael WIP/Scenes/BattleManager.gd" id="1_c4jvp"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/SlideInUI.gd" id="2_kcx55"]
 [ext_resource type="PackedScene" uid="uid://broi4uqvo8xf2" path="res://Michael WIP/GoodScenes/Hero_UI_Panel.tscn" id="3_8f2bs"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="6_rq2m3"]
@@ -75,18 +75,7 @@ columns = 9
 
 [node name="HeroPanelRandom" parent="PartyRosterUI/RosterUI/NewHeroContainer" instance=ExtResource("3_8f2bs")]
 layout_mode = 2
-
-[node name="HeroPanelRandom2" parent="PartyRosterUI/RosterUI/NewHeroContainer" instance=ExtResource("3_8f2bs")]
-layout_mode = 2
-
-[node name="HeroPanelRandom3" parent="PartyRosterUI/RosterUI/NewHeroContainer" instance=ExtResource("3_8f2bs")]
-layout_mode = 2
-
-[node name="HeroPanelRandom4" parent="PartyRosterUI/RosterUI/NewHeroContainer" instance=ExtResource("3_8f2bs")]
-layout_mode = 2
-
-[node name="HeroPanelRandom5" parent="PartyRosterUI/RosterUI/NewHeroContainer" instance=ExtResource("3_8f2bs")]
-layout_mode = 2
+greyBackGroundOnDrag = true
 
 [node name="PartyBattleUI" type="Control" parent="." node_paths=PackedStringArray("SlidingUI")]
 layout_mode = 3
@@ -193,10 +182,6 @@ offset_bottom = 93.0
 [connection signal="move_To_Ready_Screen" from="PartyManager" to="PartyBattleUI" method="slide_in"]
 [connection signal="move_To_Ready_Screen" from="PartyManager" to="PartyAddUI" method="slide_out"]
 [connection signal="onEmptyHeroPanelFilled" from="PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom" to="PartyManager" method="_FinishPartyAddition"]
-[connection signal="onEmptyHeroPanelFilled" from="PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom2" to="PartyManager" method="_FinishPartyAddition"]
-[connection signal="onEmptyHeroPanelFilled" from="PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom3" to="PartyManager" method="_FinishPartyAddition"]
-[connection signal="onEmptyHeroPanelFilled" from="PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom4" to="PartyManager" method="_FinishPartyAddition"]
-[connection signal="onEmptyHeroPanelFilled" from="PartyRosterUI/RosterUI/NewHeroContainer/HeroPanelRandom5" to="PartyManager" method="_FinishPartyAddition"]
 [connection signal="pressed" from="PartyBattleUI/StartButtonButton" to="PartyManager" method="_LoadHeros"]
 [connection signal="pressed" from="PartyBattleUI/StartButtonButton" to="PartyRosterUI" method="slide_out"]
 [connection signal="pressed" from="PartyBattleUI/StartButtonButton" to="PartyBattleUI" method="slide_out"]

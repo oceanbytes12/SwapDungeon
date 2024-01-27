@@ -3,6 +3,7 @@ extends Control
 class_name HeroUIPanel
 
 @onready var heroUIScene = preload("res://Michael WIP/GoodScenes/Hero_UI.tscn")
+@export var greyBackGroundOnDrag : bool = false
 
 signal onEmptyHeroPanelFilled
 
@@ -11,7 +12,7 @@ func _spawnHeroUI():
 	var newHero = heroUIScene.instantiate()
 	newHero._generateRandomHero()
 	add_child(newHero)
-	call_deferred("_MoveStartingHero")
+	newHero.position = Vector2.ZERO
 
 func _despawnHeroUI():
 	if(GetHeldHero()):
@@ -25,10 +26,6 @@ func _on_area_2d_mouse_exited():
 
 func GetHeldHero() -> HeroUI:
 	return Globals._GetChildNodeOfType(self, HeroUI) as HeroUI
-
-func _MoveStartingHero():
-	if(GetHeldHero()):
-		GetHeldHero().position = Vector2.ZERO
 
 func _HandleCombine(addedHero):
 	print("Handling Combine!")
@@ -62,7 +59,7 @@ func _AddHero(newHero):
 	if(GetHeldHero() != null):
 		if(GetHeldHero().HeroType != newHero.HeroType):
 			_HandleSwap(newHero)
-		else:
+		elif(GetHeldHero() != newHero):
 			_HandleCombine(newHero)
 	
 	else:

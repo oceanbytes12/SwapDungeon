@@ -5,6 +5,7 @@ var selectedHero : HeroUI
 var draggedHero : HeroUI
 var selectedPanel : HeroUIPanel
 var heroIconScenes = []
+var spawnPositions = []
 var path = "res://Michael WIP/HeroIcons/"
 enum HeroTypes 
 { 
