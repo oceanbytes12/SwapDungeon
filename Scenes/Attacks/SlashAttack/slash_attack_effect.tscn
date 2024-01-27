@@ -30,7 +30,7 @@ radius = 8.0
 height = 40.0
 
 [node name="SlashAttackEffect" type="AnimatedSprite2D"]
-z_index = 1
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_fa8dv")
 animation = &"Slash"
 autoplay = "Slash"

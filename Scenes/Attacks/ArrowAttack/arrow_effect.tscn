@@ -9,6 +9,7 @@ radius = 16.0
 height = 48.0
 
 [node name="Arrow" type="Area2D"]
+z_index = 2
 script = ExtResource("2_b2avo")
 speed = 180
 

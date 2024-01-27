@@ -37,7 +37,6 @@ func _ready():
 	
 
 func _process(_delta):
-	
 	if velocity.length() <= walkSpeed and velocity.length() > 8:
 		$MovementAnimations.play("Walk")
 	elif velocity.length() > walkSpeed:
@@ -82,6 +81,7 @@ func take_hit(hit_position):
 		$Art/BlueHat.visible = false
 		$Art/RedHat.visible = false
 		Died.emit()
+		z_index = 0
 		$MovementAnimations.play("Die")
 		#queue_free()
 	else:

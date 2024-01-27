@@ -57,6 +57,7 @@ animations = [{
 }]
 
 [node name="MageAttack" type="Area2D"]
+z_index = 2
 script = ExtResource("1_ydhox")
 speed = 60.0
 
