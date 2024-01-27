@@ -2,6 +2,7 @@ extends Area2D
 
 var source_team_color
 @export var speed = 120
+var target
 
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)

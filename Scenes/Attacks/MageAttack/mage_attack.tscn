@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dlivpfjjuhlhg" path="res://Art/MagicAttack2x2-Sheet.png" id="2_f41wm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
-radius = 10.0
 height = 22.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uo1co"]
@@ -59,6 +58,7 @@ animations = [{
 
 [node name="MageAttack" type="Area2D"]
 script = ExtResource("1_ydhox")
+speed = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

@@ -34,7 +34,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 walkSpeed = 15.0
 runSpeed = 40.0
 weaponRange = 200.0
-weaponCooldown = 2.0
+weaponCooldown = 4.0
 
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_ki0up")

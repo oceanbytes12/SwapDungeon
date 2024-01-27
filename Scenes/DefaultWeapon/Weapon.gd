@@ -34,6 +34,7 @@ func _on_attack_attacked():
 	attackNode.global_position = $AttackPoint.global_position
 	attackNode.rotation = rotation
 	attackNode.source_team_color = own_body.teamColor
+	attackNode.target = target
 	get_parent().get_parent().add_child(attackNode)
 
 func _on_target(t):

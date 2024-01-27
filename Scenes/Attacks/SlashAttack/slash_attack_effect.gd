@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 
 var source_team_color
+var target
 
 func _on_animation_finished():
 	queue_free()
