@@ -9,9 +9,3 @@ weaponEffectScene = ExtResource("2_yntf1")
 [node name="Art" parent="." index="1"]
 position = Vector2(9, 0)
 region_rect = Rect2(17, 37, 10, 22)
-
-[node name="LeftOffset" parent="." index="2"]
-position = Vector2(9, 0)
-
-[node name="RightOffset" parent="." index="3"]
-position = Vector2(9, 0)

@@ -12,20 +12,17 @@ func _ready():
 	own_body.Died.connect(_on_body_died)
 
 func _process(_delta):
-	var direction = Vector2.RIGHT.rotated(rotation)
-	if direction.x > 0:
-		$Art.flip_v = false
-		$Art.position = $RightOffset.position
-	else:
-		$Art.flip_v = true
-		$Art.position = $LeftOffset.position
-
 	if target:
 		look_at(target.global_position)
 	elif own_body.velocity.x > 0:
 		look_at(Vector2.RIGHT+global_position)
 	else:
 		look_at(Vector2.LEFT+global_position)
+	var direction = Vector2.RIGHT.rotated(rotation)
+	if direction.x >= 0:
+		scale.y = 1
+	else:
+		scale.y = -1
 
 func _on_attack_attacked():
 	if target:

@@ -1,12 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceyeak3ionm2v"]
+[gd_scene load_steps=9 format=3 uid="uid://ceyeak3ionm2v"]
 
 [ext_resource type="Texture2D" uid="uid://dy4th0jnrpnnc" path="res://Art/ArrowEffect.png" id="1_a565a"]
 [ext_resource type="Script" path="res://Scenes/Attacks/ArrowAttack/arrow_effect.gd" id="2_b2avo"]
+[ext_resource type="Texture2D" uid="uid://6b7we6gdyutf" path="res://Art/Attacks-Sheet.png" id="2_vvijp"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="3_37uli"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
 radius = 16.0
 height = 48.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8ch6"]
+atlas = ExtResource("2_vvijp")
+region = Rect2(0, 0, 52, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yty3k"]
+atlas = ExtResource("2_vvijp")
+region = Rect2(52, 0, 52, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m50gl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8ch6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yty3k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Arrow" type="Area2D"]
 z_index = 2
@@ -18,7 +41,13 @@ position = Vector2(-1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_w3hqt")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_m50gl")
+autoplay = "default"
+frame_progress = 0.289143
+
 [node name="ArrowEffect" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_a565a")
 
 [node name="Arrow" type="Sprite2D" parent="."]
