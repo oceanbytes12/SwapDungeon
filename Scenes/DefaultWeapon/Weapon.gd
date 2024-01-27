@@ -1,5 +1,6 @@
 extends Marker2D
-@onready var attackScene = preload("res://Scenes/Attacks/SlashAttack/slash_attack_effect.tscn")
+
+@export var weaponEffectScene : PackedScene
 @export var own_body : CharacterBody2D
 @export var attackState : State
 
@@ -27,7 +28,9 @@ func _process(_delta):
 		look_at(Vector2.LEFT+global_position)
 
 func _on_attack_attacked():
-	var attackNode = attackScene.instantiate()
+	if target:
+		look_at(target.global_position)
+	var attackNode = weaponEffectScene.instantiate()
 	attackNode.global_position = $AttackPoint.global_position
 	attackNode.rotation = rotation
 	attackNode.source_team_color = own_body.teamColor

@@ -2,7 +2,6 @@ extends State
 class_name PlayerWalk
 
 @export var own_body : CharacterBody2D
-@export var move_speed := 40.0
 @export var timeout := 3.0
 @export var distance_buffer := 10.0
 var target_position : Vector2
@@ -24,5 +23,5 @@ func Physics_Update(_delta: float, _target: CharacterBody2D):
 	if target_distance <= distance_buffer:
 		Transitioned.emit("Idle")
 	else:
-		own_body.velocity = target_vector.normalized() * move_speed
+		own_body.velocity = target_vector.normalized() * own_body.runSpeed
 			

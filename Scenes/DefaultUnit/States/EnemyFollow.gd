@@ -2,8 +2,6 @@ extends State
 class_name EnemyFollow
 
 @export var own_body : CharacterBody2D
-@export var move_speed := 40.0
-@export var attack_range := 35.0
 @export var timeout := 3.0
 var timeout_timer
 
@@ -23,8 +21,8 @@ func Physics_Update(_delta: float, target: CharacterBody2D):
 	else:
 		var target_vector = target.global_position - own_body.global_position
 		var target_distance = target_vector.length()
-		if 	target_distance < attack_range:
+		if 	target_distance < own_body.weaponRange:
 			Transitioned.emit("Attack")
 		else:   
-			own_body.velocity = target_vector.normalized() * move_speed
+			own_body.velocity = target_vector.normalized() * own_body.runSpeed
 			

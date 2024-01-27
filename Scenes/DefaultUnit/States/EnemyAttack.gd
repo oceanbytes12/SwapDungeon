@@ -5,15 +5,12 @@ signal Targetted
 signal Untarget
 
 @export var own_body : CharacterBody2D
-@export var move_speed := 40.0
-@export var attack_range := 40.0
-@export var attack_cooldown := 1.0
 
 var colldown_time := 0.0
 
 func make_attack():
 	Attacked.emit()
-	colldown_time = attack_cooldown
+	colldown_time = own_body.weaponCooldown
 	
 func Enter(target):
 	Targetted.emit(target)

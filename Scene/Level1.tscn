@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_73el5"]
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/DungeonTiles.png" id="2_jqxwu"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Meleer.tscn" id="3_8hcev"]
-[ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Ranger.tscn" id="4_jfoga"]
+[ext_resource type="PackedScene" uid="uid://dm5nafv3bkhex" path="res://Scenes/mager.tscn" id="5_hxtvx"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="5_pbegj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iq15"]
@@ -74,7 +74,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="AlexTesting" type="Node2D"]
+[node name="Level1" type="Node2D"]
 script = ExtResource("1_73el5")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -85,10 +85,18 @@ layer_0/tile_data = PackedInt32Array(327688, 196609, 1, 262152, 196609, 1, 19661
 [node name="Meleer" parent="." instance=ExtResource("3_8hcev")]
 position = Vector2(138, -24)
 teamColor = "red"
+weaponRange = 100.0
 
-[node name="Ranger" parent="." instance=ExtResource("4_jfoga")]
-position = Vector2(134, 34)
-teamColor = "red"
+[node name="Meleer2" parent="." instance=ExtResource("3_8hcev")]
+position = Vector2(-41, -23)
+teamColor = "blue"
+controllable = true
+weaponRange = 100.0
+
+[node name="Mager" parent="." instance=ExtResource("5_hxtvx")]
+position = Vector2(-117, 26)
+teamColor = "blue"
+controllable = true
 
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("5_pbegj")

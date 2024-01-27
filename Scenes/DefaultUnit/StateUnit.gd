@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var walkSpeed: float
 @export var runSpeed: float
 @export var weaponRange: float
+@export var weaponCooldown: float
 
 signal Hit
 signal WalkCommand
@@ -37,9 +38,9 @@ func _ready():
 
 func _process(_delta):
 	
-	if velocity.length() < 15 and velocity.length() > 5:
+	if velocity.length() <= walkSpeed and velocity.length() > 8:
 		$MovementAnimations.play("Walk")
-	elif velocity.length() >= 15:
+	elif velocity.length() > walkSpeed:
 		$MovementAnimations.play("WalkFast")
 	if velocity.x < 0:
 		$Art/Body.flip_h = true

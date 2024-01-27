@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdf66a53p3661"]
+[gd_scene load_steps=3 format=3 uid="uid://bdf66a53p3661"]
 
 [ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="1_1pi1d"]
+[ext_resource type="PackedScene" uid="uid://ceyeak3ionm2v" path="res://Scenes/Attacks/ArrowAttack/arrow_effect.tscn" id="2_yntf1"]
 
 [node name="Bow" instance=ExtResource("1_1pi1d")]
+weaponEffectScene = ExtResource("2_yntf1")
 
 [node name="Art" parent="." index="1"]
 position = Vector2(9, 0)
