@@ -2,11 +2,13 @@ extends Control
 
 class_name HeroUI
 
-var isBeingDragged = false
+var isDragged = false
 var FOLLOW_SPEED = 10
 var HeroType 
 var HeroIcon
 var usedByParty = false
+
+signal dragStateChange(old_value, new_value)
 
 func _generateRandomHero():
 	_CreateHeroOfType(Globals._GetRandomHeroType())
@@ -25,15 +27,16 @@ func _CreateHeroOfType(NewHeroType):
 	name = HeroType + str(randomHeroNum)
 
 func _process(delta):
-	if(isBeingDragged):
+	if(isDragged):
 		HeroIcon.z_index = 1000
 		global_position = get_global_mouse_position()
 	else:
 		HeroIcon.z_index = 1
 		position = position.lerp(Vector2.ZERO, delta * FOLLOW_SPEED)
 
-func ToggleDrag(isDragged):
-	isBeingDragged = isDragged
+func ToggleDrag(newDragState):
+	dragStateChange.emit(isDragged, newDragState)
+	isDragged = newDragState
 
 func _on_area_2d_mouse_entered():
 	Globals._SetSelectedHero(self)

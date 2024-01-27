@@ -3,7 +3,6 @@ extends Control
 class_name HeroUIPanel
 
 @onready var heroUIScene = preload("res://Michael WIP/GoodScenes/Hero_UI.tscn")
-@export var greyBackGroundOnDrag : bool = false
 
 signal onEmptyHeroPanelFilled
 
@@ -27,31 +26,7 @@ func _on_area_2d_mouse_exited():
 func GetHeldHero() -> HeroUI:
 	return Globals._GetChildNodeOfType(self, HeroUI) as HeroUI
 
-func _HandleCombine(addedHero):
-	print("Handling Combine!")
-	#We have two heros. Grab the upgrade
-	var newType = Globals._GetUpgradedHeroTypeAtIndex(addedHero.HeroType as int)
-	#Destroy them both 
-	_despawnHeroUI()
-	if(addedHero):
-		addedHero.queue_free()
-	#Grab a new Hero
-	var newHero = heroUIScene.instantiate()
-	#Make it make a hero of the upgrade type
-	newHero._CreateHeroOfType(newType)
-	
-	#Position it properly
-	add_child(newHero)
-	call_deferred("_MoveStartingHero")
-
-func _HandleSwap(newHero):
-	var newHeroParent = newHero.get_parent()
-	if(newHeroParent!=null):
-		print("Reparenting Held Hero")
-		GetHeldHero().reparent(newHeroParent)
-	else:
-		print("Can't reparent held hero, new hero has no parent.")
-
+#When you add a hero to this tile this is called.
 func _AddHero(newHero):
 	print("Adding Hero: ", newHero.name)
 	#If we had a hero,
@@ -72,3 +47,30 @@ func _AddHero(newHero):
 	newHero.reparent(self)
 	
 	print(name, " is now holding: ", GetHeldHero())
+
+#When adding a hero results in an upgrade
+func _HandleCombine(addedHero):
+	print("Handling Combine!")
+	#We have two heros. Grab the upgrade
+	var newType = Globals._GetUpgradedHeroTypeAtIndex(addedHero.HeroType as int)
+	#Destroy them both 
+	_despawnHeroUI()
+	if(addedHero):
+		addedHero.queue_free()
+	#Grab a new Hero
+	var newHero = heroUIScene.instantiate()
+	#Make it make a hero of the upgrade type
+	newHero._CreateHeroOfType(newType)
+	
+	#Position it properly
+	add_child(newHero)
+	call_deferred("_MoveStartingHero")
+
+#When adding a hero results in a swap
+func _HandleSwap(newHero):
+	var newHeroParent = newHero.get_parent()
+	if(newHeroParent!=null):
+		print("Reparenting Held Hero")
+		GetHeldHero().reparent(newHeroParent)
+	else:
+		print("Can't reparent held hero, new hero has no parent.")
