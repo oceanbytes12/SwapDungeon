@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://4ykfble4676d"]
 
-[ext_resource type="Script" path="res://Michael WIP/GoodScenes/HeroUI.gd" id="1_ebayj"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/HeroUI.gd" id="1_ebayj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aps2w"]
 size = Vector2(32, 32)

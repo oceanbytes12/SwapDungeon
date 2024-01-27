@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7po3d3msqaln"]
 
-[ext_resource type="Script" path="res://Michael WIP/Scenes/BattleManager.gd" id="1_l2sur"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/BattleManager.gd" id="1_l2sur"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/SlideInUI.gd" id="2_6nyc5"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="3_e6vio"]
 [ext_resource type="PackedScene" uid="uid://broi4uqvo8xf2" path="res://Michael WIP/GoodScenes/Hero_UI_Panel.tscn" id="4_fc71f"]
