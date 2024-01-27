@@ -37,10 +37,16 @@ func _ready():
 	
 
 func _process(_delta):
-	if velocity.length() <= walkSpeed and velocity.length() > 8:
+	if velocity.length() < 1 and not is_dead:
+		$MovementAnimations.play("RESET")
+	elif velocity.length() < walkSpeed + 1 and not is_dead:
 		$MovementAnimations.play("Walk")
-	elif velocity.length() > walkSpeed:
+	elif velocity.length() > walkSpeed and not is_dead:
 		$MovementAnimations.play("WalkFast")
+	#if velocity.length() <= walkSpeed and velocity.length() > 8:
+		#$MovementAnimations.play("Walk")
+	#elif velocity.length() > walkSpeed:
+		#$MovementAnimations.play("WalkFast")
 	if velocity.x < 0:
 		$Art/Body.flip_h = true
 		$Art/Head.flip_h = true
@@ -83,7 +89,7 @@ func take_hit(hit_position):
 		Died.emit()
 		z_index = 0
 		$MovementAnimations.play("Die")
-		#queue_free()
+		selected = false
 	else:
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction)

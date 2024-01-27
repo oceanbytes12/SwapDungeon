@@ -7,7 +7,12 @@ var turn_speed = 0.5
 
 func _ready():
 	$AnimatedSprite2D.play("Spell")
-	rotate(-PI/5)
+	var direction = Vector2.RIGHT.rotated(rotation)
+	if direction.x > 0:
+		rotate(-PI/5)
+	else:
+		rotate(PI/5)
+	
 
 func _physics_process(delta):
 	var goal_rotation = position.angle_to_point(target.position)
@@ -17,6 +22,10 @@ func _physics_process(delta):
 	else:
 		rotate(-turn_speed*delta)
 	var direction = Vector2.RIGHT.rotated(rotation)
+	if direction.x > 0:
+		$AnimatedSprite2D.flip_v = false
+	else:
+		$AnimatedSprite2D.flip_v = true
 	position += direction * speed * delta
 
 func _on_body_entered(body):
