@@ -51,13 +51,32 @@ func _process(delta):
 		FrontPanel.position = FrontPanel.position.lerp(Vector2.ZERO, delta * speed)
 
 func _EquipPanelToBattleSpace(newBattleSpace):
-	#Unequip from any battle space we might have occupied
-	if(battleSpace):
-		battleSpace.equippedPanel = null
-	#Equip to the new battle space.
-	FrontPanel.reparent(newBattleSpace)
-	#Remember our battle space
-	battleSpace = newBattleSpace
+	print("Attempting to equip!")
+	#If the place we are going into already has a panel
+	if(newBattleSpace.equippedPanel != null):
+		print("Going in to an equipped panel.")
+		#If we are coming in from a panel, swap
+		if(battleSpace!= null):
+			print("Going in Empty")
+			#Give the other panel our stuff
+			var otherPanel = newBattleSpace.equippedPanel
+			otherPanel.FrontPanel.reparent(battleSpace)
+			otherPanel.battleSpace = battleSpace
+			battleSpace.equippedPanel = otherPanel
+			
+			#Equip ourselves to the new panel
+			newBattleSpace.equippedPanel = self
+			FrontPanel.reparent(newBattleSpace)
+			battleSpace = newBattleSpace
+	else:
+		print("Going in Empty2")
+		if(battleSpace):
+			battleSpace.equippedPanel = null
+		#Requip ourselves to the new battle space
+		FrontPanel.reparent(newBattleSpace)
+		battleSpace = newBattleSpace
+	
+
 
 func ReturnPanel():
 	if(battleSpace):

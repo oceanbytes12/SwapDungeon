@@ -24,7 +24,7 @@ func addToParty(panel):
 		var newPanel = rosterPanel.instantiate()
 		newPanel.InitializeWithHero(UpgradeType)
 		partyContainer.add_child(newPanel)
-		var index = panel.get_index()
+		var index = upgradedUnit.get_index()
 		partyContainer.move_child(newPanel, index)
 		panel.HandleUsed()
 		upgradedUnit.queue_free()
@@ -35,6 +35,7 @@ func addToParty(panel):
 		newPanel.InitializeWithHero(panel.HeroType)
 		partyContainer.add_child(newPanel)
 		partyContainer.move_child(newPanel, 0)
+	print("Moving Party Container")
 	partyContainer.move_to_front()
 
 func find_Panels_Of_Type(heroType):

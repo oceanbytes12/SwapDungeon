@@ -10,10 +10,9 @@ func Target(isTargeted):
 		scale = Vector2.ONE
 
 func HandlePanel(addedPanel):
-	equippedPanel = addedPanel
 	print("Adding to battle space!")
 	addedPanel._EquipPanelToBattleSpace(self)
-
+	equippedPanel = addedPanel
 
 
 func _on_area_2d_mouse_entered():
