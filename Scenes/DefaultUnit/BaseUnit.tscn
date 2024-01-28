@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=29 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ft0sp"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_nu0w1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyStun.gd" id="8_gqa3m"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerWalk.gd" id="9_cbxsc"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyDead.gd" id="11_73he8"]
+[ext_resource type="Script" path="res://Scene/MouseOver.gd" id="11_a2yo4"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -259,6 +260,9 @@ _data = {
 "WalkFast": SubResource("Animation_5chxr")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_541oc"]
+size = Vector2(20, 27.6377)
+
 [node name="BaseUnit" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_ft0sp")
 
@@ -332,6 +336,7 @@ own_body = NodePath("../..")
 [node name="Walk" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("9_cbxsc")
 own_body = NodePath("../..")
+timeout = 8.0
 
 [node name="Dead" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("11_73he8")
@@ -369,6 +374,17 @@ libraries = {
 }
 speed_scale = 2.0
 
+[node name="MouseOverShape" type="Area2D" parent="."]
+monitorable = false
+script = ExtResource("11_a2yo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseOverShape"]
+position = Vector2(0, -2)
+rotation = -3.14159
+scale = Vector2(0.872446, -1.08547)
+shape = SubResource("RectangleShape2D_541oc")
+
+[connection signal="AttackCommand" from="." to="SM" method="_on_base_unit_attack_command"]
 [connection signal="Died" from="." to="SM" method="_on_base_unit_died"]
 [connection signal="Hit" from="." to="SM" method="_on_unit_sm_hit"]
 [connection signal="WalkCommand" from="." to="SM" method="_on_base_unit_walk_command"]

@@ -71,3 +71,10 @@ func _on_sight_range_body_shape_entered(_body_rid, body, _body_shape_index, _loc
 func _on_sight_range_body_shape_exited(_body_rid, body, _body_shape_index, _local_shape_index):
 	targets.erase(body.name)
 	find_target()
+
+
+func _on_base_unit_attack_command(_target):
+	#may need to clear other target vars?
+	current_target = _target
+	#on_state_change("Attack")
+	on_state_change("Follow")

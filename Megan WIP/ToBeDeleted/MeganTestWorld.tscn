@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://xb22hfq7kovw"]
 
-[ext_resource type="Script" path="res://Megan WIP/MeganTestWorld.gd" id="1_61lqv"]
+[ext_resource type="Script" path="res://Megan WIP/ToBeDeleted/MeganTestWorld.gd" id="1_61lqv"]
 [ext_resource type="Script" path="res://Megan WIP/Camera.gd" id="2_jub3i"]
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="4_7352m"]
-[ext_resource type="PackedScene" uid="uid://euthq0sc4lsx" path="res://Megan WIP/Party.tscn" id="4_np4d3"]
-[ext_resource type="PackedScene" uid="uid://d0loosk5ucb3" path="res://Megan WIP/enemy_unit.tscn" id="5_5fn5u"]
+[ext_resource type="PackedScene" uid="uid://euthq0sc4lsx" path="res://Megan WIP/ToBeDeleted/Party.tscn" id="4_np4d3"]
+[ext_resource type="PackedScene" uid="uid://d0loosk5ucb3" path="res://Megan WIP/ToBeDeleted/enemy_unit.tscn" id="5_5fn5u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_doxll"]
 bg_color = Color(0.247059, 0.498039, 0.972549, 0.431373)

@@ -50,12 +50,11 @@ border_color = Color(0.180005, 0.180005, 0.180005, 1)
 script = ExtResource("2_hun7b")
 speed = 200
 
-[node name="Body" parent="Art" index="2"]
+[node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_ukn5o")
 
-[node name="Head" parent="Art" index="3"]
+[node name="Head" parent="Art" index="1"]
 material = SubResource("ShaderMaterial_4ndou")
-position = Vector2(0, -8)
 
 [node name="Walk2" type="Node" parent="SM" index="4" node_paths=PackedStringArray("own_body")]
 script = ExtResource("3_detb6")
