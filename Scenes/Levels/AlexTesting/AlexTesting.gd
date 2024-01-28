@@ -3,6 +3,9 @@ extends Node2D
 var selected_units = []
 var is_Ctrl_pressed = false
 
+func _ready():
+	Globals.AlexTester = self
+
 # Get all units within the bounds of the drawn rectangle
 func get_units_in_area(area):
 	var result = []
@@ -29,3 +32,15 @@ func _on_camera_area_selected(object):
 				unit.set_selected(false)
 	for u in selected_units: # Select the units in selection box
 		u.set_selected(true)
+
+func _kill_all_units():
+	for unit in get_children():
+		if unit.is_in_group("unit"):
+			unit.Die()
+
+func EnemiesAreDead():
+	for unit in get_children():
+		if unit.is_in_group("unit"):
+			if (!unit.is_dead):
+				return false
+	return true

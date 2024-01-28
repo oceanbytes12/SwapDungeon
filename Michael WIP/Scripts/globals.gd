@@ -1,12 +1,26 @@
 extends Node
 
 var isDragging = false
+
+#OldSystem
 var selectedHero : HeroUI
 var draggedHero : HeroUI
 var selectedPanel : HeroUIPanel
 var heroIconScenes = []
 var spawnPositions = []
 var path = "res://Michael WIP/HeroIcons/"
+
+#New System
+var selectedDraggableHeroPanel : DraggableHeroPanel
+var draggedDraggableHeroPanel : DraggableHeroPanel
+var draggedRosterPanel : HeroRosterPanel
+var selectedBattleSpace : UIBattleSpace
+var selectedRosterPanel : HeroRosterPanel
+var partyRoster 
+
+#Other
+var AlexTester
+
 enum HeroTypes 
 { 
 	Warrior = 0, 
@@ -31,6 +45,10 @@ func _GetHeroTypeAtIndex(index):
 
 func _GetUpgradedHeroTypeAtIndex(index):
 	return UpgradedHeroTypes.keys()[index]
+
+func _GetUpgradedType(heroType):
+	var index = heroType as int
+	return _GetUpgradedHeroTypeAtIndex(index)
 
 #Grabs an icon for that hero as a Sprite2D instance
 func _GetIconInstanceOfType(HeroType):
@@ -60,50 +78,107 @@ func _LoadHeroIconPackedScenes():
 			heroIconScenes.append(load(path + "/" + file_name))
 	dir.list_dir_end()
 
-func _SetSelectedHero(newHero):
-	#print("Setting Target Hero: ", newHero)
-	
-	if(selectedHero != null):
-		selectedHero.scale = Vector2.ONE
-		
-	if(newHero != null):
-		newHero.scale = Vector2.ONE * 1.1
-	
-	selectedHero = newHero
-
-func _SetSelectedHeroPanel(newPanel):
-	#print("Setting Target Panel", newPanel)
-	
-	#If there's a previous panel nerf it.
-	if(selectedPanel):
-		selectedPanel.scale = Vector2.ONE
-	#Buff the new one.
-	if(newPanel):
-		newPanel.scale = Vector2.ONE * 1.1
-		
-	selectedPanel = newPanel
-
 func _process(delta):
+	#if(draggedDraggableHeroPanel):
+		#print("draggedDraggableHeroPanel is, ", draggedDraggableHeroPanel)
 	if Input.is_action_just_pressed("LeftClick"):
 		_HandleLeftClickDown()
 	elif Input.is_action_just_released("LeftClick"):
 		_HandleLeftClickUp()
 
 func _HandleLeftClickDown():
-	if(selectedHero):
-		draggedHero = selectedHero
-		draggedHero.ToggleDrag(true)
-
+	#DraggableHeroNewSystem
+	if(selectedDraggableHeroPanel):
+		print("Starting Drag1!")
+		draggedDraggableHeroPanel = selectedDraggableHeroPanel
+		draggedDraggableHeroPanel.ToggleDrag(true)
+		
+	if(selectedRosterPanel):
+		print("Starting Drag2")
+		draggedRosterPanel = selectedRosterPanel
+		draggedRosterPanel.ToggleDrag(true)
+		
 func _HandleLeftClickUp():
-	if(draggedHero):
-		draggedHero.ToggleDrag(false)
-		if(selectedPanel):
-			selectedPanel._AddHero(draggedHero)
-		draggedHero = null
-
+	#DraggableHeroNewSystem
+	if(draggedDraggableHeroPanel):
+		draggedDraggableHeroPanel.ToggleDrag(false)
+		if(partyRoster.Selected):
+			partyRoster.addToParty(draggedDraggableHeroPanel)
+		draggedDraggableHeroPanel = null
+	
+	if(draggedRosterPanel):
+		draggedRosterPanel.ToggleDrag(false)
+		if(selectedBattleSpace):
+			selectedBattleSpace.HandlePanel(draggedRosterPanel)
+		elif(partyRoster.Selected):
+			draggedRosterPanel.ReturnPanel()
+		draggedRosterPanel = null
+		
 func _GetChildNodeOfType(parent, DesiredClass, allowInvisible = false):
 	var desired_children = []
 	for child in parent.get_children():
 		if is_instance_of(child, DesiredClass):
 			if(allowInvisible or child.visible):
 				return child
+
+func _SetDraggableAsNull():
+	draggedDraggableHeroPanel = null
+
+#Panels that let you add.
+func _SetSelectedDraggableHeroPanel(newDraggableHeroPanel):
+	print("Setting Selected Draggable: ", newDraggableHeroPanel)
+	if(draggedDraggableHeroPanel):
+		print("But we won't as we are dragging something.")
+		return
+	#print("Setting Target Panel", newPanel)
+	
+	#If there's a previous panel nerf it.
+	if(selectedDraggableHeroPanel):
+		selectedDraggableHeroPanel.Target(false)
+	#Buff the new one.
+	if(newDraggableHeroPanel):
+		newDraggableHeroPanel.Target(true)
+		
+	selectedDraggableHeroPanel = newDraggableHeroPanel
+
+#Panels in the roster
+func _SetSelectedHeroRosterPanel(newRosterPanel):
+	print("Setting Selected Draggable: ", newRosterPanel)
+	if(draggedRosterPanel):
+		print("But we won't as we are dragging something.")
+		return
+	#If there's a previous panel nerf it.
+	if(selectedRosterPanel):
+		selectedRosterPanel.Target(false)
+	#Buff the new one.
+	if(newRosterPanel):
+		newRosterPanel.Target(true)
+		
+	selectedRosterPanel = newRosterPanel
+
+#Panels in battle spaces
+func _SetSelectedBattleSpace(newBattleSpace):
+	print("Setting Selected Draggable: ", newBattleSpace)
+	
+	if(!draggedRosterPanel):
+		print("We aren't dragging a roster panel, don't care about battle spaces.")
+		return
+
+	#If there's a previous panel nerf it.
+	if(selectedBattleSpace):
+		selectedBattleSpace.Target(false)
+	
+	#Buff the new one.
+	if(newBattleSpace):
+		newBattleSpace.Target(true)
+		
+	selectedBattleSpace = newBattleSpace
+
+func _Kill_All_Units_In_Level():
+	if(is_instance_valid(AlexTester)):
+		AlexTester._kill_all_units()
+
+func EnemiesAreDead():
+	if(is_instance_valid(AlexTester)):
+		return AlexTester.EnemiesAreDead()
+	return false

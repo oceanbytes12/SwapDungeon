@@ -75,15 +75,19 @@ func _input(event):
 func take_hit(hit_position):
 	$UI/HealthBar.value -= 25
 	if $UI/HealthBar.value <= 0:
-		is_dead = true
-		$UI/HealthBar.visible = false
-		$CollisionShape2D.queue_free()
-		$Art/BlueHat.visible = false
-		$Art/RedHat.visible = false
-		Died.emit()
-		$MovementAnimations.play("Die")
+		Die()
 		#queue_free()
 	else:
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction)
 		$EffectAnimations.play("hitAnimation")
+
+func Die():
+	is_dead = true
+	$UI/HealthBar.visible = false
+	if(is_instance_valid($CollisionShape2D)):
+		$CollisionShape2D.queue_free()
+	$Art/BlueHat.visible = false
+	$Art/RedHat.visible = false
+	Died.emit()
+	$MovementAnimations.play("Die")

@@ -6,15 +6,26 @@ extends Node
 @onready var MeleeSkeleton = preload("res://Scenes/Meleer.tscn")
 @export var PartyBattleUI : Control
 @export var partyPanels : Array[HeroUIPanel] 
+@export var battlePanels : Array[UIBattleSpace]
 signal move_To_Ready_Screen
+signal finish_battle
 
 var battleParent
 
-func _GetHeroTypesFromBattleUI():
+func _GetHeroTypesFromHeroUIPanels():
 	var ret = []
-	for heroPanel in partyPanels:
-		if(heroPanel.GetHeldHero()):
-			ret.append(heroPanel.GetHeldHero().HeroType)
+	for battlePanel in partyPanels:
+		if(battlePanel.GetHeroType()):
+			ret.append(battlePanel.GetHeldHero().HeroType)
+		else:
+			ret.append(null)
+	return ret
+
+func _GetHeroTypesFromBattleUIPanels():
+	var ret = []
+	for heroPanel in battlePanels:
+		if(heroPanel.GetHeroType()):
+			ret.append(heroPanel.GetHeroType())
 		else:
 			ret.append(null)
 	return ret
@@ -25,9 +36,11 @@ func _StartBattle():
 	get_parent().get_parent().add_child(battleParent)
 	
 func _SpawnHeros():
+	print("Spawning Heros!")
 	var spawns = Globals.spawnPositions
-	var heros = _GetHeroTypesFromBattleUI()
-	print(spawns.size())
+	var heros = _GetHeroTypesFromBattleUIPanels()
+	print(spawns.size(), "spawn points")
+	print(heros.size(), "Heros")
 	for heroEnumIndex in heros.size():
 		var currentEnum = heros[heroEnumIndex]
 		
@@ -44,7 +57,7 @@ func _SpawnHeros():
 		print("Spawning Hero at: ", newHero.global_position)
 
 func _FinishPartyAddition():
-	print("Finishing Addition")
+	#print("Finishing Addition")
 	emit_signal("move_To_Ready_Screen")
 
 func _UnLoadHeros():
@@ -54,3 +67,20 @@ func _UnLoadHeros():
 
 func _AwaitTimer():
 	await get_tree().create_timer(1000).timeout
+
+func _KillAllEnemies():
+	Globals._Kill_All_Units_In_Level()
+
+func _process(delta):
+	if Input.is_key_pressed(KEY_K):
+		_KillAllEnemies()
+		
+	if(Globals.EnemiesAreDead()):
+		
+		_FinishBattle()
+
+func _FinishBattle():
+	battleParent.queue_free()
+	Globals.spawnPositions.clear()
+	emit_signal("finish_battle")
+	

@@ -13,7 +13,7 @@ var RotDuration : float = 0.2
 @export var Automatic : bool
 
 func _ready():
-	position.x = get_viewport_rect().size.x 
+	position.x = get_viewport_rect().size.x + 100
 	if(Automatic):
 		slide_in()
 		
