@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ci7t1k5ppcjqt"]
 
-[ext_resource type="Script" path="res://Michael WIP/Scripts/SceneLoader.gd" id="1_atl56"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/LoadScene.gd" id="1_atl56"]
 
 [node name="Title" type="Node2D"]
 

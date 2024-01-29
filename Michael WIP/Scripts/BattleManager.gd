@@ -1,8 +1,7 @@
 extends Node
 
-
+@onready var level = preload("res://Scene/Levels/Level1.tscn")
 @onready var PartyParent = $Party
-@onready var level = preload("res://Scene/Level1.tscn")
 @onready var MeleeSkeleton = preload("res://Scenes/Meleer.tscn")
 @export var PartyBattleUI : Control
 @export var partyPanels : Array[HeroUIPanel] 
@@ -30,11 +29,8 @@ func _StartBattle():
 	get_parent().get_parent().add_child(battleParent)
 	
 func _SpawnHeros():
-	print("Spawning Heros!")
 	var spawns = Globals.spawnPositions
 	var heros = _GetHeroTypesFromBattleUIPanels()
-	print(spawns.size(), "spawn points")
-	print(heros.size(), "Heros")
 	for heroEnumIndex in heros.size():
 		var currentEnum = heros[heroEnumIndex]
 		
@@ -61,15 +57,15 @@ func _UnLoadHeros():
 
 func _process(delta):
 	if Input.is_key_pressed(KEY_K):
-		Globals._kill_all_enemies()
+		_kill_all_enemies()
 	
 	if Input.is_key_pressed(KEY_L):
-		Globals._kill_all_players()
+		_kill_all_players()
 	
 	if(isBattling):
-		if(Globals.EnemiesAreDead()):
+		if(EnemiesAreDead()):
 			_WinBattle()
-		elif(Globals.PlayersAreDead()):
+		elif(PlayersAreDead()):
 			_LoseBattle()
 
 func _WinBattle():
@@ -79,11 +75,28 @@ func _WinBattle():
 	Globals.spawnPositions.clear()
 	emit_signal("finish_battle")
 	
-	
-
 func _LoseBattle():
 	isBattling = false
 	await get_tree().create_timer(1).timeout
 	battleParent.queue_free()
 	Globals.spawnPositions.clear()
 	emit_signal("lose_battle")
+
+func _kill_all_enemies():
+	if(is_instance_valid(Globals.AlexTester)):
+		Globals.AlexTester._kill_all_enemies()
+
+func _kill_all_players():
+	if(is_instance_valid(Globals.AlexTester)):
+		Globals.AlexTester._kill_all_players()
+
+func EnemiesAreDead():
+	if(is_instance_valid(Globals.AlexTester)):
+		return Globals.AlexTester.EnemiesAreDead()
+	return false
+
+func PlayersAreDead():
+	if(is_instance_valid(Globals.AlexTester)):
+		return Globals.AlexTester.PlayersAreDead()
+	return false
+

@@ -18,11 +18,11 @@ func InitializeWithHero(newHeroType):
 	
 	heroType = newHeroType
 	
-	var HeroIcon = Globals._GetIconInstanceOfType(heroType)
+	var HeroIcon = HeroIconController._GetIconInstanceOfType(heroType)
 	FrontPanel.add_child(HeroIcon)
 	HeroIcon.position += FrontPanel.size / 2
 	
-	var HeroIconBack = Globals._GetIconInstanceOfType(heroType)
+	var HeroIconBack = HeroIconController._GetIconInstanceOfType(heroType)
 	HeroIconBack.modulate= Color(0.411765, 0.411765, 0.411765, 1) # Dim Gray
 	BackPanel.add_child(HeroIconBack)
 	HeroIconBack.position += BackPanel.size / 2
@@ -35,11 +35,11 @@ func Target(isTargeted):
 	
 func _on_area_2d_mouse_entered():
 	print("Entered a roster panel")
-	Globals._SetSelectedHeroRosterPanel(self)
+	HeroUiController._SetSelectedHeroRosterPanel(self)
 
 func _on_area_2d_mouse_exited():
 	print("Exited a roster panel")
-	Globals._SetSelectedHeroRosterPanel(null)
+	HeroUiController._SetSelectedHeroRosterPanel(null)
 
 func _process(delta):
 	if(isDragged):

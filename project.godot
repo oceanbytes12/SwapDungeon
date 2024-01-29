@@ -19,6 +19,10 @@ config/icon="res://Art/SwapText.png"
 
 WwiseRuntimeManager="*res://addons/Wwise/runtime/wwise_runtime_manager.gd"
 Globals="*res://Michael WIP/Scripts/globals.gd"
+SceneLoader="*res://Michael WIP/Scripts/SceneLoader.gd"
+HeroUiController="*res://Michael WIP/Scripts/HeroUiController.gd"
+HeroIconController="*res://Michael WIP/Scripts/HeroIconController.gd"
+HeroTypeController="*res://Michael WIP/Scripts/HeroTypeController.gd"
 
 [display]
 

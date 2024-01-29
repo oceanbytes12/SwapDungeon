@@ -45,20 +45,20 @@ func _process(delta):
 
 func _on_area_2d_mouse_entered():
 	print("Mouse Entered")
-	Globals._SetSelectedDraggableHeroPanel(self)
+	HeroUiController._SetSelectedDraggableHeroPanel(self)
 
 func _on_area_2d_mouse_exited():
 	#print("MouseExited")
-	Globals._SetSelectedDraggableHeroPanel(null)
+	HeroUiController._SetSelectedDraggableHeroPanel(null)
 
 func _generateRandomHero():
-	_CreateHeroOfType(Globals._GetRandomHeroType())
+	_CreateHeroOfType(HeroTypeController._GetRandomHeroType())
 
 func _CreateHeroOfType(NewHeroType):
 	print("Creating random hero!")
 	HeroType = NewHeroType
 	
-	HeroIcon = Globals._GetIconInstanceOfType(HeroType)
+	HeroIcon = HeroIconController._GetIconInstanceOfType(HeroType)
 	if(HeroIcon):
 		#print("Made an icon of a random hero!")
 		var TargetChild = FrontPanel.get_child(0)
@@ -73,8 +73,8 @@ func _CreateHeroOfType(NewHeroType):
 
 func HandleUsed():
 	mouse_filter =Control.MOUSE_FILTER_IGNORE
-	Globals._SetDraggableAsNull()
-	Globals._SetSelectedDraggableHeroPanel(null)
+	HeroUiController._SetDraggableAsNull()
+	HeroUiController._SetSelectedDraggableHeroPanel(null)
 	
 	set_process(false)
 	if(is_instance_valid(FrontPanel)):

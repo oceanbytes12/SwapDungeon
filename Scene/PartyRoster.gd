@@ -8,7 +8,7 @@ signal onPartyAddedTo
 var UpgradeableUnits = []
 
 func _ready():
-	Globals.partyRoster = self
+	HeroUiController.partyRoster = self
 
 func _on_area_2d_mouse_entered():
 	Selected = true
@@ -20,7 +20,7 @@ func addToParty(panel):
 	emit_signal("onPartyAddedTo")
 	if(UpgradeableUnits.size()> 0):
 		var upgradedUnit = UpgradeableUnits[0]
-		var UpgradeType = Globals._GetUpgradedType(upgradedUnit.heroType)
+		var UpgradeType = HeroTypeController._GetUpgradedType(upgradedUnit.heroType)
 		var newPanel = rosterPanel.instantiate()
 		newPanel.InitializeWithHero(UpgradeType)
 		partyContainer.add_child(newPanel)
@@ -55,15 +55,15 @@ func _process(delta):
 	_check_upgrades()
 	
 func _check_upgrades():
-	if(Globals.draggedDraggableHeroPanel):
-		UpgradeableUnits = find_Panels_Of_Type(Globals.draggedDraggableHeroPanel.HeroType)
+	if(HeroUiController.draggedDraggableHeroPanel):
+		UpgradeableUnits = find_Panels_Of_Type(HeroUiController.draggedDraggableHeroPanel.HeroType)
 		print("Upgradeable: ", UpgradeableUnits.size())
 		for upgradeAbleUnit in UpgradeableUnits:
 			upgradeAbleUnit.HighLight(true)
 		if(UpgradeableUnits.size() > 0):
-			Globals.draggedDraggableHeroPanel.HighLight(true)
+			HeroUiController.draggedDraggableHeroPanel.HighLight(true)
 		else:
-			Globals.draggedDraggableHeroPanel.HighLight(false)
+			HeroUiController.draggedDraggableHeroPanel.HighLight(false)
 	else:
 		UpgradeableUnits = []
 		for panel in partyContainer.get_children():
