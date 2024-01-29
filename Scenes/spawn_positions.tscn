@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://nnokprcx8wyi"]
+
+[ext_resource type="Script" path="res://Michael WIP/Scripts/HeroSpawnPosition.gd" id="1_csrl6"]
+
+[node name="SpawnPositions" type="Node2D"]
+
+[node name="SpawnPosition1" type="Node2D" parent="." groups=["spawn"]]
+editor_description = "Spawn"
+position = Vector2(-205, -100)
+script = ExtResource("1_csrl6")
+
+[node name="SpawnPosition2" type="Node2D" parent="." groups=["spawn"]]
+position = Vector2(-205, -40)
+script = ExtResource("1_csrl6")
+
+[node name="SpawnPosition3" type="Node2D" parent="." groups=["spawn"]]
+position = Vector2(-205, 20)
+script = ExtResource("1_csrl6")

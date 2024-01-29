@@ -34,7 +34,7 @@ func _ready():
 	elif teamColor == "red":
 		$Art/BlueHat.visible = false
 		$Art/RedHat.visible = true
-	
+
 
 func _process(_delta):
 	if velocity.length() < 1 and not is_dead:
@@ -83,8 +83,18 @@ func take_hit(hit_position):
 		$Art/DeadHead.visible = true
 		$Art/Head.visible = false
 		selected = false
-		
+
 	else:
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction)
 		$EffectAnimations.play("hitAnimation")
+
+func Die():
+	is_dead = true
+	$UI/HealthBar.visible = false
+	if(is_instance_valid($CollisionShape2D)):
+		$CollisionShape2D.queue_free()
+	$Art/BlueHat.visible = false
+	$Art/RedHat.visible = false
+	Died.emit()
+	$MovementAnimations.play("Die")

@@ -1,11 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://ci7t1k5ppcjqt"]
 
-[ext_resource type="Script" path="res://Michael WIP/GoodScenes/SceneLoader.gd" id="1_atl56"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/SceneLoader.gd" id="1_atl56"]
 
 [node name="Title" type="Node2D"]
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("1_atl56")
+scenename = "res://Scene/NewGame.tscn"
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3

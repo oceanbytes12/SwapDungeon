@@ -69,7 +69,7 @@ func _on_sight_range_body_shape_entered(_body_rid, body, _body_shape_index, _loc
 
 
 func _on_sight_range_body_shape_exited(_body_rid, body, _body_shape_index, _local_shape_index):
-	targets.erase(body.name)
+	targets.erase(body.name) # Alex needs to fix this trash
 	find_target()
 
 
