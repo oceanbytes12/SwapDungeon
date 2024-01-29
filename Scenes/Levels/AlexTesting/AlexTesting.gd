@@ -33,14 +33,26 @@ func _on_camera_area_selected(object):
 	for u in selected_units: # Select the units in selection box
 		u.set_selected(true)
 
-func _kill_all_units():
+func _kill_all_enemies():
 	for unit in get_children():
-		if unit.is_in_group("unit"):
+		if unit.is_in_group("unit") and !unit.controllable:
+			unit.Die()
+
+func _kill_all_players():
+	for unit in get_children():
+		if unit.is_in_group("unit") and unit.controllable:
 			unit.Die()
 
 func EnemiesAreDead():
 	for unit in get_children():
 		if unit.is_in_group("unit"):
-			if (!unit.is_dead):
+			if (!unit.is_dead and !unit.controllable):
+				return false
+	return true
+
+func PlayersAreDead():
+	for unit in get_children():
+		if unit.is_in_group("unit"):
+			if (!unit.is_dead  and unit.controllable):
 				return false
 	return true

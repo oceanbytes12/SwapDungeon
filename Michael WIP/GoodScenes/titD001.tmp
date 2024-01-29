@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci7t1k5ppcjqt"]
+
+[ext_resource type="Script" path="res://Michael WIP/Scripts/SceneLoader.gd" id="1_atl56"]
+
+[node name="Title" type="Node2D"]
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("1_atl56")
+scenename = null
+
+[node name="TitleScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 272.0
+
+[node name="Panel" type="Panel" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_right = 96.0
+offset_bottom = 128.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Button" type="Button" parent="TitleScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -96.0
+offset_right = 52.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+theme_override_colors/font_pressed_color = Color(0.243137, 0.580392, 0.713726, 1)
+theme_override_colors/font_hover_color = Color(0.858824, 0.858824, 0.858824, 1)
+theme_override_colors/font_focus_color = Color(0.74902, 0.74902, 0.74902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.882353, 0.196078, 0.717647, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
+theme_override_colors/icon_hover_color = Color(0.227451, 0.0196078, 0.137255, 1)
+text = "Start"
+
+[connection signal="pressed" from="TitleScreen/Button" to="SceneLoader" method="_Start_Game"]

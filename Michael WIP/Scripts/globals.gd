@@ -165,20 +165,29 @@ func _SetSelectedBattleSpace(newBattleSpace):
 		return
 
 	#If there's a previous panel nerf it.
-	if(selectedBattleSpace):
+	if(is_instance_valid(selectedBattleSpace)):
 		selectedBattleSpace.Target(false)
 	
 	#Buff the new one.
-	if(newBattleSpace):
+	if(is_instance_valid(newBattleSpace)):
 		newBattleSpace.Target(true)
 		
 	selectedBattleSpace = newBattleSpace
 
-func _Kill_All_Units_In_Level():
+func _kill_all_enemies():
 	if(is_instance_valid(AlexTester)):
-		AlexTester._kill_all_units()
+		AlexTester._kill_all_enemies()
+
+func _kill_all_players():
+	if(is_instance_valid(AlexTester)):
+		AlexTester._kill_all_players()
 
 func EnemiesAreDead():
 	if(is_instance_valid(AlexTester)):
 		return AlexTester.EnemiesAreDead()
+	return false
+
+func PlayersAreDead():
+	if(is_instance_valid(AlexTester)):
+		return AlexTester.PlayersAreDead()
 	return false

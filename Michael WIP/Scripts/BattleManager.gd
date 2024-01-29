@@ -7,19 +7,11 @@ extends Node
 @export var PartyBattleUI : Control
 @export var partyPanels : Array[HeroUIPanel] 
 @export var battlePanels : Array[UIBattleSpace]
+var battleParent
+var isBattling
 signal move_To_Ready_Screen
 signal finish_battle
-
-var battleParent
-
-func _GetHeroTypesFromHeroUIPanels():
-	var ret = []
-	for battlePanel in partyPanels:
-		if(battlePanel.GetHeroType()):
-			ret.append(battlePanel.GetHeldHero().HeroType)
-		else:
-			ret.append(null)
-	return ret
+signal lose_battle
 
 func _GetHeroTypesFromBattleUIPanels():
 	var ret = []
@@ -31,6 +23,8 @@ func _GetHeroTypesFromBattleUIPanels():
 	return ret
 
 func _StartBattle():
+	isBattling = true
+	
 	battleParent = level.instantiate()
 	call_deferred("_SpawnHeros")
 	get_parent().get_parent().add_child(battleParent)
@@ -65,22 +59,31 @@ func _UnLoadHeros():
 		PartyParent.remove_child(n)
 		n.queue_free()
 
-func _AwaitTimer():
-	await get_tree().create_timer(1000).timeout
-
-func _KillAllEnemies():
-	Globals._Kill_All_Units_In_Level()
-
 func _process(delta):
 	if Input.is_key_pressed(KEY_K):
-		_KillAllEnemies()
-		
-	if(Globals.EnemiesAreDead()):
-		
-		_FinishBattle()
+		Globals._kill_all_enemies()
+	
+	if Input.is_key_pressed(KEY_L):
+		Globals._kill_all_players()
+	
+	if(isBattling):
+		if(Globals.EnemiesAreDead()):
+			_WinBattle()
+		elif(Globals.PlayersAreDead()):
+			_LoseBattle()
 
-func _FinishBattle():
+func _WinBattle():
+	isBattling = false
+	await get_tree().create_timer(1).timeout
 	battleParent.queue_free()
 	Globals.spawnPositions.clear()
 	emit_signal("finish_battle")
 	
+	
+
+func _LoseBattle():
+	isBattling = false
+	await get_tree().create_timer(1).timeout
+	battleParent.queue_free()
+	Globals.spawnPositions.clear()
+	emit_signal("lose_battle")
