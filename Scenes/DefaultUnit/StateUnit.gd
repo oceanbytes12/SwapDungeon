@@ -89,7 +89,10 @@ func take_hit(hit_position):
 		Died.emit()
 		z_index = 0
 		$MovementAnimations.play("Die")
+		$Art/DeadHead.visible = true
+		$Art/Head.visible = false
 		selected = false
+		
 	else:
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction)
