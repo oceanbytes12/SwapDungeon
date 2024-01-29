@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://dg6o5xl6gaqim"]
+
+[ext_resource type="Script" path="res://Megan WIP/MeganUnitSelection.gd" id="1_d1s6g"]
+[ext_resource type="Script" path="res://Megan WIP/Camera.gd" id="2_emhbh"]
+[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Meleer.tscn" id="4_l7k0h"]
+[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="5_8acj4"]
+[ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Ranger.tscn" id="5_tgycb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwqck"]
+bg_color = Color(0.258824, 0.972549, 0.470588, 0.431373)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ri0fj"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eq3g4"]
+resource_local_to_scene = true
+shader = ExtResource("5_8acj4")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fq1v8"]
+load_path = "res://.godot/imported/Cursor_Sword.png-cb08119954bd301f16f637d1a365f74a.ctex"
+
+[node name="MeganTesting" type="Node2D"]
+script = ExtResource("1_d1s6g")
+
+[node name="Units" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-151, -2)
+
+[node name="BaseUnit" parent="Units" instance=ExtResource("4_l7k0h")]
+position = Vector2(0, -46)
+controllable = true
+
+[node name="BaseUnit3" parent="Units" instance=ExtResource("4_l7k0h")]
+controllable = true
+
+[node name="Ranger" parent="Units" instance=ExtResource("5_tgycb")]
+position = Vector2(-1, 50)
+controllable = true
+
+[node name="Camera" type="Camera2D" parent="."]
+script = ExtResource("2_emhbh")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SelectionPanel" type="Panel" parent="UI"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_iwqck")
+
+[node name="CursorText" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -50.0
+offset_top = 71.0
+offset_right = 120.0
+offset_bottom = 111.0
+text = "Cursor Text"
+shortcut_keys_enabled = false
+
+[node name="Enemy" parent="." instance=ExtResource("4_l7k0h")]
+position = Vector2(146, -5)
+teamColor = "red"
+
+[node name="Body" parent="Enemy/Art" index="0"]
+material = SubResource("ShaderMaterial_ri0fj")
+
+[node name="Head" parent="Enemy/Art" index="1"]
+material = SubResource("ShaderMaterial_eq3g4")
+
+[node name="Walk" parent="Enemy/SM" index="4"]
+timeout = 3.0
+
+[node name="MouseOverShape" parent="Enemy" index="10"]
+mouse_over_cursor = SubResource("CompressedTexture2D_fq1v8")
+
+[connection signal="area_selected" from="Camera" to="." method="_on_area_selected"]
+
+[editable path="Enemy"]
