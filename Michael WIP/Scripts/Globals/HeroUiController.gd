@@ -15,25 +15,25 @@ func _process(_delta):
 
 func _HandleLeftClickDown():
 	#DraggableHeroNewSystem
-	if(selectedDraggableHeroPanel):
+	if(is_instance_valid(selectedDraggableHeroPanel)):
 		draggedDraggableHeroPanel = selectedDraggableHeroPanel
 		draggedDraggableHeroPanel.ToggleDrag(true)
 		
-	if(selectedRosterPanel):
+	if(is_instance_valid(selectedRosterPanel)):
 		draggedRosterPanel = selectedRosterPanel
 		draggedRosterPanel.ToggleDrag(true)
 		
 func _HandleLeftClickUp():
 	#DraggableHeroNewSystem
-	if(draggedDraggableHeroPanel):
+	if(is_instance_valid(draggedDraggableHeroPanel)):
 		draggedDraggableHeroPanel.ToggleDrag(false)
 		if(partyRoster.Selected):
 			partyRoster.addToParty(draggedDraggableHeroPanel)
 		draggedDraggableHeroPanel = null
 	
-	if(draggedRosterPanel):
+	if(is_instance_valid(draggedRosterPanel)):
 		draggedRosterPanel.ToggleDrag(false)
-		if(selectedBattleSpace):
+		if(is_instance_valid(selectedBattleSpace)):
 			selectedBattleSpace.HandlePanel(draggedRosterPanel)
 		elif(partyRoster.Selected):
 			draggedRosterPanel.ReturnPanel()
@@ -44,7 +44,7 @@ func _SetDraggableAsNull():
 
 #Panels that let you add.
 func _SetSelectedDraggableHeroPanel(newDraggableHeroPanel):
-	if(draggedDraggableHeroPanel):
+	if(is_instance_valid(draggedDraggableHeroPanel)):
 		return
 	
 	#If there's a previous panel nerf it.
@@ -58,10 +58,10 @@ func _SetSelectedDraggableHeroPanel(newDraggableHeroPanel):
 
 #Panels in the roster
 func _SetSelectedHeroRosterPanel(newRosterPanel):
-	if(draggedRosterPanel):
+	if(is_instance_valid(draggedRosterPanel)):
 		return
 	#If there's a previous panel nerf it.
-	if(selectedRosterPanel):
+	if(is_instance_valid(selectedRosterPanel)):
 		selectedRosterPanel.Target(false)
 	#Buff the new one.
 	if(newRosterPanel):
@@ -71,7 +71,7 @@ func _SetSelectedHeroRosterPanel(newRosterPanel):
 
 #Panels in battle spaces
 func _SetSelectedBattleSpace(newBattleSpace):
-	if(!draggedRosterPanel):
+	if(!is_instance_valid(draggedRosterPanel)):
 		return
 
 	#If there's a previous panel nerf it.
