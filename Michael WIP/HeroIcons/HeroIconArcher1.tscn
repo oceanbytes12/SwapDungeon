@@ -29,7 +29,7 @@ shader = ExtResource("2_8ra0m")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
-[node name="HeroSpriteArcher" type="Node"]
+[node name="HeroIconArcher1" type="CanvasGroup"]
 
 [node name="Weapon" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_nqdsc")

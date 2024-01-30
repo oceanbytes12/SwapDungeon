@@ -2,6 +2,7 @@ extends Node
 
 var spawnPositions = []
 var AlexTester
+var unitManager
 
 func _GetChildNodeOfType(parent, DesiredClass, allowInvisible = false):
 	for child in parent.get_children():
@@ -23,3 +24,11 @@ func _LoadPackedScenesInPath(path):
 	dir.list_dir_end()
 	return ret
 	
+func _ModulateChildren(node, newcolor):
+	for child in node.get_children():
+		print("Attempting Modulating!")
+		if child is Sprite2D:
+
+			# Modify the modulate property for each Sprite
+			var sprite = child
+			sprite.modulate = newcolor  # Set to red as an example

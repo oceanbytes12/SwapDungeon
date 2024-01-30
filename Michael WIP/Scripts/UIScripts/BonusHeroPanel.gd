@@ -45,7 +45,7 @@ func _on_area_2d_mouse_exited():
 	HeroUiController._SetSelectedDraggableHeroPanel(null)
 
 func _generateRandomHero():
-	_CreateHeroOfType(HeroTypeController._GetRandomHeroType())
+	_CreateHeroOfType(Globals.unitManager._GetRandomUnupgradedType())
 
 func _CreateHeroOfType(NewHeroType):
 	HeroType = NewHeroType
