@@ -1,8 +1,7 @@
 extends Node
 
-
+@onready var MeleeSkeleton = preload("res://Scenes/Units/Meleer.tscn")
 @onready var PartyParent = $Party
-@onready var MeleeSkeleton = preload("res://Scenes/Meleer.tscn")
 @export var PartyBattleUI : Control
 @export var battlePanels : Array[UIBattleSpace]
 @export var StartBattleButton : Button
@@ -74,7 +73,8 @@ func _process(_delta):
 		elif(PlayersAreDead()):
 			_LoseBattle()
 	else:
-		StartBattleButton.visible = (_BattlePartyGreaterThanOne())
+		if _BattlePartyGreaterThanOne():
+			StartBattleButton.visible = (_BattlePartyGreaterThanOne())
 			
 
 func _WinBattle():

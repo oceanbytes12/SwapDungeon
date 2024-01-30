@@ -12,11 +12,11 @@ func _ready():
 func _physics_process(_delta):
 	if (use_context_cursors):
 		var collider = check_collider_under_mouse()
-		#if collider and collider.has_method("mouse_over"):
-			##mouse_over_text = collider.mouse_over()
-			#Input.set_custom_mouse_cursor(mouse_pointer, 0, Vector2(50,50))
-		#else:
-			#Input.set_custom_mouse_cursor(null)
+		if collider and collider.has_method("mouse_over"):
+			#mouse_over_text = collider.mouse_over()
+			Input.set_custom_mouse_cursor(mouse_pointer, 0, Vector2(16,16))
+		else:
+			Input.set_custom_mouse_cursor(mouse_pointer, 0, Vector2(16,16))
 			
 
 # Get all units within the bounds of the drawn rectangle
