@@ -1,9 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvueiwa1b75ce"]
+[gd_scene load_steps=6 format=3 uid="uid://bvueiwa1b75ce"]
 
-[ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="1_nb7kq"]
+[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="1_38rlc"]
+[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_ko48f"]
 
-[node name="HeroSpriteMage" type="Sprite2D"]
-z_index = 1
-texture = ExtResource("1_nb7kq")
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nnqir"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7lro3"]
+resource_local_to_scene = true
+shader = ExtResource("2_ko48f")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[node name="HeroSpriteMage" type="Node"]
+
+[node name="Body" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_nnqir")
+texture = ExtResource("1_38rlc")
 region_enabled = true
-region_rect = Rect2(142, 142, 32, 40)
+region_rect = Rect2(35, 34, 26, 12)
+
+[node name="Art" type="Sprite2D" parent="."]
+position = Vector2(11, -10)
+texture = ExtResource("1_38rlc")
+region_enabled = true
+region_rect = Rect2(75, 7, 10, 36)
+
+[node name="Head" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7lro3")
+position = Vector2(-1, -16)
+texture = ExtResource("1_38rlc")
+region_enabled = true
+region_rect = Rect2(35, 7, 24, 21)

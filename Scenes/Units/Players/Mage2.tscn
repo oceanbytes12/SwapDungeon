@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c04ap86578v3j" path="res://Scenes/DefaultWeapon/staff_1.tscn" id="4_kviu5"]
 [ext_resource type="PackedScene" uid="uid://bp0u3h6fwk1y2" path="res://Scenes/Attacks/MageAttack/mage_attack.tscn" id="5_4mckh"]
 
-[sub_resource type="Shader" id="Shader_2y081"]
+[sub_resource type="Shader" id="Shader_5jsc5"]
 code = "shader_type canvas_item;
 
 uniform float flash_opacity = 0;
@@ -22,7 +22,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5dut2"]
 resource_local_to_scene = true
-shader = SubResource("Shader_2y081")
+shader = SubResource("Shader_5jsc5")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
