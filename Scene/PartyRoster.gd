@@ -35,13 +35,11 @@ func addToParty(panel):
 		newPanel.InitializeWithHero(panel.HeroType)
 		partyContainer.add_child(newPanel)
 		partyContainer.move_child(newPanel, 0)
-	print("Moving Party Container")
 	partyContainer.move_to_front()
 
 func find_Panels_Of_Type(heroType):
 	var panels = []
 	for panel in partyContainer.get_children():
-		print("Panel: ",panel.name, "IsDraggable: " ,panel is DraggableHeroPanel)
 		if(panel is HeroRosterPanel and panel.heroType == heroType):
 			panels.append(panel)
 	return panels
@@ -57,7 +55,6 @@ func _process(delta):
 func _check_upgrades():
 	if(HeroUiController.draggedDraggableHeroPanel):
 		UpgradeableUnits = find_Panels_Of_Type(HeroUiController.draggedDraggableHeroPanel.HeroType)
-		print("Upgradeable: ", UpgradeableUnits.size())
 		for upgradeAbleUnit in UpgradeableUnits:
 			upgradeAbleUnit.HighLight(true)
 		if(UpgradeableUnits.size() > 0):

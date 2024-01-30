@@ -16,12 +16,10 @@ func _process(delta):
 func _HandleLeftClickDown():
 	#DraggableHeroNewSystem
 	if(selectedDraggableHeroPanel):
-		print("Starting Drag1!")
 		draggedDraggableHeroPanel = selectedDraggableHeroPanel
 		draggedDraggableHeroPanel.ToggleDrag(true)
 		
 	if(selectedRosterPanel):
-		print("Starting Drag2")
 		draggedRosterPanel = selectedRosterPanel
 		draggedRosterPanel.ToggleDrag(true)
 		
@@ -46,11 +44,8 @@ func _SetDraggableAsNull():
 
 #Panels that let you add.
 func _SetSelectedDraggableHeroPanel(newDraggableHeroPanel):
-	print("Setting Selected Draggable: ", newDraggableHeroPanel)
 	if(draggedDraggableHeroPanel):
-		print("But we won't as we are dragging something.")
 		return
-	#print("Setting Target Panel", newPanel)
 	
 	#If there's a previous panel nerf it.
 	if(selectedDraggableHeroPanel):
@@ -63,9 +58,7 @@ func _SetSelectedDraggableHeroPanel(newDraggableHeroPanel):
 
 #Panels in the roster
 func _SetSelectedHeroRosterPanel(newRosterPanel):
-	print("Setting Selected Draggable: ", newRosterPanel)
 	if(draggedRosterPanel):
-		print("But we won't as we are dragging something.")
 		return
 	#If there's a previous panel nerf it.
 	if(selectedRosterPanel):
@@ -78,10 +71,7 @@ func _SetSelectedHeroRosterPanel(newRosterPanel):
 
 #Panels in battle spaces
 func _SetSelectedBattleSpace(newBattleSpace):
-	print("Setting Selected Draggable: ", newBattleSpace)
-	
 	if(!draggedRosterPanel):
-		print("We aren't dragging a roster panel, don't care about battle spaces.")
 		return
 
 	#If there's a previous panel nerf it.

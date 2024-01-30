@@ -10,7 +10,6 @@ func Target(isTargeted):
 		scale = Vector2.ONE
 
 func HandlePanel(addedPanel):
-	print("Adding to battle space!")
 	addedPanel._EquipPanelToBattleSpace(self)
 	equippedPanel = addedPanel
 

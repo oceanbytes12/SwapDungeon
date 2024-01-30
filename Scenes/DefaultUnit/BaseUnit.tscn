@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=30 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ft0sp"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_nu0w1"]

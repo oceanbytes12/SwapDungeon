@@ -23,3 +23,4 @@ func _LoadPackedScenesInPath(path):
 			ret.append(load(path + "/" + file_name))
 	dir.list_dir_end()
 	return ret
+	

@@ -23,6 +23,7 @@ Globals="*res://Michael WIP/Scripts/Globals/globals.gd"
 HeroUiController="*res://Michael WIP/Scripts/Globals/HeroUiController.gd"
 HeroIconController="*res://Michael WIP/Scripts/Globals/HeroIconController.gd"
 HeroTypeController="*res://Michael WIP/Scripts/Globals/HeroTypeController.gd"
+LevelManager="*res://Michael WIP/Scripts/Globals/LevelScenes.gd"
 
 [display]
 

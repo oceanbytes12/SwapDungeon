@@ -6,7 +6,6 @@ extends Control
 
 func Generate():
 	for i in numToGenerate:
-		print("Generating Heros1!")
 		var newHeroNode = NewHero.instantiate()
 		newHeroNode.call_deferred("_generateRandomHero")
 		parent.add_child(newHeroNode)

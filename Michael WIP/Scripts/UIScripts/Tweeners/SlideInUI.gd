@@ -34,6 +34,5 @@ func inform_slide_in_finish():
 	emit_signal("on_tween_in_finish")
 	
 func inform_slide_out_finish():
-	print("Tweening out finished: ", name)
 	emit_signal("on_tween_out_finish")
 	

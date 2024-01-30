@@ -14,12 +14,10 @@ var HeroIcon
 @export var CreateRandomHero : bool = false
 
 func _ready():
-	print("Ready!")
 	if(CreateRandomHero):
 		_generateRandomHero()
 
 func ToggleDrag(newDragState):
-	print("Drag Toggle")
 	dragStateChange.emit(isDragged, newDragState)
 	isDragged = newDragState
 	
@@ -34,32 +32,26 @@ func Target(isTargeted):
 
 func _process(delta):
 	if(isDragged):
-		#print("Is now dragged")
 		FrontPanel.z_index = 1000
 		FrontPanel.global_position = get_global_mouse_position() - size / 2
 	else:
 		FrontPanel.z_index = 1
-		#print("Returning to HeroSlot" )
 		FrontPanel.position = FrontPanel.position.lerp(Vector2.ZERO, delta * speed)
 
 func _on_area_2d_mouse_entered():
-	print("Mouse Entered")
 	HeroUiController._SetSelectedDraggableHeroPanel(self)
 
 func _on_area_2d_mouse_exited():
-	#print("MouseExited")
 	HeroUiController._SetSelectedDraggableHeroPanel(null)
 
 func _generateRandomHero():
 	_CreateHeroOfType(HeroTypeController._GetRandomHeroType())
 
 func _CreateHeroOfType(NewHeroType):
-	print("Creating random hero!")
 	HeroType = NewHeroType
 	
 	HeroIcon = HeroIconController._GetIconInstanceOfType(HeroType)
 	if(HeroIcon):
-		#print("Made an icon of a random hero!")
 		var TargetChild = FrontPanel.get_child(0)
 		TargetChild.add_child(HeroIcon)
 		HeroIcon.position = Vector2.ZERO + TargetChild.size / 2

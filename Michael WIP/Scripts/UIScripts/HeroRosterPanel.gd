@@ -11,7 +11,6 @@ var speed = 10
 var heroType
 var battleSpace
 func ToggleDrag(newDragState):
-	print("Drag Toggle")
 	isDragged = newDragState
 
 func InitializeWithHero(newHeroType):
@@ -34,16 +33,13 @@ func Target(isTargeted):
 		FrontPanel.scale = Vector2.ONE
 	
 func _on_area_2d_mouse_entered():
-	print("Entered a roster panel")
 	HeroUiController._SetSelectedHeroRosterPanel(self)
 
 func _on_area_2d_mouse_exited():
-	print("Exited a roster panel")
 	HeroUiController._SetSelectedHeroRosterPanel(null)
 
 func _process(delta):
 	if(isDragged):
-		#print("Is now dragged")
 		FrontPanel.z_index = 1000
 		FrontPanel.global_position = get_global_mouse_position() - size / 2
 	else:
@@ -51,13 +47,10 @@ func _process(delta):
 		FrontPanel.position = FrontPanel.position.lerp(Vector2.ZERO, delta * speed)
 
 func _EquipPanelToBattleSpace(newBattleSpace):
-	print("Attempting to equip!")
 	#If the place we are going into already has a panel
 	if(newBattleSpace.equippedPanel != null):
-		print("Going in to an equipped panel.")
 		#If we are coming in from a panel, swap
 		if(battleSpace!= null):
-			print("Going in Empty")
 			#Give the other panel our stuff
 			var otherPanel = newBattleSpace.equippedPanel
 			otherPanel.FrontPanel.reparent(battleSpace)
@@ -69,7 +62,6 @@ func _EquipPanelToBattleSpace(newBattleSpace):
 			FrontPanel.reparent(newBattleSpace)
 			battleSpace = newBattleSpace
 	else:
-		print("Going in Empty2")
 		if(battleSpace):
 			battleSpace.equippedPanel = null
 		#Requip ourselves to the new battle space

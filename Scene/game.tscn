@@ -13,10 +13,11 @@ size = Vector2(464, 64)
 
 [node name="NewGame" type="Node2D"]
 
-[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels")]
+[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels", "StartBattleButton")]
 script = ExtResource("1_k8hrt")
 PartyBattleUI = NodePath("../GameUI/PartyBattleUI")
 battlePanels = [NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel2"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel3")]
+StartBattleButton = NodePath("../GameUI/PartyBattleUI/StartBattleButton")
 
 [node name="Party" type="Node2D" parent="BattleManager"]
 
@@ -275,9 +276,48 @@ text = "Start Over"
 script = ExtResource("7_oidtt")
 scenename = "res://Scene/Game.tscn"
 
+[node name="GameWin" type="Panel" parent="GameUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_7sjb0")
+
+[node name="Label" type="Label" parent="GameUI/GameWin"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.0
+offset_right = 37.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "You Win!"
+
+[node name="Button" type="Button" parent="GameUI/GameWin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Over"
+
+[node name="ReloadScene" type="Node" parent="GameUI/GameWin"]
+script = ExtResource("7_oidtt")
+scenename = "res://Scene/Game.tscn"
+
 [connection signal="finish_battle" from="BattleManager" to="GameUI/RosterUI" method="slide_in"]
 [connection signal="finish_battle" from="BattleManager" to="GameUI/RosterUI/PartyRoster" method="_return_all_panels"]
 [connection signal="finish_battle" from="BattleManager" to="GameUI/PartyAddUI" method="slide_in"]
+[connection signal="finish_game" from="BattleManager" to="GameUI/GameWin" method="slide_in"]
 [connection signal="lose_battle" from="BattleManager" to="GameUI/GameOver" method="slide_in"]
 [connection signal="move_To_Ready_Screen" from="BattleManager" to="GameUI/PartyBattleUI" method="slide_in"]
 [connection signal="move_To_Ready_Screen" from="BattleManager" to="GameUI/PartyAddUI" method="slide_out"]
@@ -291,3 +331,4 @@ scenename = "res://Scene/Game.tscn"
 [connection signal="on_tween_out_finish" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroGenerator" method="Demolish"]
 [connection signal="pressed" from="GameUI/PartyAddUI/HeroGenerator/SkipButton" to="BattleManager" method="_FinishPartyAddition"]
 [connection signal="pressed" from="GameUI/GameOver/Button" to="GameUI/GameOver/ReloadScene" method="_Start_Game"]
+[connection signal="pressed" from="GameUI/GameWin/Button" to="GameUI/GameWin/ReloadScene" method="_Start_Game"]
