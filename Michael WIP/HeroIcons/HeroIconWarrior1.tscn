@@ -29,7 +29,7 @@ shader = ExtResource("2_ypl4i")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
-[node name="HeroSpriteWarrior" type="Node"]
+[node name="HeroIconWarrior1" type="CanvasGroup"]
 
 [node name="Body" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_rrdqi")

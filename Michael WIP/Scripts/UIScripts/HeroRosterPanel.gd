@@ -10,6 +10,7 @@ var isDragged = false
 var speed = 10
 var heroType
 var battleSpace
+var Gray = Color(0.411765, 0.411765, 0.411765, 1) # Dim Gray
 func ToggleDrag(newDragState):
 	isDragged = newDragState
 
@@ -22,7 +23,7 @@ func InitializeWithHero(newHeroType):
 	HeroIcon.position += FrontPanel.size / 2
 	
 	var HeroIconBack = HeroIconController._GetIconInstanceOfType(heroType)
-	HeroIconBack.modulate= Color(0.411765, 0.411765, 0.411765, 1) # Dim Gray
+	HeroIconBack.modulate = Gray
 	BackPanel.add_child(HeroIconBack)
 	HeroIconBack.position += BackPanel.size / 2
 
