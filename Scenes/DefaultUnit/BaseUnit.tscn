@@ -316,17 +316,17 @@ size = Vector2(20, 27.6377)
 [node name="BaseUnit" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_ft0sp")
 
-[node name="Selection" type="Sprite2D" parent="."]
-position = Vector2(0, 10)
-texture = ExtResource("2_nu0w1")
-region_enabled = true
-region_rect = Rect2(40, 49, 20, 13)
-
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 9)
 texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(43, 32, 12, 8)
+
+[node name="Selection" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+texture = ExtResource("2_nu0w1")
+region_enabled = true
+region_rect = Rect2(40, 49, 20, 13)
 
 [node name="Art" type="Node2D" parent="."]
 position = Vector2(0, 3)

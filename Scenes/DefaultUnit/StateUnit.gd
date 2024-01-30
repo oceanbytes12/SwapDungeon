@@ -25,12 +25,12 @@ func set_selected(value):
 
 func _ready():
 	set_selected(selected)
-	if teamColor == "blue":
-		$Art/BlueHat.visible = true
-		$Art/RedHat.visible = false
-	elif teamColor == "red":
-		$Art/BlueHat.visible = false
-		$Art/RedHat.visible = true
+	#if teamColor == "blue":
+		#$Art/BlueHat.visible = true
+		#$Art/RedHat.visible = false
+	#elif teamColor == "red":
+		#$Art/BlueHat.visible = false
+		#$Art/RedHat.visible = true
 
 
 func _process(_delta):

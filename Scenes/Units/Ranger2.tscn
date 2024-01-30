@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3hn3jfn1k70h"]
+
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_a2rtj"]
+[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="2_1tlua"]
+[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_hnrmx"]
+[ext_resource type="PackedScene" uid="uid://6jcr4qkrw7v2" path="res://Scenes/DefaultWeapon/bow_1.tscn" id="4_depnw"]
+
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dut2"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ax3d5"]
+resource_local_to_scene = true
+shader = ExtResource("3_hnrmx")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[node name="Ranger1" instance=ExtResource("1_a2rtj")]
+teamColor = "blue"
+controllable = true
+walkSpeed = 15.0
+runSpeed = 40.0
+weaponRange = 90.0
+weaponCooldown = 2.0
+
+[node name="Shadow" parent="." index="0"]
+region_rect = Rect2(43, 31, 12, 9)
+
+[node name="Body" parent="Art" index="0"]
+material = SubResource("ShaderMaterial_5dut2")
+texture = ExtResource("2_1tlua")
+region_rect = Rect2(35, 130, 26, 12)
+
+[node name="Head" parent="Art" index="1"]
+material = SubResource("ShaderMaterial_ax3d5")
+texture = ExtResource("2_1tlua")
+region_rect = Rect2(38, 101, 20, 21)
+
+[node name="Bow1" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_depnw")]
+own_body = NodePath("..")
+attackState = NodePath("../SM/Attack")

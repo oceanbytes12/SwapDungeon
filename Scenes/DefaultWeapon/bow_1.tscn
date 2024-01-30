@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://6jcr4qkrw7v2"]
+
+[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="1_rs0ex"]
+[ext_resource type="PackedScene" uid="uid://ceyeak3ionm2v" path="res://Scenes/Attacks/ArrowAttack/arrow_effect.tscn" id="2_4yh3n"]
+[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="2_fmjhu"]
+
+[node name="Bow1" instance=ExtResource("1_rs0ex")]
+weaponEffectScene = ExtResource("2_4yh3n")
+
+[node name="Art" parent="." index="1"]
+position = Vector2(9, 0)
+texture = ExtResource("2_fmjhu")
+region_rect = Rect2(106, 107, 10, 26)
