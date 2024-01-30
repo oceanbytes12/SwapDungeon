@@ -13,8 +13,11 @@ size = Vector2(464, 64)
 
 [node name="NewGame" type="Node2D"]
 
-[node name="BattleManager" type="Node" parent="."]
+[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels", "StartBattleButton")]
 script = ExtResource("1_45nev")
+PartyBattleUI = NodePath("../GameUI/PartyBattleUI")
+battlePanels = [NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel2"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel3")]
+StartBattleButton = NodePath("../GameUI/PartyBattleUI/StartBattleButton")
 
 [node name="Party" type="Node2D" parent="BattleManager"]
 
