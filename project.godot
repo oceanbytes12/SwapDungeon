@@ -11,19 +11,18 @@ config_version=5
 [application]
 
 config/name="SwapDungeon"
-run/main_scene="res://Scene/Levels/Level2.tscn"
+run/main_scene="res://Scene/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Art/SwapText.png"
 
 [autoload]
 
 WwiseRuntimeManager="*res://addons/Wwise/runtime/wwise_runtime_manager.gd"
-SceneLoader="*res://Michael WIP/Scripts/LevelManager.gd"
 Globals="*res://Michael WIP/Scripts/Globals/globals.gd"
 HeroUiController="*res://Michael WIP/Scripts/Globals/HeroUiController.gd"
 HeroIconController="*res://Michael WIP/Scripts/Globals/HeroIconController.gd"
 HeroTypeController="*res://Michael WIP/Scripts/Globals/HeroTypeController.gd"
-LevelManager="*res://Michael WIP/Scripts/Globals/LevelScenes.gd"
+LevelManager="*res://Michael WIP/Scripts/Globals/LevelManager.gd"
 
 [display]
 
