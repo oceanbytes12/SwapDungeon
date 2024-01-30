@@ -14,8 +14,6 @@ signal Died
 
 var selected = false
 var follow_cursor = false
-var is_cursor_over = false
-var is_Ctrl_pressed = false
 var is_dead = false
 @onready var state_machine = $SM
 
