@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bgoj5ydtylqws"]
 
-[ext_resource type="Script" path="res://Scenes/Attacks/MageAttack/mage_attack.gd" id="1_im70e"]
+[ext_resource type="Script" path="res://Scenes/Attacks/MageFireAttack/FireMageAttack.gd" id="1_qm8qh"]
 [ext_resource type="Texture2D" uid="uid://dlivpfjjuhlhg" path="res://Art/MagicAttack2x2-Sheet.png" id="2_6vdkg"]
 [ext_resource type="Texture2D" uid="uid://d2acrt60husqc" path="res://Art/AirAttack-Sheet.png" id="2_uoxh4"]
 
@@ -76,10 +76,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MageAttack" type="Area2D"]
+[node name="FireMageAttack" type="Area2D"]
 z_index = 2
-script = ExtResource("1_im70e")
-speed = 60.0
+script = ExtResource("1_qm8qh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

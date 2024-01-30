@@ -6,7 +6,7 @@ var target
 var turn_speed = 0.5
 
 func _ready():
-	$AnimatedSprite2D.play("Spell")
+	$AnimatedSprite2D.play("FireSpell")
 	var direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
 		rotate(-PI/5)
