@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bk43t6h5qswor"]
 
-[ext_resource type="Script" path="res://Michael WIP/Scripts/SpinInUI.gd" id="1_6wstw"]
-[ext_resource type="Script" path="res://Michael WIP/GoodScenes/HeroRosterPanel.gd" id="1_wn1xf"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/HeroRosterPanel.gd" id="1_rv7wn"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/Tweeners/SpinInUI.gd" id="2_0kxu0"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="2_aun62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nm2ik"]
@@ -25,7 +25,7 @@ pivot_offset = Vector2(32, 32)
 size_flags_vertical = 4
 mouse_filter = 2
 mouse_default_cursor_shape = 2
-script = ExtResource("1_wn1xf")
+script = ExtResource("1_rv7wn")
 BackPanel = NodePath("ExpandInUI/Back_Panel")
 FrontPanel = NodePath("ExpandInUI/Front_Panel")
 UIParent = NodePath("ExpandInUI")
@@ -40,7 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(30, 30)
 mouse_filter = 2
-script = ExtResource("1_6wstw")
+script = ExtResource("2_0kxu0")
 
 [node name="Back_Panel" type="Panel" parent="ExpandInUI"]
 self_modulate = Color(1, 1, 1, 0)

@@ -4,7 +4,6 @@ extends Node
 @onready var PartyParent = $Party
 @onready var MeleeSkeleton = preload("res://Scenes/Meleer.tscn")
 @export var PartyBattleUI : Control
-@export var partyPanels : Array[HeroUIPanel] 
 @export var battlePanels : Array[UIBattleSpace]
 var battleParent
 var isBattling

@@ -18,10 +18,8 @@ func _LoadPackedScenesInPath(path):
 	while true:
 		var file_name = dir.get_next()
 		if file_name == "":
-			#break the while loop when get_next() returns ""
 			break
 		elif file_name.ends_with(".tscn"):
-			#if !file_name.ends_with(".import"):
 			ret.append(load(path + "/" + file_name))
 	dir.list_dir_end()
 	return ret

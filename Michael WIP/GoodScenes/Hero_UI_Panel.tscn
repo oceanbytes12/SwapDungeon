@@ -1,7 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://broi4uqvo8xf2"]
+[gd_scene load_steps=4 format=3 uid="uid://bwmabrqn511h3"]
 
-[ext_resource type="Script" path="res://Michael WIP/Scripts/HeroUIPanel.gd" id="1_j6wr4"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="2_4du70"]
+
+[sub_resource type="GDScript" id="GDScript_r5bjb"]
+script/source = "extends Control
+
+class_name HeroUIPanel
+
+signal onEmptyHeroPanelFilled
+
+func _spawnHeroUI():
+	print(\"Spawning Hero UI\")
+	var newHero = heroUIScene.instantiate()
+	newHero._generateRandomHero()
+	add_child(newHero)
+	newHero.position = Vector2.ZERO
+
+func _despawnHeroUI():
+	if(GetHeldHero()):
+		GetHeldHero().queue_free()
+
+func _on_area_2d_mouse_entered():
+	Globals._SetSelectedHeroPanel(self)
+
+func _on_area_2d_mouse_exited():
+	Globals._SetSelectedHeroPanel(null)
+
+func GetHeldHero() -> HeroUI:
+	return Globals._GetChildNodeOfType(self, HeroUI) as HeroUI
+
+#When you add a hero to this tile this is called.
+func _AddHero(newHero):
+	print(\"Adding Hero: \", newHero.name)
+	#If we had a hero,
+	#Inform them to go where the new hero was.
+	if(GetHeldHero() != null):
+		if(GetHeldHero().HeroType != newHero.HeroType):
+			_HandleSwap(newHero)
+		elif(GetHeldHero() != newHero):
+			_HandleCombine(newHero)
+	
+	else:
+		print(\"EmptyHeroPanelFilled\")
+		if(!newHero.usedByParty):
+			newHero.usedByParty = true
+			emit_signal(\"onEmptyHeroPanelFilled\")
+
+	print(\"Reparenting New Hero\")
+	newHero.reparent(self)
+	
+	print(name, \" is now holding: \", GetHeldHero())
+
+#When adding a hero results in an upgrade
+func _HandleCombine(addedHero):
+	print(\"Handling Combine!\")
+	#We have two heros. Grab the upgrade
+	var newType = Globals._GetUpgradedHeroTypeAtIndex(addedHero.HeroType as int)
+	#Destroy them both 
+	_despawnHeroUI()
+	if(addedHero):
+		addedHero.queue_free()
+	#Grab a new Hero
+	var newHero = heroUIScene.instantiate()
+	#Make it make a hero of the upgrade type
+	newHero._CreateHeroOfType(newType)
+	
+	#Position it properly
+	add_child(newHero)
+	call_deferred(\"_MoveStartingHero\")
+
+#When adding a hero results in a swap
+func _HandleSwap(newHero):
+	var newHeroParent = newHero.get_parent()
+	if(newHeroParent!=null):
+		print(\"Reparenting Held Hero\")
+		GetHeldHero().reparent(newHeroParent)
+	else:
+		print(\"Can't reparent held hero, new hero has no parent.\")
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63y8u"]
 size = Vector2(32, 32)
@@ -11,7 +87,7 @@ layout_mode = 3
 anchors_preset = 0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-script = ExtResource("1_j6wr4")
+script = SubResource("GDScript_r5bjb")
 metadata/_edit_group_ = true
 
 [node name="Panel" type="Panel" parent="."]

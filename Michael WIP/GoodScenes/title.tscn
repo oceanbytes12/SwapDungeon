@@ -4,9 +4,9 @@
 
 [node name="Title" type="Node2D"]
 
-[node name="SceneLoader" type="Node" parent="."]
+[node name="LoadScene" type="Node" parent="."]
 script = ExtResource("1_atl56")
-scenename = "res://Scene/NewGame.tscn"
+scenename = "res://Scene/Game.tscn"
 
 [node name="TitleScreen" type="Control" parent="."]
 layout_mode = 3
@@ -59,4 +59,4 @@ theme_override_colors/icon_pressed_color = Color(0, 0, 1, 1)
 theme_override_colors/icon_hover_color = Color(0.227451, 0.0196078, 0.137255, 1)
 text = "Start"
 
-[connection signal="pressed" from="TitleScreen/Button" to="SceneLoader" method="_Start_Game"]
+[connection signal="pressed" from="TitleScreen/Button" to="LoadScene" method="_Start_Game"]

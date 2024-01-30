@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dysjvo3gsiwfg"]
 
-[ext_resource type="Script" path="res://Michael WIP/Scripts/UIBattleSpace.gd" id="1_u8xhj"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/BattleHeroPanel.gd" id="1_8pbgx"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="3_sirx5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nm2ik"]
@@ -24,7 +24,7 @@ pivot_offset = Vector2(32, 32)
 size_flags_vertical = 4
 mouse_filter = 2
 mouse_default_cursor_shape = 2
-script = ExtResource("1_u8xhj")
+script = ExtResource("1_8pbgx")
 metadata/_edit_group_ = true
 
 [node name="UIParent" type="Control" parent="."]

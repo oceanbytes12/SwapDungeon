@@ -2,7 +2,6 @@ extends Control
 
 class_name DraggableHeroPanel
 
-@onready var heroUIScene = preload("res://Michael WIP/GoodScenes/Hero_UI.tscn")
 @onready var FrontPanel : Control = $Front_Panel
 @onready var BackPanel : Control = $Back_Panel
 @onready var HighlightPanel : Control = $Front_Panel/HighLightPanel
