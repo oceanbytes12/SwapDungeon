@@ -49,7 +49,7 @@ func _return_all_panels():
 		if panel.has_method("ReturnPanel"):
 			panel.ReturnPanel()
 
-func _process(delta):
+func _process(_delta):
 	_check_upgrades()
 	
 func _check_upgrades():

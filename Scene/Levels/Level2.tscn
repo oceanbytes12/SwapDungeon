@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_c8ybf"]
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/DungeonTiles.png" id="2_ys0wo"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="3_mjq13"]
-[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Meleer.tscn" id="4_3fa6q"]
-[ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Ranger.tscn" id="5_al0ou"]
-[ext_resource type="PackedScene" path="res://Scenes/mager.tscn" id="6_p6xpc"]
+[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Units/Meleer.tscn" id="4_3fa6q"]
+[ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Units/Ranger.tscn" id="5_al0ou"]
+[ext_resource type="PackedScene" uid="uid://dm5nafv3bkhex" path="res://Scenes/Units/Mager.tscn" id="6_p6xpc"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="7_14wgo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iq15"]

@@ -4,7 +4,6 @@ var spawnPositions = []
 var AlexTester
 
 func _GetChildNodeOfType(parent, DesiredClass, allowInvisible = false):
-	var desired_children = []
 	for child in parent.get_children():
 		if is_instance_of(child, DesiredClass):
 			if(allowInvisible or child.visible):

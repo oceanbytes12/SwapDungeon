@@ -3,10 +3,10 @@ extends Node2D
 # This script and Camera script work together to select units with mouse click and drag
 # Processes clicking on units 
 
-@onready var cursor_text_box = get_node("CursorText")
 #@export var cursor_image_generic = load("res://Megan WIP/Cursor_Star.png")
 #@export var cursor_image_attack = load("res://Megan WIP/Cursor_Sword.png")
 @export var use_context_cursors = true
+@onready var cursor_text_box = get_node("CursorText")
 
 var units = [] # All the units in player's party
 var selected_units = []

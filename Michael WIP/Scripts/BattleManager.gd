@@ -61,7 +61,7 @@ func _UnLoadHeros():
 		PartyParent.remove_child(n)
 		n.queue_free()
 
-func _process(delta):
+func _process(_delta):
 	
 	if(isBattling):
 		if Input.is_key_pressed(KEY_K):

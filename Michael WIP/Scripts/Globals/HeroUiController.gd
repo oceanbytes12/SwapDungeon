@@ -7,7 +7,7 @@ var selectedBattleSpace : UIBattleSpace
 var selectedRosterPanel : HeroRosterPanel
 var partyRoster 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("LeftClick"):
 		_HandleLeftClickDown()
 	elif Input.is_action_just_released("LeftClick"):
