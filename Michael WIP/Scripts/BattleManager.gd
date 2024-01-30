@@ -1,10 +1,12 @@
 extends Node
 
-@onready var MeleeSkeleton = preload("res://Scenes/Units/Meleer.tscn")
 @onready var PartyParent = $Party
 @export var PartyBattleUI : Control
 @export var battlePanels : Array[UIBattleSpace]
 @export var StartBattleButton : Button
+@export var levelManager : LevelManager
+@export var unitManager : UnitManager
+
 var battleParent
 var isBattling
 
@@ -31,7 +33,7 @@ func _BattlePartyGreaterThanOne():
 
 func _StartBattle():
 	isBattling = true
-	battleParent = LevelManager._GetNextLevel().instantiate()
+	battleParent = levelManager._GetNextLevel().instantiate()
 	call_deferred("_SpawnHeros")
 	get_parent().get_parent().add_child(battleParent)
 	
@@ -45,9 +47,11 @@ func _SpawnHeros():
 			continue
 		
 		#Swap this out for a reference to a real hero!
-		var newHero = MeleeSkeleton.instantiate()
-		newHero.teamColor = "blue"
+		#res://Scenes/Units/
+		
+		var newHero = unitManager._GetUnitInstanceOfType(currentEnum)
 		newHero.controllable = true
+		
 		#Position them properly
 		battleParent.add_child(newHero)
 		newHero.global_position = spawns[heroEnumIndex].global_position
@@ -76,7 +80,6 @@ func _process(_delta):
 		if _BattlePartyGreaterThanOne():
 			StartBattleButton.visible = (_BattlePartyGreaterThanOne())
 			
-
 func _WinBattle():
 	isBattling = false
 	await get_tree().create_timer(1).timeout
@@ -84,8 +87,8 @@ func _WinBattle():
 	Globals.spawnPositions.clear()
 	
 	
-	LevelManager._IncrementLevelIndex()
-	if(LevelManager._GetNextLevel()):
+	levelManager._IncrementLevelIndex()
+	if(levelManager._GetNextLevel()):
 		emit_signal("finish_battle")
 	else:
 		emit_signal("finish_game")

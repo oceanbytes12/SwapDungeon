@@ -1,9 +1,9 @@
 extends Node
 
 var HeroIconPackedScenes = []
-
+var Path : String = "res://Michael WIP/HeroIcons/"
 func _ready():
-	HeroIconPackedScenes = Globals._LoadPackedScenesInPath("res://Michael WIP/HeroIcons/")
+	HeroIconPackedScenes = Globals._LoadPackedScenesInPath(Path)
 
 
 #Grabs an icon for that hero as a Sprite2D instance

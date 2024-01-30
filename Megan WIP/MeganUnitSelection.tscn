@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Megan WIP/MeganUnitSelection.gd" id="1_d1s6g"]
 [ext_resource type="Script" path="res://Megan WIP/Camera.gd" id="2_emhbh"]
-[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Units/Meleer.tscn" id="4_l7k0h"]
+[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Units/Enemies/MeleeSkeleton.tscn" id="4_l7k0h"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="5_8acj4"]
-[ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Units/Ranger.tscn" id="5_tgycb"]
+[ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Units/Enemies/RangedSkeleton.tscn" id="5_tgycb"]
 [ext_resource type="Script" path="res://Scene/MouseOver.gd" id="6_7u6wc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwqck"]

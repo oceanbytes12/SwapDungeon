@@ -2,16 +2,16 @@ extends Node
 
 enum HeroTypes 
 { 
-	Warrior = 0, 
-	Mage = 1,
-	Archer = 2 
+	Warrior1 = 0, 
+	Mage1 = 1,
+	Archer1 = 2 
 }
 
 enum UpgradedHeroTypes
 {
-	Maurader = 0,
-	ArchWizard = 1,
-	Sniper = 2
+	Warrior2 = 0,
+	Mage2 = 1,
+	Archer2 = 2
 }
 
 #Returns a random hero type from those in the game.

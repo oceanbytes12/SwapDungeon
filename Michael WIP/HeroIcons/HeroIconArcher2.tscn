@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwde2qqrk32c4"]
+
+[ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="1_aw73s"]
+
+[node name="HeroSpriteSniper" type="Sprite2D"]
+z_index = 1
+texture = ExtResource("1_aw73s")
+region_enabled = true
+region_rect = Rect2(210, 146, 24, 34)

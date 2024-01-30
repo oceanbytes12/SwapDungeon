@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxgalpram8qcb"]
+[gd_scene load_steps=11 format=3 uid="uid://bxgalpram8qcb"]
 
+[ext_resource type="Script" path="res://Scene/UnitManager.gd" id="1_4em6q"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/BattleManager.gd" id="1_45nev"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/LevelManager.gd" id="1_cvfyf"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/Tweeners/SlideInUI.gd" id="2_7sjb0"]
 [ext_resource type="Script" path="res://Scene/PartyRoster.gd" id="3_yxyhh"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="4_gtbun"]
@@ -13,11 +15,19 @@ size = Vector2(464, 64)
 
 [node name="NewGame" type="Node2D"]
 
-[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels", "StartBattleButton")]
+[node name="UnitManager" type="Node" parent="."]
+script = ExtResource("1_4em6q")
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("1_cvfyf")
+
+[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels", "StartBattleButton", "levelManager", "unitManager")]
 script = ExtResource("1_45nev")
 PartyBattleUI = NodePath("../GameUI/PartyBattleUI")
 battlePanels = [NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel2"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel3")]
 StartBattleButton = NodePath("../GameUI/PartyBattleUI/StartBattleButton")
+levelManager = NodePath("../LevelManager")
+unitManager = NodePath("../UnitManager")
 
 [node name="Party" type="Node2D" parent="BattleManager"]
 
@@ -314,6 +324,13 @@ text = "Start Over"
 script = ExtResource("7_oidtt")
 scenename = "res://Scene/Game.tscn"
 
+[connection signal="finish_battle" from="BattleManager" to="GameUI/RosterUI" method="slide_in"]
+[connection signal="finish_battle" from="BattleManager" to="GameUI/RosterUI/PartyRoster" method="_return_all_panels"]
+[connection signal="finish_battle" from="BattleManager" to="GameUI/PartyAddUI" method="slide_in"]
+[connection signal="finish_game" from="BattleManager" to="GameUI/GameWin" method="slide_in"]
+[connection signal="lose_battle" from="BattleManager" to="GameUI/GameOver" method="slide_in"]
+[connection signal="move_To_Ready_Screen" from="BattleManager" to="GameUI/PartyBattleUI" method="slide_in"]
+[connection signal="move_To_Ready_Screen" from="BattleManager" to="GameUI/PartyAddUI" method="slide_out"]
 [connection signal="onPartyAddedTo" from="GameUI/RosterUI/PartyRoster" to="BattleManager" method="_FinishPartyAddition"]
 [connection signal="mouse_entered" from="GameUI/RosterUI/PartyRoster/Area2D" to="GameUI/RosterUI/PartyRoster" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="GameUI/RosterUI/PartyRoster/Area2D" to="GameUI/RosterUI/PartyRoster" method="_on_area_2d_mouse_exited"]
