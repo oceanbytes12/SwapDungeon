@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=31 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ft0sp"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_nu0w1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerWalk.gd" id="9_cbxsc"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyDead.gd" id="11_73he8"]
 [ext_resource type="Script" path="res://Scene/MouseOver.gd" id="11_a2yo4"]
+[ext_resource type="Texture2D" uid="uid://bo1opgc28somc" path="res://Art/MousePointer1.png" id="13_tngif"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -431,11 +432,13 @@ libraries = {
 }
 speed_scale = 2.0
 
-[node name="MouseOverShape" type="Area2D" parent="."]
+[node name="ClickBox" type="Area2D" parent="."]
+visible = false
 monitorable = false
 script = ExtResource("11_a2yo4")
+mouse_over_cursor = ExtResource("13_tngif")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseOverShape"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickBox"]
 position = Vector2(0, -2)
 rotation = -3.14159
 scale = Vector2(0.872446, -1.08547)

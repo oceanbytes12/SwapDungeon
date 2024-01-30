@@ -13,7 +13,6 @@ signal AttackCommand
 signal Died
 
 var selected = false
-var follow_cursor = false
 var is_dead = false
 @onready var state_machine = $SM
 
@@ -55,17 +54,11 @@ func _process(_delta):
 func _physics_process(_delta):
 	move_and_slide()
 
-func _input(event):
-	if event.is_action_pressed("RightClick"):
-		follow_cursor = true
-	if event.is_action_released("RightClick"):
-		follow_cursor = false
-		if (selected == true):
-			WalkCommand.emit(get_global_mouse_position())
-
+func set_walk():
+	WalkCommand.emit(get_global_mouse_position())
+	
 func set_target(_target):
 	AttackCommand.emit(_target)
-	pass
 
 func take_hit(hit_position):
 	$UI/HealthBar.value -= 25
@@ -75,12 +68,14 @@ func take_hit(hit_position):
 		$CollisionShape2D.queue_free()
 		$Art/BlueHat.visible = false
 		$Art/RedHat.visible = false
+		$Selection.visible = false
 		Died.emit()
 		z_index = 0
 		$MovementAnimations.play("Die")
 		$Art/DeadHead.visible = true
 		$Art/Head.visible = false
 		selected = false
+		controllable = false
 
 	else:
 		var direction = (global_position-hit_position).normalized()

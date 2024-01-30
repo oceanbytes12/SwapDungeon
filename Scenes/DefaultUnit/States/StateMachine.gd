@@ -18,9 +18,6 @@ func _ready():
 		current_state = initial_state
 
 func _process(delta):
-	#if current_target :
-		#targets.erase(current_target)
-		#find_target()
 	if current_state:
 		current_state.Update(delta, current_target)
 
@@ -35,12 +32,17 @@ func on_state_change(new_state_name):
 	current_state = new_state
 
 func find_target():
-	if targets.is_empty():
-		current_target = null
-	else:
-		# this is trash we should add a way to check for closest
-		for target in targets:
-			current_target = targets.get(target)
+	current_target = null
+	# Finds the closest enemy
+	for target in targets:
+		var target_body = targets.get(target)
+		if current_target:
+			var distance_to_target = own_body.global_position.distance_to(target_body.global_position)
+			var distance_to_current = own_body.global_position.distance_to(current_target.global_position)
+			if distance_to_target < distance_to_current:
+				current_target = target_body
+		else:
+			current_target = target_body
 
 func _on_unit_sm_hit(direction):
 	if current_state.name != "Dead":
@@ -73,8 +75,6 @@ func _on_sight_range_body_shape_exited(_body_rid, body, _body_shape_index, _loca
 	find_target()
 
 
-func _on_base_unit_attack_command(_target):
-	#may need to clear other target vars?
-	current_target = _target
-	#on_state_change("Attack")
+func _on_base_unit_attack_command(target):
+	current_target = target
 	on_state_change("Follow")

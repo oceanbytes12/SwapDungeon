@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn8y8e1qbyjbj"]
+[gd_scene load_steps=10 format=3 uid="uid://dn8y8e1qbyjbj"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_uly2x"]
+[ext_resource type="Texture2D" uid="uid://bo1opgc28somc" path="res://Art/MousePointer1.png" id="2_4h0cy"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="2_woe8w"]
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/DungeonTiles.png" id="3_5o442"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="4_gg4n0"]
@@ -76,6 +77,7 @@ corner_radius_bottom_left = 3
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_uly2x")
+mouse_pointer = ExtResource("2_4h0cy")
 
 [node name="SpawnPositions" parent="." instance=ExtResource("2_woe8w")]
 
@@ -89,8 +91,7 @@ layer_0/tile_data = PackedInt32Array(327688, 196609, 1, 262152, 196609, 1, 19661
 script = ExtResource("4_gg4n0")
 
 [node name="Melee1" parent="." instance=ExtResource("5_73vln")]
-z_index = 1
-position = Vector2(-129, -11)
+position = Vector2(-172, -5)
 teamColor = "blue"
 controllable = true
 

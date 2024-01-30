@@ -85,42 +85,52 @@ func get_units_in_area(area):
 				result.append(unit)
 	return result
 
+func check_object_under_mouse():
+	# Get the mouse's position
+	var space = get_world_2d().direct_space_state
+	var query = PhysicsPointQueryParameters2D.new()
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	query.position = get_global_mouse_position()
+	# Check for collider
+	var intersection = space.intersect_point(query,1)
+	if intersection:
+		var collider = intersection[0].collider
+		var clicked_unit = collider.get_parent()
+		if "unit" in clicked_unit.is_in_group("unit"):
+			return clicked_unit
+	return null
+		
 
 func _input(event):
 	if event.is_action_pressed("Ctrl"):
 		is_Ctrl_pressed = true
 	if event.is_action_released("Ctrl"):
 		is_Ctrl_pressed = false
+	
+	if event.is_action_pressed("RightClick"):
+		var collider = check_object_under_mouse()
 		
 	if event.is_action_pressed("LeftClick"):
-		var space = get_world_2d().direct_space_state
-		# Get the mouse's position
-		var query = PhysicsPointQueryParameters2D.new()
-		query.collide_with_areas = true
-		query.collide_with_bodies = false
-		
-		query.position = get_global_mouse_position()
-		var intersection = space.intersect_point(query,1)
-		var collider = null
-
-		if intersection:
-			collider = intersection[0].collider
-			if (collider.name == "MouseOverShape"):
-				var clicked_unit =  collider.get_parent()
-				# if the parent is controllable, we know it's a player unit
-				if clicked_unit.controllable:
-					deselect_all_units()
-					# Select this unit, add to array
-					clicked_unit.set_selected(true)
-					selected_units.append(clicked_unit)
-				# Otherwise, we know it's an enemy unit
-				else:
-					# Set the clicked enemy unit as the target for all selected units
-					set_player_unit_target(clicked_unit)
-			else: # Making sure we deselect if the user clicked elsewhere
+		var collider = check_object_under_mouse()
+		if collider:
+			pass
+		if (collider.name == "MouseOverShape"):
+			var clicked_unit = collider.get_parent()
+			# if the parent is controllable, we know it's a player unit
+			if clicked_unit.controllable:
 				deselect_all_units()
-		else: 
+				# Select this unit, add to array
+				clicked_unit.set_selected(true)
+				selected_units.append(clicked_unit)
+			# Otherwise, we know it's an enemy unit
+			else:
+				# Set the clicked enemy unit as the target for all selected units
+				set_player_unit_target(clicked_unit)
+		else: # Making sure we deselect if the user clicked elsewhere
 			deselect_all_units()
+	else: 
+		deselect_all_units()
 
 
 func deselect_all_units():

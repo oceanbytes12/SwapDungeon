@@ -92,13 +92,15 @@ script = ExtResource("3_mjq13")
 
 [node name="Melee1" parent="." instance=ExtResource("4_3fa6q")]
 z_index = 1
-position = Vector2(16, 35)
-teamColor = "red"
+position = Vector2(-154, -6)
+teamColor = "blue"
+controllable = true
 
 [node name="Melee3" parent="." instance=ExtResource("4_3fa6q")]
 z_index = 1
-position = Vector2(16, -21)
-teamColor = "red"
+position = Vector2(-132, 67)
+teamColor = "blue"
+controllable = true
 
 [node name="Melee2" parent="." instance=ExtResource("4_3fa6q")]
 z_index = 1
@@ -111,8 +113,9 @@ position = Vector2(48, 33)
 teamColor = "red"
 
 [node name="Ranger1" parent="." instance=ExtResource("5_al0ou")]
-position = Vector2(32, 88)
-teamColor = "red"
+position = Vector2(-169, 43)
+teamColor = "blue"
+controllable = true
 walkSpeed = 15.0
 runSpeed = 40.0
 weaponRange = 120.0
@@ -131,8 +134,9 @@ position = Vector2(120, 92)
 teamColor = "red"
 
 [node name="Mager2" parent="." instance=ExtResource("6_p6xpc")]
-position = Vector2(183, 63)
-teamColor = "red"
+position = Vector2(-219, 12)
+teamColor = "blue"
+controllable = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 

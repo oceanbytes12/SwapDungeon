@@ -92,6 +92,10 @@ y_sort_enabled = true
 position = Vector2(138, -24)
 teamColor = "red"
 
+[node name="Meleer2" parent="Units" instance=ExtResource("4_kkry8")]
+position = Vector2(138, -24)
+teamColor = "red"
+
 [node name="Ranger" parent="Units" instance=ExtResource("4_5ywkb")]
 position = Vector2(-156, -20)
 teamColor = "blue"
