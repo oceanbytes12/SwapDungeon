@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqqo5fabixeal"]
+[gd_scene load_steps=10 format=3 uid="uid://cqqo5fabixeal"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_iqb71"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="2_wdnob"]
@@ -6,8 +6,6 @@
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="4_dpfmg"]
 [ext_resource type="PackedScene" uid="uid://hodefvjvsva3" path="res://Scenes/Units/Players/Mage1.tscn" id="5_oyb56"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Units/Enemies/MeleeSkeleton.tscn" id="5_sky41"]
-[ext_resource type="PackedScene" uid="uid://h04yonki0lqp" path="res://Scenes/Units/Players/Warrior1.tscn" id="5_tm2dc"]
-[ext_resource type="PackedScene" uid="uid://cyn4v2fksoy82" path="res://Scenes/Units/Players/Archer1.tscn" id="6_spwj6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iq15"]
 texture = ExtResource("3_ksch6")
@@ -92,27 +90,25 @@ layer_0/tile_data = PackedInt32Array(327688, 196609, 1, 262152, 196609, 1, 19661
 script = ExtResource("4_dpfmg")
 
 [node name="Mage1" parent="." instance=ExtResource("5_oyb56")]
-position = Vector2(-216, -21)
-
-[node name="Knight1" parent="." instance=ExtResource("5_tm2dc")]
-position = Vector2(-169, -41)
-
-[node name="Ranger1" parent="." instance=ExtResource("6_spwj6")]
-position = Vector2(-179, 22)
+position = Vector2(-193, -4)
+weaponRange = 100.0
 
 [node name="Melee2" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
-position = Vector2(53, -23)
+position = Vector2(159, -23)
 teamColor = "red"
+weaponRange = 100.0
 
 [node name="Melee4" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
-position = Vector2(48, 33)
+position = Vector2(154, 33)
 teamColor = "red"
+weaponRange = 100.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="SelectionPanel" type="Panel" parent="UI"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_j3qaq")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]

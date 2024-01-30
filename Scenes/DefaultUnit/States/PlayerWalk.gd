@@ -11,7 +11,9 @@ var timeout_timer : float
 func Enter(_target):
 	timeout_timer = timeout
 
-func Update(delta: float, _target: CharacterBody2D):
+func Update(delta: float, target: CharacterBody2D):
+	if target:
+		Transitioned.emit("Follow")
 	if timeout_timer > 0:
 		timeout_timer -= delta
 	else:
