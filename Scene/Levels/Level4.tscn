@@ -97,13 +97,25 @@ position = Vector2(127, 56)
 teamColor = "red"
 
 [node name="Ranger" parent="." instance=ExtResource("7_wer38")]
-position = Vector2(240, -79)
+position = Vector2(164, -41)
+teamColor = "red"
+walkSpeed = 10.0
+runSpeed = 35.0
+weaponRange = 120.0
+weaponCooldown = 3.0
 
 [node name="Mager" parent="." instance=ExtResource("8_kwqd3")]
-position = Vector2(317, 52)
+position = Vector2(198, 51)
+teamColor = "red"
 
 [node name="Ranger2" parent="." instance=ExtResource("7_wer38")]
-position = Vector2(252, 2)
+position = Vector2(183, 1)
+teamColor = "red"
+walkSpeed = 10.0
+runSpeed = 40.0
+weaponRange = 100.0
+weaponCooldown = 3.0
+weaponDamage = 20
 
 [node name="Melee2" parent="." instance=ExtResource("6_y4vxb")]
 z_index = 1
