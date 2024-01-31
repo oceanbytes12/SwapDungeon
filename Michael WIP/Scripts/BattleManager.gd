@@ -27,7 +27,8 @@ func _GetHeroTypesFromBattleUIPanels():
 
 func _BattlePartyGreaterThanOne():
 	for heroPanel in battlePanels:
-		if(heroPanel.GetHeroType()):
+		if(heroPanel.GetHeroType() != null):
+			print("Can start battle!",heroPanel.GetHeroType())
 			return true
 	return false
 
@@ -77,8 +78,7 @@ func _process(_delta):
 		elif(PlayersAreDead()):
 			_LoseBattle()
 	else:
-		if _BattlePartyGreaterThanOne():
-			StartBattleButton.visible = (_BattlePartyGreaterThanOne())
+		StartBattleButton.visible = (_BattlePartyGreaterThanOne())
 			
 func _WinBattle():
 	isBattling = false
