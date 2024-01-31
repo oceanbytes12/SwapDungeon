@@ -31,7 +31,7 @@ shader = ExtResource("2_rjmq6")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
-[node name="Knight1" instance=ExtResource("1_6fida")]
+[node name="Warrior1" instance=ExtResource("1_6fida")]
 teamColor = "blue"
 controllable = true
 walkSpeed = 15.0

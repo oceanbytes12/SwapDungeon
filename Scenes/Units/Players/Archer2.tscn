@@ -31,7 +31,7 @@ shader = ExtResource("3_hnrmx")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
-[node name="Ranger1" instance=ExtResource("1_a2rtj")]
+[node name="Archer2" instance=ExtResource("1_a2rtj")]
 teamColor = "blue"
 controllable = true
 walkSpeed = 15.0
