@@ -1,9 +1,10 @@
 extends Area2D
 
 var source_team_color
-@export var speed :float
+var speed = 80
 var target
 var turn_speed = 0.5
+var damage = 50
 
 func _ready():
 	$AnimatedSprite2D.play("FireSpell")
@@ -32,7 +33,7 @@ func _on_body_entered(body):
 	# Check if hitting self or friend
 	if body.is_in_group("unit") and body.teamColor != source_team_color:
 		if body.has_method("take_hit"):
-			body.take_hit(global_position)
+			body.take_hit(global_position, damage)
 			queue_free()
 
 func angle_to_angle(from, to):

@@ -19,7 +19,7 @@ func _ready():
 
 func _process(delta):
 	if own_body.teamColor == "blue":
-		print(current_target)
+		pass
 	if current_state:
 		current_state.Update(delta, current_target)
 

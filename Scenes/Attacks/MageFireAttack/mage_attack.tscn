@@ -87,6 +87,6 @@ shape = SubResource("CapsuleShape2D_w3hqt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q78e8")
 animation = &"FireSpell"
-frame_progress = 0.345683
+autoplay = "FireSpell"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

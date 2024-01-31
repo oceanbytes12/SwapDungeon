@@ -60,8 +60,8 @@ func set_walk():
 func set_target(_target):
 	AttackCommand.emit(_target)
 
-func take_hit(hit_position):
-	$UI/HealthBar.value -= 25
+func take_hit(hit_position, damage):
+	$UI/HealthBar.value -= damage
 	if $UI/HealthBar.value <= 0:
 		is_dead = true
 		$UI/HealthBar.visible = false

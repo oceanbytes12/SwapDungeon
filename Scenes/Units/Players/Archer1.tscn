@@ -36,7 +36,7 @@ teamColor = "blue"
 controllable = true
 walkSpeed = 15.0
 runSpeed = 40.0
-weaponRange = 90.0
+weaponRange = 120.0
 weaponCooldown = 2.0
 
 [node name="Shadow" parent="." index="0"]

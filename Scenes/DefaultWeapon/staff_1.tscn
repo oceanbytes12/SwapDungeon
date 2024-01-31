@@ -1,12 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c04ap86578v3j"]
+[gd_scene load_steps=3 format=3 uid="uid://c04ap86578v3j"]
 
 [ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="1_bk0yr"]
 [ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="2_7wwri"]
-[ext_resource type="PackedScene" uid="uid://bgoj5ydtylqws" path="res://Scenes/Attacks/MageFireAttack/mage_attack.tscn" id="2_t0v0a"]
 
 [node name="Staff1" instance=ExtResource("1_bk0yr")]
-weaponEffectScene = ExtResource("2_t0v0a")
 
 [node name="Art" parent="." index="1"]
+position = Vector2(9, 0)
 texture = ExtResource("2_7wwri")
 region_rect = Rect2(75, 7, 10, 36)

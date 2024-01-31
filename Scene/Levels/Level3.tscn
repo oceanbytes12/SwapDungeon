@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c05cqors27ki7"]
+[gd_scene load_steps=10 format=3 uid="uid://c05cqors27ki7"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_uly2x"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="2_woe8w"]
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/DungeonTiles.png" id="3_5o442"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="4_gg4n0"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Units/Enemies/MeleeSkeleton.tscn" id="5_73vln"]
-[ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Units/Enemies/RangedSkeleton.tscn" id="6_h3yx5"]
 [ext_resource type="PackedScene" uid="uid://dm5nafv3bkhex" path="res://Scenes/Units/Enemies/MageSkeleton.tscn" id="7_im5ij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iq15"]
@@ -100,16 +99,8 @@ z_index = 1
 position = Vector2(48, 33)
 teamColor = "red"
 
-[node name="Ranger2" parent="." instance=ExtResource("6_h3yx5")]
-position = Vector2(158, 9)
-teamColor = "red"
-walkSpeed = 15.0
-runSpeed = 40.0
-weaponRange = 120.0
-weaponCooldown = 2.0
-
 [node name="Mager" parent="." instance=ExtResource("7_im5ij")]
-position = Vector2(120, 92)
+position = Vector2(143, 7)
 teamColor = "red"
 
 [node name="UI" type="CanvasLayer" parent="."]
