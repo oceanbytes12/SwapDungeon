@@ -4,7 +4,8 @@ var selected_units = []
 var is_Ctrl_pressed = false
 @export var use_context_cursors = true
 #@export var mouse_pointer: Resource
-@export var mouse_pointer = load("res://Art/MousePointer1.png")
+@export var mouse_pointer = load("res://Art/MousePointer3.png")
+@export var mouse_attack = load("res://Art/MousePointer4.png")
 
 func _ready():
 	Globals.AlexTester = self
@@ -14,9 +15,9 @@ func _physics_process(_delta):
 		var collider = check_collider_under_mouse()
 		if collider and collider.has_method("mouse_over"):
 			#mouse_over_text = collider.mouse_over()
-			Input.set_custom_mouse_cursor(mouse_pointer, 0, Vector2(16,16))
+			Input.set_custom_mouse_cursor(mouse_attack, 0, Vector2(8,8))
 		else:
-			Input.set_custom_mouse_cursor(mouse_pointer, 0, Vector2(16,16))
+			Input.set_custom_mouse_cursor(mouse_pointer, 0, Vector2(8,8))
 			
 
 # Get all units within the bounds of the drawn rectangle

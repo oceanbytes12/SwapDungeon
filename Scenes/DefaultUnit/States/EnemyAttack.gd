@@ -9,6 +9,7 @@ signal Untarget
 var colldown_time := 0.0
 
 func make_attack():
+	# emit warning
 	Attacked.emit()
 	colldown_time = own_body.weaponCooldown
 	
