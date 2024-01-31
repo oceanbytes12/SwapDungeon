@@ -32,7 +32,7 @@ shader = ExtResource("3_j5tn2")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
-[node name="Mage1" instance=ExtResource("1_0hmmf")]
+[node name="Mage2" instance=ExtResource("1_0hmmf")]
 teamColor = "blue"
 controllable = true
 walkSpeed = 10.0
