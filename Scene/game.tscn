@@ -1,26 +1,51 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxgalpram8qcb"]
+[gd_scene load_steps=29 format=3 uid="uid://bxgalpram8qcb"]
 
 [ext_resource type="Script" path="res://Scene/UnitManager.gd" id="1_4em6q"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/BattleManager.gd" id="1_45nev"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/LevelManager.gd" id="1_cvfyf"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/Globals/HeroIconController.gd" id="1_tyu5b"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/Tweeners/SlideInUI.gd" id="2_7sjb0"]
+[ext_resource type="PackedScene" uid="uid://bh4kd4tdp6wrf" path="res://Michael WIP/HeroIcons/HeroIconArcher1.tscn" id="2_icyyd"]
+[ext_resource type="PackedScene" uid="uid://dwde2qqrk32c4" path="res://Michael WIP/HeroIcons/HeroIconArcher2.tscn" id="3_8pu0e"]
 [ext_resource type="Script" path="res://Scene/PartyRoster.gd" id="3_yxyhh"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="4_gtbun"]
+[ext_resource type="PackedScene" uid="uid://bkw2ig8q2brc5" path="res://Michael WIP/HeroIcons/HeroIconMage1.tscn" id="4_vjyf5"]
 [ext_resource type="PackedScene" uid="uid://dysjvo3gsiwfg" path="res://Michael WIP/GoodScenes/BattlePanel.tscn" id="5_0i2aq"]
+[ext_resource type="PackedScene" uid="uid://bvueiwa1b75ce" path="res://Michael WIP/HeroIcons/HeroIconMage2.tscn" id="5_rkk53"]
 [ext_resource type="Script" path="res://Scene/HeroGenerator.gd" id="6_5blkj"]
+[ext_resource type="PackedScene" uid="uid://duxtnvk4lskhn" path="res://Michael WIP/HeroIcons/HeroIconWarrior1.tscn" id="6_23ggw"]
+[ext_resource type="PackedScene" uid="uid://5ii0pri4863h" path="res://Michael WIP/HeroIcons/HeroIconWarrior2.tscn" id="7_i05wt"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/LoadScene.gd" id="7_oidtt"]
+[ext_resource type="PackedScene" uid="uid://h04yonki0lqp" path="res://Scenes/Units/Players/Warrior1.tscn" id="9_6hsfv"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://tile_map.tscn" id="10_m6j52"]
+[ext_resource type="PackedScene" uid="uid://bdv1mfy7gs5lb" path="res://Scenes/Units/Players/Warrior2.tscn" id="10_mftyf"]
+[ext_resource type="PackedScene" uid="uid://db2bmrfjuccta" path="res://Scene/Levels/Level1.tscn" id="10_ud1kq"]
+[ext_resource type="PackedScene" uid="uid://dn8y8e1qbyjbj" path="res://Scene/Levels/Level2.tscn" id="11_0yeut"]
+[ext_resource type="PackedScene" uid="uid://cyn4v2fksoy82" path="res://Scenes/Units/Players/Archer1.tscn" id="11_qpygm"]
+[ext_resource type="PackedScene" uid="uid://c05cqors27ki7" path="res://Scene/Levels/Level3.tscn" id="12_bdyl7"]
+[ext_resource type="PackedScene" uid="uid://b3hn3jfn1k70h" path="res://Scenes/Units/Players/Archer2.tscn" id="12_hw13h"]
+[ext_resource type="PackedScene" uid="uid://hodefvjvsva3" path="res://Scenes/Units/Players/Mage1.tscn" id="13_dwe2s"]
+[ext_resource type="PackedScene" uid="uid://b015teb8nojv0" path="res://Scene/Levels/Level4.tscn" id="13_qnuqs"]
+[ext_resource type="PackedScene" uid="uid://8m6kuwd85l7w" path="res://Scenes/Units/Players/Mage2.tscn" id="14_w20u0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnua3"]
 size = Vector2(464, 64)
 
 [node name="NewGame" type="Node2D"]
 
+[node name="HeroIconController" type="Node" parent="."]
+script = ExtResource("1_tyu5b")
+HeroIconNames = Array[String](["Warrior1", "Warrior2", "Archer1", "Archer2", "Mage1", "Mage2"])
+HeroIconPackedScenesArray = Array[PackedScene]([ExtResource("6_23ggw"), ExtResource("7_i05wt"), ExtResource("2_icyyd"), ExtResource("3_8pu0e"), ExtResource("4_vjyf5"), ExtResource("5_rkk53")])
+
 [node name="UnitManager" type="Node" parent="."]
 script = ExtResource("1_4em6q")
+HeroNames = Array[String](["Warrior1", "Warrior2", "Archer1", "Archer2", "Mage1", "Mage2"])
+HeroPackedScenesArray = Array[PackedScene]([ExtResource("9_6hsfv"), ExtResource("10_mftyf"), ExtResource("11_qpygm"), ExtResource("12_hw13h"), ExtResource("13_dwe2s"), ExtResource("14_w20u0")])
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("1_cvfyf")
+levels = Array[PackedScene]([ExtResource("10_ud1kq"), ExtResource("11_0yeut"), ExtResource("12_bdyl7"), ExtResource("13_qnuqs")])
 
 [node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels", "StartBattleButton", "levelManager", "unitManager", "tileMap")]
 script = ExtResource("1_45nev")

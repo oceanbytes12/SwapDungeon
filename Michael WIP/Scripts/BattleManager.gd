@@ -29,7 +29,6 @@ func _GetHeroTypesFromBattleUIPanels():
 func _BattlePartyGreaterThanOne():
 	for heroPanel in battlePanels:
 		if(heroPanel.GetHeroType() != null):
-			print("Can start battle!",heroPanel.GetHeroType())
 			return true
 	return false
 
@@ -69,9 +68,8 @@ func _UnLoadHeros():
 
 func _process(_delta):
 	
-	if Input.is_key_pressed(KEY_ESCAPE):
-		print("Quitting!")
-		get_tree().quit()
+	#if Input.is_key_pressed(KEY_ESCAPE):
+		#get_tree().quit()
 	
 	if(isBattling):
 		if Input.is_key_pressed(KEY_K):

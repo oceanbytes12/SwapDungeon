@@ -14,7 +14,6 @@ func _ready():
 	expand_in()
 
 func expand_in():
-	print("Coming in!")
 	scale = Vector2(InitialScale, InitialScale)
 	tween = create_tween() # Creates a new tween
 	tween.tween_property(self, "scale", Vector2(1.0,1.0), 0.25)
@@ -23,7 +22,6 @@ func expand_in():
 	#tween.tween_property(self, "position:x", InitialX+5, MoveDuration).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT).set_delay(Delay)
 	#tween.chain().tween_property(SlidingImage, "rotation_degrees", 0, RotDuration).set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_IN_OUT)
 	#tween.tween_callback(inform_finish)
-	pass
 	
 func inform_finish():
 	emit_signal("on_tween_finish")

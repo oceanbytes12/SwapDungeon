@@ -50,14 +50,12 @@ func _generateRandomHero():
 func _CreateHeroOfType(NewHeroType):
 	HeroType = NewHeroType
 	
-	HeroIcon = HeroIconController._GetIconInstanceOfType(HeroType)
-	if(HeroIcon):
+	HeroIcon = Globals.Icons._GetIconInstanceOfType(HeroType)
+	if(is_instance_valid(HeroIcon)):
 		var TargetChild = FrontPanel.get_child(0)
 		TargetChild.add_child(HeroIcon)
 		HeroIcon.position = Vector2.ZERO + TargetChild.size / 2
 		
-	else:
-		print("Failed to get a random hero.")
 	
 	var randomHeroNum = RandomNumberGenerator.new().randf()
 	name = HeroType + str(randomHeroNum)

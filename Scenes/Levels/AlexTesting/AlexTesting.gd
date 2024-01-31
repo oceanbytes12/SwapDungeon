@@ -5,8 +5,8 @@ var targeted_unit = null
 var is_Ctrl_pressed = false
 @export var use_context_cursors = true
 #@export var mouse_pointer: Resource
-@export var mouse_pointer = load("res://Art/MousePointer3.png")
-@export var mouse_attack = load("res://Art/MousePointer4.png")
+@export var mouse_pointer = preload("res://Art/MousePointer3.png")
+@export var mouse_attack = preload("res://Art/MousePointer4.png")
 
 func _ready():
 	Globals.AlexTester = self
@@ -61,9 +61,11 @@ func check_collider_under_mouse():
 
 func check_object_under_mouse():
 	var collider = check_collider_under_mouse()
-	var clicked_unit = collider.get_parent()
-	if clicked_unit.is_in_group("unit") and collider.name == "ClickBox":
-		return clicked_unit
+	if(is_instance_valid(collider)):
+		var clicked_unit = collider.get_parent() #Collider is Nil?
+		if clicked_unit.is_in_group("unit") and collider.name == "ClickBox":
+			return clicked_unit
+			
 	return null
 
 func _input(event):

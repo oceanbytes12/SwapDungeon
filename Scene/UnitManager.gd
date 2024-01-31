@@ -3,19 +3,20 @@ extends Node
 class_name UnitManager
 
 var unitFolder = "res://Scenes/Units/Players/"
-var UnitDict = {}
+var UnitDict : Dictionary
 var UnupgradedDict = {}
 
-
+@export var HeroNames : Array[String]
+@export var HeroPackedScenesArray:Array[PackedScene]
 
 func _ready():
 	Globals.unitManager = self
-	for unit in Globals._LoadPackedScenesInPath(unitFolder):
-		var unitname = findSubstringAfterLastSlashBeforeTscn(unit.resource_path)
-		UnitDict[unitname] = unit
-		if("1" in unitname):
-			UnupgradedDict[unitname] = unit
-			
+	for Index in range(HeroNames.size()):
+		UnitDict[HeroNames[Index]] = HeroPackedScenesArray[Index]
+		
+		if("1" in HeroNames[Index]):
+			UnupgradedDict[HeroNames[Index]] = HeroPackedScenesArray[Index]
+	
 func _GetUnitInstanceOfType(HeroType):
 	return UnitDict[HeroType].instantiate()
 
@@ -34,7 +35,6 @@ func findSubstringAfterLastSlashBeforeTscn(input_string: String) -> String:
 	var regex := RegEx.new()
 	
 	if regex.compile(regex_pattern) != OK:
-		print("Error compiling regex pattern")
 		return ""
 
 	var match := regex.search(input_string)
@@ -43,7 +43,6 @@ func findSubstringAfterLastSlashBeforeTscn(input_string: String) -> String:
 		var substring_after_last_slash = match.get_string(1)
 		return substring_after_last_slash
 	else:
-		print("No match found")
 		return ""
 
 func splitString(s):
