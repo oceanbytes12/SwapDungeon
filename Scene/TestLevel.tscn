@@ -95,37 +95,31 @@ position = Vector2(-129, 2)
 [node name="Melee2" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(151, -58)
-teamColor = "red"
 weaponRange = 100.0
 
 [node name="Melee3" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(189, -97)
-teamColor = "red"
 weaponRange = 100.0
 
 [node name="Melee5" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(94, 53)
-teamColor = "red"
 weaponRange = 100.0
 
 [node name="Melee6" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(70, -13)
-teamColor = "red"
 weaponRange = 100.0
 
 [node name="Melee7" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(120, -104)
-teamColor = "red"
 weaponRange = 100.0
 
 [node name="Melee4" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(154, 33)
-teamColor = "red"
 weaponRange = 100.0
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -135,3 +129,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_j3qaq")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]
+[connection signal="AttackCommand" from="Mage2" to="Mage2/SM" method="_on_base_unit_attack_command"]
+[connection signal="Died" from="Mage2" to="Mage2/SM" method="_on_base_unit_died"]
+[connection signal="Hit" from="Mage2" to="Mage2/SM" method="_on_unit_sm_hit"]
+[connection signal="WalkCommand" from="Mage2" to="Mage2/SM" method="_on_base_unit_walk_command"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdv1mfy7gs5lb"]
+[gd_scene load_steps=9 format=3 uid="uid://bdv1mfy7gs5lb"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_vfqp5"]
 [ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="2_fnja0"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_p0ywo"]
 [ext_resource type="PackedScene" uid="uid://bwq1s7k6b0xsv" path="res://Scenes/DefaultWeapon/sword_1.tscn" id="4_bj2dc"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerStand.gd" id="5_btmrg"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -56,3 +57,10 @@ region_rect = Rect2(37, 55, 20, 20)
 [node name="Sword1" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_bj2dc")]
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
+
+[node name="SM" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Stand")
+
+[node name="Stand" type="Node" parent="SM" index="6" node_paths=PackedStringArray("own_body")]
+script = ExtResource("5_btmrg")
+own_body = NodePath("../..")

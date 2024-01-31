@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=32 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ft0sp"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_nu0w1"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_spybr"]
+[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="3_wioxq"]
 [ext_resource type="Texture2D" uid="uid://pt6ga01gn812" path="res://Art/SkelyBoyParts2x.png" id="4_lth50"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/StateMachine.gd" id="4_mbm05"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyFollow.gd" id="5_bf3th"]
@@ -45,7 +46,7 @@ radius = 6.0
 height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
-radius = 278.016
+radius = 175.0
 
 [sub_resource type="Animation" id="Animation_h2q2f"]
 length = 0.001
@@ -328,6 +329,12 @@ texture = ExtResource("2_nu0w1")
 region_enabled = true
 region_rect = Rect2(40, 49, 20, 13)
 
+[node name="Targeted" type="Sprite2D" parent="."]
+position = Vector2(0, 10)
+texture = ExtResource("3_wioxq")
+region_enabled = true
+region_rect = Rect2(38, 153, 20, 13)
+
 [node name="Art" type="Node2D" parent="."]
 position = Vector2(0, 3)
 
@@ -401,7 +408,6 @@ script = ExtResource("11_73he8")
 own_body = NodePath("../..")
 
 [node name="SightRange" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
 shape = SubResource("CircleShape2D_5cwag")

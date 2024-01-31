@@ -1,6 +1,7 @@
 extends Node2D
 
 var selected_units = []
+var targeted_unit = null
 var is_Ctrl_pressed = false
 @export var use_context_cursors = true
 #@export var mouse_pointer: Resource
@@ -72,9 +73,14 @@ func _input(event):
 		is_Ctrl_pressed = false
 	
 	if event.is_action_pressed("RightClick"):
+		if targeted_unit:
+			targeted_unit.set_targeted(false)
+
 		var clicked_unit = check_object_under_mouse()
 		# if Unit isn't controllable we know it's a enemy unit
-		if clicked_unit and not clicked_unit.controllable:
+		if clicked_unit and not clicked_unit.controllable and not clicked_unit.is_dead:
+			clicked_unit.set_targeted(true)
+			targeted_unit = clicked_unit
 			for unit in selected_units:
 				if unit.controllable:
 					unit.set_target(clicked_unit)
@@ -99,6 +105,9 @@ func deselect_all_units():
 		for unit in get_children():
 			if unit.is_in_group("unit"):
 				unit.set_selected(false)
+		if targeted_unit:
+			targeted_unit.set_targeted(false)
+			targeted_unit = null
 	
 func _kill_all_enemies():
 	for unit in get_children():

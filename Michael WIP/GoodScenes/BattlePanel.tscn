@@ -38,6 +38,7 @@ pivot_offset = Vector2(30, 30)
 mouse_filter = 2
 
 [node name="Back_Panel" type="Panel" parent="UIParent"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
@@ -85,11 +86,11 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(30, 30)
 texture = ExtResource("3_sirx5")
-region_rect = Rect2(96, 0, 32, 32)
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+region_rect = Rect2(68, 4, 24, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="Area2D" type="Area2D" parent="UIParent/Front_Panel"]
 

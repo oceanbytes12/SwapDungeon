@@ -31,21 +31,24 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [node name="HeroIconWarrior2" type="CanvasGroup"]
 
-[node name="Body" type="Sprite2D" parent="."]
+[node name="Art" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_57n83")
+position = Vector2(0, 5)
 texture = ExtResource("1_2uekc")
 region_enabled = true
 region_rect = Rect2(35, 80, 26, 14)
 
-[node name="Art" type="Sprite2D" parent="."]
-position = Vector2(11, -8)
+[node name="Weapon" type="Sprite2D" parent="Art"]
+position = Vector2(11, -3)
 texture = ExtResource("1_2uekc")
 region_enabled = true
 region_rect = Rect2(75, 57, 10, 26)
 
-[node name="Head" type="Sprite2D" parent="."]
+[node name="Head" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_256c0")
-position = Vector2(-1, -16)
+position = Vector2(-1, -11)
 texture = ExtResource("1_2uekc")
 region_enabled = true
 region_rect = Rect2(37, 55, 20, 20)

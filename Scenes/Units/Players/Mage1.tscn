@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://hodefvjvsva3"]
+[gd_scene load_steps=10 format=3 uid="uid://hodefvjvsva3"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_oimw7"]
 [ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="2_7b1qn"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_mh3ye"]
 [ext_resource type="PackedScene" uid="uid://c04ap86578v3j" path="res://Scenes/DefaultWeapon/staff_1.tscn" id="4_4e4jk"]
 [ext_resource type="PackedScene" uid="uid://bgoj5ydtylqws" path="res://Scenes/Attacks/MageFireAttack/mage_attack.tscn" id="5_q5diu"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerStand.gd" id="6_6j87o"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -58,3 +59,10 @@ region_rect = Rect2(4, 9, 22, 19)
 weaponEffectScene = ExtResource("5_q5diu")
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
+
+[node name="SM" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Stand")
+
+[node name="Stand" type="Node" parent="SM" index="6" node_paths=PackedStringArray("own_body")]
+script = ExtResource("6_6j87o")
+own_body = NodePath("../..")

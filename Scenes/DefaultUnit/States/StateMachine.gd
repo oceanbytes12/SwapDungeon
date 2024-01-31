@@ -18,8 +18,8 @@ func _ready():
 		current_state = initial_state
 
 func _process(delta):
-	if own_body.teamColor == "blue":
-		pass
+	if own_body.teamColor == "red":
+		print(current_target)
 	if current_state:
 		current_state.Update(delta, current_target)
 
@@ -78,6 +78,9 @@ func _on_sight_range_body_shape_exited(_body_rid, body, _body_shape_index, _loca
 	if body.is_in_group("unit") and body.is_dead:
 		targets.erase(body.name) # Alex needs to fix this trash
 		find_target()
+	elif body.is_in_group("unit") and not own_body.controllable:
+		targets.erase(body.name) # Alex needs to fix this trash
+		find_target()
 
 
 func _on_base_unit_attack_command(target):
@@ -85,4 +88,5 @@ func _on_base_unit_attack_command(target):
 		current_target = target
 	else:
 		targets[target.name] = target
+		current_target = target
 	#on_state_change("Follow")

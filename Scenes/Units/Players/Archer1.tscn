@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyn4v2fksoy82"]
+[gd_scene load_steps=9 format=3 uid="uid://cyn4v2fksoy82"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_8ak1q"]
 [ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="2_rvqhm"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_m3y80"]
 [ext_resource type="PackedScene" uid="uid://6jcr4qkrw7v2" path="res://Scenes/DefaultWeapon/bow_1.tscn" id="4_5wpge"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerStand.gd" id="5_uf81w"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -41,7 +42,8 @@ weaponCooldown = 2.0
 weaponDamage = 20
 
 [node name="Shadow" parent="." index="0"]
-region_rect = Rect2(43, 31, 12, 9)
+texture = ExtResource("2_rvqhm")
+region_rect = Rect2(8, 156, 17, 8)
 
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_5dut2")
@@ -56,3 +58,13 @@ region_rect = Rect2(5, 101, 20, 19)
 [node name="Bow1" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_5wpge")]
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
+
+[node name="SM" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Stand")
+
+[node name="Stand" type="Node" parent="SM" index="6" node_paths=PackedStringArray("own_body")]
+script = ExtResource("5_uf81w")
+own_body = NodePath("../..")
+
+[node name="SightRange" parent="." index="6"]
+visible = false

@@ -31,23 +31,25 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [node name="HeroIconArcher1" type="CanvasGroup"]
 
-[node name="Weapon" type="Sprite2D" parent="."]
+[node name="Art" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_nqdsc")
-position = Vector2(0, 3)
+position = Vector2(0, 4.5)
 texture = ExtResource("1_mu6yf")
 region_enabled = true
 region_rect = Rect2(2, 130, 26, 13)
 
-[node name="Art" type="Sprite2D" parent="."]
-position = Vector2(11, -2)
+[node name="Weapon" type="Sprite2D" parent="Art"]
+position = Vector2(11, -0.5)
 rotation = 0.453786
 texture = ExtResource("1_mu6yf")
 region_enabled = true
 region_rect = Rect2(106, 107, 10, 26)
 
-[node name="Head" type="Sprite2D" parent="."]
+[node name="Head" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_d35fy")
-position = Vector2(0, -11)
+position = Vector2(0, -9.5)
 texture = ExtResource("1_mu6yf")
 region_enabled = true
 region_rect = Rect2(5, 101, 20, 19)

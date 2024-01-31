@@ -14,6 +14,7 @@ signal AttackCommand
 signal Died
 
 var selected = false
+var targeted = false
 var is_dead = false
 @onready var state_machine = $SM
 
@@ -24,8 +25,16 @@ func set_selected(value):
 	else:
 		$Selection.visible = false
 
+func set_targeted(value):
+	if not controllable and not is_dead:
+		targeted = value
+		$Targeted.visible = value
+	else:
+		$Targeted.visible = false
+
 func _ready():
 	set_selected(selected)
+	set_targeted(targeted)
 	#if teamColor == "blue":
 		#$Art/BlueHat.visible = true
 		#$Art/RedHat.visible = false
@@ -58,8 +67,8 @@ func _physics_process(_delta):
 func set_walk():
 	WalkCommand.emit(get_global_mouse_position())
 	
-func set_target(_target):
-	AttackCommand.emit(_target)
+func set_target(target):
+	AttackCommand.emit(target)
 
 func take_hit(hit_position, damage):
 	$UI/HealthBar.value -= damage
@@ -70,11 +79,13 @@ func take_hit(hit_position, damage):
 		$Art/BlueHat.visible = false
 		$Art/RedHat.visible = false
 		$Selection.visible = false
+		$Targeted.visible = false
 		Died.emit()
 		z_index = 0
 		$MovementAnimations.play("Die")
 		$Art/DeadHead.visible = true
 		$Art/Head.visible = false
+		targeted = false
 		selected = false
 		controllable = false
 
