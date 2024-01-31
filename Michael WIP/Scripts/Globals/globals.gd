@@ -19,8 +19,12 @@ func _LoadPackedScenesInPath(path):
 		var file_name = dir.get_next()
 		if file_name == "":
 			break
-		elif file_name.ends_with(".tscn"):
-			ret.append(load(path + "/" + file_name))
+		elif file_name.contains(".tscn"):
+			if '.remap' in file_name: # <---- NEW
+				file_name = file_name.trim_suffix('.remap') # <---- NEW
+			var loaded_tscn = load(path + "/" + file_name)
+			ret.append(loaded_tscn)
+			
 	dir.list_dir_end()
 	return ret
 	

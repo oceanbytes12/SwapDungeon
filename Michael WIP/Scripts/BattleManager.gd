@@ -69,12 +69,16 @@ func _UnLoadHeros():
 
 func _process(_delta):
 	
+	if Input.is_key_pressed(KEY_ESCAPE):
+		print("Quitting!")
+		get_tree().quit()
+	
 	if(isBattling):
 		if Input.is_key_pressed(KEY_K):
 			_kill_all_enemies()
 		if Input.is_key_pressed(KEY_L):
 			_kill_all_players()
-			
+		
 		if(EnemiesAreDead()):
 			_WinBattle()
 		elif(PlayersAreDead()):
