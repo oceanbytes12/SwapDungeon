@@ -6,6 +6,7 @@ extends Node
 @export var StartBattleButton : Button
 @export var levelManager : LevelManager
 @export var unitManager : UnitManager
+@export var tileMap : TileMap
 
 var battleParent
 var isBattling
@@ -33,6 +34,7 @@ func _BattlePartyGreaterThanOne():
 	return false
 
 func _StartBattle():
+	tileMap.visible = false
 	isBattling = true
 	battleParent = levelManager._GetNextLevel().instantiate()
 	call_deferred("_SpawnHeros")
@@ -90,6 +92,7 @@ func _WinBattle():
 	levelManager._IncrementLevelIndex()
 	if(levelManager._GetNextLevel()):
 		emit_signal("finish_battle")
+		tileMap.visible = true
 	else:
 		emit_signal("finish_game")
 	

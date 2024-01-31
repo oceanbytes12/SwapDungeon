@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://db5rq673kdhik"]
+
+[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://tile_map.tscn" id="1_egx1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o37bt"]
+size = Vector2(514, 20)
+
+[node name="Level1" type="Node2D"]
+
+[node name="WallTop" type="StaticBody2D" parent="." groups=["wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
+position = Vector2(-2, 145)
+shape = SubResource("RectangleShape2D_o37bt")
+
+[node name="WallBottom" type="StaticBody2D" parent="." groups=["wall"]]
+position = Vector2(0, -291)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]
+position = Vector2(-2, 145)
+shape = SubResource("RectangleShape2D_o37bt")
+
+[node name="WallRight" type="StaticBody2D" parent="." groups=["wall"]]
+position = Vector2(-251, 0)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+shape = SubResource("RectangleShape2D_o37bt")
+
+[node name="WallLeft" type="StaticBody2D" parent="." groups=["wall"]]
+position = Vector2(251, 0)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+shape = SubResource("RectangleShape2D_o37bt")
+
+[node name="TileMap" parent="." instance=ExtResource("1_egx1j")]
+position = Vector2(0, 0)
