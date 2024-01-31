@@ -3,6 +3,7 @@ extends Marker2D
 @export var weaponEffectScene : PackedScene
 @export var own_body : CharacterBody2D
 @export var attackState : State
+var damageOverride
 
 var target
 func _ready():
@@ -10,6 +11,7 @@ func _ready():
 	attackState.Targetted.connect(_on_target)
 	attackState.Untarget.connect(_on_untarget)
 	own_body.Died.connect(_on_body_died)
+	damageOverride = own_body.weaponDamage
 
 func _process(_delta):
 	if target:
@@ -32,6 +34,7 @@ func _on_attack_attacked():
 	attackNode.rotation = rotation
 	attackNode.source_team_color = own_body.teamColor
 	attackNode.target = target
+	attackNode.damage = damageOverride
 	get_parent().get_parent().add_child(attackNode)
 
 func _on_target(t):

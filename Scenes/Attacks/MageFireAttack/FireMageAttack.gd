@@ -1,7 +1,7 @@
 extends Area2D
 
 var source_team_color
-var speed = 80
+var speed = 120
 var target
 var turn_speed = 0.5
 var damage = 50
@@ -10,9 +10,9 @@ func _ready():
 	$AnimatedSprite2D.play("FireSpell")
 	var direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
-		rotate(-PI/5)
+		rotate(-PI/8)
 	else:
-		rotate(PI/5)
+		rotate(PI/8)
 	
 
 func _physics_process(delta):

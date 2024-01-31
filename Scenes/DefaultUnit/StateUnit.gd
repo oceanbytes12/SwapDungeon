@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var runSpeed: float
 @export var weaponRange: float
 @export var weaponCooldown: float
+@export var weaponDamage: int
 
 signal Hit
 signal WalkCommand

@@ -401,6 +401,7 @@ script = ExtResource("11_73he8")
 own_body = NodePath("../..")
 
 [node name="SightRange" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
 shape = SubResource("CircleShape2D_5cwag")

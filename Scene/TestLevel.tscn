@@ -91,11 +91,37 @@ script = ExtResource("4_dpfmg")
 
 [node name="Mage1" parent="." instance=ExtResource("5_oyb56")]
 position = Vector2(-193, -4)
-weaponRange = 100.0
+runSpeed = 35.0
+weaponRange = 200.0
+weaponDamage = 100
 
 [node name="Melee2" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
-position = Vector2(159, -23)
+position = Vector2(151, -58)
+teamColor = "red"
+weaponRange = 100.0
+
+[node name="Melee3" parent="." instance=ExtResource("5_sky41")]
+z_index = 1
+position = Vector2(189, -97)
+teamColor = "red"
+weaponRange = 100.0
+
+[node name="Melee5" parent="." instance=ExtResource("5_sky41")]
+z_index = 1
+position = Vector2(94, 53)
+teamColor = "red"
+weaponRange = 100.0
+
+[node name="Melee6" parent="." instance=ExtResource("5_sky41")]
+z_index = 1
+position = Vector2(70, -13)
+teamColor = "red"
+weaponRange = 100.0
+
+[node name="Melee7" parent="." instance=ExtResource("5_sky41")]
+z_index = 1
+position = Vector2(120, -104)
 teamColor = "red"
 weaponRange = 100.0
 
