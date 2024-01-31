@@ -8,7 +8,7 @@ var levels = []
 
 func _ready():
 	levels = Globals._LoadPackedScenesInPath(levelFolder)
-	#levels.sort_custom(CompareLevels)
+	levels.sort_custom(CompareLevels)
 	for level in levels:
 		print(level.resource_path)
 

@@ -34,6 +34,8 @@ func _on_body_entered(body):
 	if body.is_in_group("unit") and body.teamColor != source_team_color:
 		if body.has_method("take_hit"):
 			body.take_hit(global_position, damage)
+	elif body.is_in_group("wall"):
+		queue_free()
 
 func angle_to_angle(from, to):
 	return fposmod(to-from + PI, PI*2) - PI

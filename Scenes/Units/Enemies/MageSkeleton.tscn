@@ -31,10 +31,12 @@ shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [node name="Mager" instance=ExtResource("1_1e008")]
+teamColor = "red"
 walkSpeed = 15.0
 runSpeed = 40.0
 weaponRange = 200.0
 weaponCooldown = 4.0
+weaponDamage = 40
 
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_ki0up")

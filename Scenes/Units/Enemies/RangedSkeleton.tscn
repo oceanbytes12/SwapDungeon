@@ -31,6 +31,12 @@ shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [node name="Ranger" instance=ExtResource("1_env67")]
+teamColor = "red"
+walkSpeed = 10.0
+runSpeed = 35.0
+weaponRange = 100.0
+weaponCooldown = 2.0
+weaponDamage = 30
 
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_w0ymd")

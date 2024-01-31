@@ -31,10 +31,12 @@ shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [node name="BaseUnit" instance=ExtResource("1_bwoj0")]
+teamColor = "red"
 walkSpeed = 15.0
 runSpeed = 40.0
 weaponRange = 30.0
 weaponCooldown = 1.0
+weaponDamage = 20
 
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_5dut2")
