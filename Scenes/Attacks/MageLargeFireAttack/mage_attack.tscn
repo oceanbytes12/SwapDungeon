@@ -1,0 +1,112 @@
+[gd_scene load_steps=17 format=3 uid="uid://cyrgtxmwktv4x"]
+
+[ext_resource type="Script" path="res://Scenes/Attacks/MageLargeFireAttack/fireball.gd" id="1_jcx0s"]
+[ext_resource type="Texture2D" uid="uid://bq20tm0ipafq2" path="res://Art/LargeFireball-Sheet.png" id="2_5y3i6"]
+[ext_resource type="Texture2D" uid="uid://d2acrt60husqc" path="res://Art/AirAttack-Sheet.png" id="2_x3gm8"]
+[ext_resource type="Texture2D" uid="uid://dlivpfjjuhlhg" path="res://Art/MagicAttack2x2-Sheet.png" id="3_xit0i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
+height = 22.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggovm"]
+atlas = ExtResource("2_5y3i6")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyc3f"]
+atlas = ExtResource("2_5y3i6")
+region = Rect2(36, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfy6t"]
+atlas = ExtResource("2_x3gm8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucikc"]
+atlas = ExtResource("2_x3gm8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo1co"]
+atlas = ExtResource("3_xit0i")
+region = Rect2(0, 0, 28, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vohte"]
+atlas = ExtResource("3_xit0i")
+region = Rect2(28, 0, 28, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kisgf"]
+atlas = ExtResource("3_xit0i")
+region = Rect2(56, 0, 28, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgn8g"]
+atlas = ExtResource("3_xit0i")
+region = Rect2(0, 22, 28, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vmcy"]
+atlas = ExtResource("3_xit0i")
+region = Rect2(28, 22, 28, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keqdw"]
+atlas = ExtResource("3_xit0i")
+region = Rect2(56, 22, 28, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q78e8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggovm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyc3f")
+}],
+"loop": true,
+"name": &"FireBall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfy6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucikc")
+}],
+"loop": true,
+"name": &"FireSpell",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo1co")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vohte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kisgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgn8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vmcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keqdw")
+}],
+"loop": true,
+"name": &"Spell",
+"speed": 5.0
+}]
+
+[node name="FireMageAttack" type="Area2D"]
+z_index = 2
+script = ExtResource("1_jcx0s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_w3hqt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, 0)
+sprite_frames = SubResource("SpriteFrames_q78e8")
+animation = &"FireBall"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

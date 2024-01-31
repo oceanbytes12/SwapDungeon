@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://8m6kuwd85l7w"]
+[gd_scene load_steps=8 format=3 uid="uid://8m6kuwd85l7w"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_0hmmf"]
 [ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="2_5hb6r"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_j5tn2"]
-[ext_resource type="PackedScene" uid="uid://c04ap86578v3j" path="res://Scenes/DefaultWeapon/staff_1.tscn" id="4_kviu5"]
-[ext_resource type="PackedScene" uid="uid://bp0u3h6fwk1y2" path="res://Scenes/Attacks/MageAttack/mage_attack.tscn" id="5_4mckh"]
+[ext_resource type="PackedScene" uid="uid://bkyyj1ckc1m4" path="res://Scenes/DefaultWeapon/staff_2.tscn" id="4_7qnsx"]
 
 [sub_resource type="Shader" id="Shader_5jsc5"]
 code = "shader_type canvas_item;
@@ -38,7 +37,8 @@ controllable = true
 walkSpeed = 10.0
 runSpeed = 25.0
 weaponRange = 150.0
-weaponCooldown = 4.0
+weaponCooldown = 6.0
+weaponDamage = 80
 
 [node name="Shadow" parent="." index="0"]
 region_rect = Rect2(43, 31, 12, 9)
@@ -53,7 +53,6 @@ material = SubResource("ShaderMaterial_ax3d5")
 texture = ExtResource("2_5hb6r")
 region_rect = Rect2(35, 7, 24, 21)
 
-[node name="Staff1" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_kviu5")]
-weaponEffectScene = ExtResource("5_4mckh")
+[node name="Staff1" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_7qnsx")]
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
