@@ -5,7 +5,7 @@ extends Node
 @export var battlePanels : Array[UIBattleSpace]
 @export var StartBattleButton : Button
 @export var levelManager : LevelManager
-@export var unitManager : UnitManager
+@export var unitManager : Node2D
 @export var tileMap : TileMap
 
 var battleParent

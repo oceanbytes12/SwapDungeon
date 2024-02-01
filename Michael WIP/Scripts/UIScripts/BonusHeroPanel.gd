@@ -50,7 +50,7 @@ func _generateRandomHero():
 func _CreateHeroOfType(NewHeroType):
 	HeroType = NewHeroType
 	
-	HeroIcon = Globals.Icons._GetIconInstanceOfType(HeroType)
+	HeroIcon = Globals.unitManager._GetIconInstanceOfType(HeroType)
 	if(is_instance_valid(HeroIcon)):
 		var TargetChild = FrontPanel.get_child(0)
 		TargetChild.add_child(HeroIcon)

@@ -11,6 +11,7 @@ func Generate():
 		parent.add_child(newHeroNode)
 
 func Demolish():
+	print("TEST")
 	for n in parent.get_children():
 		parent.remove_child(n)
 		n.queue_free() 

@@ -18,11 +18,11 @@ func InitializeWithHero(newHeroType):
 	
 	heroType = newHeroType
 	
-	var HeroIcon = Globals.Icons._GetIconInstanceOfType(heroType)
+	var HeroIcon = Globals.unitManager._GetIconInstanceOfType(heroType)
 	FrontPanel.add_child(HeroIcon)
 	HeroIcon.position += FrontPanel.size / 2
 	
-	var HeroIconBack = Globals.Icons._GetIconInstanceOfType(heroType)
+	var HeroIconBack = Globals.unitManager._GetIconInstanceOfType(heroType)
 	HeroIconBack.modulate = Gray
 	BackPanel.add_child(HeroIconBack)
 	HeroIconBack.position += BackPanel.size / 2

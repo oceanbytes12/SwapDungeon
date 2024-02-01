@@ -1,13 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxgalpram8qcb"]
+[gd_scene load_steps=17 format=3 uid="uid://bxgalpram8qcb"]
 
-[ext_resource type="Script" path="res://Scene/UnitManager.gd" id="1_4em6q"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/BattleManager.gd" id="1_45nev"]
+[ext_resource type="Script" path="res://Scene/MasterScript.gd" id="1_akbcm"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/LevelManager.gd" id="1_cvfyf"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/Tweeners/SlideInUI.gd" id="2_7sjb0"]
+[ext_resource type="Script" path="res://Scene/SeperateLoadBecauseItIsaUnholySinToHaveAScriptLongerThanTenLines.gd" id="2_v6rn7"]
 [ext_resource type="Script" path="res://Scene/PartyRoster.gd" id="3_yxyhh"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="4_gtbun"]
+[ext_resource type="PackedScene" uid="uid://db2bmrfjuccta" path="res://Scene/Levels/Level1.tscn" id="4_js5sn"]
 [ext_resource type="PackedScene" uid="uid://dysjvo3gsiwfg" path="res://Michael WIP/GoodScenes/BattlePanel.tscn" id="5_0i2aq"]
+[ext_resource type="PackedScene" uid="uid://dn8y8e1qbyjbj" path="res://Scene/Levels/Level2.tscn" id="5_qbccs"]
 [ext_resource type="Script" path="res://Scene/HeroGenerator.gd" id="6_5blkj"]
+[ext_resource type="PackedScene" uid="uid://c05cqors27ki7" path="res://Scene/Levels/Level3.tscn" id="6_dm5vi"]
+[ext_resource type="PackedScene" uid="uid://b015teb8nojv0" path="res://Scene/Levels/Level4.tscn" id="7_55sav"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/LoadScene.gd" id="7_oidtt"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://tile_map.tscn" id="10_m6j52"]
 
@@ -15,12 +20,14 @@
 size = Vector2(464, 64)
 
 [node name="NewGame" type="Node2D"]
+script = ExtResource("1_akbcm")
 
-[node name="UnitManager" type="Node" parent="."]
-script = ExtResource("1_4em6q")
+[node name="SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines" type="Node" parent="."]
+script = ExtResource("2_v6rn7")
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("1_cvfyf")
+levels = Array[PackedScene]([ExtResource("4_js5sn"), ExtResource("5_qbccs"), ExtResource("6_dm5vi"), ExtResource("7_55sav")])
 
 [node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels", "StartBattleButton", "levelManager", "unitManager", "tileMap")]
 script = ExtResource("1_45nev")
@@ -28,7 +35,7 @@ PartyBattleUI = NodePath("../GameUI/PartyBattleUI")
 battlePanels = [NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel2"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel3")]
 StartBattleButton = NodePath("../GameUI/PartyBattleUI/StartBattleButton")
 levelManager = NodePath("../LevelManager")
-unitManager = NodePath("../UnitManager")
+unitManager = NodePath("..")
 tileMap = NodePath("../GameUI/TileMap")
 
 [node name="Party" type="Node2D" parent="BattleManager"]
