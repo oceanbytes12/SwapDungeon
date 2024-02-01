@@ -58,7 +58,7 @@ region_rect = Rect2(37, 55, 20, 20)
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
 
-[node name="SM" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+[node name="SM" parent="." index="6" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Stand")
 
 [node name="Stand" type="Node" parent="SM" index="6" node_paths=PackedStringArray("own_body")]
