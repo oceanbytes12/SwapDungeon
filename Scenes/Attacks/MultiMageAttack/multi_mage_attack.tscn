@@ -86,7 +86,7 @@ interval = 0.2
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_q78e8")
 animation = &"Spell"
-frame_progress = 0.299115
+frame_progress = 0.282151
 
 [node name="AttackPoint" type="Node2D" parent="."]
 position = Vector2(0, -10)

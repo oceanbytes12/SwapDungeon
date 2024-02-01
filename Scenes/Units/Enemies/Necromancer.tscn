@@ -41,7 +41,6 @@ weaponDamage = 1
 [node name="NecroStaff" parent="." index="3" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_nl0pv")]
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
-spawnUsesRotation = false
 
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_1o0cl")

@@ -7,6 +7,7 @@ var source_team_color
 @export var accelerate_wait_time:float = 1
 @export var accel_speed : float = 1
 @export var turn_speed = 3
+@export var random_scale_factor = 0.2
 
 
 var target
@@ -34,8 +35,10 @@ func _ready():
 func _grow():
 	scale = Vector2.ZERO
 	
-	var tween = create_tween() 
-	tween.tween_property(self, "scale", Vector2(1,1), grow_time)
+	var tween = create_tween()
+	random_scale_factor 	= randf_range(-random_scale_factor , random_scale_factor)
+	var newScale = Vector2(1+random_scale_factor, 1+random_scale_factor)
+	tween.tween_property(self, "scale", newScale, grow_time)
 	
 	tween.tween_callback(_start_accel)
 	

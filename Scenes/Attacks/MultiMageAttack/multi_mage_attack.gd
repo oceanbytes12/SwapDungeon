@@ -24,7 +24,8 @@ func _process(delta):
 		var randomY = -randi()%30
 		var randomOff = Vector2(randomX,randomY)
 		attackNode.global_position = $AttackPoint.global_position + randomOff
-		attackNode.look_at(target.position)
+		var randomPositionOffset = randf_range(-10.0, 10.0) * Vector2.ONE
+		attackNode.look_at(target.position + randomPositionOffset)
 		attackNode.target = target
 		attackNode.source_team_color = source_team_color
 		get_parent().get_parent().add_child(attackNode)
