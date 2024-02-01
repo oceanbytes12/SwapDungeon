@@ -76,6 +76,5 @@ func _input(event):
 func _on_enemy_unit_targeted(_target):
 	# Set the "target" field/var of each currently selected unit (if any)
 	for u in selected_units: # Select the units in selection box
-		print("Target selected (not implemented yet)")
 		#u.set_target() # Change this to the correct function
 		pass 

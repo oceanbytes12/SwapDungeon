@@ -21,7 +21,6 @@ func addToParty(panel):
 	if(UpgradeableUnits.size()> 0):
 		var upgradedUnit = UpgradeableUnits[0]
 		var UpgradeType = Globals.unitManager._GetUpgradedType(upgradedUnit.heroType)
-		print("Upgrading a ",upgradedUnit.heroType, " to a" , UpgradeType)
 		var newPanel = rosterPanel.instantiate()
 		newPanel.InitializeWithHero(UpgradeType)
 		partyContainer.add_child(newPanel)
