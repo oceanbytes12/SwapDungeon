@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0b6nxy378a2c"]
+[gd_scene load_steps=8 format=3 uid="uid://b0b6nxy378a2c"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_pxca1"]
 [ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/SkelyBoyPartsx3.png" id="2_yokhn"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_ibovw"]
+[ext_resource type="PackedScene" uid="uid://bxueen142481q" path="res://Scenes/DefaultWeapon/staff_necro.tscn" id="4_nl0pv"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -31,6 +32,16 @@ shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [node name="Necromancer" instance=ExtResource("1_pxca1")]
+walkSpeed = 1.0
+runSpeed = 1.0
+weaponRange = 1000.0
+weaponCooldown = 8.0
+weaponDamage = 1
+
+[node name="NecroStaff" parent="." index="3" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_nl0pv")]
+own_body = NodePath("..")
+attackState = NodePath("../SM/Attack")
+spawnUsesRotation = false
 
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_1o0cl")
@@ -41,3 +52,7 @@ region_rect = Rect2(64, 22, 22, 10)
 material = SubResource("ShaderMaterial_v8c6e")
 texture = ExtResource("2_yokhn")
 region_rect = Rect2(64, 0, 24, 20)
+
+[node name="HealthBar" parent="UI" index="0"]
+max_value = 1000.0
+value = 1000.0

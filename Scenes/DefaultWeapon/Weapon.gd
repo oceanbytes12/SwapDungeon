@@ -3,6 +3,8 @@ extends Marker2D
 @export var weaponEffectScene : PackedScene
 @export var own_body : CharacterBody2D
 @export var attackState : State
+@export var spawnUsesRotation : bool = true
+@export var spawnUsesPosition : bool = true
 var damageOverride
 
 var target
@@ -30,8 +32,13 @@ func _on_attack_attacked():
 	if target:
 		look_at(target.global_position)
 	var attackNode = weaponEffectScene.instantiate()
-	attackNode.global_position = $AttackPoint.global_position
-	attackNode.rotation = rotation
+	
+	if(spawnUsesPosition):
+		attackNode.global_position = $AttackPoint.global_position
+	
+	if(spawnUsesRotation):
+		attackNode.rotation = rotation
+		
 	attackNode.source_team_color = own_body.teamColor
 	attackNode.target = target
 	attackNode.damage = damageOverride
