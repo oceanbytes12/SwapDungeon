@@ -1,15 +1,15 @@
 [gd_scene load_steps=12 format=3 uid="uid://bxgalpram8qcb"]
 
-[ext_resource type="Script" path="res://Scene/UnitManager.gd" id="1_v6nv3"]
-[ext_resource type="Script" path="res://Michael WIP/Scripts/LevelManager.gd" id="2_skyge"]
-[ext_resource type="Script" path="res://Michael WIP/Scripts/BattleManager.gd" id="3_2tmlc"]
-[ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/Tweeners/SlideInUI.gd" id="4_yb51l"]
-[ext_resource type="Script" path="res://Scene/PartyRoster.gd" id="5_3sovl"]
-[ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="6_1bh44"]
-[ext_resource type="PackedScene" uid="uid://dysjvo3gsiwfg" path="res://Michael WIP/GoodScenes/BattlePanel.tscn" id="7_m4cla"]
-[ext_resource type="Script" path="res://Scene/HeroGenerator.gd" id="8_ja8e8"]
-[ext_resource type="Script" path="res://Michael WIP/Scripts/LoadScene.gd" id="9_b2blx"]
-[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://tile_map.tscn" id="10_t6utl"]
+[ext_resource type="Script" path="res://Scene/UnitManager.gd" id="1_4em6q"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/BattleManager.gd" id="1_45nev"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/LevelManager.gd" id="1_cvfyf"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/Tweeners/SlideInUI.gd" id="2_7sjb0"]
+[ext_resource type="Script" path="res://Scene/PartyRoster.gd" id="3_yxyhh"]
+[ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="4_gtbun"]
+[ext_resource type="PackedScene" uid="uid://dysjvo3gsiwfg" path="res://Michael WIP/GoodScenes/BattlePanel.tscn" id="5_0i2aq"]
+[ext_resource type="Script" path="res://Scene/HeroGenerator.gd" id="6_5blkj"]
+[ext_resource type="Script" path="res://Michael WIP/Scripts/LoadScene.gd" id="7_oidtt"]
+[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://tile_map.tscn" id="10_m6j52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnua3"]
 size = Vector2(464, 64)
@@ -17,13 +17,13 @@ size = Vector2(464, 64)
 [node name="NewGame" type="Node2D"]
 
 [node name="UnitManager" type="Node" parent="."]
-script = ExtResource("1_v6nv3")
+script = ExtResource("1_4em6q")
 
 [node name="LevelManager" type="Node" parent="."]
-script = ExtResource("2_skyge")
+script = ExtResource("1_cvfyf")
 
 [node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels", "StartBattleButton", "levelManager", "unitManager", "tileMap")]
-script = ExtResource("3_2tmlc")
+script = ExtResource("1_45nev")
 PartyBattleUI = NodePath("../GameUI/PartyBattleUI")
 battlePanels = [NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel2"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel3")]
 StartBattleButton = NodePath("../GameUI/PartyBattleUI/StartBattleButton")
@@ -44,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 mouse_filter = 2
-script = ExtResource("4_yb51l")
+script = ExtResource("2_7sjb0")
 SlidingUI = NodePath("PartyRoster/RosterUI")
 Automatic = true
 
@@ -58,7 +58,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
-script = ExtResource("5_3sovl")
+script = ExtResource("3_yxyhh")
 partyContainer = NodePath("RosterUI/MarginContainer/NewHeroContainer")
 
 [node name="RosterUI" type="NinePatchRect" parent="GameUI/RosterUI/PartyRoster"]
@@ -69,7 +69,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_1bh44")
+texture = ExtResource("4_gtbun")
 region_rect = Rect2(5, 68, 53, 54)
 patch_margin_left = 6
 patch_margin_top = 6
@@ -101,7 +101,7 @@ columns = 9
 [node name="EmptySlot" type="NinePatchRect" parent="GameUI/RosterUI/PartyRoster/RosterUI/MarginContainer/NewHeroContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("6_1bh44")
+texture = ExtResource("4_gtbun")
 region_rect = Rect2(164, 198, 54, 54)
 patch_margin_left = 30
 patch_margin_top = 30
@@ -123,7 +123,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("4_yb51l")
+script = ExtResource("2_7sjb0")
 
 [node name="StartBattleButton" type="Button" parent="GameUI/PartyBattleUI"]
 layout_mode = 1
@@ -150,13 +150,13 @@ offset_right = 68.0
 offset_bottom = 196.0
 mouse_filter = 2
 
-[node name="BattlePanel" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("7_m4cla")]
+[node name="BattlePanel" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("5_0i2aq")]
 layout_mode = 2
 
-[node name="BattlePanel2" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("7_m4cla")]
+[node name="BattlePanel2" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("5_0i2aq")]
 layout_mode = 2
 
-[node name="BattlePanel3" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("7_m4cla")]
+[node name="BattlePanel3" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("5_0i2aq")]
 layout_mode = 2
 
 [node name="PartyAddUI" type="Control" parent="GameUI"]
@@ -168,7 +168,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 mouse_filter = 2
-script = ExtResource("4_yb51l")
+script = ExtResource("2_7sjb0")
 Automatic = true
 
 [node name="HeroGenerator" type="Control" parent="GameUI/PartyAddUI" node_paths=PackedStringArray("parent")]
@@ -179,7 +179,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("8_ja8e8")
+script = ExtResource("6_5blkj")
 parent = NodePath("GridContainer")
 numToGenerate = 3
 
@@ -257,7 +257,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_yb51l")
+script = ExtResource("2_7sjb0")
 
 [node name="Label" type="Label" parent="GameUI/GameOver"]
 layout_mode = 1
@@ -286,7 +286,7 @@ grow_vertical = 2
 text = "Start Over"
 
 [node name="ReloadScene" type="Node" parent="GameUI/GameOver"]
-script = ExtResource("9_b2blx")
+script = ExtResource("7_oidtt")
 scenename = "res://Scene/Game.tscn"
 
 [node name="GameWin" type="Panel" parent="GameUI"]
@@ -296,7 +296,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_yb51l")
+script = ExtResource("2_7sjb0")
 
 [node name="Label" type="Label" parent="GameUI/GameWin"]
 layout_mode = 1
@@ -325,10 +325,10 @@ grow_vertical = 2
 text = "Start Over"
 
 [node name="ReloadScene" type="Node" parent="GameUI/GameWin"]
-script = ExtResource("9_b2blx")
+script = ExtResource("7_oidtt")
 scenename = "res://Scene/Game.tscn"
 
-[node name="TileMap" parent="GameUI" instance=ExtResource("10_t6utl")]
+[node name="TileMap" parent="GameUI" instance=ExtResource("10_m6j52")]
 
 [connection signal="finish_battle" from="BattleManager" to="GameUI/RosterUI" method="slide_in"]
 [connection signal="finish_battle" from="BattleManager" to="GameUI/RosterUI/PartyRoster" method="_return_all_panels"]
