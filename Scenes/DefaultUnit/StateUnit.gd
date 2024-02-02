@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var weaponRange: float
 @export var weaponCooldown: float
 @export var weaponDamage: int
+@export var unitHealth: float
 
 signal Hit
 signal WalkCommand
@@ -33,6 +34,9 @@ func set_targeted(value):
 		$Targeted.visible = false
 
 func _ready():
+	$UI/HealthBar.max_value = unitHealth
+	$UI/HealthBar.value = unitHealth
+	
 	set_selected(selected)
 	set_targeted(targeted)
 	#if teamColor == "blue":

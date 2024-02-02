@@ -59,12 +59,12 @@ region_rect = Rect2(5, 101, 20, 19)
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
 
-[node name="SM" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+[node name="SM" parent="." index="6" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Stand")
 
 [node name="Stand" type="Node" parent="SM" index="6" node_paths=PackedStringArray("own_body")]
 script = ExtResource("5_uf81w")
 own_body = NodePath("../..")
 
-[node name="SightRange" parent="." index="6"]
+[node name="SightRange" parent="." index="7"]
 visible = false

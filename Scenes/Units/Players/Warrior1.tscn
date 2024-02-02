@@ -39,7 +39,7 @@ walkSpeed = 15.0
 runSpeed = 40.0
 weaponRange = 35.0
 weaponCooldown = 0.8
-weaponDamage = 20
+weaponDamage = 35
 
 [node name="Shadow" parent="." index="0"]
 region_rect = Rect2(43, 31, 12, 9)
@@ -54,7 +54,7 @@ material = SubResource("ShaderMaterial_ax3d5")
 texture = ExtResource("2_4dmv7")
 region_rect = Rect2(6, 60, 18, 15)
 
-[node name="Sword1" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_j8lcj")]
+[node name="Sword1" parent="." index="5" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_j8lcj")]
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
 

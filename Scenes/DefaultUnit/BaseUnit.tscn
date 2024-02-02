@@ -316,6 +316,7 @@ size = Vector2(20, 27.6377)
 
 [node name="BaseUnit" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_ft0sp")
+unitHealth = 100.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 9)
