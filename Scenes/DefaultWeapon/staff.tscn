@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6d5qekk1enak"]
+[gd_scene load_steps=3 format=3 uid="uid://beckoy2ebu4eb"]
 
 [ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="1_l6f7a"]
 [ext_resource type="PackedScene" uid="uid://bp0u3h6fwk1y2" path="res://Scenes/Attacks/MageAttack/mage_attack.tscn" id="2_nc5kr"]
@@ -7,4 +7,5 @@
 weaponEffectScene = ExtResource("2_nc5kr")
 
 [node name="Art" parent="." index="1"]
+position = Vector2(9, 25)
 region_rect = Rect2(31, 31, 8, 30)

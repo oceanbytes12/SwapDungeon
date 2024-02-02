@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_1e008"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_3ywj8"]
-[ext_resource type="PackedScene" uid="uid://b6d5qekk1enak" path="res://Scenes/DefaultWeapon/staff.tscn" id="3_owyuc"]
+[ext_resource type="PackedScene" uid="uid://beckoy2ebu4eb" path="res://Scenes/DefaultWeapon/staff.tscn" id="3_owyuc"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -38,12 +38,12 @@ weaponRange = 200.0
 weaponCooldown = 4.0
 weaponDamage = 40
 
+[node name="Staff" parent="." index="3" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("3_owyuc")]
+own_body = NodePath("..")
+attackState = NodePath("../SM/Attack")
+
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_ki0up")
 
 [node name="Head" parent="Art" index="1"]
 material = SubResource("ShaderMaterial_gmlcj")
-
-[node name="Staff" parent="." index="3" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("3_owyuc")]
-own_body = NodePath("..")
-attackState = NodePath("../SM/Attack")

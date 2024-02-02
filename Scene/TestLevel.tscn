@@ -129,7 +129,3 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_j3qaq")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]
-[connection signal="AttackCommand" from="Mage2" to="Mage2/SM" method="_on_base_unit_attack_command"]
-[connection signal="Died" from="Mage2" to="Mage2/SM" method="_on_base_unit_died"]
-[connection signal="Hit" from="Mage2" to="Mage2/SM" method="_on_unit_sm_hit"]
-[connection signal="WalkCommand" from="Mage2" to="Mage2/SM" method="_on_base_unit_walk_command"]
