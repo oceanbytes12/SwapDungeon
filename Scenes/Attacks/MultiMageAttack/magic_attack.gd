@@ -64,6 +64,9 @@ func _die():
 	queue_free()
 
 func _rotate_to_target(delta):
+	if(!is_instance_valid(target)):
+		return
+		
 	var goal_rotation = position.angle_to_point(target.position)
 	var diff_rotation = angle_to_angle(rotation, goal_rotation)
 	if diff_rotation > 0:
