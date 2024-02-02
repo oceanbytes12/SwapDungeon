@@ -394,6 +394,8 @@ own_body = NodePath("../..")
 script = ExtResource("7_o8q00")
 own_body = NodePath("../..")
 
+[node name="Timer" type="Timer" parent="SM/Attack"]
+
 [node name="Stun" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("8_gqa3m")
 own_body = NodePath("../..")
@@ -456,6 +458,7 @@ shape = SubResource("RectangleShape2D_541oc")
 [connection signal="WalkCommand" from="." to="SM" method="_on_base_unit_walk_command"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="SM/Attack/Timer" to="SM/Attack" method="_on_timer_timeout"]
 [connection signal="body_entered" from="SightRange" to="SM" method="_on_sight_range_body_entered"]
 [connection signal="body_exited" from="SightRange" to="SM" method="_on_sight_range_body_exited"]
 [connection signal="body_shape_entered" from="SightRange" to="SM" method="_on_sight_range_body_shape_entered"]

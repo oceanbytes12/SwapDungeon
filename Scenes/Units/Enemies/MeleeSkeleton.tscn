@@ -43,6 +43,7 @@ material = SubResource("ShaderMaterial_5dut2")
 
 [node name="Head" parent="Art" index="1"]
 material = SubResource("ShaderMaterial_ax3d5")
+flip_h = true
 
 [node name="Sword" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("3_751ey")]
 own_body = NodePath("..")
