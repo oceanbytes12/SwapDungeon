@@ -16,11 +16,18 @@ func Enter(_target):
 func Update(delta: float, target: CharacterBody2D):
 	if target:
 		Transitioned.emit("Follow")
-	else:
-		if wander_time > 0:
-			wander_time -= delta
-		else:
-			randomize_wander()
 
 func Physics_Update(_delta: float, _target: CharacterBody2D):
-	own_body.velocity = move_direction.normalized() * own_body.walkSpeed
+	own_body.velocity = Vector2.ZERO
+
+#func Update(delta: float, target: CharacterBody2D):
+	#if target:
+		#Transitioned.emit("Follow")
+	#else:
+		#if wander_time > 0:
+			#wander_time -= delta
+		#else:
+			#randomize_wander()
+
+#func Physics_Update(_delta: float, _target: CharacterBody2D):
+	#own_body.velocity = move_direction.normalized() * own_body.walkSpeed

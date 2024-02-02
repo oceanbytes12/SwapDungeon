@@ -12,9 +12,9 @@ var is_Ctrl_pressed = false
 @export var click_effect = preload("res://Scenes/MouseEffects/ClickEffect.tscn")
 @export var attack_effect = preload("res://Scenes/MouseEffects/AttackEffect.tscn")
 
+
 func _ready():
-	Globals.AlexTester = self
-			
+	Globals.AlexTester = self		
 
 # Get all units within the bounds of the drawn rectangle
 func get_units_in_area(area):
