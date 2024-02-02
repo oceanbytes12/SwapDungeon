@@ -1,11 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://db2bmrfjuccta"]
+[gd_scene load_steps=11 format=3 uid="uid://db2bmrfjuccta"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_mbhdq"]
-[ext_resource type="Texture2D" uid="uid://bo1opgc28somc" path="res://Art/MousePointer1.png" id="2_6g150"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="3_3bba1"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="3_fe3ee"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="5_u2nlv"]
+[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="6_aq2et"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Units/Enemies/MeleeSkeleton.tscn" id="6_q2vtn"]
+
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34kxa"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6mt6"]
+resource_local_to_scene = true
+shader = ExtResource("6_aq2et")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qaq"]
 bg_color = Color(0.258824, 0.972549, 0.470588, 0.431373)
@@ -22,7 +48,6 @@ corner_radius_bottom_left = 3
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_mbhdq")
-mouse_pointer = ExtResource("2_6g150")
 
 [node name="BaseLevel" parent="." instance=ExtResource("3_fe3ee")]
 
@@ -35,9 +60,17 @@ script = ExtResource("5_u2nlv")
 z_index = 1
 position = Vector2(136, 0)
 
+[node name="Body" parent="Melee2/Art" index="0"]
+material = SubResource("ShaderMaterial_34kxa")
+
+[node name="Head" parent="Melee2/Art" index="1"]
+material = SubResource("ShaderMaterial_b6mt6")
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="SelectionPanel" type="Panel" parent="UI"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_j3qaq")
 
 [connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]
+
+[editable path="Melee2"]
