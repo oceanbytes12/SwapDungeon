@@ -5,20 +5,13 @@ var targeted_unit = null
 var is_Ctrl_pressed = false
 @export var use_context_cursors = true
 #@export var mouse_pointer: Resource
-@export var mouse_pointer = preload("res://Art/MousePointer3.png")
+@export var mouse_pointer = preload("res://Art/MousePointer1.png")
+@export var mouse_grab = preload("res://Art/MousePointer2.png")
+@export var mouse_open = preload("res://Art/MousePointer3.png")
 @export var mouse_attack = preload("res://Art/MousePointer4.png")
 
 func _ready():
 	Globals.AlexTester = self
-	
-func _physics_process(_delta):
-	if (use_context_cursors):
-		var collider = check_collider_under_mouse()
-		if collider and collider.has_method("mouse_over"):
-			#mouse_over_text = collider.mouse_over()
-			Input.set_custom_mouse_cursor(mouse_attack, 0, Vector2(8,8))
-		else:
-			Input.set_custom_mouse_cursor(mouse_pointer, 0, Vector2(8,8))
 			
 
 # Get all units within the bounds of the drawn rectangle
@@ -65,7 +58,6 @@ func check_object_under_mouse():
 		var clicked_unit = collider.get_parent() #Collider is Nil?
 		if clicked_unit.is_in_group("unit") and collider.name == "ClickBox":
 			return clicked_unit
-			
 	return null
 
 func _input(event):
