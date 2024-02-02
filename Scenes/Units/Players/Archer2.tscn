@@ -35,11 +35,11 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 [node name="Archer2" instance=ExtResource("1_a2rtj")]
 teamColor = "blue"
 controllable = true
-walkSpeed = 15.0
-runSpeed = 40.0
+walkSpeed = 12.0
+runSpeed = 35.0
 weaponRange = 250.0
 weaponCooldown = 2.0
-weaponDamage = 40
+weaponDamage = 35
 
 [node name="Shadow" parent="." index="0"]
 region_rect = Rect2(43, 31, 12, 9)

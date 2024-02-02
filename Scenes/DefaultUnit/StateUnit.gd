@@ -39,12 +39,6 @@ func _ready():
 	
 	set_selected(selected)
 	set_targeted(targeted)
-	#if teamColor == "blue":
-		#$Art/BlueHat.visible = true
-		#$Art/RedHat.visible = false
-	#elif teamColor == "red":
-		#$Art/BlueHat.visible = false
-		#$Art/RedHat.visible = true
 
 
 func _process(_delta):
@@ -54,10 +48,6 @@ func _process(_delta):
 		$MovementAnimations.play("Walk")
 	elif velocity.length() > walkSpeed and not is_dead:
 		$MovementAnimations.play("WalkFast")
-	#if velocity.length() <= walkSpeed and velocity.length() > 8:
-		#$MovementAnimations.play("Walk")
-	#elif velocity.length() > walkSpeed:
-		#$MovementAnimations.play("WalkFast")
 	if velocity.x < 0:
 		$Art/Body.flip_h = true
 		$Art/Head.flip_h = true

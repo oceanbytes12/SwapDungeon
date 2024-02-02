@@ -33,8 +33,8 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [node name="Mager" instance=ExtResource("1_1e008")]
 teamColor = "red"
-walkSpeed = 15.0
-runSpeed = 40.0
+walkSpeed = 10.0
+runSpeed = 30.0
 weaponRange = 200.0
 weaponCooldown = 4.0
 weaponDamage = 40
@@ -53,6 +53,5 @@ region_rect = Rect2(64, 20, 23, 12)
 
 [node name="Head" parent="Art" index="1"]
 material = SubResource("ShaderMaterial_gmlcj")
-flip_h = true
 
 [editable path="Staff"]

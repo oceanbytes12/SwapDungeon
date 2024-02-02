@@ -6,7 +6,7 @@ signal Untarget
 
 @export var own_body : CharacterBody2D
 var can_attack = true
-var range_buffer = 2 #This is to prevent jittering between follow and attack states
+var range_buffer = 4 #This is to prevent jittering between follow and attack states
 
 func Enter(target):
 	Targetted.emit(target)
@@ -23,7 +23,6 @@ func Update(delta: float, target: CharacterBody2D):
 	if target_distance > own_body.weaponRange + range_buffer:
 		Transitioned.emit("Follow")
 	if can_attack:
-		own_body.velocity = target_vector
 		can_attack = false
 		Attacked.emit()
 		$Timer.wait_time = own_body.weaponCooldown

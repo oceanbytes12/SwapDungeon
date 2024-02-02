@@ -2,7 +2,7 @@ extends State
 class_name EnemyFollow
 
 @export var own_body : CharacterBody2D
-@export var timeout := 3.0
+@export var timeout := 10.0
 var timeout_timer
 
 
