@@ -43,6 +43,7 @@ material = SubResource("ShaderMaterial_w0ymd")
 
 [node name="Head" parent="Art" index="1"]
 material = SubResource("ShaderMaterial_jtach")
+flip_h = true
 
 [node name="Bow" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("3_0drtb")]
 own_body = NodePath("..")
