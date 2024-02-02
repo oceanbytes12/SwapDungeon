@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://xahuhnxf7vt4"]
+
+[ext_resource type="PackedScene" uid="uid://bjiovpvpfmpr4" path="res://Megan WIP/Bosses/base_boss.tscn" id="1_gj3i3"]
+[ext_resource type="PackedScene" uid="uid://cyn4v2fksoy82" path="res://Scenes/Units/Players/Archer1.tscn" id="2_82xag"]
+
+[node name="BossTestScene" type="Node2D"]
+
+[node name="BaseBoss" parent="." instance=ExtResource("1_gj3i3")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Archer1" parent="." instance=ExtResource("2_82xag")]
+position = Vector2(-96, 15)
