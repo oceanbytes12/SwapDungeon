@@ -6,6 +6,6 @@
 [node name="Sword1" instance=ExtResource("1_ftp3j")]
 
 [node name="Art" parent="." index="1"]
-position = Vector2(9, 25)
+position = Vector2(13, -4)
 texture = ExtResource("2_bu3ip")
 region_rect = Rect2(75, 57, 10, 26)
