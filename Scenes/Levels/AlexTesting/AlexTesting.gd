@@ -5,10 +5,11 @@ var targeted_unit = null
 var is_Ctrl_pressed = false
 @export var use_context_cursors = true
 #@export var mouse_pointer: Resource
-@export var mouse_pointer = preload("res://Art/MousePointer1.png")
-@export var mouse_grab = preload("res://Art/MousePointer2.png")
-@export var mouse_open = preload("res://Art/MousePointer3.png")
-@export var mouse_attack = preload("res://Art/MousePointer4.png")
+@onready var mouse_pointer = preload("res://Art/MousePointer1.png")
+@onready var mouse_grab = preload("res://Art/MousePointer2.png")
+@onready var mouse_open = preload("res://Art/MousePointer3.png")
+@onready var mouse_attack = preload("res://Art/MousePointer4.png")
+@onready var click_effect = preload("res://Scenes/MouseEffects/ClickEffect.tscn")
 
 func _ready():
 	Globals.AlexTester = self
@@ -78,10 +79,15 @@ func _input(event):
 			for unit in selected_units:
 				if unit.controllable:
 					unit.set_target(clicked_unit)
+			var effect = click_effect.instantiate()
+			effect.global_position = global_position
 		else:
 			for unit in selected_units:
 				if unit.controllable:
 					unit.set_walk()
+			var effect = click_effect.instantiate()
+			effect.global_position = global_position
+			add_child(effect)
 		
 	if event.is_action_pressed("LeftClick"):
 		deselect_all_units()

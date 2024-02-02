@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://b16ofeflbjyan"]
+
+[ext_resource type="Texture2D" uid="uid://kxj6bnix2dly" path="res://Art/ClickArrows-Sheet.png" id="1_ceuny"]
+[ext_resource type="Script" path="res://Scenes/MouseEffects/ClickEffect.gd" id="2_rjw8v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey4lp"]
+atlas = ExtResource("1_ceuny")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rhe8"]
+atlas = ExtResource("1_ceuny")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lx714"]
+atlas = ExtResource("1_ceuny")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bph0k"]
+atlas = ExtResource("1_ceuny")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqb7j"]
+atlas = ExtResource("1_ceuny")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbubv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey4lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rhe8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lx714")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bph0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqb7j")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="ClickEffect" type="AnimatedSprite2D"]
+z_index = 5
+sprite_frames = SubResource("SpriteFrames_dbubv")
+frame = 1
+script = ExtResource("2_rjw8v")
