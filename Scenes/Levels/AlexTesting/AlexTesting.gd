@@ -9,11 +9,13 @@ var is_Ctrl_pressed = false
 @onready var mouse_grab = preload("res://Art/MousePointer2.png")
 @onready var mouse_open = preload("res://Art/MousePointer3.png")
 @onready var mouse_attack = preload("res://Art/MousePointer4.png")
-@onready var click_effect = preload("res://Scenes/MouseEffects/ClickEffect.tscn")
+
 @onready var cameraScript = $Camera
+@export var click_effect = preload("res://Scenes/MouseEffects/ClickEffect.tscn")
+@export var attack_effect = preload("res://Scenes/MouseEffects/AttackEffect.tscn")
+
 func _ready():
-	Globals.AlexTester = self
-			
+	Globals.AlexTester = self		
 
 # Get all units within the bounds of the drawn rectangle
 func get_units_in_area(area):
@@ -78,14 +80,15 @@ func _input(event):
 			for unit in selected_units:
 				if unit.controllable:
 					unit.set_target(clicked_unit)
-			var effect = click_effect.instantiate()
-			effect.global_position = global_position
+			var effect = attack_effect.instantiate()
+			effect.global_position = get_global_mouse_position()
+			add_child(effect)
 		else:
 			for unit in selected_units:
 				if unit.controllable:
 					unit.set_walk()
 			var effect = click_effect.instantiate()
-			effect.global_position = global_position
+			effect.global_position = get_global_mouse_position()
 			add_child(effect)
 	if event.is_action_pressed("LeftClick"):
 		deselect_all_units()

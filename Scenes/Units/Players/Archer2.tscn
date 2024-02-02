@@ -37,7 +37,7 @@ teamColor = "blue"
 controllable = true
 walkSpeed = 15.0
 runSpeed = 40.0
-weaponRange = 90.0
+weaponRange = 1000.0
 weaponCooldown = 2.0
 weaponDamage = 40
 
@@ -58,7 +58,7 @@ region_rect = Rect2(38, 101, 20, 21)
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
 
-[node name="SM" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+[node name="SM" parent="." index="6" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Stand")
 
 [node name="Stand" type="Node" parent="SM" index="6" node_paths=PackedStringArray("own_body")]

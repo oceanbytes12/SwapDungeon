@@ -46,7 +46,7 @@ radius = 6.0
 height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
-radius = 346.036
+radius = 207.118
 
 [sub_resource type="Animation" id="Animation_h2q2f"]
 length = 0.001
@@ -408,6 +408,7 @@ script = ExtResource("11_73he8")
 own_body = NodePath("../..")
 
 [node name="SightRange" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
 shape = SubResource("CircleShape2D_5cwag")

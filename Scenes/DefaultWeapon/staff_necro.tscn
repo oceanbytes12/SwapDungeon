@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxueen142481q"]
+[gd_scene load_steps=4 format=3 uid="uid://dlgckynb5p00u"]
 
 [ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="1_pcje0"]
 [ext_resource type="PackedScene" uid="uid://b10y87uf3wkvx" path="res://Scenes/Attacks/MultiMageAttack/multi_mage_attack.tscn" id="2_vixyx"]
