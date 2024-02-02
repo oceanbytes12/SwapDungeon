@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_pxca1"]
 [ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/SkelyBoyPartsx3.png" id="2_yokhn"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_ibovw"]
-[ext_resource type="PackedScene" path="res://Scenes/DefaultWeapon/staff_necro.tscn" id="4_nl0pv"]
+[ext_resource type="PackedScene" uid="uid://dlgckynb5p00u" path="res://Scenes/DefaultWeapon/staff_necro.tscn" id="4_nl0pv"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
