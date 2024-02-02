@@ -14,6 +14,10 @@ var archer2 = preload("res://Scenes/Units/Players/Archer2.tscn")
 var mage1 = preload("res://Scenes/Units/Players/Mage1.tscn")
 var mage2 = preload("res://Scenes/Units/Players/Mage2.tscn")
 
+var level1 = preload("res://Scene/Levels/Level1.tscn")
+var level2 = preload("res://Scene/Levels/Level2.tscn")
+var level3 = preload("res://Scene/Levels/Level3.tscn")
+var level4 = preload("res://Scene/Levels/Level4.tscn")
 
 func loadIcons():
 	var heroIcons = {}
@@ -41,3 +45,11 @@ func loadUnupgradedUnits():
 	unupgradedUnits["archer1"] = archer1
 	unupgradedUnits["mage1"] = mage1
 	return unupgradedUnits
+
+func loadLevels():
+	var levels = []
+	levels.append(level1)
+	levels.append(level2)
+	levels.append(level3)
+	levels.append(level4)
+	return levels

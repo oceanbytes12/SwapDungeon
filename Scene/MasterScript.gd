@@ -4,6 +4,8 @@ extends Node2D
 var unitIcons : Dictionary
 var UnitDict : Dictionary
 var UnupgradedDict: Dictionary
+var Levels : Array
+var levelIndex = 0
 
 @export var use_context_cursors = true
 #@export var mouse_pointer: Resource
@@ -12,11 +14,19 @@ var UnupgradedDict: Dictionary
 @export var mouse_open = preload("res://Art/MousePointer3.png")
 @export var mouse_attack = preload("res://Art/MousePointer4.png")
 
+func _GetNextLevel():
+	if(levelIndex < Levels.size()):
+		return Levels[levelIndex]
+
+func _IncrementLevelIndex():
+	levelIndex=levelIndex+1
+
 # Crush
 func _ready():
 	Globals.unitManager = self
 	unitIcons = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadIcons()
 	UnitDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadUnits()
+	Levels = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadLevels()
 	UnupgradedDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadUnupgradedUnits()
 
 func _physics_process(_delta):

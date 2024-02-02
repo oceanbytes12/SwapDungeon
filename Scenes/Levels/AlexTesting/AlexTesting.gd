@@ -10,7 +10,7 @@ var is_Ctrl_pressed = false
 @onready var mouse_open = preload("res://Art/MousePointer3.png")
 @onready var mouse_attack = preload("res://Art/MousePointer4.png")
 @onready var click_effect = preload("res://Scenes/MouseEffects/ClickEffect.tscn")
-
+@onready var cameraScript = $Camera
 func _ready():
 	Globals.AlexTester = self
 			
@@ -66,7 +66,6 @@ func _input(event):
 		is_Ctrl_pressed = true
 	if event.is_action_released("Ctrl"):
 		is_Ctrl_pressed = false
-	
 	if event.is_action_pressed("RightClick"):
 		if targeted_unit:
 			targeted_unit.set_targeted(false)
@@ -88,7 +87,6 @@ func _input(event):
 			var effect = click_effect.instantiate()
 			effect.global_position = global_position
 			add_child(effect)
-		
 	if event.is_action_pressed("LeftClick"):
 		deselect_all_units()
 		var clicked_unit = check_object_under_mouse()
@@ -96,7 +94,10 @@ func _input(event):
 		if clicked_unit and clicked_unit.controllable:
 			clicked_unit.set_selected(true)
 			selected_units.append(clicked_unit)
-	
+	if event.is_action_pressed("KillEnemies"):
+		_kill_all_enemies()
+	if event.is_action_pressed("KillFriends"):
+		_kill_all_players()
 
 func deselect_all_units():
 	# If player is pressing ctrl, don't deselect already selected units
@@ -132,3 +133,13 @@ func PlayersAreDead():
 			if (!unit.is_dead  and unit.controllable):
 				return false
 	return true
+
+func _Toggle(isOn):
+	print("Turning: ", isOn)
+	cameraScript.set_process(isOn)
+	cameraScript.set_physics_process(isOn)
+	cameraScript.set_process_input(isOn)
+	
+	set_process(isOn)
+	set_physics_process(isOn)
+	set_process_input(isOn)

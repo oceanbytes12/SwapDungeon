@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn8y8e1qbyjbj"]
+[gd_scene load_steps=8 format=3 uid="uid://dn8y8e1qbyjbj"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_c8ybf"]
-[ext_resource type="Texture2D" uid="uid://bo1opgc28somc" path="res://Art/MousePointer1.png" id="2_sehba"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="3_mjq13"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Units/Enemies/MeleeSkeleton.tscn" id="4_3fa6q"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="4_8c1s0"]
@@ -23,7 +22,6 @@ corner_radius_bottom_left = 3
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_c8ybf")
-mouse_pointer = ExtResource("2_sehba")
 
 [node name="SpawnPositions" parent="." instance=ExtResource("7_14wgo")]
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://db2bmrfjuccta"]
+[gd_scene load_steps=7 format=3 uid="uid://db2bmrfjuccta"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_mbhdq"]
-[ext_resource type="Texture2D" uid="uid://bo1opgc28somc" path="res://Art/MousePointer1.png" id="2_6g150"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="3_3bba1"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="3_fe3ee"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="5_u2nlv"]
@@ -22,7 +21,6 @@ corner_radius_bottom_left = 3
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_mbhdq")
-mouse_pointer = ExtResource("2_6g150")
 
 [node name="BaseLevel" parent="." instance=ExtResource("3_fe3ee")]
 

@@ -4,8 +4,7 @@ extends Node
 @export var PartyBattleUI : Control
 @export var battlePanels : Array[UIBattleSpace]
 @export var StartBattleButton : Button
-@export var levelManager : LevelManager
-@export var unitManager : Node2D
+@export var GameScript : Node2D
 @export var tileMap : TileMap
 
 var battleParent
@@ -33,11 +32,13 @@ func _BattlePartyGreaterThanOne():
 	return false
 
 func _StartBattle():
-	tileMap.visible = false
+	if(is_instance_valid(battleParent)):
+		battleParent._Toggle(true)
+		
+	#tileMap.visible = false
 	isBattling = true
-	battleParent = levelManager._GetNextLevel().instantiate()
+	#battleParent = GameScript._GetNextLevel().instantiate()
 	call_deferred("_SpawnHeros")
-	get_parent().get_parent().add_child(battleParent)
 	
 func _SpawnHeros():
 	var spawns = Globals.spawnPositions
@@ -51,7 +52,7 @@ func _SpawnHeros():
 		#Swap this out for a reference to a real hero!
 		#res://Scenes/Units/
 		
-		var newHero = unitManager._GetUnitInstanceOfType(currentEnum)
+		var newHero = GameScript._GetUnitInstanceOfType(currentEnum)
 		newHero.controllable = true
 		
 		#Position them properly
@@ -59,6 +60,11 @@ func _SpawnHeros():
 		newHero.global_position = spawns[heroEnumIndex].global_position
 
 func _FinishPartyAddition():
+	tileMap.visible = false
+	battleParent = GameScript._GetNextLevel().instantiate()
+	get_parent().get_parent().add_child(battleParent)
+	if(is_instance_valid(battleParent)):
+		battleParent._Toggle(false)
 	emit_signal("move_To_Ready_Screen")
 
 func _UnLoadHeros():
@@ -72,11 +78,6 @@ func _process(_delta):
 		#get_tree().quit()
 	
 	if(isBattling):
-		if Input.is_key_pressed(KEY_K):
-			_kill_all_enemies()
-		if Input.is_key_pressed(KEY_L):
-			_kill_all_players()
-		
 		if(EnemiesAreDead()):
 			_WinBattle()
 		elif(PlayersAreDead()):
@@ -91,8 +92,8 @@ func _WinBattle():
 	Globals.spawnPositions.clear()
 	
 	
-	levelManager._IncrementLevelIndex()
-	if(levelManager._GetNextLevel()):
+	GameScript._IncrementLevelIndex()
+	if(GameScript._GetNextLevel()):
 		emit_signal("finish_battle")
 		tileMap.visible = true
 	else:
