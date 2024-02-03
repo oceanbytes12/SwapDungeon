@@ -99,7 +99,7 @@ func Die():
 	$UI/HealthBar.visible = false
 	if(is_instance_valid($CollisionShape2D)):
 		$CollisionShape2D.queue_free()
-	$Art/BlueHat.visible = false
-	$Art/RedHat.visible = false
+	#$Art/BlueHat.visible = false
+	#$Art/RedHat.visible = false
 	Died.emit()
 	$MovementAnimations.play("Die")
