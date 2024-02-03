@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/DungeonTiles.png" id="3_ksch6"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="4_dpfmg"]
 [ext_resource type="PackedScene" uid="uid://8m6kuwd85l7w" path="res://Scenes/Units/Players/Mage2.tscn" id="5_nw5yx"]
-[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Units/Enemies/MeleeSkeleton.tscn" id="5_sky41"]
+[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/DefaultWeapon/MeleeSkeleton.tscn" id="5_sky41"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iq15"]
 texture = ExtResource("3_ksch6")

@@ -17,6 +17,7 @@ signal Died
 var selected = false
 var targeted = false
 var is_dead = false
+@onready var hitEffect = preload("res://Scenes/RandomEffects/HitEffect.tscn")
 @onready var state_machine = $SM
 
 func set_selected(value):
@@ -66,6 +67,10 @@ func set_target(target):
 
 func take_hit(hit_position, damage):
 	$UI/HealthBar.value -= damage
+	var newNode = hitEffect.instantiate()
+	newNode.global_position = global_position
+	newNode.set_damage_text(damage)
+	get_parent().get_parent().add_child(newNode)
 	if $UI/HealthBar.value <= 0:
 		is_dead = true
 		$UI/HealthBar.visible = false
@@ -82,7 +87,6 @@ func take_hit(hit_position, damage):
 		targeted = false
 		selected = false
 		controllable = false
-
 	else:
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction)

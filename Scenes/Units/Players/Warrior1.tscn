@@ -37,7 +37,7 @@ teamColor = "blue"
 controllable = true
 walkSpeed = 15.0
 runSpeed = 40.0
-weaponRange = 35.0
+weaponRange = 30.0
 weaponCooldown = 0.8
 weaponDamage = 35
 

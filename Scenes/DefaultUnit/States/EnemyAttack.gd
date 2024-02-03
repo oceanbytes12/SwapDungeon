@@ -28,10 +28,9 @@ func Update(delta: float, target: CharacterBody2D):
 		$Timer.wait_time = own_body.weaponCooldown
 		$Timer.start()
 
-
-func Physics_Update(_delta: float, _target: CharacterBody2D):
-	own_body.velocity = Vector2()
-
+func Physics_Update(_delta: float, target: CharacterBody2D):
+	own_body.velocity = Vector2.ZERO
+	
 
 func _on_timer_timeout():
 	can_attack = true

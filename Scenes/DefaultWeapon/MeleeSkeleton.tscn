@@ -34,7 +34,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 teamColor = "red"
 walkSpeed = 10.0
 runSpeed = 35.0
-weaponRange = 30.0
+weaponRange = 25.0
 weaponCooldown = 1.0
 weaponDamage = 20
 

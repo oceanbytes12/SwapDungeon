@@ -5,6 +5,9 @@
 
 [node name="Sword1" instance=ExtResource("1_ftp3j")]
 
+[node name="AttackPoint" parent="." index="0"]
+position = Vector2(12, 0)
+
 [node name="Art" parent="." index="1"]
 position = Vector2(13, -4)
 texture = ExtResource("2_bu3ip")

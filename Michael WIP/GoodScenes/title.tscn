@@ -126,4 +126,13 @@ theme_override_colors/icon_hover_color = Color(0.227451, 0.0196078, 0.137255, 1)
 text = "ENTER THE DUNGEON"
 icon = ExtResource("3_ejqge")
 
+[node name="Label2" type="Label" parent="TitleScreen"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 14.0
+offset_right = 175.0
+offset_bottom = 37.0
+scale = Vector2(3, 3)
+text = "Swap Dungeon"
+
 [connection signal="pressed" from="TitleScreen/NinePatchRect/Button" to="LoadScene" method="_Start_Game"]

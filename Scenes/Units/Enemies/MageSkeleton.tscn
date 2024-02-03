@@ -43,6 +43,9 @@ weaponDamage = 40
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
 
+[node name="AttackPoint" parent="Staff" index="0"]
+position = Vector2(16, 0)
+
 [node name="Art" parent="Staff" index="1"]
 position = Vector2(11, -4)
 

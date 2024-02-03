@@ -18,8 +18,8 @@ func _ready():
 		current_state = initial_state
 
 func _process(delta):
-	if own_body.teamColor == "red":
-		print(current_state)
+	#if own_body.teamColor == "red":
+		#print(current_state)
 	if current_state:
 		current_state.Update(delta, current_target)
 
@@ -48,6 +48,7 @@ func find_target():
 			current_target = target_body
 
 func _on_unit_sm_hit(direction):
+	print(name)
 	if current_state.name != "Dead":
 		var new_state = states.get("Stun")
 		current_state.Exit()
