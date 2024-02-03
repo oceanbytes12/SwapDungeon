@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_bvafi"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_qfbqq"]
-[ext_resource type="Script" path="res://Megan WIP/Bosses/BossAttacks.gd" id="3_tu3eq"]
+[ext_resource type="Script" path="res://Megan WIP/Bosses(old)/BossAttacks.gd" id="3_tu3eq"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
