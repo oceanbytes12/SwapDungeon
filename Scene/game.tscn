@@ -190,12 +190,13 @@ columns = 2
 
 [node name="Label" type="Label" parent="GameUI/PartyBattleUI"]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 62.0
-offset_right = 305.0
-offset_bottom = 85.0
-theme_override_colors/font_color = Color(1, 0.792157, 0.0588235, 1)
-text = "SELECT YOUR UNITS"
+offset_left = 159.0
+offset_top = 39.0
+offset_right = 314.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.929412, 0.737255, 0.054902, 1)
+text = "READY YOUR TEAM"
+horizontal_alignment = 1
 
 [node name="PartyAddUI" type="Control" parent="GameUI"]
 layout_mode = 3
@@ -239,7 +240,6 @@ mouse_filter = 2
 columns = 6
 
 [node name="SkipButton" type="Button" parent="GameUI/PartyAddUI/HeroGenerator"]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -263,21 +263,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -105.0
-offset_top = 61.0
+offset_top = 39.0
 offset_right = 96.0
-offset_bottom = 84.0
-grow_horizontal = 2
-text = "ADD NEW PARTY MEMBER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="AddNewPartyMember2" type="Label" parent="GameUI/PartyAddUI/HeroGenerator"]
-modulate = Color(1, 0.74902, 0, 1)
-layout_mode = 2
-offset_left = 135.0
-offset_top = 61.0
-offset_right = 336.0
-offset_bottom = 84.0
+offset_bottom = 62.0
 grow_horizontal = 2
 text = "ADD NEW PARTY MEMBER"
 horizontal_alignment = 1
@@ -305,6 +293,7 @@ grow_horizontal = 0
 text = "LKey:KillFriends"
 
 [node name="GameOver" type="Panel" parent="GameUI"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -339,6 +328,7 @@ script = ExtResource("7_oidtt")
 scenename = "res://Scene/Game.tscn"
 
 [node name="GameWin" type="Panel" parent="GameUI"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
