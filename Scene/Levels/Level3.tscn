@@ -32,11 +32,11 @@ script = ExtResource("4_gg4n0")
 
 [node name="Melee2" parent="." instance=ExtResource("5_73vln")]
 z_index = 1
-position = Vector2(53, -23)
+position = Vector2(101, -23)
 
 [node name="Melee4" parent="." instance=ExtResource("5_73vln")]
 z_index = 1
-position = Vector2(48, 33)
+position = Vector2(96, 33)
 
 [node name="Mager" parent="." instance=ExtResource("7_im5ij")]
 position = Vector2(143, 7)

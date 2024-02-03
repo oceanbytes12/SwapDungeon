@@ -347,6 +347,7 @@ grow_vertical = 2
 script = ExtResource("2_7sjb0")
 
 [node name="TextureRect" type="TextureRect" parent="GameUI/GameWin"]
+layout_mode = 0
 offset_right = 480.0
 offset_bottom = 270.0
 texture = ExtResource("14_d2a8e")
