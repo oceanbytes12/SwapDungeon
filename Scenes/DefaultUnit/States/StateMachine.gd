@@ -45,11 +45,16 @@ func find_target():
 		else:
 			current_target = target_body
 
-func _on_unit_sm_hit(direction):
+
+
+func _on_unit_sm_hit(direction, damage):
+	print("Getting hit: ", name)
 	if current_state.name != "Dead":
 		var new_state = states.get("Stun")
 		current_state.Exit()
 		new_state.hit_direction = direction
+		#if(new_state.hasfield(damage)):
+			#new_state.damage = new_state.damage+damage
 		new_state.Enter(current_target)
 		current_state = new_state
 
@@ -82,9 +87,15 @@ func _on_sight_range_body_shape_exited(_body_rid, body, _body_shape_index, _loca
 
 
 func _on_base_unit_attack_command(target):
+	if(!is_instance_valid(target)):
+		#Wierd bug that occurs even in lonely scenes...
+		#print("Invalid Target for: ", own_body.name)
+		return
+	
 	if targets.get(target.name):
 		current_target = target
 	else:
 		targets[target.name] = target
 		current_target = target
 	#on_state_change("Follow")
+

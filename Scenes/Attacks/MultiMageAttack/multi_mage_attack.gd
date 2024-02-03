@@ -16,7 +16,7 @@ func _process(delta):
 	currentInterval-=delta
 	if(currentInterval <= 0):
 		currentInterval = 0
-		print("Spawning")
+		#print("Spawning Magic Attack")
 		currentInterval = interval
 		numberToSpawn=numberToSpawn-1
 		var attackNode = spawnedMagic.instantiate()

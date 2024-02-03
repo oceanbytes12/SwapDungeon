@@ -42,7 +42,6 @@ func _ready():
 		#$Art/BlueHat.visible = false
 		#$Art/RedHat.visible = true
 
-
 func _process(_delta):
 	if velocity.length() < 1 and not is_dead:
 		$MovementAnimations.play("RESET")
@@ -76,8 +75,8 @@ func take_hit(hit_position, damage):
 		is_dead = true
 		$UI/HealthBar.visible = false
 		$CollisionShape2D.queue_free()
-		$Art/BlueHat.visible = false
-		$Art/RedHat.visible = false
+		#$Art/BlueHat.visible = false
+		#$Art/RedHat.visible = false
 		$Selection.visible = false
 		$Targeted.visible = false
 		Died.emit()
@@ -90,11 +89,13 @@ func take_hit(hit_position, damage):
 		controllable = false
 
 	else:
+		print("StateUnit getting hit: ", name)
 		var direction = (global_position-hit_position).normalized()
-		Hit.emit(direction)
+		Hit.emit(direction, damage)
 		$EffectAnimations.play("hitAnimation")
 
 func Die():
+	print("Dieing: ", name)
 	is_dead = true
 	$UI/HealthBar.visible = false
 	if(is_instance_valid($CollisionShape2D)):
