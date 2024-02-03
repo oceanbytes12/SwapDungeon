@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bs6obl2a02txq"]
+[gd_scene load_steps=37 format=3 uid="uid://bs6obl2a02txq"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ndyto"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_fbp13"]
@@ -12,12 +12,13 @@
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyIdle.gd" id="10_va3w8"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyAttack.gd" id="11_r7o45"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/TriggerStateOnDamageTaken.gd" id="12_rh1dx"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/Teleport.gd" id="13_c316p"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerWalk.gd" id="13_sh6dp"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyDead.gd" id="14_60q3r"]
 [ext_resource type="Script" path="res://Scene/MouseOver.gd" id="15_fmvea"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/SummonUnits.gd" id="15_x0nxg"]
 [ext_resource type="Texture2D" uid="uid://bo1opgc28somc" path="res://Art/MousePointer1.png" id="16_07ppq"]
-[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Units/Enemies/MeleeSkeleton.tscn" id="16_i0xfi"]
+[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/DefaultWeapon/MeleeSkeleton.tscn" id="16_i0xfi"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -327,6 +328,7 @@ runSpeed = 1.0
 weaponRange = 1000.0
 weaponCooldown = 100.0
 weaponDamage = 1
+unitHealth = 1000.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 9)
@@ -401,6 +403,13 @@ own_body = NodePath("../..")
 script = ExtResource("12_rh1dx")
 own_body = NodePath("../..")
 transitionStateOnDamageTaken = "Teleport"
+damageThreshold = 200
+
+[node name="Teleport" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
+script = ExtResource("13_c316p")
+own_body = NodePath("../..")
+nextState = "SummonUnits"
+Positions = Array[Vector2]([Vector2(-180, 80), Vector2(-180, -80), Vector2(180, 80), Vector2(180, -80)])
 
 [node name="Walk" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("13_sh6dp")
@@ -416,6 +425,9 @@ script = ExtResource("15_x0nxg")
 own_body = NodePath("../..")
 body_art = NodePath("../../Art/Body")
 spawn_object = ExtResource("16_i0xfi")
+nextState = "Attack"
+num_summoned = 1
+increment_amount_post_summon = 1
 
 [node name="SightRange" type="Area2D" parent="."]
 
@@ -461,6 +473,7 @@ rotation = -3.14159
 scale = Vector2(0.872446, -1.08547)
 shape = SubResource("RectangleShape2D_541oc")
 
+[connection signal="Hit" from="." to="SM" method="_on_unit_sm_hit"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="SM/Attack/Timer" to="SM/Attack" method="_on_timer_timeout"]

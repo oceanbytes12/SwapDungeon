@@ -95,7 +95,6 @@ func take_hit(hit_position, damage):
 		$EffectAnimations.play("hitAnimation")
 
 func Die():
-	print("Dieing: ", name)
 	is_dead = true
 	$UI/HealthBar.visible = false
 	if(is_instance_valid($CollisionShape2D)):

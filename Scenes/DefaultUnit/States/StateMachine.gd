@@ -49,13 +49,14 @@ func find_target():
 
 
 func _on_unit_sm_hit(direction, damage):
-	print("Getting hit: ", name)
 	if current_state.name != "Dead":
 		var new_state = states.get("Stun")
 		current_state.Exit()
 		new_state.hit_direction = direction
-		#if(new_state.hasfield(damage)):
-			#new_state.damage = new_state.damage+damage
+		
+		if(new_state.has_method("UpdateDamage")):
+			new_state.UpdateDamage(damage)
+			
 		new_state.Enter(current_target)
 		current_state = new_state
 

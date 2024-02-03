@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bo04ny46ltxw2"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_tq5co"]
-[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Units/Enemies/MeleeSkeleton.tscn" id="2_bsdor"]
+[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/DefaultWeapon/MeleeSkeleton.tscn" id="2_bsdor"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="3_3c2kl"]
 [ext_resource type="PackedScene" uid="uid://bdv1mfy7gs5lb" path="res://Scenes/Units/Players/Warrior2.tscn" id="3_oid8h"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="4_2nknn"]

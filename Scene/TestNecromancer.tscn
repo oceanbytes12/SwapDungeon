@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://yhk0pku0h88l"]
+[gd_scene load_steps=8 format=3 uid="uid://yhk0pku0h88l"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_kowf3"]
 [ext_resource type="PackedScene" uid="uid://bs6obl2a02txq" path="res://Scenes/DefaultUnit/Necromancer.tscn" id="2_6fdr2"]
 [ext_resource type="PackedScene" uid="uid://bdv1mfy7gs5lb" path="res://Scenes/Units/Players/Warrior2.tscn" id="2_b4vpr"]
+[ext_resource type="PackedScene" uid="uid://b3hn3jfn1k70h" path="res://Scenes/Units/Players/Archer2.tscn" id="2_cywut"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="3_q62oc"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="5_6t7dv"]
 
@@ -22,6 +23,8 @@ corner_radius_bottom_left = 3
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_kowf3")
 
+[node name="Archer2" parent="." instance=ExtResource("2_cywut")]
+
 [node name="Warrior2" parent="." instance=ExtResource("2_b4vpr")]
 position = Vector2(-72, 0)
 
@@ -36,6 +39,8 @@ script = ExtResource("5_6t7dv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_j3qaq")
 
 [node name="Necromancer" parent="." instance=ExtResource("2_6fdr2")]
+visible = true
+position = Vector2(40, 0)
 weaponCooldown = 10.0
 
 [connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]

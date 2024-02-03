@@ -8,10 +8,10 @@ var source_team_color
 @export var accel_speed : float = 1
 @export var turn_speed = 3
 @export var random_scale_factor = 0.2
+@export var damage = 5
 
 
 var target
-var damage = 5
 var current_speed
 var accelerating
 
@@ -60,7 +60,6 @@ func _process(delta):
 		_shrink()
 
 func _die():
-	print("Dieing")
 	queue_free()
 
 func _rotate_to_target(delta):

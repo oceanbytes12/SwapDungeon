@@ -64,6 +64,7 @@ speed = 200.0
 accel_speed = 5.0
 turn_speed = 2
 random_scale_factor = 0.3
+damage = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4, 1)

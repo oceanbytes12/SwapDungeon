@@ -17,7 +17,7 @@ var mage2 = preload("res://Scenes/Units/Players/Mage2.tscn")
 var level1 = preload("res://Scene/Levels/Level1.tscn")
 var level2 = preload("res://Scene/Levels/Level2.tscn")
 var level3 = preload("res://Scene/Levels/Level3.tscn")
-var level4 = preload("res://Scene/Levels/Level4.tscn")
+var level4 = preload("res://Scene/Levels/NecroMancerBoss.tscn")
 
 func loadIcons():
 	var heroIcons = {}
