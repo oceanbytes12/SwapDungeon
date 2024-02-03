@@ -8,7 +8,7 @@
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Archer1" parent="." instance=ExtResource("2_82xag")]
-position = Vector2(-74, 14)
+position = Vector2(36, 66)
 
 [node name="Minotaur" parent="." instance=ExtResource("2_qeq48")]
-position = Vector2(15, 0)
+position = Vector2(63, -9)

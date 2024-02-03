@@ -4,7 +4,7 @@ extends Node2D
  
 # Handle all special attacks performed by bosses.
 
-@export var spawn_object = load("res://Scenes/Units/Enemies/MeleeSkeleton.tscn")
+@export var spawn_object = load("res://Scenes/DefaultWeapon/MeleeSkeleton.tscn")
 @export var windup_time = 3
 @export var AOE_damage = 10
 @export var max_spawns_onscreen = 5

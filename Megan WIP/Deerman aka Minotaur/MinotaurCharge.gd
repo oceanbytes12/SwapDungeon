@@ -30,7 +30,7 @@ func Update(delta: float, _target: CharacterBody2D):
 func Physics_Update(_delta: float, target: CharacterBody2D):
 	if target:
 		# Rush towards target
-		print("Minotaur is charging")
+		#print("Minotaur is charging")
 		var target_vector = target.global_position - own_body.global_position
 		own_body.velocity = target_vector.normalized() * chargeSpeed
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://yrrsebpha10e"]
+[gd_scene load_steps=59 format=3 uid="uid://yrrsebpha10e"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_qxosq"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_7sqt8"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/MinotaurMelee.gd" id="13_8repc"]
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/MinotaurAOE.gd" id="14_64fb8"]
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/MinotaurBoulderThrow.gd" id="15_068n1"]
+[ext_resource type="PackedScene" uid="uid://dnff43m6w16sl" path="res://Scenes/RandomEffects/AOE_Effect.tscn" id="16_mc0c2"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyStun.gd" id="17_76x32"]
 [ext_resource type="Script" path="res://Megan WIP/Bosses(old)/BossAttacks.gd" id="17_478vf"]
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/MinotaurChooseTarget.gd" id="18_lbdjf"]
@@ -574,6 +575,7 @@ own_body = NodePath("../..")
 [node name="MinotaurAOE" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("14_64fb8")
 own_body = NodePath("../..")
+aoeEffect = ExtResource("16_mc0c2")
 
 [node name="MinotaurBoulderThrow" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("15_068n1")

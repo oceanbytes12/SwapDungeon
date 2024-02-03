@@ -4,37 +4,20 @@ class_name MinotaurAOE
 signal AOEAttack
 
 @export var own_body : CharacterBody2D
-@export var timeout := 2.0
-@export var knockback = 60
+@export var radius = 60
+@export var speed = 50
 @export var damage = 40
-var timeout_timer
+
+@export var aoeEffect = load("res://Scenes/RandomEffects/AOE_Effect.tscn")
 
 
 func Enter(_target):
 	print("MinotaurAOE entered")
 	emit_signal("AOEAttack") #Can't play the animation(s) here, emit signal instead
-	timeout_timer = timeout
-
-
-func Update(delta: float, _target: CharacterBody2D):
-	if timeout_timer > 0:
-		timeout_timer -= delta
-	else:
-		return
-		#Transitioned.emit("ChooseTarget") # Choose a new target for next attack?
-		#Transitioned.emit("MinotaurFollow")
-
-func Physics_Update(_delta: float, target: CharacterBody2D):
-	pass
-	#if target:
-		## Rush towards target
-		#var target_vector = target.global_position - own_body.global_position
-		#own_body.velocity = target_vector.normalized() * chargeSpeed
-		
-		# How to deal damage to collided with objects?
-		
-		#var target_distance = target_vector.length()
-		#if 	target_distance < own_body.weaponRange:
-			#Transitioned.emit("Attack")
-		#else:
-			#own_body.velocity = target_vector.normalized() * own_body.runSpeed
+	
+	var aoe = aoeEffect.instantiate()
+	add_child(aoe)
+	aoe.position = own_body.position
+	aoe.initialize(radius, damage, speed)
+	
+	return
