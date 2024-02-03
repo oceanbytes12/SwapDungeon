@@ -33,7 +33,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 [node name="Ranger" instance=ExtResource("1_env67")]
 teamColor = "red"
 walkSpeed = 10.0
-runSpeed = 35.0
+runSpeed = 30.0
 weaponRange = 100.0
 weaponCooldown = 2.0
 weaponDamage = 30
@@ -43,7 +43,6 @@ material = SubResource("ShaderMaterial_w0ymd")
 
 [node name="Head" parent="Art" index="1"]
 material = SubResource("ShaderMaterial_jtach")
-flip_h = true
 
 [node name="Bow" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("3_0drtb")]
 own_body = NodePath("..")

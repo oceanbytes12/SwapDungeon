@@ -9,10 +9,10 @@ script = ExtResource("1_tsput")
 weaponEffectScene = ExtResource("2_3t5pd")
 
 [node name="AttackPoint" type="Marker2D" parent="."]
-position = Vector2(16, 0)
+position = Vector2(9, 0)
 
 [node name="Art" type="Sprite2D" parent="."]
-position = Vector2(8, 0)
+position = Vector2(8, -5)
 texture = ExtResource("2_avc4h")
 region_enabled = true
 region_rect = Rect2(3, 39, 8, 20)

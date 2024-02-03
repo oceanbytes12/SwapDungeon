@@ -18,6 +18,8 @@ func _ready():
 		current_state = initial_state
 
 func _process(delta):
+	#if own_body.teamColor == "red":
+		#print(current_state)
 	if current_state:
 		current_state.Update(delta, current_target)
 
@@ -44,7 +46,6 @@ func find_target():
 				current_target = target_body
 		else:
 			current_target = target_body
-
 
 
 func _on_unit_sm_hit(direction, damage):

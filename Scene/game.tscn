@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxgalpram8qcb"]
+[gd_scene load_steps=17 format=3 uid="uid://bxgalpram8qcb"]
 
 [ext_resource type="Script" path="res://Michael WIP/Scripts/BattleManager.gd" id="1_45nev"]
 [ext_resource type="Script" path="res://Scene/MasterScript.gd" id="1_akbcm"]
@@ -8,8 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="4_gtbun"]
 [ext_resource type="PackedScene" uid="uid://dysjvo3gsiwfg" path="res://Michael WIP/GoodScenes/BattlePanel.tscn" id="5_0i2aq"]
 [ext_resource type="Script" path="res://Scene/HeroGenerator.gd" id="6_5blkj"]
+[ext_resource type="Texture2D" uid="uid://b83sdt1m7s25b" path="res://Art/StartButtons1.png" id="7_1gm8f"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/LoadScene.gd" id="7_oidtt"]
+[ext_resource type="Texture2D" uid="uid://dw5suyq414m44" path="res://Art/StartButtons3.png" id="8_g6n5p"]
+[ext_resource type="Texture2D" uid="uid://c4wgljp44rdc5" path="res://Art/StartButtons2.png" id="9_8xo36"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://tile_map.tscn" id="10_m6j52"]
+[ext_resource type="Texture2D" uid="uid://cn5hlcg8bvwu6" path="res://Art/LoseScreen.png" id="13_u8mi0"]
+[ext_resource type="Texture2D" uid="uid://b76mhmgtyxmp4" path="res://Art/WinScreen.png" id="14_d2a8e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnua3"]
 size = Vector2(464, 64)
@@ -23,7 +28,7 @@ script = ExtResource("2_v6rn7")
 [node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels", "StartBattleButton", "GameScript", "tileMap")]
 script = ExtResource("1_45nev")
 PartyBattleUI = NodePath("../GameUI/PartyBattleUI")
-battlePanels = [NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel2"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel3")]
+battlePanels = [NodePath("../GameUI/PartyBattleUI/BattlePanel"), NodePath("../GameUI/PartyBattleUI/BattlePanel2"), NodePath("../GameUI/PartyBattleUI/BattlePanel3")]
 StartBattleButton = NodePath("../GameUI/PartyBattleUI/StartBattleButton")
 GameScript = NodePath("..")
 tileMap = NodePath("../GameUI/TileMap")
@@ -37,6 +42,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
@@ -52,6 +58,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -66.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -59,7 +67,6 @@ script = ExtResource("3_yxyhh")
 partyContainer = NodePath("RosterUI/MarginContainer/NewHeroContainer")
 
 [node name="RosterUI" type="NinePatchRect" parent="GameUI/RosterUI/PartyRoster"]
-custom_minimum_size = Vector2(0, 80)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,30 +81,25 @@ patch_margin_right = 6
 patch_margin_bottom = 6
 
 [node name="MarginContainer" type="MarginContainer" parent="GameUI/RosterUI/PartyRoster/RosterUI"]
-custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = 30.0
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_left = 3
 
 [node name="NewHeroContainer" type="GridContainer" parent="GameUI/RosterUI/PartyRoster/RosterUI/MarginContainer"]
-custom_minimum_size = Vector2(72, 60)
-layout_direction = 2
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
-theme_override_constants/h_separation = 5
+theme_override_constants/h_separation = 2
 columns = 9
 
 [node name="EmptySlot" type="NinePatchRect" parent="GameUI/RosterUI/PartyRoster/RosterUI/MarginContainer/NewHeroContainer"]
 layout_mode = 2
-size_flags_vertical = 4
 texture = ExtResource("4_gtbun")
 region_rect = Rect2(164, 198, 54, 54)
 patch_margin_left = 30
@@ -109,6 +111,7 @@ patch_margin_bottom = 30
 position = Vector2(222, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameUI/RosterUI/PartyRoster/Area2D"]
+visible = false
 position = Vector2(18, 0)
 shape = SubResource("RectangleShape2D_fnua3")
 
@@ -122,39 +125,78 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_7sjb0")
 
-[node name="StartBattleButton" type="Button" parent="GameUI/PartyBattleUI"]
+[node name="StartBattleButton" type="TextureButton" parent="GameUI/PartyBattleUI"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = -1
+anchor_left = 0.2875
+anchor_top = 0.664815
+anchor_right = 0.3
+anchor_bottom = 0.664815
 offset_left = -23.0
 offset_top = -15.5
 offset_right = 23.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Start"
-icon_alignment = 1
-expand_icon = true
+texture_normal = ExtResource("7_1gm8f")
+texture_pressed = ExtResource("8_g6n5p")
+texture_hover = ExtResource("9_8xo36")
+metadata/_edit_use_anchors_ = true
+
+[node name="BattlePanel" parent="GameUI/PartyBattleUI" instance=ExtResource("5_0i2aq")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 65.0
+offset_top = 90.0
+offset_right = 125.0
+offset_bottom = 150.0
+size_flags_horizontal = 4
+
+[node name="BattlePanel2" parent="GameUI/PartyBattleUI" instance=ExtResource("5_0i2aq")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 4.0
+offset_top = 49.0
+offset_right = 64.0
+offset_bottom = 109.0
+
+[node name="BattlePanel3" parent="GameUI/PartyBattleUI" instance=ExtResource("5_0i2aq")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 4.0
+offset_top = 136.0
+offset_right = 64.0
+offset_bottom = 196.0
 
 [node name="GridContainer" type="GridContainer" parent="GameUI/PartyBattleUI"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 68.0
-offset_bottom = 196.0
+offset_top = 65.0
+offset_right = 124.0
+offset_bottom = 253.0
 mouse_filter = 2
+columns = 2
 
-[node name="BattlePanel" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("5_0i2aq")]
-layout_mode = 2
-
-[node name="BattlePanel2" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("5_0i2aq")]
-layout_mode = 2
-
-[node name="BattlePanel3" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("5_0i2aq")]
-layout_mode = 2
+[node name="Label" type="Label" parent="GameUI/PartyBattleUI"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 39.0
+offset_right = 314.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.929412, 0.737255, 0.054902, 1)
+text = "READY YOUR TEAM"
+horizontal_alignment = 1
 
 [node name="PartyAddUI" type="Control" parent="GameUI"]
 layout_mode = 3
@@ -221,15 +263,17 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.5
-offset_right = 100.5
-offset_bottom = 23.0
+offset_left = -105.0
+offset_top = 39.0
+offset_right = 96.0
+offset_bottom = 62.0
 grow_horizontal = 2
 text = "ADD NEW PARTY MEMBER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="KToKill" type="Label" parent="GameUI"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -239,6 +283,7 @@ grow_horizontal = 0
 text = "KKey:KillEnemies"
 
 [node name="LToLose" type="Label" parent="GameUI"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -256,16 +301,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_7sjb0")
 
-[node name="Label" type="Label" parent="GameUI/GameOver"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -37.0
-offset_right = 37.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "You Lose!"
+[node name="TextureRect" type="TextureRect" parent="GameUI/GameOver"]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 269.0
+texture = ExtResource("13_u8mi0")
 
 [node name="Button" type="Button" parent="GameUI/GameOver"]
 layout_mode = 1
@@ -274,13 +314,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 48.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Start Over"
+text = "Play Again
+"
 
 [node name="ReloadScene" type="Node" parent="GameUI/GameOver"]
 script = ExtResource("7_oidtt")
@@ -294,14 +335,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_7sjb0")
 
+[node name="TextureRect" type="TextureRect" parent="GameUI/GameWin"]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("14_d2a8e")
+
 [node name="Label" type="Label" parent="GameUI/GameWin"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -37.0
+offset_top = 64.0
 offset_right = 37.0
-offset_bottom = 23.0
+offset_bottom = 87.0
 grow_horizontal = 2
 text = "You Win!"
 
@@ -312,13 +360,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -45.0
+offset_top = 74.0
+offset_right = 43.0
+offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Start Over"
+text = "Play Again
+"
 
 [node name="ReloadScene" type="Node" parent="GameUI/GameWin"]
 script = ExtResource("7_oidtt")

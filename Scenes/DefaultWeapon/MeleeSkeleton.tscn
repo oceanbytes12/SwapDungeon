@@ -32,9 +32,9 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [node name="BaseUnit" instance=ExtResource("1_bwoj0")]
 teamColor = "red"
-walkSpeed = 15.0
-runSpeed = 40.0
-weaponRange = 30.0
+walkSpeed = 10.0
+runSpeed = 35.0
+weaponRange = 25.0
 weaponCooldown = 1.0
 weaponDamage = 20
 
@@ -43,7 +43,6 @@ material = SubResource("ShaderMaterial_5dut2")
 
 [node name="Head" parent="Art" index="1"]
 material = SubResource("ShaderMaterial_ax3d5")
-flip_h = true
 
 [node name="Sword" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("3_751ey")]
 own_body = NodePath("..")

@@ -1,5 +1,7 @@
 extends Node2D
 
+# UPDATE: This script and likely the nodes below it won't be in use
+ 
 # Handle all special attacks performed by bosses.
 
 @export var spawn_object = load("res://Scenes/Units/Enemies/MeleeSkeleton.tscn")
@@ -116,13 +118,13 @@ func _on_aoe_range_body_shape_entered(body_rid, body, body_shape_index, local_sh
 	#print("_on_aoe_range_body_shape_entered() called")
 	if body.is_in_group("unit") and body.teamColor != bossRoot.teamColor:
 		targets_in_AOE_range.append(body)
-		print("Added unit to targets_in_AOE_range:")
-		print(body)
+		#print("Added unit to targets_in_AOE_range:")
+		#print(body)
 
 func _on_aoe_range_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	#print("_on_aoe_range_body_shape_exited() called")
 	if body in targets_in_AOE_range:
 		var arrayPos = targets_in_AOE_range.find(body)
 		targets_in_AOE_range.remove_at(arrayPos)
-		print("Removed unit from targets_in_AOE_range:")
-		print(body)
+		#print("Removed unit from targets_in_AOE_range:")
+		#print(body)

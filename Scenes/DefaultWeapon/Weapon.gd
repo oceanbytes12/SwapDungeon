@@ -18,7 +18,7 @@ func _ready():
 func _process(_delta):
 	if target:
 		look_at(target.global_position)
-	elif own_body.velocity.x > 0:
+	elif own_body.velocity.x >= 0:
 		look_at(Vector2.RIGHT+global_position)
 	else:
 		look_at(Vector2.LEFT+global_position)

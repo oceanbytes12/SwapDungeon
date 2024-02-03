@@ -3,7 +3,7 @@ extends Node
 @onready var PartyParent = $Party
 @export var PartyBattleUI : Control
 @export var battlePanels : Array[UIBattleSpace]
-@export var StartBattleButton : Button
+@export var StartBattleButton : TextureButton
 @export var GameScript : Node2D
 @export var tileMap : TileMap
 

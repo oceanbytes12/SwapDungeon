@@ -36,11 +36,11 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 [node name="Mage1" instance=ExtResource("1_oimw7")]
 teamColor = "blue"
 controllable = true
-walkSpeed = 10.0
-runSpeed = 25.0
+walkSpeed = 12.0
+runSpeed = 35.0
 weaponRange = 150.0
-weaponCooldown = 4.0
-weaponDamage = 40
+weaponCooldown = 3.0
+weaponDamage = 50
 
 [node name="Shadow" parent="." index="0"]
 region_rect = Rect2(43, 31, 12, 9)
@@ -60,7 +60,7 @@ weaponEffectScene = ExtResource("5_q5diu")
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
 
-[node name="SM" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+[node name="SM" parent="." index="6" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Stand")
 
 [node name="Stand" type="Node" parent="SM" index="6" node_paths=PackedStringArray("own_body")]

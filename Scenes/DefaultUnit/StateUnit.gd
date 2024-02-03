@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var weaponRange: float
 @export var weaponCooldown: float
 @export var weaponDamage: int
+@export var unitHealth: float
 
 signal Hit
 signal WalkCommand
@@ -16,6 +17,7 @@ signal Died
 var selected = false
 var targeted = false
 var is_dead = false
+@onready var hitEffect = preload("res://Scenes/RandomEffects/HitEffect.tscn")
 @onready var state_machine = $SM
 
 func set_selected(value):
@@ -33,14 +35,11 @@ func set_targeted(value):
 		$Targeted.visible = false
 
 func _ready():
+	$UI/HealthBar.max_value = unitHealth
+	$UI/HealthBar.value = unitHealth
+	
 	set_selected(selected)
 	set_targeted(targeted)
-	#if teamColor == "blue":
-		#$Art/BlueHat.visible = true
-		#$Art/RedHat.visible = false
-	#elif teamColor == "red":
-		#$Art/BlueHat.visible = false
-		#$Art/RedHat.visible = true
 
 func _process(_delta):
 	if velocity.length() < 1 and not is_dead:
@@ -49,16 +48,14 @@ func _process(_delta):
 		$MovementAnimations.play("Walk")
 	elif velocity.length() > walkSpeed and not is_dead:
 		$MovementAnimations.play("WalkFast")
-	#if velocity.length() <= walkSpeed and velocity.length() > 8:
-		#$MovementAnimations.play("Walk")
-	#elif velocity.length() > walkSpeed:
-		#$MovementAnimations.play("WalkFast")
-	if velocity.x < 0:
-		$Art/Body.flip_h = true
-		$Art/Head.flip_h = true
-	elif velocity.x > 0:
-		$Art/Body.flip_h = false
-		$Art/Head.flip_h = false
+	if $SM.current_target:
+		var target_vector = $SM.current_target.global_position - global_position
+		if target_vector.x < 0:
+			$Art/Body.flip_h = true
+			$Art/Head.flip_h = true
+		elif target_vector.x > 0:
+			$Art/Body.flip_h = false
+			$Art/Head.flip_h = false
 
 func _physics_process(_delta):
 	move_and_slide()
@@ -71,6 +68,10 @@ func set_target(target):
 
 func take_hit(hit_position, damage):
 	$UI/HealthBar.value -= damage
+	var newNode = hitEffect.instantiate()
+	newNode.global_position = global_position
+	newNode.set_damage_text(damage)
+	get_parent().get_parent().add_child(newNode)
 	if $UI/HealthBar.value <= 0:
 		is_dead = true
 		$UI/HealthBar.visible = false
@@ -87,7 +88,6 @@ func take_hit(hit_position, damage):
 		targeted = false
 		selected = false
 		controllable = false
-
 	else:
 		print("StateUnit getting hit: ", name)
 		var direction = (global_position-hit_position).normalized()
