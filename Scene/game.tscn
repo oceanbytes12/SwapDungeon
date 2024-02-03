@@ -26,7 +26,7 @@ script = ExtResource("2_v6rn7")
 [node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels", "StartBattleButton", "GameScript", "tileMap")]
 script = ExtResource("1_45nev")
 PartyBattleUI = NodePath("../GameUI/PartyBattleUI")
-battlePanels = [NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel2"), NodePath("../GameUI/PartyBattleUI/GridContainer/BattlePanel3")]
+battlePanels = [NodePath("../GameUI/PartyBattleUI/BattlePanel"), NodePath("../GameUI/PartyBattleUI/BattlePanel2"), NodePath("../GameUI/PartyBattleUI/BattlePanel3")]
 StartBattleButton = NodePath("../GameUI/PartyBattleUI/StartBattleButton")
 GameScript = NodePath("..")
 tileMap = NodePath("../GameUI/TileMap")
@@ -141,6 +141,43 @@ texture_pressed = ExtResource("8_g6n5p")
 texture_hover = ExtResource("9_8xo36")
 metadata/_edit_use_anchors_ = true
 
+[node name="BattlePanel" parent="GameUI/PartyBattleUI" instance=ExtResource("5_0i2aq")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 65.0
+offset_top = 90.0
+offset_right = 125.0
+offset_bottom = 150.0
+size_flags_horizontal = 4
+
+[node name="BattlePanel2" parent="GameUI/PartyBattleUI" instance=ExtResource("5_0i2aq")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 4.0
+offset_top = 49.0
+offset_right = 64.0
+offset_bottom = 109.0
+
+[node name="BattlePanel3" parent="GameUI/PartyBattleUI" instance=ExtResource("5_0i2aq")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 4.0
+offset_top = 136.0
+offset_right = 64.0
+offset_bottom = 196.0
+
 [node name="GridContainer" type="GridContainer" parent="GameUI/PartyBattleUI"]
 layout_mode = 0
 offset_top = 65.0
@@ -148,16 +185,6 @@ offset_right = 124.0
 offset_bottom = 253.0
 mouse_filter = 2
 columns = 2
-
-[node name="BattlePanel" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("5_0i2aq")]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="BattlePanel2" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("5_0i2aq")]
-layout_mode = 2
-
-[node name="BattlePanel3" parent="GameUI/PartyBattleUI/GridContainer" instance=ExtResource("5_0i2aq")]
-layout_mode = 2
 
 [node name="Label" type="Label" parent="GameUI/PartyBattleUI"]
 layout_mode = 0
@@ -255,6 +282,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="KToKill" type="Label" parent="GameUI"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -264,6 +292,7 @@ grow_horizontal = 0
 text = "KKey:KillEnemies"
 
 [node name="LToLose" type="Label" parent="GameUI"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -274,7 +303,6 @@ grow_horizontal = 0
 text = "LKey:KillFriends"
 
 [node name="GameOver" type="Panel" parent="GameUI"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -313,7 +341,6 @@ script = ExtResource("7_oidtt")
 scenename = "res://Scene/Game.tscn"
 
 [node name="GameWin" type="Panel" parent="GameUI"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

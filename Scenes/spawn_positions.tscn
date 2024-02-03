@@ -6,13 +6,13 @@
 
 [node name="SpawnPosition1" type="Node2D" parent="." groups=["spawn"]]
 editor_description = "Spawn"
-position = Vector2(-205, -100)
+position = Vector2(-143, -12)
 script = ExtResource("1_csrl6")
 
 [node name="SpawnPosition2" type="Node2D" parent="." groups=["spawn"]]
-position = Vector2(-205, -40)
+position = Vector2(-205, -54)
 script = ExtResource("1_csrl6")
 
 [node name="SpawnPosition3" type="Node2D" parent="." groups=["spawn"]]
-position = Vector2(-205, 20)
+position = Vector2(-205, 33)
 script = ExtResource("1_csrl6")
