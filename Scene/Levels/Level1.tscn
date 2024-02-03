@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://db2bmrfjuccta"]
+[gd_scene load_steps=11 format=3 uid="uid://db2bmrfjuccta"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_mbhdq"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="3_3bba1"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="3_fe3ee"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="5_u2nlv"]
+[ext_resource type="Texture2D" uid="uid://nopcxawbslql" path="res://Art/MouseHints-Sheet.png" id="6_hypbf"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/DefaultWeapon/MeleeSkeleton.tscn" id="6_q2vtn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qaq"]
@@ -18,6 +19,33 @@ corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyb21"]
+atlas = ExtResource("6_hypbf")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt67f"]
+atlas = ExtResource("6_hypbf")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_06its"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyb21")
+}],
+"loop": true,
+"name": &"LeftClick",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt67f")
+}],
+"loop": true,
+"name": &"RightClick",
+"speed": 1.0
+}]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_mbhdq")
@@ -37,5 +65,40 @@ position = Vector2(136, 0)
 
 [node name="SelectionPanel" type="Panel" parent="UI"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_j3qaq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-33, 81)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-33, 86)
+sprite_frames = SubResource("SpriteFrames_06its")
+animation = &"RightClick"
+autoplay = "RightClick"
+frame_progress = 0.293811
+
+[node name="Label" type="Label" parent="AnimatedSprite2D"]
+offset_left = -159.0
+offset_top = 1.0
+offset_right = 10.0
+offset_bottom = 24.0
+scale = Vector2(0.8, 0.8)
+text = "Select with Right Click"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(168, 87)
+sprite_frames = SubResource("SpriteFrames_06its")
+animation = &"LeftClick"
+autoplay = "LeftClick"
+frame_progress = 0.204626
+
+[node name="Label" type="Label" parent="AnimatedSprite2D2"]
+offset_left = -152.0
+offset_top = 1.0
+offset_right = 17.0
+offset_bottom = 24.0
+scale = Vector2(0.8, 0.8)
+text = "Attack with Left Click
+"
 
 [connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]
