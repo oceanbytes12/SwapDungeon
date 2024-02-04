@@ -310,6 +310,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="GameUI/PartyAddUI/HeroGenerator/SellArea/Mimic"]
+layout_mode = 0
 offset_left = 6.0
 offset_top = -27.0
 offset_right = 46.0
@@ -317,6 +318,7 @@ offset_bottom = -4.0
 text = "Sell"
 
 [node name="MimicButton" type="TextureButton" parent="GameUI/PartyAddUI/HeroGenerator/SellArea/Mimic"]
+layout_mode = 0
 offset_left = -11.0
 offset_top = -16.0
 offset_right = 53.0
