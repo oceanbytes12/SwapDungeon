@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqdlj0tjd7j18"]
+
+[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="1_a0ash"]
+[ext_resource type="PackedScene" uid="uid://b36pm263dqogc" path="res://Scenes/Attacks/SmolSlashAttack/SmolSlashAttack.tscn" id="2_issys"]
+[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/HerosTwo.png" id="2_uuias"]
+
+[node name="Dagger1" instance=ExtResource("1_a0ash")]
+weaponEffectScene = ExtResource("2_issys")
+
+[node name="AttackPoint" parent="." index="0"]
+position = Vector2(17, 0)
+
+[node name="Art" parent="." index="1"]
+position = Vector2(10, -2)
+rotation = -1.5708
+texture = ExtResource("2_uuias")
+region_rect = Rect2(88, 57, 18, 10)
