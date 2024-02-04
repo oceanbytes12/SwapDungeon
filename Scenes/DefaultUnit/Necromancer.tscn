@@ -317,6 +317,7 @@ size = Vector2(20, 27.6377)
 [node name="Necromancer" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_ndyto")
 teamColor = "red"
+can_be_stunned = false
 walkSpeed = 1.0
 runSpeed = 1.0
 weaponRange = 1000.0

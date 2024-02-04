@@ -24,9 +24,10 @@ corner_radius_bottom_left = 3
 script = ExtResource("1_lmim3")
 
 [node name="Archer2" parent="." instance=ExtResource("2_t1rtx")]
+position = Vector2(-126, -16)
 
 [node name="Warrior2" parent="." instance=ExtResource("3_box2o")]
-position = Vector2(-72, 0)
+position = Vector2(-198, -16)
 
 [node name="Level" parent="." instance=ExtResource("4_ki078")]
 
@@ -39,6 +40,6 @@ script = ExtResource("5_vhbed")
 theme_override_styles/panel = SubResource("StyleBoxFlat_j3qaq")
 
 [node name="Minotaur" parent="." instance=ExtResource("6_vjlnc")]
-position = Vector2(116, 0)
+position = Vector2(127, 54)
 
 [connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]

@@ -49,7 +49,7 @@ func find_target():
 
 
 func _on_unit_sm_hit(direction, damage):
-	if current_state.name != "Dead":
+	if current_state.name != "Dead" and get_parent().can_be_stunned:
 		var new_state = states.get("Stun")
 		current_state.Exit()
 		new_state.hit_direction = direction

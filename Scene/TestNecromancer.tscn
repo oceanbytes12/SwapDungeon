@@ -39,7 +39,6 @@ script = ExtResource("5_6t7dv")
 theme_override_styles/panel = SubResource("StyleBoxFlat_j3qaq")
 
 [node name="Necromancer" parent="." instance=ExtResource("2_6fdr2")]
-visible = true
 position = Vector2(40, 0)
 weaponCooldown = 10.0
 

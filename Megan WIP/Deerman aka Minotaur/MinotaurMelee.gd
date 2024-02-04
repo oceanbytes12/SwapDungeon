@@ -22,7 +22,10 @@ func Update(delta: float, _target: CharacterBody2D):
 	if timeout_timer > 0:
 		timeout_timer -= delta
 	else:
-		return
+		Transitioned.emit("Cooldown")
+		#Transitioned.emit("Idle")
+		#Transitioned.emit("Follow")
+		#return
 		#Transitioned.emit("ChooseTarget") # Choose a new target for next attack?
 		#Transitioned.emit("MinotaurFollow")
 
