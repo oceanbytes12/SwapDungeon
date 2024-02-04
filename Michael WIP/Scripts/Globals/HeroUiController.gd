@@ -16,12 +16,12 @@ func ResetUI():
 	selectedRosterPanel= null
 
 func _process(_delta):
-	if(is_instance_valid(selectedBattleSpace)):
-		print(selectedBattleSpace.name)
+	moneyManager.PartyCount = partyRoster.getPartyCount() 
 	if Input.is_action_just_pressed("LeftClick"):
 		_HandleLeftClickDown()
 	elif Input.is_action_just_released("LeftClick"):
 		_HandleLeftClickUp()
+	
 
 func _HandleLeftClickDown():
 	#DraggableHeroNewSystem

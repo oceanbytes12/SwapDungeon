@@ -70,4 +70,7 @@ func loadCosts():
 	Costs["archer1"] = 8
 	Costs["mage1"] = 7
 	Costs["rogue1"] = 5
+	Costs["warrior2"] = 12
+	Costs["archer2"] = 16
+	Costs["mage2"] = 14
 	return Costs
