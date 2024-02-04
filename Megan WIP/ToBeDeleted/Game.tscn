@@ -371,7 +371,6 @@ text = "Play Again
 
 [node name="ReloadScene" type="Node" parent="GameUI/GameOver"]
 script = ExtResource("7_oidtt")
-scenename = "res://Scene/Game.tscn"
 
 [node name="GameWin" type="Panel" parent="GameUI"]
 visible = false
@@ -418,7 +417,6 @@ text = "Play Again
 
 [node name="ReloadScene" type="Node" parent="GameUI/GameWin"]
 script = ExtResource("7_oidtt")
-scenename = "res://Scene/Game.tscn"
 
 [node name="TileMap" parent="GameUI" instance=ExtResource("10_m6j52")]
 
