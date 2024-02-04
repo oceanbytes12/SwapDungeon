@@ -74,10 +74,6 @@ func _UnLoadHeros():
 		n.queue_free()
 
 func _process(_delta):
-	
-	#if Input.is_key_pressed(KEY_ESCAPE):
-		#get_tree().quit()
-	
 	if(isBattling):
 		if(EnemiesAreDead()):
 			_WinBattle()

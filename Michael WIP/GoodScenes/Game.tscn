@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxgalpram8qcb"]
+[gd_scene load_steps=23 format=3 uid="uid://bxgalpram8qcb"]
 
 [ext_resource type="Script" path="res://Scene/MasterScript.gd" id="1_hlhcr"]
 [ext_resource type="Script" path="res://Scene/SeperateLoadBecauseItIsaUnholySinToHaveAScriptLongerThanTenLines.gd" id="2_mgxy4"]
@@ -14,10 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://kq5a4tr16av" path="res://Art/Mimic1.png" id="12_4qmyq"]
 [ext_resource type="Texture2D" uid="uid://b6qv0oyr38dqg" path="res://Art/Mimic2.png" id="13_1do4i"]
 [ext_resource type="Texture2D" uid="uid://cn5hlcg8bvwu6" path="res://Art/LoseScreen.png" id="14_a1d0s"]
-[ext_resource type="Script" path="res://Michael WIP/Scripts/LoadScene.gd" id="15_m2v5x"]
+[ext_resource type="Texture2D" uid="uid://drn1kqi0nixw7" path="res://Art/SplashScreen.png" id="15_6ngyd"]
 [ext_resource type="Texture2D" uid="uid://b76mhmgtyxmp4" path="res://Art/WinScreen.png" id="16_5w3r5"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://tile_map.tscn" id="17_b77ue"]
 [ext_resource type="Script" path="res://Scene/MoneyManager.gd" id="18_304s1"]
+[ext_resource type="Script" path="res://Michael WIP/GoodScenes/PauseMenu.gd" id="19_171h3"]
 [ext_resource type="Texture2D" uid="uid://bleod87p1uuvd" path="res://Art/MoneyBag.PNG" id="19_h8fcq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnua3"]
@@ -344,6 +345,17 @@ offset_bottom = 46.0
 grow_horizontal = 0
 text = "LKey:KillFriends"
 
+[node name="Escape to Quit" type="Label" parent="GameUI"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -86.0
+offset_top = 23.0
+offset_bottom = 46.0
+grow_horizontal = 0
+text = "LKey:KillFriends"
+
 [node name="GameOver" type="Panel" parent="GameUI"]
 visible = false
 anchors_preset = 15
@@ -374,9 +386,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play Again
 "
-
-[node name="ReloadScene" type="Node" parent="GameUI/GameOver"]
-script = ExtResource("15_m2v5x")
 
 [node name="GameWin" type="Panel" parent="GameUI"]
 visible = false
@@ -420,9 +429,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play Again
 "
-
-[node name="ReloadScene" type="Node" parent="GameUI/GameWin"]
-script = ExtResource("15_m2v5x")
 
 [node name="TileMap" parent="GameUI" instance=ExtResource("17_b77ue")]
 
@@ -473,6 +479,39 @@ texture = ExtResource("19_h8fcq")
 expand_mode = 1
 stretch_mode = 4
 
+[node name="Paused" type="Panel" parent="GameUI"]
+process_mode = 3
+visible = false
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_171h3")
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/Paused"]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 269.0
+texture = ExtResource("15_6ngyd")
+
+[node name="Button" type="Button" parent="GameUI/Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 48.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit
+"
+
 [connection signal="finish_battle" from="BattleManager" to="GameUI/RosterUI" method="slide_in"]
 [connection signal="finish_battle" from="BattleManager" to="GameUI/RosterUI/PartyRoster" method="_return_all_panels"]
 [connection signal="finish_battle" from="BattleManager" to="GameUI/PartyAddUI" method="slide_in"]
@@ -492,6 +531,7 @@ stretch_mode = 4
 [connection signal="pressed" from="GameUI/PartyAddUI/HeroGenerator/Reroll" to="GameUI/Money" method="AttemptReroll"]
 [connection signal="mouse_entered" from="GameUI/PartyAddUI/HeroGenerator/SellArea" to="GameUI/Money" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="GameUI/PartyAddUI/HeroGenerator/SellArea" to="GameUI/Money" method="_on_area_2d_mouse_exited"]
-[connection signal="pressed" from="GameUI/GameOver/Button" to="GameUI/GameOver/ReloadScene" method="_Start_Game"]
-[connection signal="pressed" from="GameUI/GameWin/Button" to="GameUI/GameWin/ReloadScene" method="_Start_Game"]
+[connection signal="pressed" from="GameUI/GameOver/Button" to="." method="_reset"]
+[connection signal="pressed" from="GameUI/GameWin/Button" to="." method="_reset"]
 [connection signal="rerolled" from="GameUI/Money" to="GameUI/PartyAddUI" method="slide_out_then_in"]
+[connection signal="pressed" from="GameUI/Paused/Button" to="." method="_quit"]
