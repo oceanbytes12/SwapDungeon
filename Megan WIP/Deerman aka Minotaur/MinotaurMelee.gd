@@ -3,6 +3,8 @@ class_name MinotaurMelee
 
 signal MeleeAttack
 
+# This state may not be needed. Can just use the regular Attack state instead?
+
 @export var own_body : CharacterBody2D
 @export var timeout := 2.0
 @export var knockback = 60

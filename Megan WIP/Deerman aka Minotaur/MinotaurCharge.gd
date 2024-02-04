@@ -18,6 +18,9 @@ func Enter(_target):
 
 
 func Update(delta: float, _target: CharacterBody2D):
+	# If not in range, walk towards target. Otherwise, start rush
+	# Messy, cuz range needs to match
+	
 	if timeout_timer > 0:
 		timeout_timer -= delta
 	else:

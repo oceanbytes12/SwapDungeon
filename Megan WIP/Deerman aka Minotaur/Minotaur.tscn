@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://yrrsebpha10e"]
+[gd_scene load_steps=57 format=3 uid="uid://yrrsebpha10e"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_qxosq"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_7sqt8"]
@@ -20,7 +20,6 @@
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/MinotaurBoulderThrow.gd" id="15_068n1"]
 [ext_resource type="PackedScene" uid="uid://dnff43m6w16sl" path="res://Scenes/RandomEffects/AOE_Effect.tscn" id="16_mc0c2"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyStun.gd" id="17_76x32"]
-[ext_resource type="Script" path="res://Megan WIP/Bosses(old)/BossAttacks.gd" id="17_478vf"]
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/MinotaurChooseTarget.gd" id="18_lbdjf"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
@@ -469,9 +468,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_541oc"]
 size = Vector2(20, 27.6377)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yw0ak"]
-radius = 72.0
-
 [node name="Minotaur" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_qxosq")
 walkSpeed = 10.0
@@ -560,9 +556,6 @@ own_body = NodePath("../..")
 script = ExtResource("7_raemt")
 own_body = NodePath("../..")
 meleeRange = 30.0
-AOERange = 50.0
-chargeRange = 100.0
-boulderRange = 150.0
 
 [node name="MinotaurCharge" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("8_af4py")
@@ -635,35 +628,6 @@ rotation = -3.14159
 scale = Vector2(0.872446, -1.08547)
 shape = SubResource("RectangleShape2D_541oc")
 
-[node name="BossAttacks" type="Node2D" parent="."]
-script = ExtResource("17_478vf")
-windup_time = 5
-
-[node name="AOE_Range" type="Area2D" parent="BossAttacks"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BossAttacks/AOE_Range"]
-shape = SubResource("CircleShape2D_yw0ak")
-
-[node name="SpawnPositions" type="Node2D" parent="BossAttacks"]
-
-[node name="Position1" type="Marker2D" parent="BossAttacks/SpawnPositions"]
-position = Vector2(0, -40)
-
-[node name="Position2" type="Marker2D" parent="BossAttacks/SpawnPositions"]
-position = Vector2(-40, -10)
-
-[node name="Position3" type="Marker2D" parent="BossAttacks/SpawnPositions"]
-position = Vector2(40, -10)
-
-[node name="Position4" type="Marker2D" parent="BossAttacks/SpawnPositions"]
-position = Vector2(-25, 35)
-
-[node name="Position5" type="Marker2D" parent="BossAttacks/SpawnPositions"]
-position = Vector2(25, 35)
-
-[node name="SpawnParent" type="Node2D" parent="BossAttacks"]
-
 [connection signal="AttackCommand" from="." to="SM" method="_on_base_unit_attack_command"]
 [connection signal="Died" from="." to="SM" method="_on_base_unit_died"]
 [connection signal="Hit" from="." to="SM" method="_on_unit_sm_hit"]
@@ -675,5 +639,3 @@ position = Vector2(25, 35)
 [connection signal="body_exited" from="SightRange" to="SM" method="_on_sight_range_body_exited"]
 [connection signal="body_shape_entered" from="SightRange" to="SM" method="_on_sight_range_body_shape_entered"]
 [connection signal="body_shape_exited" from="SightRange" to="SM" method="_on_sight_range_body_shape_exited"]
-[connection signal="body_shape_entered" from="BossAttacks/AOE_Range" to="BossAttacks" method="_on_aoe_range_body_shape_entered"]
-[connection signal="body_shape_exited" from="BossAttacks/AOE_Range" to="BossAttacks" method="_on_aoe_range_body_shape_exited"]

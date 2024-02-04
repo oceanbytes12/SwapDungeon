@@ -5,15 +5,25 @@ class_name MinotaurFollow
 @export var timeout := 8.0
 
 @export var meleeRange: float = 20
-@export var AOERange: float = 30
-@export var chargeRange: float = 80
-@export var boulderRange: float = 120
+#@export var AOERange: float = 30
+#@export var chargeRange: float = 80
+#@export var boulderRange: float = 120
 
 var timeout_timer
+
+var next_attack
+enum Attacks {
+	MELEE, 
+	CHARGE,
+	AOE,
+#	BOULDER
+}
 
 
 func Enter(_target):
 	timeout_timer = timeout
+	ChooseNextAttack()
+	#print(next_attack)
 
 
 func Update(delta: float, _target: CharacterBody2D):
@@ -21,29 +31,44 @@ func Update(delta: float, _target: CharacterBody2D):
 		timeout_timer -= delta
 	else:
 		Transitioned.emit("Idle")
+		# Or, choose another attack and try again
 
 func Physics_Update(_delta: float, target: CharacterBody2D):
 	if target:
 		var target_vector = target.global_position - own_body.global_position
 		var target_distance = target_vector.length()
-		print("target distance = " + str(target_distance))
+		#print("target distance = " + str(target_distance))
 		
-		if target_distance < meleeRange:
-			#Transitioned.emit("Attack")
-			Transitioned.emit("MinotaurMelee")
-			print("Transition to MinotaurMelee")
-		elif target_distance < AOERange:
-			#Transitioned.emit("Attack")
-			Transitioned.emit("MinotaurAOE")
-			print("Transition to MinotaurAOE")
-		elif target_distance < chargeRange:
-			#Transitioned.emit("Attack")
-			Transitioned.emit("MinotaurCharge")
-			print("Transition to MinotaurCharge")
-		# No animation for boulder throw yet
-		#elif target_distance < boulderRange:
-			##Transitioned.emit("Attack")
-			#Transitioned.emit("MinotaurBoulderThrow")
-			#print("Transition to MinotaurBoulderThrow")
-		else:
-			own_body.velocity = target_vector.normalized() * own_body.runSpeed
+		# If we are doing a special attack, do the attack regardless of distance from target.
+		# Otherwise, move closer to target until within range for melee attack
+		match next_attack:
+			Attacks.AOE:
+				Transitioned.emit("MinotaurAOE")
+				print("Transition to MinotaurAOE")
+				
+			Attacks.CHARGE:
+				Transitioned.emit("MinotaurCharge")
+				print("Transition to MinotaurCharge")
+				
+			_: # default, MELEE
+				if target_distance < meleeRange:
+					Transitioned.emit("MinotaurMelee")
+					print("Transition to MinotaurMelee")
+				else:
+					own_body.velocity = target_vector.normalized() * own_body.runSpeed
+			
+
+func ChooseNextAttack():
+	# First choose a different target?
+	
+	var random = RandomNumberGenerator.new()
+	random.randomize()
+	var result = random.randi_range(0, 10)
+	#print(random.randi_range(0, 10))
+	
+	if result < 3: # Charge attack
+		next_attack = Attacks.CHARGE
+	elif result < 6: # AOE
+		next_attack = Attacks.AOE
+	else: # Standard/Melee attack
+		next_attack = Attacks.MELEE
