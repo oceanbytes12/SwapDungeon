@@ -5,6 +5,7 @@ var target
 var damage = 20
 
 func _on_animation_finished():
+	
 	queue_free()
 
 
