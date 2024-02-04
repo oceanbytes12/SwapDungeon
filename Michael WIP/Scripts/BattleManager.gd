@@ -32,6 +32,7 @@ func _BattlePartyGreaterThanOne():
 	return false
 
 func _StartBattle():
+	HeroUiController.ResetUI()
 	if(is_instance_valid(battleParent)):
 		battleParent._Toggle(true)
 		
@@ -90,8 +91,7 @@ func _WinBattle():
 	await get_tree().create_timer(1).timeout
 	battleParent.queue_free()
 	Globals.spawnPositions.clear()
-	
-	
+	HeroUiController.moneyManager.GainMoney(10)
 	GameScript._IncrementLevelIndex()
 	if(GameScript._GetNextLevel()):
 		emit_signal("finish_battle")

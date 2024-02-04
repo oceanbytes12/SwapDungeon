@@ -15,7 +15,7 @@ func ToggleDrag(newDragState):
 	isDragged = newDragState
 
 func InitializeWithHero(newHeroType):
-	
+	print("Initializing with type: ", newHeroType)
 	heroType = newHeroType
 	
 	var HeroIcon = Globals.unitManager._GetIconInstanceOfType(heroType)
@@ -69,12 +69,12 @@ func _EquipPanelToBattleSpace(newBattleSpace):
 		FrontPanel.reparent(newBattleSpace)
 		battleSpace = newBattleSpace
 	
-
-
 func ReturnPanel():
+	print("Returning Roster Panel with name to:  ", name, UIParent)
 	if(battleSpace):
 		battleSpace.equippedPanel = null
 	FrontPanel.reparent(UIParent)
+	print("Parent is now: ", FrontPanel.get_parent().name)
 	battleSpace = null
 
 func HighLight(isOn):

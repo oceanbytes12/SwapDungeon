@@ -18,6 +18,9 @@ func _on_area_2d_mouse_exited():
 
 func addToParty(panel):
 	emit_signal("onPartyAddedTo")
+	
+	HeroUiController.Purchase(panel.HeroType)
+	
 	if(UpgradeableUnits.size()> 0):
 		var upgradedUnit = UpgradeableUnits[0]
 		var UpgradeType = Globals.unitManager._GetUpgradedType(upgradedUnit.heroType)
@@ -26,16 +29,22 @@ func addToParty(panel):
 		partyContainer.add_child(newPanel)
 		var index = upgradedUnit.get_index()
 		partyContainer.move_child(newPanel, index)
+		
 		panel.HandleUsed()
 		upgradedUnit.queue_free()
 		
 	else:
-		panel.HandleUsed()
 		var newPanel = rosterPanel.instantiate()
+		print("Making new panel of: ", panel.HeroType)
 		newPanel.InitializeWithHero(panel.HeroType)
 		partyContainer.add_child(newPanel)
 		partyContainer.move_child(newPanel, 0)
+		
+		panel.HandleUsed()
 	partyContainer.move_to_front()
+
+func getPartyCount():
+	return partyContainer.get_child_count() - 1
 
 func find_Panels_Of_Type(heroType):
 	var panels = []

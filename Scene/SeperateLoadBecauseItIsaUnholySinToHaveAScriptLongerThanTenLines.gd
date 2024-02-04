@@ -53,3 +53,10 @@ func loadLevels():
 	levels.append(level3)
 	levels.append(level4)
 	return levels
+
+func loadCosts():
+	var Costs = {}
+	Costs["warrior1"] = 6
+	Costs["archer1"] = 8
+	Costs["mage1"] = 7
+	return Costs

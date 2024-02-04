@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxgalpram8qcb"]
+[gd_scene load_steps=21 format=3 uid="uid://bxgalpram8qcb"]
 
 [ext_resource type="Script" path="res://Michael WIP/Scripts/BattleManager.gd" id="1_45nev"]
 [ext_resource type="Script" path="res://Scene/MasterScript.gd" id="1_akbcm"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dw5suyq414m44" path="res://Art/StartButtons3.png" id="8_g6n5p"]
 [ext_resource type="Texture2D" uid="uid://c4wgljp44rdc5" path="res://Art/StartButtons2.png" id="9_8xo36"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://tile_map.tscn" id="10_m6j52"]
+[ext_resource type="Texture2D" uid="uid://dkl6n1av0tykp" path="res://Art/combatDummy.png" id="11_y7jh4"]
 [ext_resource type="Texture2D" uid="uid://cn5hlcg8bvwu6" path="res://Art/LoseScreen.png" id="13_u8mi0"]
 [ext_resource type="Texture2D" uid="uid://b76mhmgtyxmp4" path="res://Art/WinScreen.png" id="14_d2a8e"]
 [ext_resource type="Script" path="res://Scene/MoneyManager.gd" id="16_dvwfm"]
@@ -206,6 +207,7 @@ text = "READY YOUR TEAM"
 horizontal_alignment = 1
 
 [node name="PartyAddUI" type="Control" parent="GameUI"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -216,6 +218,22 @@ size_flags_horizontal = 0
 mouse_filter = 2
 script = ExtResource("2_7sjb0")
 Automatic = true
+
+[node name="Button" type="Button" parent="GameUI/PartyAddUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 17.0
+offset_right = 50.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reroll"
+icon = ExtResource("11_y7jh4")
 
 [node name="HeroGenerator" type="Control" parent="GameUI/PartyAddUI" node_paths=PackedStringArray("parent")]
 layout_mode = 1
@@ -247,6 +265,7 @@ mouse_filter = 2
 columns = 6
 
 [node name="SkipButton" type="Button" parent="GameUI/PartyAddUI/HeroGenerator"]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -260,23 +279,6 @@ offset_bottom = -66.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Done"
-icon_alignment = 1
-expand_icon = true
-
-[node name="Reroll" type="Button" parent="GameUI/PartyAddUI/HeroGenerator"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -56.0
-offset_top = -134.0
-offset_right = -7.0
-offset_bottom = -103.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Reroll"
 icon_alignment = 1
 expand_icon = true
 
@@ -464,10 +466,9 @@ shape = SubResource("RectangleShape2D_c2n7c")
 [connection signal="pressed" from="GameUI/PartyBattleUI/StartBattleButton" to="GameUI/PartyBattleUI" method="slide_out"]
 [connection signal="on_tween_in_start" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroGenerator" method="Generate"]
 [connection signal="on_tween_out_finish" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroGenerator" method="Demolish"]
+[connection signal="pressed" from="GameUI/PartyAddUI/Button" to="GameUI/PartyAddUI" method="slide_out_then_in"]
 [connection signal="pressed" from="GameUI/PartyAddUI/HeroGenerator/SkipButton" to="BattleManager" method="_FinishPartyAddition"]
-[connection signal="pressed" from="GameUI/PartyAddUI/HeroGenerator/Reroll" to="GameUI/Money" method="AttemptReroll"]
 [connection signal="pressed" from="GameUI/GameOver/Button" to="GameUI/GameOver/ReloadScene" method="_Start_Game"]
 [connection signal="pressed" from="GameUI/GameWin/Button" to="GameUI/GameWin/ReloadScene" method="_Start_Game"]
-[connection signal="rerolled" from="GameUI/Money" to="GameUI/PartyAddUI" method="slide_out_then_in"]
 [connection signal="mouse_entered" from="GameUI/Money/Area2D" to="GameUI/Money" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="GameUI/Money/Area2D" to="GameUI/Money" method="_on_area_2d_mouse_exited"]

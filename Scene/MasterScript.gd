@@ -1,9 +1,10 @@
 extends Node2D
 
-
+var money = 0
 var unitIcons : Dictionary
 var UnitDict : Dictionary
 var UnupgradedDict: Dictionary
+var CostDict : Dictionary
 var Levels : Array
 var levelIndex = 0
 
@@ -20,14 +21,18 @@ func _GetNextLevel():
 
 func _IncrementLevelIndex():
 	levelIndex=levelIndex+1
+	
+func _GetCost(HeroType):
+	print("Getting cost of: ", HeroType)
+	return CostDict[HeroType]
 
-# Crush
 func _ready():
 	Globals.unitManager = self
 	unitIcons = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadIcons()
 	UnitDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadUnits()
 	Levels = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadLevels()
 	UnupgradedDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadUnupgradedUnits()
+	CostDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadCosts()
 
 func _physics_process(_delta):
 	if (use_context_cursors):
@@ -48,7 +53,6 @@ func check_object_under_mouse():
 		if clicked_unit.is_in_group("unit") and collider.name == "ClickBox":
 			return clicked_unit
 	return null
-
 
 func check_collider_under_mouse():
 	# Get the mouse's position

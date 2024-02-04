@@ -6,8 +6,18 @@ var draggedRosterPanel : HeroRosterPanel
 var selectedBattleSpace : UIBattleSpace
 var selectedRosterPanel : HeroRosterPanel
 var partyRoster 
+var moneyManager
+
+func ResetUI():
+	selectedDraggableHeroPanel = null
+	draggedDraggableHeroPanel = null
+	draggedRosterPanel= null
+	selectedBattleSpace= null
+	selectedRosterPanel= null
 
 func _process(_delta):
+	if(is_instance_valid(selectedBattleSpace)):
+		print(selectedBattleSpace.name)
 	if Input.is_action_just_pressed("LeftClick"):
 		_HandleLeftClickDown()
 	elif Input.is_action_just_released("LeftClick"):
@@ -37,6 +47,10 @@ func _HandleLeftClickUp():
 			selectedBattleSpace.HandlePanel(draggedRosterPanel)
 		elif(partyRoster.Selected):
 			draggedRosterPanel.ReturnPanel()
+		elif(moneyManager.Selected and partyRoster.getPartyCount() > 1):
+			moneyManager.sell(draggedRosterPanel.heroType)
+			draggedRosterPanel.ReturnPanel()
+			draggedRosterPanel.queue_free()
 		draggedRosterPanel = null
 		
 func _SetDraggableAsNull():
@@ -84,3 +98,5 @@ func _SetSelectedBattleSpace(newBattleSpace):
 		
 	selectedBattleSpace = newBattleSpace
 
+func Purchase(purchasedHeroType):
+	moneyManager.HandlePurchase(purchasedHeroType)

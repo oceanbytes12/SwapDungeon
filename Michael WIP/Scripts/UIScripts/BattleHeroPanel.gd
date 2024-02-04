@@ -21,5 +21,5 @@ func _on_area_2d_mouse_exited():
 	HeroUiController._SetSelectedBattleSpace(null)
 
 func GetHeroType():
-	if(equippedPanel):
+	if(is_instance_valid(equippedPanel)):
 		return equippedPanel.heroType
