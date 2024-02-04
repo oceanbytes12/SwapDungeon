@@ -24,14 +24,15 @@ func UpdateDamage(damage):
 	damageTaken = damageTaken + damage
 
 func Update(delta: float, _target: CharacterBody2D):
+	if(HasMetDamageThreshold()):
+		damageTaken = 0
+		Transitioned.emit(transitionStateOnDamageTaken)
+		return
+	
 	if stunClock > 0:
 		stunClock -= delta
 	else:
-		if(HasMetDamageThreshold()):
-			damageTaken = 0
-			Transitioned.emit(transitionStateOnDamageTaken)
-		else:
-			Transitioned.emit("Idle")
+		Transitioned.emit("Idle")
 			
 
 func Physics_Update(_delta: float, _target: CharacterBody2D):
