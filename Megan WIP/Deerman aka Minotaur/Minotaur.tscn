@@ -205,9 +205,6 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 radius = 20.0
 height = 72.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v087j"]
-size = Vector2(60, 30)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
 radius = 258.048
 
@@ -477,12 +474,16 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_541oc"]
 size = Vector2(20, 27.6377)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v087j"]
+size = Vector2(60, 30)
+
 [node name="Minotaur" type="CharacterBody2D" groups=["unit"]]
 script = ExtResource("1_qxosq")
 can_be_stunned = false
 walkSpeed = 10.0
 runSpeed = 20.0
 unitHealth = 1000.0
+metadata/_edit_group_ = true
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 9)
@@ -506,8 +507,8 @@ region_rect = Rect2(38, 153, 20, 13)
 [node name="Art2" type="AnimatedSprite2D" parent="."]
 position = Vector2(-13, -4)
 sprite_frames = SubResource("SpriteFrames_2if7p")
-animation = &"SmashGround"
-frame = 4
+animation = &"Charge"
+frame = 7
 frame_progress = 1.0
 script = ExtResource("5_emquy")
 
@@ -579,18 +580,11 @@ meleeRange = 30.0
 script = ExtResource("15_d08u2")
 own_body = NodePath("../..")
 
-[node name="MinotaurCharge" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
+[node name="MinotaurCharge" type="Node" parent="SM" node_paths=PackedStringArray("own_body", "charge_collider")]
 script = ExtResource("8_af4py")
 own_body = NodePath("../..")
 chargeSpeed = 100
-
-[node name="ChargeCollision" type="Area2D" parent="SM/MinotaurCharge"]
-position = Vector2(13, 4)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SM/MinotaurCharge/ChargeCollision"]
-position = Vector2(-54, 11)
-shape = SubResource("RectangleShape2D_v087j")
-disabled = true
+charge_collider = NodePath("../../ChargeCollision")
 
 [node name="MinotaurMelee" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("13_8repc")
@@ -602,9 +596,6 @@ own_body = NodePath("../..")
 speed = 80
 damage = 30
 aoeEffect = ExtResource("16_mc0c2")
-
-[node name="SourcePosition" type="Marker2D" parent="SM/MinotaurAOE"]
-position = Vector2(-46, 40)
 
 [node name="SightRange" type="Area2D" parent="."]
 visible = false
@@ -649,6 +640,18 @@ position = Vector2(0, -2)
 rotation = -3.14159
 scale = Vector2(0.872446, -1.08547)
 shape = SubResource("RectangleShape2D_541oc")
+
+[node name="AOESourcePosition" type="Marker2D" parent="."]
+visible = false
+position = Vector2(-46, 40)
+
+[node name="ChargeCollision" type="Area2D" parent="."]
+position = Vector2(13, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChargeCollision"]
+position = Vector2(-54, 11)
+shape = SubResource("RectangleShape2D_v087j")
+disabled = true
 
 [connection signal="AttackCommand" from="." to="SM" method="_on_base_unit_attack_command"]
 [connection signal="Died" from="." to="SM" method="_on_base_unit_died"]
