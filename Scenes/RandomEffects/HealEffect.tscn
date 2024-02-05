@@ -1,0 +1,107 @@
+[gd_scene load_steps=14 format=3 uid="uid://cdn8rs071ivvy"]
+
+[ext_resource type="Script" path="res://Scenes/RandomEffects/HitEffect.gd" id="1_n68sr"]
+[ext_resource type="Texture2D" uid="uid://bj4epc7f01exb" path="res://Art/HitSplat-Sheet.png" id="2_w84w3"]
+[ext_resource type="Texture2D" uid="uid://mhqle8rhigdd" path="res://Art/HealSplat-Sheet.png" id="3_ogbpw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wfjf"]
+atlas = ExtResource("2_w84w3")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45dbe"]
+atlas = ExtResource("2_w84w3")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8b2r"]
+atlas = ExtResource("2_w84w3")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0onm2"]
+atlas = ExtResource("2_w84w3")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65c5e"]
+atlas = ExtResource("2_w84w3")
+region = Rect2(120, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kox8"]
+atlas = ExtResource("3_ogbpw")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i43et"]
+atlas = ExtResource("3_ogbpw")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71gvs"]
+atlas = ExtResource("3_ogbpw")
+region = Rect2(28, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fftm"]
+atlas = ExtResource("3_ogbpw")
+region = Rect2(42, 0, 14, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekfov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wfjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45dbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8b2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0onm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65c5e")
+}],
+"loop": false,
+"name": &"Disapear",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kox8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i43et")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71gvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fftm")
+}],
+"loop": false,
+"name": &"Fade",
+"speed": 10.0
+}]
+
+[node name="HealEffect" type="Sprite2D"]
+z_index = 10
+script = ExtResource("1_n68sr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2.38419e-07, 1.49012e-08)
+scale = Vector2(1.59286, 1.59286)
+sprite_frames = SubResource("SpriteFrames_ekfov")
+animation = &"Fade"
+autoplay = "Fade"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -7.0
+offset_top = -10.0
+offset_right = 12.0
+offset_bottom = 13.0
+scale = Vector2(0.8, 0.8)
+text = "25"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

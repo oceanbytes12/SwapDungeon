@@ -30,6 +30,7 @@ var orig_walkSpeed
 var orig_runSpeed
 
 @onready var hitEffect = preload("res://Scenes/RandomEffects/HitEffect.tscn")
+@onready var healEffect = preload("res://Scenes/RandomEffects/HealEffect.tscn")
 @onready var state_machine = $SM
 
 func set_selected(value):
@@ -104,7 +105,7 @@ func take_hit(hit_position, damage, hitstun=50):
 		newNode.set_damage_text(damage)
 		get_parent().get_parent().add_child(newNode)
 	else:
-		var newNode = hitEffect.instantiate()
+		var newNode = healEffect.instantiate()
 		newNode.global_position = global_position
 		newNode.set_damage_text(damage*-1)
 		get_parent().get_parent().add_child(newNode)

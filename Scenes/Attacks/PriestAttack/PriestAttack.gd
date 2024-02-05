@@ -16,7 +16,7 @@ func _on_body_entered(body):
 			body.take_hit(global_position, damage)
 	elif body.is_in_group("unit") and body.teamColor == source_team_color:
 		if body.has_method("take_hit"):
-			body.take_hit(global_position, -20)
+			body.take_hit(global_position, -20, 0)
 
 
 
