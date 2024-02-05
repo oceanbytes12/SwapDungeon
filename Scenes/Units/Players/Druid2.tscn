@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://hodefvjvsva3"]
+[gd_scene load_steps=9 format=3 uid="uid://css8vftr5y8cm"]
 
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_vnea7"]
-[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/HerosTwo.png" id="2_28hhy"]
-[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_w7okm"]
-[ext_resource type="PackedScene" uid="uid://dwxdrua20lvuy" path="res://Scenes/DefaultWeapon/DruidStaff1.tscn" id="4_ehmii"]
-[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerStand.gd" id="6_q6uvy"]
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_yakbm"]
+[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/HerosTwo.png" id="2_7bg2r"]
+[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_gl17r"]
+[ext_resource type="PackedScene" uid="uid://cxnlirba43rin" path="res://Scenes/DefaultWeapon/DruidStaff2.tscn" id="4_w5isf"]
+[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerStand.gd" id="5_85bru"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -28,18 +28,18 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ax3d5"]
 resource_local_to_scene = true
-shader = ExtResource("3_w7okm")
+shader = ExtResource("3_gl17r")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
-[node name="Druid1" instance=ExtResource("1_vnea7")]
+[node name="Druid2" instance=ExtResource("1_yakbm")]
 teamColor = "blue"
 controllable = true
 walkSpeed = 12.0
 runSpeed = 35.0
 weaponRange = 150.0
 weaponCooldown = 2.4
-weaponDamage = 25
+weaponDamage = 35
 
 [node name="Shadow" parent="." index="0"]
 region_rect = Rect2(43, 31, 12, 9)
@@ -47,16 +47,16 @@ region_rect = Rect2(43, 31, 12, 9)
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_5dut2")
 position = Vector2(1, 1)
-texture = ExtResource("2_28hhy")
-region_rect = Rect2(114, 61, 24, 12)
+texture = ExtResource("2_7bg2r")
+region_rect = Rect2(153.536, 60.0223, 26.986, 14.3635)
 
 [node name="Head" parent="Art" index="1"]
 material = SubResource("ShaderMaterial_ax3d5")
-texture = ExtResource("2_28hhy")
-region_rect = Rect2(114, 44, 22, 17)
+texture = ExtResource("2_7bg2r")
+region_rect = Rect2(155.713, 41.5238, 22.6334, 18.9337)
 
-[node name="Staff1" parent="." index="5" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_ehmii")]
-position = Vector2(1, 4)
+[node name="Staff2" parent="." index="5" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_w5isf")]
+position = Vector2(2, 0)
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
 
@@ -64,7 +64,7 @@ attackState = NodePath("../SM/Attack")
 initial_state = NodePath("Stand")
 
 [node name="Stand" type="Node" parent="SM" index="6" node_paths=PackedStringArray("own_body")]
-script = ExtResource("6_q6uvy")
+script = ExtResource("5_85bru")
 own_body = NodePath("../..")
 
 [node name="SightRange" parent="." index="7"]

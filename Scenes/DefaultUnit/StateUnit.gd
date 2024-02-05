@@ -11,7 +11,7 @@ extends CharacterBody2D
 @export var weaponDamage: int
 @export var unitHealth: float
 @export var skeleton_die_scene : PackedScene
-@export var slowdown_penalty: float = 8
+@export var slowdown_penalty: float = 8 
 
 signal Hit
 signal WalkCommand
