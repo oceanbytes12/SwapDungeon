@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ct6os5dpn3sie"]
+[gd_scene load_steps=11 format=3 uid="uid://ct6os5dpn3sie"]
 
 [ext_resource type="Texture2D" uid="uid://bbltt3vtbeo47" path="res://Art/SwordAttack.png" id="1_amqux"]
 [ext_resource type="Texture2D" uid="uid://cbnl4lmglgapk" path="res://Art/ShieldBash-Sheet.png" id="1_jv73p"]
 [ext_resource type="Script" path="res://Scenes/Attacks/ShieldAttack/shieldAttackEffect.gd" id="3_pnbk0"]
+[ext_resource type="AudioStream" uid="uid://bpa6yc8wb2ttv" path="res://SFX/Paladin_shield_v1.wav" id="4_j3wdw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34ijk"]
 atlas = ExtResource("1_jv73p")
@@ -61,6 +62,9 @@ script = ExtResource("3_pnbk0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_v20ub")
+
+[node name="Shield_hit_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_j3wdw")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

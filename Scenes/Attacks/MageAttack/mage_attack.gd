@@ -8,6 +8,7 @@ var damage = 40
 
 func _ready():
 	$AnimatedSprite2D.play("Spell")
+	$Necro_cast_sfx.play()
 	var direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
 		rotate(-PI/5)
@@ -34,6 +35,7 @@ func _on_body_entered(body):
 	if body.is_in_group("unit") and body.teamColor != source_team_color:
 		if body.has_method("take_hit"):
 			body.take_hit(global_position, damage)
+			$Necro_spell_hit_sfx.play()
 			queue_free()
 
 func angle_to_angle(from, to):

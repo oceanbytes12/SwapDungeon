@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bp0u3h6fwk1y2"]
+[gd_scene load_steps=13 format=3 uid="uid://bp0u3h6fwk1y2"]
 
 [ext_resource type="Script" path="res://Scenes/Attacks/MageAttack/mage_attack.gd" id="1_ydhox"]
 [ext_resource type="Texture2D" uid="uid://dlivpfjjuhlhg" path="res://Art/MagicAttack2x2-Sheet.png" id="2_f41wm"]
+[ext_resource type="AudioStream" uid="uid://cjar8mkpffp5b" path="res://SFX/Necro_spell_cast_v1.wav" id="3_8l707"]
+[ext_resource type="AudioStream" uid="uid://06nasvdu5228" path="res://SFX/Necro_spell_hit_v1.wav" id="4_wrbe4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
 height = 22.0
@@ -70,5 +72,13 @@ position = Vector2(-4, 1)
 sprite_frames = SubResource("SpriteFrames_q78e8")
 animation = &"Spell"
 frame_progress = 0.897131
+
+[node name="Necro_cast_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8l707")
+volume_db = -8.914
+
+[node name="Necro_spell_hit_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_wrbe4")
+volume_db = -6.933
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
