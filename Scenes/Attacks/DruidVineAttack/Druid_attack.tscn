@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf6kus5d48sb7"]
+[gd_scene load_steps=8 format=3 uid="uid://bf6kus5d48sb7"]
 
 [ext_resource type="Script" path="res://Scenes/Attacks/DruidVineAttack/Druid_attack.gd" id="1_yqbcf"]
 [ext_resource type="Texture2D" uid="uid://drr7kr17fcksd" path="res://Art/VineAttack-Sheet.png" id="2_vp037"]
+[ext_resource type="AudioStream" uid="uid://70wbo0wupoco" path="res://SFX/Druid_vine_v1.wav" id="3_dpyog"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
 height = 22.0
@@ -41,5 +42,8 @@ sprite_frames = SubResource("SpriteFrames_7o1d6")
 animation = &"VineSpell"
 autoplay = "VineSpell"
 frame_progress = 0.253558
+
+[node name="Vine_hit_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dpyog")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

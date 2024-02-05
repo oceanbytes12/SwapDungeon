@@ -12,8 +12,8 @@ weaponEffectScene = ExtResource("2_yntf1")
 position = Vector2(9, 0)
 region_rect = Rect2(17, 37, 10, 22)
 
-[node name="Bow_string_sfx" type="AudioStreamPlayer2D" parent="." index="4"]
+[node name="Bow_string_sfx" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("3_5tegi")
 
-[node name="Arrow_shoot_sfx" type="AudioStreamPlayer2D" parent="." index="5"]
+[node name="Arrow_shoot_sfx" type="AudioStreamPlayer2D" parent="." index="3"]
 stream = ExtResource("4_emmdy")
