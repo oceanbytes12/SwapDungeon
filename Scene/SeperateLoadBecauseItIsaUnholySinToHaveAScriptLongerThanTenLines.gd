@@ -38,7 +38,8 @@ var level2 = preload("res://Scene/Levels/Level2.tscn")
 var level3 = preload("res://Scene/Levels/Level3.tscn")
 var level4 = preload("res://Scene/Levels/NecroMancerBoss.tscn")
 var level5 = preload("res://Scene/Levels/Level5.tscn")
-var level6 = preload("res://Scene/Levels/DeermanBoss.tscn")
+var level6 = preload("res://Scene/Levels/Level6.tscn")
+var level7 = preload("res://Scene/Levels/DeermanBoss.tscn")
 func loadIcons():
 	var heroIcons = {}
 	heroIcons["warrior1"] = warrior1Icon

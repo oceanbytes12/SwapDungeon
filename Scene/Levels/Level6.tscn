@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://uit57ouifxxn"]
+[gd_scene load_steps=9 format=3 uid="uid://do215l5q4ce07"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_pmwpa"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="2_fj0j2"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="3_fri5r"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="4_71ewd"]
-[ext_resource type="PackedScene" uid="uid://1no2wnxq1rbi" path="res://Scenes/Units/Enemies/RogueSkeleton.tscn" id="5_aj410"]
+[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/DefaultWeapon/MeleeSkeleton.tscn" id="5_wocpq"]
+[ext_resource type="PackedScene" uid="uid://dm5nafv3bkhex" path="res://Scenes/Units/Enemies/MageSkeleton.tscn" id="6_t055t"]
 [ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Units/Enemies/RangedSkeleton.tscn" id="7_lgfh8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qaq"]
@@ -20,7 +21,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Level7" type="Node2D"]
+[node name="Level1" type="Node2D"]
 script = ExtResource("1_pmwpa")
 
 [node name="Level1" parent="." instance=ExtResource("2_fj0j2")]
@@ -30,14 +31,27 @@ script = ExtResource("1_pmwpa")
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("4_71ewd")
 
-[node name="Roguer2" parent="." instance=ExtResource("5_aj410")]
-position = Vector2(115, 2)
+[node name="Mager" parent="." instance=ExtResource("6_t055t")]
+position = Vector2(77, 0)
 
 [node name="Ranger" parent="." instance=ExtResource("7_lgfh8")]
-position = Vector2(134, -51)
+position = Vector2(164, -41)
+weaponRange = 120.0
+weaponCooldown = 3.0
 
 [node name="Ranger2" parent="." instance=ExtResource("7_lgfh8")]
-position = Vector2(139, 57)
+position = Vector2(183, 1)
+runSpeed = 40.0
+weaponCooldown = 3.0
+weaponDamage = 20
+
+[node name="Melee2" parent="." instance=ExtResource("5_wocpq")]
+z_index = 1
+position = Vector2(136, 0)
+
+[node name="Melee3" parent="." instance=ExtResource("5_wocpq")]
+z_index = 1
+position = Vector2(177, 56)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
