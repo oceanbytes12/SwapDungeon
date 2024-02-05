@@ -11,7 +11,9 @@ var rogue2Icon = preload("res://Michael WIP/HeroIcons/HeroIconRouge2.tscn")
 var paladin1Icon = preload("res://Michael WIP/HeroIcons/HeroIconPaladin1.tscn")
 var paladin2Icon = preload("res://Michael WIP/HeroIcons/HeroIconPaladin2.tscn")
 var druid1Icon = preload("res://Michael WIP/HeroIcons/HeroIconDruid1.tscn")
+var druid2Icon = preload("res://Michael WIP/HeroIcons/HeroIconDruid2.tscn")
 var priest1Icon = preload("res://Michael WIP/HeroIcons/HeroIconPriest1.tscn")
+
 
 
 var warrior1 = preload("res://Scenes/Units/Players/Warrior1.tscn")
@@ -25,8 +27,9 @@ var rogue2 = preload("res://Scenes/Units/Players/Rogue2.tscn")
 var paladin1 = preload("res://Scenes/Units/Players/Paladin1.tscn")
 var paladin2 = preload("res://Scenes/Units/Players/Paladin2.tscn")
 var druid1 = preload("res://Scenes/Units/Players/Druid1.tscn")
-#var druid2 = preload("res://Scenes/Units/Players/Druid2.tscn")
+var druid2 = preload("res://Scenes/Units/Players/Druid2.tscn")
 var priest1 = preload("res://Scenes/Units/Players/Priest1.tscn")
+
 
 var level1 = preload("res://Scene/Levels/Level1.tscn")
 var level2 = preload("res://Scene/Levels/Level2.tscn")
@@ -46,6 +49,7 @@ func loadIcons():
 	heroIcons["paladin1"] = paladin1Icon
 	heroIcons["paladin2"] = paladin2Icon
 	heroIcons["druid1"] = druid1Icon
+	heroIcons["druid2"] = druid2Icon
 	heroIcons["priest1"] = priest1Icon
 	return heroIcons
 
@@ -62,6 +66,7 @@ func loadUnits():
 	units["paladin1"] = paladin1
 	units["paladin2"] = paladin2
 	units["druid1"] = druid1
+	units["druid2"] = druid2	
 	units["priest1"] = priest1
 	return units
 
@@ -95,5 +100,6 @@ func loadCosts():
 	Costs["mage2"] = 14
 	Costs["paladin1"] = 8
 	Costs["druid1"] = 8
+	Costs["druid2"] = 16
 	Costs["priest1"] = 8
 	return Costs

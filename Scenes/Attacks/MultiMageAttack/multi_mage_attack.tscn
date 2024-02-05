@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://b10y87uf3wkvx"]
+[gd_scene load_steps=15 format=3 uid="uid://b10y87uf3wkvx"]
 
 [ext_resource type="Script" path="res://Scenes/Attacks/MultiMageAttack/multi_mage_attack.gd" id="1_i1gvt"]
 [ext_resource type="Texture2D" uid="uid://b50kjk5go1nrt" path="res://Art/PortalAnimation-Sheet.png" id="2_o2lnk"]
 [ext_resource type="PackedScene" uid="uid://cic3nnwaoq8ab" path="res://Scenes/Attacks/MultiMageAttack/magic_attack.tscn" id="2_p6vpd"]
+[ext_resource type="AudioStream" uid="uid://bvvapgxe7nspu" path="res://SFX/Portal_sfx.wav" id="4_pfekr"]
+[ext_resource type="AudioStream" uid="uid://cjar8mkpffp5b" path="res://SFX/Necro_spell_cast_v1.wav" id="5_uhl84"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e4m0e"]
 atlas = ExtResource("2_o2lnk")
@@ -90,5 +92,14 @@ frame_progress = 0.282151
 
 [node name="AttackPoint" type="Node2D" parent="."]
 position = Vector2(0, -10)
+
+[node name="Portal_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_pfekr")
+
+[node name="Necro_multicast_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_uhl84")
+volume_db = -4.952
+pitch_scale = 1.34
+max_polyphony = 8
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

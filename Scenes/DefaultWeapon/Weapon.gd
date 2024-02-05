@@ -33,7 +33,6 @@ func _on_attack_attacked():
 	if target:
 		look_at(target.global_position)
 	var attackNode = weaponEffectScene.instantiate()
-	
 	if(spawnUsesPosition):
 		attackNode.global_position = $AttackPoint.global_position
 	
@@ -46,6 +45,7 @@ func _on_attack_attacked():
 	if attackNode.has_method("set_knockback"):
 		attackNode.set_knockback(knockBackOverride)
 	get_parent().get_parent().add_child(attackNode)
+
 
 func _on_target(t):
 	target = t

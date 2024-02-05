@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ndyto"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_fbp13"]
 [ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="3_0jk0f"]
-[ext_resource type="PackedScene" path="res://Scenes/DefaultWeapon/staff_necro.tscn" id="4_bh627"]
+[ext_resource type="PackedScene" uid="uid://dlgckynb5p00u" path="res://Scenes/DefaultWeapon/staff_necro.tscn" id="4_bh627"]
 [ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/SkelyBoyPartsx3.png" id="5_jilbq"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="6_ebyem"]
 [ext_resource type="Texture2D" uid="uid://pt6ga01gn812" path="res://Art/SkelyBoyParts2x.png" id="7_uo4um"]
@@ -391,7 +391,11 @@ own_body = NodePath("../..")
 script = ExtResource("11_r7o45")
 own_body = NodePath("../..")
 
+[node name="Portal_sfx" type="AudioStreamPlayer2D" parent="SM/Attack"]
+
 [node name="Timer" type="Timer" parent="SM/Attack"]
+
+[node name="Necro_cast_sfx" type="AudioStreamPlayer2D" parent="SM/Attack"]
 
 [node name="Stun" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("12_rh1dx")
@@ -404,6 +408,8 @@ script = ExtResource("13_c316p")
 own_body = NodePath("../..")
 nextState = "SummonUnits"
 Positions = Array[Vector2]([Vector2(-180, 80), Vector2(-180, -80), Vector2(180, 80), Vector2(180, -80)])
+
+[node name="Teleport_sfx" type="AudioStreamPlayer2D" parent="SM/Teleport"]
 
 [node name="Walk" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("13_sh6dp")

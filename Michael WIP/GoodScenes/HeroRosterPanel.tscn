@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk43t6h5qswor"]
+[gd_scene load_steps=6 format=3 uid="uid://bk43t6h5qswor"]
 
 [ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/HeroRosterPanel.gd" id="1_rv7wn"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/Tweeners/SpinInUI.gd" id="2_0kxu0"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="2_aun62"]
+[ext_resource type="AudioStream" uid="uid://08xbdwqhcsad" path="res://SFX/Place_unit_v1.wav" id="4_45uk6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nm2ik"]
 size = Vector2(48, 48)
@@ -129,6 +130,9 @@ patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+
+[node name="Place_unit_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_45uk6")
 
 [connection signal="mouse_entered" from="ExpandInUI/Front_Panel/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="ExpandInUI/Front_Panel/Area2D" to="." method="_on_area_2d_mouse_exited"]
