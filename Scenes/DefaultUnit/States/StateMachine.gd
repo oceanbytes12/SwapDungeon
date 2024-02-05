@@ -48,11 +48,12 @@ func find_target():
 			current_target = target_body
 
 
-func _on_unit_sm_hit(direction, damage):
+func _on_unit_sm_hit(direction, damage, hitstun):
 	if current_state.name != "Dead" and get_parent().can_be_stunned:
 		var new_state = states.get("Stun")
 		current_state.Exit()
 		new_state.hit_direction = direction
+		new_state.stunKnockback = hitstun
 		
 		if(new_state.has_method("UpdateDamage")):
 			new_state.UpdateDamage(damage)

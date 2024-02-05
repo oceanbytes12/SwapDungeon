@@ -39,8 +39,8 @@ controllable = true
 walkSpeed = 15.0
 runSpeed = 60.0
 weaponRange = 30.0
-weaponCooldown = 0.8
-weaponDamage = 20
+weaponCooldown = 1.5
+weaponDamage = 15
 
 [node name="Shadow" parent="." index="0"]
 region_rect = Rect2(43, 31, 12, 9)

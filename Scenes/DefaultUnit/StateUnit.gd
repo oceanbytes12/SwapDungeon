@@ -70,7 +70,7 @@ func set_walk():
 func set_target(target):
 	AttackCommand.emit(target)
 
-func take_hit(hit_position, damage):
+func take_hit(hit_position, damage, hitstun=50):
 	$UI/HealthBar.value -= damage
 	var newNode = hitEffect.instantiate()
 	newNode.global_position = global_position
@@ -95,7 +95,7 @@ func take_hit(hit_position, damage):
 	else:
 		print("StateUnit getting hit: ", name)
 		var direction = (global_position-hit_position).normalized()
-		Hit.emit(direction, damage)
+		Hit.emit(direction, damage, hitstun)
 		$EffectAnimations.play("hitAnimation")
 
 func Die():

@@ -5,6 +5,7 @@ extends Marker2D
 @export var attackState : State
 @export var spawnUsesRotation : bool = true
 @export var spawnUsesPosition : bool = true
+@export var knockBackOverride := 50
 var damageOverride
 
 var target
@@ -42,6 +43,8 @@ func _on_attack_attacked():
 	attackNode.source_team_color = own_body.teamColor
 	attackNode.target = target
 	attackNode.damage = damageOverride
+	if attackNode.has_method("set_knockback"):
+		attackNode.set_knockback(knockBackOverride)
 	get_parent().get_parent().add_child(attackNode)
 
 func _on_target(t):
