@@ -1,9 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyrgtxmwktv4x"]
+[gd_scene load_steps=19 format=3 uid="uid://cyrgtxmwktv4x"]
 
 [ext_resource type="Script" path="res://Scenes/Attacks/MageLargeFireAttack/fireball.gd" id="1_jcx0s"]
 [ext_resource type="Texture2D" uid="uid://bq20tm0ipafq2" path="res://Art/LargeFireball-Sheet.png" id="2_5y3i6"]
 [ext_resource type="Texture2D" uid="uid://d2acrt60husqc" path="res://Art/AirAttack-Sheet.png" id="2_x3gm8"]
 [ext_resource type="Texture2D" uid="uid://dlivpfjjuhlhg" path="res://Art/MagicAttack2x2-Sheet.png" id="3_xit0i"]
+[ext_resource type="AudioStream" uid="uid://da3npdaidwhkg" path="res://SFX/Mage_spell_cast_v1.wav" id="5_21dtx"]
+[ext_resource type="AudioStream" uid="uid://cmaw750nodjx5" path="res://SFX/Mage_spell_hit_v1.wav" id="6_ohmco"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
 height = 22.0
@@ -108,5 +110,11 @@ shape = SubResource("CapsuleShape2D_w3hqt")
 position = Vector2(-5, 0)
 sprite_frames = SubResource("SpriteFrames_q78e8")
 animation = &"FireBall"
+
+[node name="Mage_cast_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_21dtx")
+
+[node name="Mage_spell_hit_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ohmco")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

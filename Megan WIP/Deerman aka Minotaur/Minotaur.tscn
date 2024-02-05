@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/SlamDone.gd" id="17_74bex"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyStun.gd" id="17_76x32"]
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/ChargeForward.gd" id="18_uu73j"]
+[ext_resource type="AudioStream" uid="uid://bgyllgfvacury" path="res://SFX/Little_Demon_sfx.wav" id="20_rpljp"]
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/ChargeCollision.gd" id="20_xcglp"]
 
 [sub_resource type="Animation" id="Animation_ek0wh"]
@@ -700,6 +701,9 @@ own_body = NodePath("..")
 position = Vector2(-54, 6)
 shape = SubResource("RectangleShape2D_v087j")
 disabled = true
+
+[node name="Demon_Laugh_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_rpljp")
 
 [connection signal="AttackCommand" from="." to="SM" method="_on_base_unit_attack_command"]
 [connection signal="Died" from="." to="SM" method="_on_base_unit_died"]

@@ -1,7 +1,7 @@
 extends Area2D
 
 var source_team_color
-@export var speed :float
+var speed = 30
 var target
 var turn_speed = 0.5
 var damage = 40
@@ -45,6 +45,8 @@ func _on_body_entered(body):
 		if body.has_method("take_hit"):
 			body.take_hit(global_position, damage)
 			playsound_and_queuefree()
+	elif body.is_in_group("wall"):
+		queue_free()
 
 func angle_to_angle(from, to):
 	return fposmod(to-from + PI, PI*2) - PI
