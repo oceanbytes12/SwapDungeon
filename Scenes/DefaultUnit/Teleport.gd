@@ -3,8 +3,12 @@ class_name Teleport
 
 @export var own_body : CharacterBody2D
 @export var nextState : String
-@export var Positions : Array[Vector2]
-
+var Positions := [
+	Vector2(-180, 80),
+	Vector2(-180, -80),
+	Vector2(180, 80),
+	Vector2(180, -80)
+]
 @onready var currentPositions = Positions
 
 func Enter(_target):

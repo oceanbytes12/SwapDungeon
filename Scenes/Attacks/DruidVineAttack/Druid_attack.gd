@@ -11,6 +11,7 @@ var eol_timer = 2
 
 func _ready():
 	$AnimatedSprite2D.play("VineSpell")
+	$Vine_launch_sfx.play()
 	var direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
 		rotate(-PI/8)

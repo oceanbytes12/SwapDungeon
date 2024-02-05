@@ -326,38 +326,6 @@ offset_bottom = 48.0
 texture_normal = ExtResource("12_4qmyq")
 texture_hover = ExtResource("13_1do4i")
 
-[node name="KToKill" type="Label" parent="GameUI"]
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -59.0
-offset_bottom = 23.0
-grow_horizontal = 0
-text = "KKey:KillEnemies"
-
-[node name="LToLose" type="Label" parent="GameUI"]
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -86.0
-offset_top = 23.0
-offset_bottom = 46.0
-grow_horizontal = 0
-text = "LKey:KillFriends"
-
-[node name="Escape to Quit" type="Label" parent="GameUI"]
-visible = false
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -86.0
-offset_top = 23.0
-offset_bottom = 46.0
-grow_horizontal = 0
-text = "LKey:KillFriends"
-
 [node name="GameOver" type="Panel" parent="GameUI"]
 visible = false
 anchors_preset = 15
@@ -434,7 +402,7 @@ text = "Play Again
 
 [node name="TileMap" parent="GameUI" instance=ExtResource("17_b77ue")]
 
-[node name="Money" type="Control" parent="GameUI" node_paths=PackedStringArray("Mimic", "MimicButton", "RerollButton")]
+[node name="Money" type="Control" parent="GameUI" node_paths=PackedStringArray("Mimic", "MimicButton", "RerollButton", "SkipButton")]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -446,6 +414,7 @@ script = ExtResource("18_304s1")
 Mimic = NodePath("../PartyAddUI/HeroGenerator/SellArea/Mimic")
 MimicButton = NodePath("../PartyAddUI/HeroGenerator/SellArea/Mimic/MimicButton")
 RerollButton = NodePath("../PartyAddUI/HeroGenerator/Reroll")
+SkipButton = NodePath("../PartyAddUI/HeroGenerator/SkipButton")
 
 [node name="Label" type="Label" parent="GameUI/Money"]
 layout_mode = 1
