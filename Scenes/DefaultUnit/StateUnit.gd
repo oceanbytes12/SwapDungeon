@@ -11,7 +11,7 @@ extends CharacterBody2D
 @export var weaponDamage: int
 @export var unitHealth: float
 @export var skeleton_die_scene : PackedScene
-#@export var slowdown_penalty: float = 8 # This is passed in by Druid attack
+@export var slowdown_penalty: float = 8 
 
 signal Hit
 signal WalkCommand
@@ -130,7 +130,7 @@ func take_hit(hit_position, damage, hitstun=50):
 		Hit.emit(direction, damage, hitstun)
 		$EffectAnimations.play("hitAnimation")
 
-func take_hit_with_slowdown(hit_position, damage, slowdown=false, slowdown_amt = 8, hitstun=50):
+func take_hit_with_slowdown(hit_position, damage, slowdown=false, hitstun=50):
 	$UI/HealthBar.value -= damage
 	var newNode = hitEffect.instantiate()
 	newNode.global_position = global_position
@@ -138,7 +138,7 @@ func take_hit_with_slowdown(hit_position, damage, slowdown=false, slowdown_amt =
 	get_parent().get_parent().add_child(newNode)
 	
 	if slowdown == true:
-		Start_Slowdown(slowdown_amt)
+		Start_Slowdown()
 	
 	if $UI/HealthBar.value <= 0:
 		is_dead = true
@@ -172,7 +172,7 @@ func Die():
 	Died.emit()
 	$MovementAnimations.play("Die")
 	
-func Start_Slowdown(slowdown_penalty):
+func Start_Slowdown():
 	# First, reset speed to original in case it was already slowed
 	walkSpeed = orig_walkSpeed
 	runSpeed = orig_runSpeed
