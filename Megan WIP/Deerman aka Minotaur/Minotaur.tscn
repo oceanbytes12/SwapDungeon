@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://yrrsebpha10e"]
+[gd_scene load_steps=47 format=3 uid="uid://yrrsebpha10e"]
 
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/DeermanSM.gd" id="1_0c78o"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_7sqt8"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bo1opgc28somc" path="res://Art/MousePointer1.png" id="8_0g377"]
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/MinotaurIdle.gd" id="8_702c6"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyDead.gd" id="12_i5nki"]
+[ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/RandomMove.gd" id="12_jo8k7"]
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/MinotaurAttack.gd" id="13_3mtye"]
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/Charge.gd" id="15_fly5u"]
 [ext_resource type="Script" path="res://Megan WIP/Deerman aka Minotaur/SlamReady.gd" id="16_0gjuj"]
@@ -538,7 +539,7 @@ region_rect = Rect2(40, 49, 20, 13)
 
 [node name="Targeted" type="Sprite2D" parent="."]
 position = Vector2(0, 33)
-scale = Vector2(1.99781, 1.60253)
+scale = Vector2(4, 3.21)
 texture = ExtResource("3_rlohh")
 region_enabled = true
 region_rect = Rect2(38, 153, 20, 13)
@@ -609,6 +610,11 @@ script = ExtResource("7_raemt")
 own_body = NodePath("../..")
 anim = NodePath("../../MinotaurAnim")
 
+[node name="RandomMove" type="Node" parent="SM" node_paths=PackedStringArray("own_body", "anim")]
+script = ExtResource("12_jo8k7")
+own_body = NodePath("../..")
+anim = NodePath("../../MinotaurAnim")
+
 [node name="ChargeReady" type="Node" parent="SM" node_paths=PackedStringArray("own_body", "anim", "Spr")]
 script = ExtResource("15_fly5u")
 own_body = NodePath("../..")
@@ -652,10 +658,10 @@ speed_scale = 2.0
 [node name="UI" type="Node2D" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="UI"]
-offset_left = -37.0
-offset_top = -64.0
-offset_right = -31.0
-offset_bottom = -14.0
+offset_left = -16.0
+offset_top = -65.0
+offset_right = -10.0
+offset_bottom = -15.0
 scale = Vector2(6.2, 0.160001)
 theme_override_styles/background = SubResource("StyleBoxFlat_qcve7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8kmei")

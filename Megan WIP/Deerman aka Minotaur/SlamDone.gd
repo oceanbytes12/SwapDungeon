@@ -21,4 +21,8 @@ func SpawnAOE():
 	aoe.initialize(radius, damage, speed)
 	
 	await get_tree().create_timer(1).timeout
-	Transitioned.emit("Follow")
+	var RandomChoice = randf()
+	if(RandomChoice > 0.2):
+		Transitioned.emit("Follow")
+	else:
+		Transitioned.emit("RandomMove")
