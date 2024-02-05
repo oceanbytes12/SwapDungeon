@@ -25,6 +25,7 @@ var rogue2 = preload("res://Scenes/Units/Players/Rogue2.tscn")
 var paladin1 = preload("res://Scenes/Units/Players/Paladin1.tscn")
 var paladin2 = preload("res://Scenes/Units/Players/Paladin2.tscn")
 var druid1 = preload("res://Scenes/Units/Players/Druid1.tscn")
+#var druid2 = preload("res://Scenes/Units/Players/Druid2.tscn")
 var priest1 = preload("res://Scenes/Units/Players/Priest1.tscn")
 
 var level1 = preload("res://Scene/Levels/Level1.tscn")

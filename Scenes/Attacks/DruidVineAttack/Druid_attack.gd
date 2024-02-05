@@ -32,7 +32,13 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	# Check if hitting self or friend
 	if body.is_in_group("unit") and body.teamColor != source_team_color:
-		if body.has_method("take_hit"):
+		# If available, Call special take_hit fxn that can account for slowdown.
+		if body.has_method("take_hit_with_slowdown"):
+			print("take_hit_with_slowdown called from druid_attack")
+			body.take_hit_with_slowdown(global_position, damage, true)
+			queue_free()
+		# Otherwise do regular take_hit
+		elif body.has_method("take_hit"):
 			body.take_hit(global_position, damage)
 			queue_free()
 
