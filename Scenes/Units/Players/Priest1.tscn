@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ck3q6w3kyix6f"]
+[gd_scene load_steps=9 format=3 uid="uid://ck3q6w3kyix6f"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_w3bm3"]
 [ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/HerosTwo.png" id="2_o00rw"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_xu0n4"]
+[ext_resource type="PackedScene" uid="uid://be1pi2lt6lxnr" path="res://Scenes/DefaultWeapon/Book1.tscn" id="4_7eujw"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerStand.gd" id="6_d6ffa"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
@@ -53,9 +54,14 @@ material = SubResource("ShaderMaterial_ax3d5")
 texture = ExtResource("2_o00rw")
 region_rect = Rect2(115, 9, 18, 17)
 
-[node name="SM" parent="." index="5" node_paths=PackedStringArray("initial_state")]
+[node name="Book1" parent="." index="5" instance=ExtResource("4_7eujw")]
+
+[node name="SM" parent="." index="6" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Stand")
 
 [node name="Stand" type="Node" parent="SM" index="6" node_paths=PackedStringArray("own_body")]
 script = ExtResource("6_d6ffa")
 own_body = NodePath("../..")
+
+[node name="SightRange" parent="." index="7"]
+visible = false
