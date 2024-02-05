@@ -18,7 +18,7 @@ var playerUnitsInRange = []
 	#initialize(final_radius, damage, speed)
 	
 func initialize(_radius, _damage, _speed):
-	print("initialize called")
+	print("initialize called on aoe_effect")
 	#location = position
 	final_radius = _radius
 	damage = _damage
@@ -31,8 +31,8 @@ func initialize(_radius, _damage, _speed):
 
 func _draw():
 	#draw_circle(position, radius, color)
-	#draw_circle(global_position, radius, color)
-	draw_circle(location, radius, color)
+	draw_circle(global_position, radius, color)
+	#draw_circle(location, radius, color)
 
 
 func _process(delta):

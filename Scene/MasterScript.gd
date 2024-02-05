@@ -112,3 +112,9 @@ func _GetUpgradedType(heroType):
 func _GetIconInstanceOfType(HeroType):
 	#return HeroIconPackedScenesArray[0].instantiate()#Chad Array Line
 	return unitIcons[HeroType].instantiate()#Virgin Dictionary Line
+
+func _reset():
+	get_tree().reload_current_scene()
+
+func _quit():
+	get_tree().quit()

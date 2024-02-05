@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ndyto"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_fbp13"]
 [ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="3_0jk0f"]
-[ext_resource type="PackedScene" uid="uid://dlgckynb5p00u" path="res://Scenes/DefaultWeapon/staff_necro.tscn" id="4_bh627"]
+[ext_resource type="PackedScene" path="res://Scenes/DefaultWeapon/staff_necro.tscn" id="4_bh627"]
 [ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/SkelyBoyPartsx3.png" id="5_jilbq"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="6_ebyem"]
 [ext_resource type="Texture2D" uid="uid://pt6ga01gn812" path="res://Art/SkelyBoyParts2x.png" id="7_uo4um"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/SummonUnits.gd" id="15_x0nxg"]
 [ext_resource type="Texture2D" uid="uid://bo1opgc28somc" path="res://Art/MousePointer1.png" id="16_07ppq"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/DefaultWeapon/MeleeSkeleton.tscn" id="16_i0xfi"]
+[ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/HealthBar2.png" id="18_jxqtm"]
+[ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/HealthBar1.png" id="19_uw5ki"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -129,13 +131,6 @@ _data = {
 "Walk": SubResource("Animation_itt8p"),
 "hitAnimation": SubResource("Animation_ofoju")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qcve7"]
-bg_color = Color(0.890196, 0, 0.105882, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kmei"]
-bg_color = Color(0, 0.760784, 0.235294, 1)
-border_color = Color(0.180005, 0.180005, 0.180005, 1)
 
 [sub_resource type="Animation" id="Animation_80goa"]
 resource_name = "Die"
@@ -320,7 +315,6 @@ _data = {
 size = Vector2(20, 27.6377)
 
 [node name="Necromancer" type="CharacterBody2D" groups=["unit"]]
-visible = false
 script = ExtResource("1_ndyto")
 teamColor = "red"
 walkSpeed = 1.0
@@ -403,7 +397,7 @@ own_body = NodePath("../..")
 script = ExtResource("12_rh1dx")
 own_body = NodePath("../..")
 transitionStateOnDamageTaken = "Teleport"
-damageThreshold = 200
+damageThreshold = 300
 
 [node name="Teleport" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
 script = ExtResource("13_c316p")
@@ -442,18 +436,15 @@ speed_scale = 2.0
 
 [node name="UI" type="Node2D" parent="."]
 
-[node name="HealthBar" type="ProgressBar" parent="UI"]
-offset_left = -9.0
-offset_top = -24.0
-offset_right = -6.0
-offset_bottom = -10.0
-scale = Vector2(6.2, 0.160001)
-theme_override_styles/background = SubResource("StyleBoxFlat_qcve7")
-theme_override_styles/fill = SubResource("StyleBoxFlat_8kmei")
+[node name="HealthBar" type="TextureProgressBar" parent="UI"]
+offset_left = -10.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 10.0
 max_value = 1000.0
-step = 1.0
 value = 1000.0
-show_percentage = false
+texture_under = ExtResource("18_jxqtm")
+texture_progress = ExtResource("19_uw5ki")
 
 [node name="MovementAnimations" type="AnimationPlayer" parent="."]
 libraries = {

@@ -22,7 +22,7 @@ func _physics_process(delta):
 		rotate(turn_speed*delta)
 	else:
 		rotate(-turn_speed*delta)
-	turn_speed -= delta*0.3
+	turn_speed -= delta*0.1
 	var direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
 		$AnimatedSprite2D.flip_v = false

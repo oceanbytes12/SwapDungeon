@@ -310,6 +310,7 @@ _data = {
 size = Vector2(20, 27.6377)
 
 [node name="BaseUnit" type="CharacterBody2D" groups=["unit"]]
+platform_on_leave = 2
 script = ExtResource("1_ft0sp")
 unitHealth = 100.0
 

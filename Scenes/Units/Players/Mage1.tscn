@@ -39,7 +39,7 @@ controllable = true
 walkSpeed = 12.0
 runSpeed = 35.0
 weaponRange = 150.0
-weaponCooldown = 3.0
+weaponCooldown = 2.4
 weaponDamage = 50
 
 [node name="Shadow" parent="." index="0"]

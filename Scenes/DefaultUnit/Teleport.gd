@@ -8,6 +8,7 @@ class_name Teleport
 @onready var currentPositions = Positions
 
 func Enter(_target):
+	own_body.velocity = Vector2.ZERO
 	currentPositions.shuffle()
 	own_body.position = currentPositions[0]
 	currentPositions.remove_at(0)

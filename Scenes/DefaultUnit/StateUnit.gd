@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var teamColor : String
 @export var controllable: bool
+@export var can_be_stunned = true
 @export var walkSpeed: float
 @export var runSpeed: float
 @export var weaponRange: float
@@ -18,6 +19,7 @@ signal Died
 var selected = false
 var targeted = false
 var is_dead = false
+
 @onready var hitEffect = preload("res://Scenes/RandomEffects/HitEffect.tscn")
 @onready var state_machine = $SM
 
@@ -42,12 +44,14 @@ func _ready():
 	set_targeted(targeted)
 
 func _process(_delta):
-	if velocity.length() < 1 and not is_dead:
-		$MovementAnimations.play("RESET")
-	elif velocity.length() < walkSpeed + 1 and not is_dead:
-		$MovementAnimations.play("Walk")
-	elif velocity.length() > walkSpeed and not is_dead:
-		$MovementAnimations.play("WalkFast")
+	# Quick fix to add back unit animations without affecting bosses
+	if can_be_stunned:
+		if velocity.length() < 1 and not is_dead:
+			$MovementAnimations.play("RESET")
+		elif velocity.length() < walkSpeed + 1 and not is_dead:
+			$MovementAnimations.play("Walk")
+		elif velocity.length() > walkSpeed and not is_dead:
+			$MovementAnimations.play("WalkFast")
 	if $SM.current_target:
 		var target_vector = $SM.current_target.global_position - global_position
 		if target_vector.x < 0:
@@ -66,7 +70,7 @@ func set_walk():
 func set_target(target):
 	AttackCommand.emit(target)
 
-func take_hit(hit_position, damage):
+func take_hit(hit_position, damage, hitstun=50):
 	$UI/HealthBar.value -= damage
 	var newNode = hitEffect.instantiate()
 	newNode.global_position = global_position
@@ -91,7 +95,7 @@ func take_hit(hit_position, damage):
 	else:
 		print("StateUnit getting hit: ", name)
 		var direction = (global_position-hit_position).normalized()
-		Hit.emit(direction, damage)
+		Hit.emit(direction, damage, hitstun)
 		$EffectAnimations.play("hitAnimation")
 		
 		

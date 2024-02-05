@@ -1,6 +1,8 @@
 extends State
 class_name EnemyIdle
 
+signal Idle
+
 @export var own_body: CharacterBody2D
 
 var move_direction : Vector2
@@ -11,6 +13,7 @@ func randomize_wander():
 	wander_time = randf_range(1, 3)
 	
 func Enter(_target):
+	emit_signal("Idle")
 	randomize_wander()
 
 func Update(delta: float, target: CharacterBody2D):

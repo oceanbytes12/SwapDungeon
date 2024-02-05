@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://be1pi2lt6lxnr"]
+
+[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="1_f7b81"]
+[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/HerosTwo.png" id="2_mop1u"]
+
+[node name="Book1" instance=ExtResource("1_f7b81")]
+position = Vector2(0, 4)
+
+[node name="Art" parent="." index="1"]
+position = Vector2(9, 0)
+texture = ExtResource("2_mop1u")
+region_rect = Rect2(137, 25, 10, 12)

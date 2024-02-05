@@ -1,6 +1,11 @@
 extends State
 class_name MinotaurFollow
 
+signal Charge
+signal SmashGround
+signal Walk
+signal Melee
+
 @export var own_body : CharacterBody2D
 @export var timeout := 8.0
 
@@ -45,17 +50,26 @@ func Physics_Update(_delta: float, target: CharacterBody2D):
 			Attacks.AOE:
 				Transitioned.emit("MinotaurAOE")
 				print("Transition to MinotaurAOE")
+				emit_signal("SmashGround")
 				
 			Attacks.CHARGE:
 				Transitioned.emit("MinotaurCharge")
 				print("Transition to MinotaurCharge")
+				emit_signal("Charge")
 				
 			_: # default, MELEE
 				if target_distance < meleeRange:
-					Transitioned.emit("MinotaurMelee")
-					print("Transition to MinotaurMelee")
+					# We don't have a Melee animation yet
+					#Transitioned.emit("MinotaurMelee")
+					#print("Transition to MinotaurMelee")
+					#emit_signal("Melee")
+					# TEMP call AOE attack instead of melee
+					Transitioned.emit("MinotaurAOE")
+					print("Transition to MinotaurAOE")
+					emit_signal("SmashGround")
 				else:
 					own_body.velocity = target_vector.normalized() * own_body.runSpeed
+					emit_signal("Walk")
 			
 
 func ChooseNextAttack():
