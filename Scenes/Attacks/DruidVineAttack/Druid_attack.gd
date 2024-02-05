@@ -6,6 +6,9 @@ var target
 var turn_speed = 0.5
 var damage = 50
 
+var end_of_life = false
+var eol_timer = 2
+
 func _ready():
 	$AnimatedSprite2D.play("VineSpell")
 	var direction = Vector2.RIGHT.rotated(rotation)
@@ -28,6 +31,13 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite2D.flip_v = true
 	position += direction * speed * delta
+	
+	# Countdown to queue_free()
+	if (end_of_life):
+		eol_timer = eol_timer - delta
+		if eol_timer <= 0: 
+			queue_free()
+	
 
 func _on_body_entered(body):
 	# Check if hitting self or friend
@@ -36,11 +46,19 @@ func _on_body_entered(body):
 		if body.has_method("take_hit_with_slowdown"):
 			print("take_hit_with_slowdown called from druid_attack")
 			body.take_hit_with_slowdown(global_position, damage, true)
-			queue_free()
+			playsound_and_queuefree()
 		# Otherwise do regular take_hit
 		elif body.has_method("take_hit"):
 			body.take_hit(global_position, damage)
-			queue_free()
+			playsound_and_queuefree()
 
 func angle_to_angle(from, to):
 	return fposmod(to-from + PI, PI*2) - PI
+	
+func playsound_and_queuefree():
+	# Play sfx and start countdown timer to queue_free()
+	# Turn invisible, disable any colliders
+	$CollisionShape2D.set_deferred("disabled", true)
+	visible = false
+	$Vine_hit_sfx.play()
+	end_of_life = true

@@ -6,9 +6,21 @@ var source_team_color
 var target
 var damage = 30
 
+var end_of_life = false
+var eol_timer = 2
+
+func _ready():
+	$Arrow_shoot_sfx.play()
+
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)
 	position += direction * speed * delta
+	
+	# Countdown to queue_free()
+	if (end_of_life):
+		eol_timer = eol_timer - delta
+		if eol_timer <= 0: 
+			queue_free()
 
 func _on_body_entered(body):
 	# Check if hitting self or friend
@@ -17,5 +29,15 @@ func _on_body_entered(body):
 			body.take_hit(global_position, damage)
 			#var soundnode = arrow_hit_scene.instantiate()
 			#get_parent().add_child(soundnode)
-			$Arrow_hit_sfx.play()
-			queue_free()
+			playsound_and_queuefree()
+			#$Arrow_hit_sfx.play()
+			#queue_free()
+
+func playsound_and_queuefree():
+	# Play sfx and start countdown timer to queue_free()
+	# Turn invisible, disable any colliders
+	$CollisionShape2D.set_deferred("disabled", true)
+	visible = false
+	$Arrow_hit_sfx.play()
+	end_of_life = true
+	

@@ -32,7 +32,9 @@ func _process(_delta):
 func _on_attack_attacked():
 	if target:
 		look_at(target.global_position)
+		#$Bow_string_sfx.play()
 	var attackNode = weaponEffectScene.instantiate()
+	#$Arrow_shoot_sfx.play() # Do this in the arrow_effect scene instead
 	if(spawnUsesPosition):
 		attackNode.global_position = $AttackPoint.global_position
 	
