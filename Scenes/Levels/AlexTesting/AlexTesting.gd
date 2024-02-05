@@ -85,7 +85,9 @@ func _input(event):
 			add_child(effect)
 		else:
 			for unit in selected_units:
-				if unit.controllable:
+				if clicked_unit and clicked_unit.controllable and unit.support_unit:
+					unit.set_target(clicked_unit)
+				elif unit.controllable:
 					unit.set_walk()
 			var effect = click_effect.instantiate()
 			effect.global_position = get_global_mouse_position()
