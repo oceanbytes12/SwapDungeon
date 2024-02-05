@@ -18,8 +18,8 @@ func _ready():
 		current_state = initial_state
 
 func _process(delta):
-	#if own_body.teamColor == "red":
-		#print(current_state)
+	#if own_body.support_unit:
+		#print(current_target)
 	if current_state:
 		current_state.Update(delta, current_target)
 
@@ -95,11 +95,13 @@ func _on_base_unit_attack_command(target):
 		#Wierd bug that occurs even in lonely scenes...
 		#print("Invalid Target for: ", own_body.name)
 		return
-	
 	if targets.get(target.name):
 		current_target = target
 	else:
 		targets[target.name] = target
 		current_target = target
-	#on_state_change("Follow")
+	var new_state = states.get("Follow")
+	current_state.Exit()
+	new_state.Enter(current_target)
+	current_state = new_state
 
