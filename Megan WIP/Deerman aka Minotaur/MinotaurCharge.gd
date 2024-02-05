@@ -9,7 +9,7 @@ signal Charging
 #@export var knockback = 60
 @export var damage = 40
 
-@export var charge_collider : Area2D 
+@export var charge_collider : CollisionShape2D 
 
 
 #var timeout_timer

@@ -3,6 +3,7 @@ extends Control
 @export var Mimic : Control
 @export var MimicButton : TextureButton
 @export var RerollButton : Button
+@export var SkipButton : Button
 var targetMimicAlpha : float = 0
 var targetRerollAlpha : float = 0
 var displayedText = 10
@@ -18,7 +19,7 @@ func _ready():
 	HeroUiController.moneyManager = self
 	Mimic.modulate.a = targetMimicAlpha
 	RerollButton.modulate.a = targetRerollAlpha
-	
+	SkipButton.modulate.a = targetRerollAlpha
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -35,7 +36,14 @@ func _process(delta):
 		
 	Mimic.modulate.a = lerp(Mimic.modulate.a, targetMimicAlpha, delta/fade_duration)
 	RerollButton.modulate.a = lerp(RerollButton.modulate.a, targetRerollAlpha, delta/fade_duration)
-
+	SkipButton.modulate.a = targetRerollAlpha
+	
+	if(targetRerollAlpha == 0):
+		RerollButton.disabled = true
+		SkipButton.disabled = true
+	else:
+		RerollButton.disabled = false
+		SkipButton.disabled = false
 
 func _on_area_2d_mouse_entered():
 	Selected = true
