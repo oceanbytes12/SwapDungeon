@@ -118,3 +118,4 @@ func _reset():
 
 func _quit():
 	get_tree().quit()
+

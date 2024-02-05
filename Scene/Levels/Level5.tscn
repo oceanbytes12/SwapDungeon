@@ -52,6 +52,10 @@ weaponDamage = 20
 z_index = 1
 position = Vector2(136, 0)
 
+[node name="Melee3" parent="." instance=ExtResource("5_wocpq")]
+z_index = 1
+position = Vector2(177, 56)
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="SelectionPanel" type="Panel" parent="UI"]

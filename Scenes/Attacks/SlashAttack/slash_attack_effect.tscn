@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsdxhoy0u55kv"]
+[gd_scene load_steps=9 format=3 uid="uid://cbjcpkicuuhru"]
 
 [ext_resource type="Texture2D" uid="uid://bbltt3vtbeo47" path="res://Art/SwordAttack.png" id="1_nrbou"]
 [ext_resource type="Script" path="res://Scenes/Attacks/SlashAttack/slash_attack_effect.gd" id="2_21l2s"]
-[ext_resource type="AudioStream" uid="uid://d276ddwhno86" path="res://SFX/Sword_whoosh_v1.wav" id="3_4ha2n"]
-[ext_resource type="AudioStream" uid="uid://ced3nogo0peqt" path="res://SFX/Sword_hit_base_SD.wav" id="4_w7ie3"]
+[ext_resource type="AudioStream" uid="uid://d276ddwhno86" path="res://SFX/Sword_whoosh_v1.wav" id="3_46mjk"]
+[ext_resource type="AudioStream" uid="uid://ced3nogo0peqt" path="res://SFX/Sword_hit_base_SD.wav" id="4_pkmk6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhbib"]
 atlas = ExtResource("1_nrbou")
@@ -39,10 +39,10 @@ autoplay = "Slash"
 script = ExtResource("2_21l2s")
 
 [node name="Sword_whoosh_sfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_4ha2n")
+stream = ExtResource("3_46mjk")
 
 [node name="Sword_hit_sfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_w7ie3")
+stream = ExtResource("4_pkmk6")
 
 [node name="Area2D" type="Area2D" parent="."]
 
