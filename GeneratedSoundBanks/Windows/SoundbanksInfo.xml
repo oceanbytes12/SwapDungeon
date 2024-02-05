@@ -162,9 +162,59 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{A4CED6EC-06CA-1FD6-71D9-E33CE868C1C1}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{7378D600-BC24-00F1-E313-FAFF604284FA}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="39681179" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sword_hit_skeleton_v1.wav</ShortName>
+					<CachePath>SFX/Sword_hit_skeleton_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="152509317" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Arrow_hit_skeleton_v1.wav</ShortName>
+					<CachePath>SFX/Arrow_hit_skeleton_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="290807889" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Arrow_release_base_v1.wav</ShortName>
+					<CachePath>SFX/Arrow_release_base_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="367808546" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Necro_spell_hit_v1.wav</ShortName>
+					<CachePath>SFX/Necro_spell_hit_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="417827522" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Skeleton_die_v1.wav</ShortName>
+					<CachePath>SFX/Skeleton_die_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="624884114" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sword_whoosh_v1.wav</ShortName>
+					<CachePath>SFX/Sword_whoosh_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="676843821" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sword_hit_base_SD.wav</ShortName>
+					<CachePath>SFX/Sword_hit_base_SD_818F3B66.wem</CachePath>
+				</File>
+				<File Id="680376164" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Necro_spell_cast_v1.wav</ShortName>
+					<CachePath>SFX/Necro_spell_cast_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="857041361" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Skeleton_hit_v1.wav</ShortName>
+					<CachePath>SFX/Skeleton_hit_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="861288031" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Arrow_hit_base_v1.wav</ShortName>
+					<CachePath>SFX/Arrow_hit_base_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="884542603" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Arrow_whoosh_v1.wav</ShortName>
+					<CachePath>SFX/Arrow_whoosh_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="929135621" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Bow_string_v1.wav</ShortName>
+					<CachePath>SFX/Bow_string_v1_818F3B66.wem</CachePath>
+				</File>
+			</Media>
 			<Plugins>
 				<Custom>
 					<Plugin Id="79038726" Name="Tone Generator" LibName="Wwise Tone Generator" LibId="6684674"/>
@@ -188,6 +238,66 @@
 						</Custom>
 					</PluginRefs>
 				</Event>
+				<Event Id="619000523" Name="Play_Arrow_hit_base_v1">
+					<MediaRefs>
+						<MediaRef Id="861288031"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="392055725" Name="Play_Arrow_hit_skeleton_v1">
+					<MediaRefs>
+						<MediaRef Id="152509317"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1232109819" Name="Play_Arrow_release_base_v1">
+					<MediaRefs>
+						<MediaRef Id="290807889"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2199016850" Name="Play_Arrow_whoosh_v1">
+					<MediaRefs>
+						<MediaRef Id="884542603"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3044881066" Name="Play_Bow_string_v1">
+					<MediaRefs>
+						<MediaRef Id="929135621"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="180876128" Name="Play_Necro_spell_cast_v1">
+					<MediaRefs>
+						<MediaRef Id="680376164"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1854458016" Name="Play_Necro_spell_hit_v1">
+					<MediaRefs>
+						<MediaRef Id="367808546"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="625299376" Name="Play_Skeleton_die_v1">
+					<MediaRefs>
+						<MediaRef Id="417827522"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1030092179" Name="Play_Skeleton_hit_v1">
+					<MediaRefs>
+						<MediaRef Id="857041361"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="262019043" Name="Play_Sword_hit_base_v1">
+					<MediaRefs>
+						<MediaRef Id="676843821"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2689971269" Name="Play_Sword_hit_skeleton_v1">
+					<MediaRefs>
+						<MediaRef Id="39681179"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="55459642" Name="Play_Sword_whoosh_v1">
+					<MediaRefs>
+						<MediaRef Id="624884114"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="27511013" Name="Play_Test_Beep">
 					<PluginRefs>
 						<Custom>
@@ -207,5 +317,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F39650C2-4994-9D55-DAB1-FDB8A00BBE45}</FileHash>
+	<FileHash>{2E6A0871-C945-3E85-5D71-D370E93FC7D5}</FileHash>
 </SoundBanksInfo>

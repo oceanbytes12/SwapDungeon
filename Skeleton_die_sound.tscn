@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c5haguw0ov737"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Arrow_hit_sfx" type="AkEvent2D" parent="."]
+event = {
+"id": 625299376,
+"name": "Play_Skeleton_die_v1"
+}
+trigger_on = 1

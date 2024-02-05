@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvv6hayk4kcun"]
+[gd_scene load_steps=8 format=3 uid="uid://dvv6hayk4kcun"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_env67"]
+[ext_resource type="PackedScene" uid="uid://c5haguw0ov737" path="res://Skeleton_die_sound.tscn" id="2_3w4q8"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_5gi0p"]
 [ext_resource type="PackedScene" uid="uid://bdf66a53p3661" path="res://Scenes/DefaultWeapon/bow.tscn" id="3_0drtb"]
 
@@ -37,6 +38,7 @@ runSpeed = 30.0
 weaponRange = 100.0
 weaponCooldown = 2.0
 weaponDamage = 30
+skeleton_die_scene = ExtResource("2_3w4q8")
 
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_w0ymd")
@@ -47,3 +49,10 @@ material = SubResource("ShaderMaterial_jtach")
 [node name="Bow" parent="." index="4" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("3_0drtb")]
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
+
+[node name="Skeleton_hit_sfx" type="AkEvent2D" parent="." index="12"]
+event = {
+"id": 1030092179,
+"name": "Play_Skeleton_hit_v1"
+}
+trigger_on = 2

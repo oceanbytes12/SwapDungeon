@@ -135,4 +135,18 @@ offset_bottom = 37.0
 scale = Vector2(3, 3)
 text = "Swap Dungeon"
 
+[node name="Main" type="AkBank" parent="."]
+bank = {
+"id": 3161908922,
+"name": "Main"
+}
+load_on = 1
+
+[node name="Init" type="AkBank" parent="."]
+bank = {
+"id": 1355168291,
+"name": "Init"
+}
+load_on = 1
+
 [connection signal="pressed" from="TitleScreen/NinePatchRect/Button" to="LoadScene" method="_Start_Game"]

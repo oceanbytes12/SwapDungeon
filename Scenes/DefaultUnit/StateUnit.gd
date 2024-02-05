@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var weaponCooldown: float
 @export var weaponDamage: int
 @export var unitHealth: float
+@export var skeleton_die_scene : PackedScene
 
 signal Hit
 signal WalkCommand
@@ -37,7 +38,6 @@ func set_targeted(value):
 func _ready():
 	$UI/HealthBar.max_value = unitHealth
 	$UI/HealthBar.value = unitHealth
-	
 	set_selected(selected)
 	set_targeted(targeted)
 
@@ -93,7 +93,8 @@ func take_hit(hit_position, damage):
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction, damage)
 		$EffectAnimations.play("hitAnimation")
-
+		
+		
 func Die():
 	is_dead = true
 	$UI/HealthBar.visible = false
@@ -103,3 +104,4 @@ func Die():
 	#$Art/RedHat.visible = false
 	Died.emit()
 	$MovementAnimations.play("Die")
+	

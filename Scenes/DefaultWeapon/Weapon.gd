@@ -14,7 +14,7 @@ func _ready():
 	attackState.Untarget.connect(_on_untarget)
 	own_body.Died.connect(_on_body_died)
 	damageOverride = own_body.weaponDamage
-
+	
 func _process(_delta):
 	if target:
 		look_at(target.global_position)

@@ -15,6 +15,18 @@ namespace AK
     {
         static const AkUniqueID PLAY_3D_TEST_BEEP = 356218121U;
         static const AkUniqueID PLAY_3D_TEST_BEEP_LOOP = 2277864726U;
+        static const AkUniqueID PLAY_ARROW_HIT_BASE_V1 = 619000523U;
+        static const AkUniqueID PLAY_ARROW_HIT_SKELETON_V1 = 392055725U;
+        static const AkUniqueID PLAY_ARROW_RELEASE_BASE_V1 = 1232109819U;
+        static const AkUniqueID PLAY_ARROW_WHOOSH_V1 = 2199016850U;
+        static const AkUniqueID PLAY_BOW_STRING_V1 = 3044881066U;
+        static const AkUniqueID PLAY_NECRO_SPELL_CAST_V1 = 180876128U;
+        static const AkUniqueID PLAY_NECRO_SPELL_HIT_V1 = 1854458016U;
+        static const AkUniqueID PLAY_SKELETON_DIE_V1 = 625299376U;
+        static const AkUniqueID PLAY_SKELETON_HIT_V1 = 1030092179U;
+        static const AkUniqueID PLAY_SWORD_HIT_BASE_V1 = 262019043U;
+        static const AkUniqueID PLAY_SWORD_HIT_SKELETON_V1 = 2689971269U;
+        static const AkUniqueID PLAY_SWORD_WHOOSH_V1 = 55459642U;
         static const AkUniqueID PLAY_TEST_BEEP = 27511013U;
         static const AkUniqueID PLAY_TEST_BEEP_LOOP = 2850136426U;
         static const AkUniqueID STOP_3D_TEST_BEEP_LOOP = 618533600U;
