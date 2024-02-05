@@ -35,10 +35,11 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 [node name="Preist1" instance=ExtResource("1_w3bm3")]
 teamColor = "blue"
 controllable = true
+support_unit = true
 walkSpeed = 12.0
 runSpeed = 35.0
 weaponRange = 100.0
-weaponCooldown = 1.0
+weaponCooldown = 1.5
 weaponDamage = 20
 
 [node name="Shadow" parent="." index="0"]
@@ -54,7 +55,9 @@ material = SubResource("ShaderMaterial_ax3d5")
 texture = ExtResource("2_o00rw")
 region_rect = Rect2(115, 9, 18, 17)
 
-[node name="Book1" parent="." index="5" instance=ExtResource("4_7eujw")]
+[node name="Book1" parent="." index="5" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_7eujw")]
+own_body = NodePath("..")
+attackState = NodePath("../SM/Attack")
 
 [node name="SM" parent="." index="6" node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("Stand")

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var teamColor : String
 @export var controllable: bool
+@export var support_unit := false
 @export var can_be_stunned = true
 @export var walkSpeed: float
 @export var runSpeed: float
@@ -72,10 +73,16 @@ func set_target(target):
 
 func take_hit(hit_position, damage, hitstun=50):
 	$UI/HealthBar.value -= damage
-	var newNode = hitEffect.instantiate()
-	newNode.global_position = global_position
-	newNode.set_damage_text(damage)
-	get_parent().get_parent().add_child(newNode)
+	if damage >= 0:
+		var newNode = hitEffect.instantiate()
+		newNode.global_position = global_position
+		newNode.set_damage_text(damage)
+		get_parent().get_parent().add_child(newNode)
+	else:
+		var newNode = hitEffect.instantiate()
+		newNode.global_position = global_position
+		newNode.set_damage_text(damage*-1)
+		get_parent().get_parent().add_child(newNode)
 	if $UI/HealthBar.value <= 0:
 		is_dead = true
 		$UI/HealthBar.visible = false
