@@ -20,6 +20,7 @@ config/icon="res://Art/SwapText.png"
 WwiseRuntimeManager="*res://addons/Wwise/runtime/wwise_runtime_manager.gd"
 Globals="*res://Michael WIP/Scripts/Globals/globals.gd"
 HeroUiController="*res://Michael WIP/Scripts/Globals/HeroUiController.gd"
+SoundManager="*res://sound_manager.gd"
 
 [display]
 
