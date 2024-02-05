@@ -1,22 +1,22 @@
 extends Area2D
 
 var source_team_color
-var speed = 120
+var speed = 100
 var target
-var turn_speed = 0.5
-var damage = 50
+var turn_speed = 1
+var damage = 40
 
 var end_of_life = false
 var eol_timer = 2
 
 func _ready():
-	$AnimatedSprite2D.play("FireSpell")
+	$AnimatedSprite2D.play()
 	$Mage_cast_sfx.play()
 	var direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
-		rotate(-PI/8)
+		rotate(-PI/5)
 	else:
-		rotate(PI/8)
+		rotate(PI/5)
 	
 
 func _physics_process(delta):
@@ -44,7 +44,8 @@ func _on_body_entered(body):
 	if body.is_in_group("unit") and body.teamColor != source_team_color:
 		if body.has_method("take_hit"):
 			body.take_hit(global_position, damage)
-			playsound_and_queuefree()
+	elif body.is_in_group("wall"):
+		queue_free()
 
 func angle_to_angle(from, to):
 	return fposmod(to-from + PI, PI*2) - PI

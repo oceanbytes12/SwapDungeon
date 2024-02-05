@@ -45,7 +45,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pv03d"]
 radius = 5.0
-height = 14.0
+height = 18.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
 radius = 258.048
@@ -370,7 +370,6 @@ region_enabled = true
 region_rect = Rect2(21, 3, 18, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_pv03d")
 
 [node name="SM" type="Node" parent="." node_paths=PackedStringArray("initial_state", "own_body")]

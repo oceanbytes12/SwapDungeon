@@ -18,8 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://b76mhmgtyxmp4" path="res://Art/WinScreen.png" id="16_5w3r5"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://tile_map.tscn" id="17_b77ue"]
 [ext_resource type="Script" path="res://Scene/MoneyManager.gd" id="18_304s1"]
+[ext_resource type="Texture2D" uid="uid://bfincd5804dwt" path="res://Art/MoneyPouch.png" id="18_vbf4g"]
 [ext_resource type="Script" path="res://Michael WIP/GoodScenes/PauseMenu.gd" id="19_171h3"]
-[ext_resource type="Texture2D" uid="uid://bleod87p1uuvd" path="res://Art/MoneyBag.PNG" id="19_h8fcq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnua3"]
 size = Vector2(464, 64)
@@ -458,6 +458,7 @@ offset_right = -363.0
 offset_bottom = 6.0
 grow_vertical = 2
 pivot_offset = Vector2(40, 0)
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
 text = "100
 "
 horizontal_alignment = 1
@@ -472,12 +473,12 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -469.0
-offset_top = -17.0
+offset_top = -15.0
 offset_right = -445.0
-offset_bottom = 7.0
+offset_bottom = 9.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("19_h8fcq")
+texture = ExtResource("18_vbf4g")
 expand_mode = 1
 stretch_mode = 4
 

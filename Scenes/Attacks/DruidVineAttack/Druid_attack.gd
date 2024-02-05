@@ -3,7 +3,7 @@ extends Area2D
 var source_team_color
 var speed = 120
 var target
-var turn_speed = 0.5
+var turn_speed = 1
 var damage = 50
 
 var end_of_life = false
