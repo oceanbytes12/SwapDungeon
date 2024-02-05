@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://cmug0n1alq6nm"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_kekfc"]
+[ext_resource type="PackedScene" uid="uid://css8vftr5y8cm" path="res://Scenes/Units/Players/Druid2.tscn" id="2_vdm17"]
 [ext_resource type="PackedScene" uid="uid://bdv1mfy7gs5lb" path="res://Scenes/Units/Players/Warrior2.tscn" id="3_he61e"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="4_kdsb1"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="5_k6uka"]
 [ext_resource type="PackedScene" uid="uid://bo0yvp5o6p4vt" path="res://Scenes/Units/Players/Mage1.tscn" id="6_d7djo"]
-[ext_resource type="PackedScene" uid="uid://ck3q6w3kyix6f" path="res://Scenes/Units/Players/Priest1.tscn" id="7_0ht6e"]
 [ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Units/Enemies/RangedSkeleton.tscn" id="7_uye4y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qaq"]
@@ -23,6 +23,10 @@ corner_radius_bottom_left = 3
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_kekfc")
+
+[node name="Druid2" parent="." instance=ExtResource("2_vdm17")]
+position = Vector2(-142, -43)
+unitHealth = 200.0
 
 [node name="Warrior2" parent="." instance=ExtResource("3_he61e")]
 position = Vector2(116, 4)
@@ -45,8 +49,5 @@ position = Vector2(71, -39)
 
 [node name="Mage1" parent="." instance=ExtResource("6_d7djo")]
 position = Vector2(-162, 15)
-
-[node name="Preist1" parent="." instance=ExtResource("7_0ht6e")]
-position = Vector2(-147, 71)
 
 [connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]
