@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bleod87p1uuvd"
-path="res://.godot/imported/MoneyBag.PNG-febcd200d9f7a3758542268673c3ffea.ctex"
+uid="uid://bfincd5804dwt"
+path="res://.godot/imported/MoneyPouch.png-ba7922271876a06112189e798a5e1875.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/MoneyBag.PNG"
-dest_files=["res://.godot/imported/MoneyBag.PNG-febcd200d9f7a3758542268673c3ffea.ctex"]
+source_file="res://Art/MoneyPouch.png"
+dest_files=["res://.godot/imported/MoneyPouch.png-ba7922271876a06112189e798a5e1875.ctex"]
 
 [params]
 

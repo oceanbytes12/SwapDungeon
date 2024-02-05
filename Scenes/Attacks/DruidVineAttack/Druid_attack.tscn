@@ -46,4 +46,7 @@ frame_progress = 0.253558
 [node name="Vine_hit_sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_dpyog")
 
+[node name="Vine_launch_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dpyog")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
