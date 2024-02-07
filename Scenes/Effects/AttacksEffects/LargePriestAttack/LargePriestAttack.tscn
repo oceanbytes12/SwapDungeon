@@ -1,0 +1,137 @@
+[gd_scene load_steps=20 format=3 uid="uid://c3mxoyo0ofwm7"]
+
+[ext_resource type="Script" path="res://Scenes/Effects/AttacksEffects/LargePriestAttack/LargePriestAttack.gd" id="1_sftj8"]
+[ext_resource type="Texture2D" uid="uid://g8ip6uceaa12" path="res://Art/AttackArt/HolyAttack-Sheet.png" id="2_2tkus"]
+[ext_resource type="Texture2D" uid="uid://dlivpfjjuhlhg" path="res://Art/AttackArt/MagicAttack2x2-Sheet.png" id="3_d5j0j"]
+[ext_resource type="Texture2D" uid="uid://cotuurf8p1l5m" path="res://Art/AttackArt/LargeHolyAttack-Sheet.png" id="3_ga02n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ymvn"]
+atlas = ExtResource("2_2tkus")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr73s"]
+atlas = ExtResource("2_2tkus")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agij2"]
+atlas = ExtResource("2_2tkus")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbhb2"]
+atlas = ExtResource("3_ga02n")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6mnm"]
+atlas = ExtResource("3_ga02n")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isiwa"]
+atlas = ExtResource("3_ga02n")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evbl7"]
+atlas = ExtResource("3_ga02n")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo1co"]
+atlas = ExtResource("3_d5j0j")
+region = Rect2(0, 0, 28, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vohte"]
+atlas = ExtResource("3_d5j0j")
+region = Rect2(28, 0, 28, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kisgf"]
+atlas = ExtResource("3_d5j0j")
+region = Rect2(56, 0, 28, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgn8g"]
+atlas = ExtResource("3_d5j0j")
+region = Rect2(0, 22, 28, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vmcy"]
+atlas = ExtResource("3_d5j0j")
+region = Rect2(28, 22, 28, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keqdw"]
+atlas = ExtResource("3_d5j0j")
+region = Rect2(56, 22, 28, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q78e8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ymvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr73s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agij2")
+}],
+"loop": false,
+"name": &"HolySpell",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbhb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6mnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isiwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evbl7")
+}],
+"loop": false,
+"name": &"LargeHolySpell",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo1co")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vohte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kisgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgn8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vmcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keqdw")
+}],
+"loop": true,
+"name": &"Spell",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
+radius = 18.0
+height = 52.0
+
+[node name="LargePriestAttack" type="Area2D"]
+script = ExtResource("1_sftj8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 9)
+sprite_frames = SubResource("SpriteFrames_q78e8")
+animation = &"LargeHolySpell"
+autoplay = "LargeHolySpell"
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_w3hqt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

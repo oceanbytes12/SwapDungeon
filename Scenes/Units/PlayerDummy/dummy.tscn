@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dhds8focy23er"]
 
 [ext_resource type="Script" path="res://Scenes/Units/PlayerDummy/Dummy.gd" id="1_b1u7t"]
-[ext_resource type="Texture2D" uid="uid://dkl6n1av0tykp" path="res://Art/combatDummy.png" id="2_cry46"]
-[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_icm7n"]
+[ext_resource type="Texture2D" uid="uid://dkl6n1av0tykp" path="res://Art/CharacterArt/combatDummy.png" id="2_cry46"]
+[ext_resource type="Shader" path="res://Scenes/Units/DefaultUnit/hitEffect.gdshader" id="2_icm7n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fyx5d"]
 shader = ExtResource("2_icm7n")

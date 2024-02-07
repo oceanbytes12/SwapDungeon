@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://6jcr4qkrw7v2"]
+
+[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/weapon.tscn" id="1_rs0ex"]
+[ext_resource type="PackedScene" uid="uid://ceyeak3ionm2v" path="res://Scenes/Effects/AttacksEffects/ArrowAttack/arrow_effect.tscn" id="2_4yh3n"]
+[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/CharacterArt/BaseUnits.png" id="2_fmjhu"]
+
+[node name="Bow1" instance=ExtResource("1_rs0ex")]
+weaponEffectScene = ExtResource("2_4yh3n")
+
+[node name="Art" parent="." index="1"]
+position = Vector2(9, 0)
+texture = ExtResource("2_fmjhu")
+region_rect = Rect2(106, 107, 10, 26)
+
+[node name="Bow_shoot_sfx" type="AkEvent2D" parent="." index="2"]
+event = {
+"id": 1232109819,
+"name": "Play_Arrow_release_base_v1"
+}
+
+[node name="Bow_string_sfx" type="AkEvent2D" parent="." index="3"]
+event = {
+"id": 3044881066,
+"name": "Play_Bow_string_v1"
+}
+
+[node name="Arrow_fly_sfx" type="AkEvent2D" parent="." index="4"]
+event = {
+"id": 2199016850,
+"name": "Play_Arrow_whoosh_v1"
+}

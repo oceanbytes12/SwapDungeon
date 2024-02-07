@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://yvo3r23olkdw"]
+
+[ext_resource type="Script" path="res://Scenes/Weapons/Weapon.gd" id="1_tsput"]
+[ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/CharacterArt/SkelyBoyParts.png" id="2_avc4h"]
+[ext_resource type="PackedScene" uid="uid://cbjcpkicuuhru" path="res://Scenes/Effects/AttacksEffects/SlashAttack/slash_attack_effect.tscn" id="2_h2le2"]
+
+[node name="Weapon" type="Marker2D"]
+script = ExtResource("1_tsput")
+weaponEffectScene = ExtResource("2_h2le2")
+
+[node name="AttackPoint" type="Marker2D" parent="."]
+position = Vector2(9, 0)
+
+[node name="Art" type="Sprite2D" parent="."]
+position = Vector2(8, -5)
+texture = ExtResource("2_avc4h")
+region_enabled = true
+region_rect = Rect2(3, 39, 8, 20)

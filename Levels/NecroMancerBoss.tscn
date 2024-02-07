@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://skntw6f7hy5t"]
+
+[ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/AlexTesting.gd" id="1_xi5j7"]
+[ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Levels/TestingLevels/BaseLevel.tscn" id="2_ck62r"]
+[ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="2_un34y"]
+[ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/Camera2D.gd" id="3_gslsw"]
+[ext_resource type="PackedScene" uid="uid://bs6obl2a02txq" path="res://Scenes/Units/DefaultUnit/Necromancer.tscn" id="4_rjbc3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qaq"]
+bg_color = Color(0.258824, 0.972549, 0.470588, 0.431373)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="NecromancerBoss" type="Node2D"]
+script = ExtResource("1_xi5j7")
+
+[node name="SpawnPositions" parent="." instance=ExtResource("2_un34y")]
+
+[node name="Level" parent="." instance=ExtResource("2_ck62r")]
+
+[node name="Camera" type="Camera2D" parent="."]
+script = ExtResource("3_gslsw")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SelectionPanel" type="Panel" parent="UI"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_j3qaq")
+
+[node name="Necromancer" parent="." instance=ExtResource("4_rjbc3")]
+position = Vector2(168, 0)
+weaponCooldown = 10.0
+
+[connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]

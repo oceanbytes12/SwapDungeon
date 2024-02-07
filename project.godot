@@ -11,15 +11,14 @@ config_version=5
 [application]
 
 config/name="SwapDungeon"
-run/main_scene="res://Michael WIP/GoodScenes/title.tscn"
+run/main_scene="res://Michael WIP/UIScenes/title.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://Art/SwapText.png"
+config/icon="res://Art/UIArt/SwapText.png"
 
 [autoload]
 
-WwiseRuntimeManager="*res://addons/Wwise/runtime/wwise_runtime_manager.gd"
-Globals="*res://Michael WIP/Scripts/Globals/globals.gd"
-HeroUiController="*res://Michael WIP/Scripts/Globals/HeroUiController.gd"
+Globals="*res://Scenes/UI/UIScripts/globals.gd"
+HeroUiController="*res://Scenes/UI/UIScripts/HeroUiController.gd"
 SoundManager="*res://sound_manager.gd"
 
 [display]

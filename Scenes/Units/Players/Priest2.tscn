@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://ddo1hdgelghps"]
 
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_ky6pr"]
-[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/HerosTwo.png" id="2_nrmgs"]
-[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_xm26u"]
-[ext_resource type="PackedScene" uid="uid://bgkt2a3uy725x" path="res://Scenes/DefaultWeapon/HealStaff.tscn" id="4_ou6nk"]
-[ext_resource type="PackedScene" uid="uid://c3mxoyo0ofwm7" path="res://Scenes/Attacks/LargePriestAttack/LargePriestAttack.tscn" id="5_0jr20"]
-[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerStand.gd" id="5_v8f56"]
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/DefaultUnit/BaseUnit.tscn" id="1_ky6pr"]
+[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/AttackArt/HerosTwo.png" id="2_nrmgs"]
+[ext_resource type="Shader" path="res://Scenes/Units/DefaultUnit/hitEffect.gdshader" id="3_xm26u"]
+[ext_resource type="PackedScene" uid="uid://bgkt2a3uy725x" path="res://Scenes/Weapons/HealStaff.tscn" id="4_ou6nk"]
+[ext_resource type="PackedScene" uid="uid://c3mxoyo0ofwm7" path="res://Scenes/Effects/AttacksEffects/LargePriestAttack/LargePriestAttack.tscn" id="5_0jr20"]
+[ext_resource type="Script" path="res://Scenes/Units/DefaultUnit/States/PlayerStand.gd" id="5_v8f56"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;

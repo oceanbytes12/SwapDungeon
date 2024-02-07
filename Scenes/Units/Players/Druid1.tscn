@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://hodefvjvsva3"]
 
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_vnea7"]
-[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/HerosTwo.png" id="2_28hhy"]
-[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_w7okm"]
-[ext_resource type="PackedScene" uid="uid://dwxdrua20lvuy" path="res://Scenes/DefaultWeapon/DruidStaff1.tscn" id="4_ehmii"]
-[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerStand.gd" id="6_q6uvy"]
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/DefaultUnit/BaseUnit.tscn" id="1_vnea7"]
+[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/AttackArt/HerosTwo.png" id="2_28hhy"]
+[ext_resource type="Shader" path="res://Scenes/Units/DefaultUnit/hitEffect.gdshader" id="3_w7okm"]
+[ext_resource type="PackedScene" uid="uid://dwxdrua20lvuy" path="res://Scenes/Weapons/DruidStaff1.tscn" id="4_mggx0"]
+[ext_resource type="Script" path="res://Scenes/Units/DefaultUnit/States/PlayerStand.gd" id="6_q6uvy"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -55,7 +55,7 @@ material = SubResource("ShaderMaterial_ax3d5")
 texture = ExtResource("2_28hhy")
 region_rect = Rect2(114, 44, 22, 17)
 
-[node name="Staff1" parent="." index="5" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_ehmii")]
+[node name="Staff1" parent="." index="5" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_mggx0")]
 position = Vector2(1, 4)
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
@@ -66,6 +66,3 @@ initial_state = NodePath("Stand")
 [node name="Stand" type="Node" parent="SM" index="6" node_paths=PackedStringArray("own_body")]
 script = ExtResource("6_q6uvy")
 own_body = NodePath("../..")
-
-[node name="SightRange" parent="." index="7"]
-visible = false

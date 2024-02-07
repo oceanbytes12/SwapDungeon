@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dvv6hayk4kcun"]
 
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_env67"]
-[ext_resource type="PackedScene" uid="uid://c5haguw0ov737" path="res://Skeleton_die_sound.tscn" id="2_3w4q8"]
-[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_5gi0p"]
-[ext_resource type="PackedScene" uid="uid://bdf66a53p3661" path="res://Scenes/DefaultWeapon/bow.tscn" id="3_0drtb"]
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/DefaultUnit/BaseUnit.tscn" id="1_env67"]
+[ext_resource type="PackedScene" path="res://Skeleton_die_sound.tscn" id="2_3w4q8"]
+[ext_resource type="Shader" path="res://Scenes/Units/DefaultUnit/hitEffect.gdshader" id="2_5gi0p"]
+[ext_resource type="PackedScene" uid="uid://bdf66a53p3661" path="res://Scenes/Weapons/bow.tscn" id="3_0drtb"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;

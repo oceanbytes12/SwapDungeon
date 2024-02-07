@@ -1,10 +1,25 @@
 [gd_scene load_steps=9 format=3 uid="uid://1no2wnxq1rbi"]
 
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_ywvar"]
-[ext_resource type="PackedScene" uid="uid://c5haguw0ov737" path="res://Skeleton_die_sound.tscn" id="2_v1o65"]
-[ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/SkelyBoyPartsx3.png" id="4_q828j"]
-[ext_resource type="PackedScene" uid="uid://dqdlj0tjd7j18" path="res://Scenes/DefaultWeapon/dagger1.tscn" id="5_jw3rv"]
-[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="5_pie7s"]
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/DefaultUnit/BaseUnit.tscn" id="1_ywvar"]
+[ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/CharacterArt/SkelyBoyPartsx3.png" id="4_q828j"]
+[ext_resource type="PackedScene" uid="uid://dqdlj0tjd7j18" path="res://Scenes/Weapons/dagger1.tscn" id="5_jw3rv"]
+[ext_resource type="Shader" path="res://Scenes/Units/DefaultUnit/hitEffect.gdshader" id="5_pie7s"]
+
+[sub_resource type="PackedScene" id="PackedScene_leyiu"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Node2D", "Node2D", "Arrow_hit_sfx", "AkEvent2D", "event", "trigger_on"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 0, 0, 1073741824, 0, 3, 2, -1, 2, 4, 0, 5, 1, 0),
+"variants": [{
+"id": 625299376,
+"name": "Play_Skeleton_die_v1"
+}, 1],
+"version": 3
+}
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -39,7 +54,7 @@ runSpeed = 55.0
 weaponRange = 30.0
 weaponCooldown = 1.0
 weaponDamage = 20
-skeleton_die_scene = ExtResource("2_v1o65")
+skeleton_die_scene = SubResource("PackedScene_leyiu")
 
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_ki0up")
@@ -57,8 +72,16 @@ own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
 
 [node name="Skeleton_hit_sfx" type="AkEvent2D" parent="." index="12"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+editor_description = ""
 event = {
 "id": 1030092179,
 "name": "Play_Skeleton_hit_v1"
 }
 trigger_on = 2
+script = null

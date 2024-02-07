@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdf66a53p3661"]
+
+[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/weapon.tscn" id="1_1pi1d"]
+[ext_resource type="PackedScene" uid="uid://ceyeak3ionm2v" path="res://Scenes/Effects/AttacksEffects/ArrowAttack/arrow_effect.tscn" id="2_yntf1"]
+[ext_resource type="AudioStream" uid="uid://cjyq2l0sura3t" path="res://SFX/Bow_string_v1.wav" id="3_5tegi"]
+[ext_resource type="AudioStream" uid="uid://b2amrsh072tsv" path="res://SFX/Arrow_release_base_v1.wav" id="4_emmdy"]
+
+[node name="Bow" instance=ExtResource("1_1pi1d")]
+weaponEffectScene = ExtResource("2_yntf1")
+
+[node name="Art" parent="." index="1"]
+position = Vector2(9, 0)
+region_rect = Rect2(17, 37, 10, 22)
+
+[node name="Bow_string_sfx" type="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("3_5tegi")
+
+[node name="Arrow_shoot_sfx" type="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("4_emmdy")

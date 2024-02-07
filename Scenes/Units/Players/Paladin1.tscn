@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://l8qhl4rbjwg7"]
 
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_amw0w"]
-[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/HerosTwo.png" id="2_hq5t2"]
-[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_y0cjc"]
-[ext_resource type="PackedScene" uid="uid://djdd0wn1aabc6" path="res://Scenes/DefaultWeapon/Shield1.tscn" id="4_reopr"]
-[ext_resource type="Script" path="res://Scenes/DefaultUnit/States/PlayerStand.gd" id="5_ed0yb"]
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/DefaultUnit/BaseUnit.tscn" id="1_amw0w"]
+[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/AttackArt/HerosTwo.png" id="2_hq5t2"]
+[ext_resource type="Shader" path="res://Scenes/Units/DefaultUnit/hitEffect.gdshader" id="3_y0cjc"]
+[ext_resource type="PackedScene" uid="uid://djdd0wn1aabc6" path="res://Scenes/Weapons/Shield1.tscn" id="4_reopr"]
+[ext_resource type="Script" path="res://Scenes/Units/DefaultUnit/States/PlayerStand.gd" id="5_ed0yb"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
