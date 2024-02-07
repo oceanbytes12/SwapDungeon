@@ -5,18 +5,29 @@ Event	ID	Name			Wwise Object Path	Notes
 	262019043	Play_Sword_hit_base_v1			\Default Work Unit\Play_Sword_hit_base_v1	
 	356218121	Play_3D_Test_Beep			\Default Work Unit\Play_3D_Test_Beep	
 	392055725	Play_Arrow_hit_skeleton_v1			\Default Work Unit\Play_Arrow_hit_skeleton_v1	
+	568508605	Play_Teleport_v1			\Default Work Unit\Play_Teleport_v1	
 	618533600	Stop_3D_Test_Beep_loop			\Default Work Unit\Stop_3D_Test_Beep_loop	
 	619000523	Play_Arrow_hit_base_v1			\Default Work Unit\Play_Arrow_hit_base_v1	
 	625299376	Play_Skeleton_die_v1			\Default Work Unit\Play_Skeleton_die_v1	
 	646803528	Stop_Test_Beep_loop			\Default Work Unit\Stop_Test_Beep_loop	
+	839182324	Play_Place_unit_v1			\Default Work Unit\Play_Place_unit_v1	
 	1030092179	Play_Skeleton_hit_v1			\Default Work Unit\Play_Skeleton_hit_v1	
 	1232109819	Play_Arrow_release_base_v1			\Default Work Unit\Play_Arrow_release_base_v1	
+	1251915995	Play_Swap_dungeon_track1_v1			\Default Work Unit\Play_Swap_dungeon_track1_v1	
+	1253814853	Play_Rogue_stab_v1			\Default Work Unit\Play_Rogue_stab_v1	
+	1528880901	Play_Victory_trumpt_v1			\Default Work Unit\Play_Victory_trumpt_v1	
+	1769490029	Play_Mage_spell_cast_v1			\Default Work Unit\Play_Mage_spell_cast_v1	
 	1854458016	Play_Necro_spell_hit_v1			\Default Work Unit\Play_Necro_spell_hit_v1	
 	2199016850	Play_Arrow_whoosh_v1			\Default Work Unit\Play_Arrow_whoosh_v1	
 	2277864726	Play_3D_Test_Beep_loop			\Default Work Unit\Play_3D_Test_Beep_loop	
 	2689971269	Play_Sword_hit_skeleton_v1			\Default Work Unit\Play_Sword_hit_skeleton_v1	
 	2850136426	Play_Test_Beep_loop			\Default Work Unit\Play_Test_Beep_loop	
+	2943709935	Play_Druid_vine_v1			\Default Work Unit\Play_Druid_vine_v1	
 	3044881066	Play_Bow_string_v1			\Default Work Unit\Play_Bow_string_v1	
+	3651852639	Play_Mage_spell_hit_v1			\Default Work Unit\Play_Mage_spell_hit_v1	
+
+Effect plug-ins	ID	Name	Type				Notes
+	1674078407	Chorus_Like	Wwise Flanger			
 
 Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
 	79038726	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\TestFiles\3DTestFiles\3D_Test_Beep\Tone Generator	
@@ -25,14 +36,22 @@ Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
 	1068792302	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\TestFiles\3DTestFiles\3D_Test_Beep_loop\Tone Generator	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	17564888	Teleport_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Teleport_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Teleport_v1		308272
 	39681179	Sword_hit_skeleton_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Sword_hit_skeleton_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Warrior\Sword\Sword_hit_skeleton_v1		189884
+	98333622	Swap_dungeon_track1_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Swap_dungeon_track1_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Swap_dungeon_track1_v1		11520096
 	152509317	Arrow_hit_skeleton_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Arrow_hit_skeleton_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Ranger\Bow\Arrow_hit_skeleton_v1		195756
+	244546825	Mage_spell_hit_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Mage_spell_hit_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Mage\Mage_spell_hit_v1		467976
 	290807889	Arrow_release_base_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Arrow_release_base_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Ranger\Bow\Arrow_release_base_v1		195756
 	367808546	Necro_spell_hit_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Necro_spell_hit_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Necro\Necro_spell_hit_v1		221680
 	417827522	Skeleton_die_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Skeleton_die_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Enemies\Skeleton_die_v1		235864
 	624884114	Sword_whoosh_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Sword_whoosh_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Warrior\Sword\Sword_whoosh_v1		195756
 	676843821	Sword_hit_base_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Sword_hit_base_SD_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Warrior\Sword\Sword_hit_base_v1		189884
 	680376164	Necro_spell_cast_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Necro_spell_cast_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Necro\Necro_spell_cast_v1		358640
+	703280036	Mage_spell_cast_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Mage_spell_cast_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Mage\Mage_spell_cast_v1		467976
+	753745932	Victory_trumpt_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Victory_trumpt_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Victory_trumpt_v1		576096
+	754468445	Place_unit_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Place_unit_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Place_unit_v1		191840
+	763417924	Rogue_stab_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Rogue_stab_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Rogue\Rogue_stab_v1		215236
+	803556371	Druid_vine_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Druid_vine_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\Druid_vine_v1		215236
 	857041361	Skeleton_hit_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Skeleton_hit_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Enemies\Skeleton_hit_v1		221680
 	861288031	Arrow_hit_base_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Arrow_hit_base_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Ranger\Bow\Arrow_hit_base_v1		195756
 	884542603	Arrow_whoosh_v1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Arrow_whoosh_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Ranger\Bow\Arrow_whoosh_v1		247604

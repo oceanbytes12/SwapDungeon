@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dm5nafv3bkhex"]
+[gd_scene load_steps=8 format=3 uid="uid://dm5nafv3bkhex"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_1e008"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_3ywj8"]
-[ext_resource type="PackedScene" uid="uid://c5haguw0ov737" path="res://Skeleton_die_sound.tscn" id="2_qltsm"]
 [ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/SkelyBoyPartsx3.png" id="3_eukey"]
 [ext_resource type="PackedScene" uid="uid://b6d5qekk1enak" path="res://Scenes/DefaultWeapon/staff.tscn" id="3_owyuc"]
 
@@ -39,7 +38,6 @@ runSpeed = 30.0
 weaponRange = 200.0
 weaponCooldown = 4.0
 weaponDamage = 40
-skeleton_die_scene = ExtResource("2_qltsm")
 
 [node name="Staff" parent="." index="3" node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("3_owyuc")]
 own_body = NodePath("..")
@@ -59,7 +57,13 @@ region_rect = Rect2(64, 20, 23, 12)
 [node name="Head" parent="Art" index="1"]
 material = SubResource("ShaderMaterial_gmlcj")
 
-[node name="Skeleton_hit_sfx" type="AkEvent2D" parent="." index="12"]
+[node name="Skeleton_death" type="AkEvent2D" parent="." index="12"]
+event = {
+"id": 625299376,
+"name": "Play_Skeleton_die_v1"
+}
+
+[node name="Skeleton_hit" type="AkEvent2D" parent="." index="13"]
 event = {
 "id": 1030092179,
 "name": "Play_Skeleton_hit_v1"

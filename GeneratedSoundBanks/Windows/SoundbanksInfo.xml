@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{059B8E85-4EE3-A140-389C-2CD2C578B0D3}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F28189A8-17F2-B1F9-D709-1EE5FCD071A7}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -162,17 +162,29 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{7378D600-BC24-00F1-E313-FAFF604284FA}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{4A7764BF-05B1-AF6A-B745-2F6859F2678F}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
+				<File Id="17564888" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Teleport_v1.wav</ShortName>
+					<CachePath>SFX/Teleport_v1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="39681179" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Sword_hit_skeleton_v1.wav</ShortName>
 					<CachePath>SFX/Sword_hit_skeleton_v1_818F3B66.wem</CachePath>
 				</File>
+				<File Id="98333622" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Swap_dungeon_track1_v1.wav</ShortName>
+					<CachePath>SFX/Swap_dungeon_track1_v1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="152509317" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Arrow_hit_skeleton_v1.wav</ShortName>
 					<CachePath>SFX/Arrow_hit_skeleton_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="244546825" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mage_spell_hit_v1.wav</ShortName>
+					<CachePath>SFX/Mage_spell_hit_v1_818F3B66.wem</CachePath>
 				</File>
 				<File Id="290807889" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Arrow_release_base_v1.wav</ShortName>
@@ -198,6 +210,26 @@
 					<ShortName>Necro_spell_cast_v1.wav</ShortName>
 					<CachePath>SFX/Necro_spell_cast_v1_818F3B66.wem</CachePath>
 				</File>
+				<File Id="703280036" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mage_spell_cast_v1.wav</ShortName>
+					<CachePath>SFX/Mage_spell_cast_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="753745932" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Victory_trumpt_v1.wav</ShortName>
+					<CachePath>SFX/Victory_trumpt_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="754468445" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Place_unit_v1.wav</ShortName>
+					<CachePath>SFX/Place_unit_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="763417924" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Rogue_stab_v1.wav</ShortName>
+					<CachePath>SFX/Rogue_stab_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="803556371" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Druid_vine_v1.wav</ShortName>
+					<CachePath>SFX/Druid_vine_v1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="857041361" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Skeleton_hit_v1.wav</ShortName>
 					<CachePath>SFX/Skeleton_hit_v1_818F3B66.wem</CachePath>
@@ -222,6 +254,9 @@
 					<Plugin Id="887559946" Name="Tone Generator" LibName="Wwise Tone Generator" LibId="6684674"/>
 					<Plugin Id="1068792302" Name="Tone Generator" LibName="Wwise Tone Generator" LibId="6684674"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="1674078407" Name="Chorus_Like" LibName="Wwise Flanger" LibId="8192003"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="356218121" Name="Play_3D_Test_Beep">
@@ -263,14 +298,44 @@
 						<MediaRef Id="929135621"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2943709935" Name="Play_Druid_vine_v1">
+					<MediaRefs>
+						<MediaRef Id="803556371"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1769490029" Name="Play_Mage_spell_cast_v1">
+					<MediaRefs>
+						<MediaRef Id="703280036"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3651852639" Name="Play_Mage_spell_hit_v1">
+					<MediaRefs>
+						<MediaRef Id="244546825"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="180876128" Name="Play_Necro_spell_cast_v1">
 					<MediaRefs>
 						<MediaRef Id="680376164"/>
 					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1674078407"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
 				<Event Id="1854458016" Name="Play_Necro_spell_hit_v1">
 					<MediaRefs>
 						<MediaRef Id="367808546"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="839182324" Name="Play_Place_unit_v1">
+					<MediaRefs>
+						<MediaRef Id="754468445"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1253814853" Name="Play_Rogue_stab_v1">
+					<MediaRefs>
+						<MediaRef Id="763417924"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="625299376" Name="Play_Skeleton_die_v1">
@@ -281,6 +346,11 @@
 				<Event Id="1030092179" Name="Play_Skeleton_hit_v1">
 					<MediaRefs>
 						<MediaRef Id="857041361"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1251915995" Name="Play_Swap_dungeon_track1_v1">
+					<MediaRefs>
+						<MediaRef Id="98333622"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="262019043" Name="Play_Sword_hit_base_v1">
@@ -298,6 +368,11 @@
 						<MediaRef Id="624884114"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="568508605" Name="Play_Teleport_v1">
+					<MediaRefs>
+						<MediaRef Id="17564888"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="27511013" Name="Play_Test_Beep">
 					<PluginRefs>
 						<Custom>
@@ -312,10 +387,15 @@
 						</Custom>
 					</PluginRefs>
 				</Event>
+				<Event Id="1528880901" Name="Play_Victory_trumpt_v1">
+					<MediaRefs>
+						<MediaRef Id="753745932"/>
+					</MediaRefs>
+				</Event>
 				<Event Id="618533600" Name="Stop_3D_Test_Beep_loop"/>
 				<Event Id="646803528" Name="Stop_Test_Beep_loop"/>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{2E6A0871-C945-3E85-5D71-D370E93FC7D5}</FileHash>
+	<FileHash>{FE3FAEF8-A4EB-4A6C-149E-E7DAF87B0D6C}</FileHash>
 </SoundBanksInfo>

@@ -10,7 +10,8 @@ var end_of_life = false
 var eol_timer = 2
 
 func _ready():
-	$Arrow_shoot_sfx.play()
+	#$Arrow_shoot_sfx.play()
+	$Arrow_shoot.post_event()
 
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)
@@ -38,6 +39,7 @@ func playsound_and_queuefree():
 	# Turn invisible, disable any colliders
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
-	$Arrow_hit_sfx.play()
+	#$Arrow_hit_sfx.play()
+	$Arrow_hit.post_event()
 	end_of_life = true
 	

@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://1no2wnxq1rbi"]
+[gd_scene load_steps=8 format=3 uid="uid://1no2wnxq1rbi"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_ywvar"]
-[ext_resource type="PackedScene" uid="uid://c5haguw0ov737" path="res://Skeleton_die_sound.tscn" id="2_v1o65"]
 [ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/SkelyBoyPartsx3.png" id="4_q828j"]
 [ext_resource type="PackedScene" uid="uid://dqdlj0tjd7j18" path="res://Scenes/DefaultWeapon/dagger1.tscn" id="5_jw3rv"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="5_pie7s"]
@@ -39,7 +38,6 @@ runSpeed = 55.0
 weaponRange = 30.0
 weaponCooldown = 1.0
 weaponDamage = 20
-skeleton_die_scene = ExtResource("2_v1o65")
 
 [node name="Body" parent="Art" index="0"]
 material = SubResource("ShaderMaterial_ki0up")

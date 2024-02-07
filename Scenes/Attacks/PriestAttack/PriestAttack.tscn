@@ -105,5 +105,7 @@ stream = ExtResource("4_0qhho")
 [node name="Spell_cast_sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_buodd")
 
+[node name="Priest_spell_cast" type="AkEvent2D" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

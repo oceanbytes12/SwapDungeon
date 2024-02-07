@@ -97,4 +97,16 @@ stream = ExtResource("4_o2dba")
 [node name="Mage_spell_hit_sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_j4f7k")
 
+[node name="Mage_spell_hit" type="AkEvent2D" parent="."]
+event = {
+"id": 3651852639,
+"name": "Play_Mage_spell_hit_v1"
+}
+
+[node name="Mage_cast" type="AkEvent2D" parent="."]
+event = {
+"id": 1769490029,
+"name": "Play_Mage_spell_cast_v1"
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

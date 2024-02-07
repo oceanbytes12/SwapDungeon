@@ -63,4 +63,16 @@ stream = ExtResource("6_c0yjb")
 [node name="Arrow_shoot_sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_d5in4")
 
+[node name="Arrow_shoot" type="AkEvent2D" parent="."]
+event = {
+"id": 1232109819,
+"name": "Play_Arrow_release_base_v1"
+}
+
+[node name="Arrow_hit" type="AkEvent2D" parent="."]
+event = {
+"id": 619000523,
+"name": "Play_Arrow_hit_base_v1"
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

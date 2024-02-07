@@ -36,7 +36,8 @@ func playsound_and_queuefree():
 	# Turn invisible, disable any colliders
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
-	$Priest_spell_hit_sfx.play()
+	#$Priest_spell_hit_sfx.play()
+	$Priest_spell_cast.post_event()
 	end_of_life = true
 
 func _on_animated_sprite_2d_animation_finished():
