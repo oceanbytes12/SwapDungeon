@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgiooxq5y8a2y"
-path="res://.godot/imported/DeerMan-Sheet.png-307e385ae31353913afbf9d58a655d38.ctex"
+uid="uid://cuucmx5hfltly"
+path="res://.godot/imported/DeerMan-Sheet-export.png-6ac3d4b581b14367afd9422b91b141c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/DeerMan-Sheet.png"
-dest_files=["res://.godot/imported/DeerMan-Sheet.png-307e385ae31353913afbf9d58a655d38.ctex"]
+source_file="res://Art/DeerMan-Sheet-export.png"
+dest_files=["res://.godot/imported/DeerMan-Sheet-export.png-6ac3d4b581b14367afd9422b91b141c8.ctex"]
 
 [params]
 

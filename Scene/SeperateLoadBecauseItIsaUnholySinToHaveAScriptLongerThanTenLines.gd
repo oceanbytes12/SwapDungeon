@@ -95,6 +95,7 @@ func loadLevels():
 	levels.append(level4)
 	levels.append(level5)
 	levels.append(level6)
+	levels.append(level7)
 	return levels
 
 func loadCosts():
