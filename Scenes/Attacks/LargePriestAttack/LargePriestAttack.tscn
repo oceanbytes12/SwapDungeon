@@ -133,5 +133,11 @@ position = Vector2(0, 7)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_w3hqt")
 
+[node name="Priest_big_cast" type="AkEvent2D" parent="."]
+event = {
+"id": 1242518153,
+"name": "Play_Priest_big_heal"
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

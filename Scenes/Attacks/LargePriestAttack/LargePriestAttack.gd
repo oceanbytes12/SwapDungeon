@@ -6,6 +6,7 @@ var damage = 40
 
 func _ready():
 	$AnimatedSprite2D.play("LargeHolySpell")
+	$Priest_big_cast.post_event()
 	global_position = target.global_position
 	rotation = 0
 

@@ -66,5 +66,11 @@ shape = SubResource("CapsuleShape2D_v20ub")
 [node name="Shield_hit_sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_j3wdw")
 
+[node name="Shield_hit" type="AkEvent2D" parent="."]
+event = {
+"id": 96507441,
+"name": "Play_Paladin_shield"
+}
+
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

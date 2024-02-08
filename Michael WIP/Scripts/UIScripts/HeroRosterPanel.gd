@@ -57,7 +57,8 @@ func _EquipPanelToBattleSpace(newBattleSpace):
 			otherPanel.FrontPanel.reparent(battleSpace)
 			otherPanel.battleSpace = battleSpace
 			battleSpace.equippedPanel = otherPanel
-			$Place_unit_sfx.play()
+			$Place_unit.post_event()
+			#$Place_unit_sfx.play()
 			#Equip ourselves to the new panel
 			newBattleSpace.equippedPanel = self
 			FrontPanel.reparent(newBattleSpace)

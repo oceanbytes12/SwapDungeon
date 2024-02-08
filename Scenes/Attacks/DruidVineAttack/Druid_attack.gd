@@ -11,7 +11,8 @@ var eol_timer = 2
 
 func _ready():
 	$AnimatedSprite2D.play("VineSpell")
-	$Vine_launch_sfx.play()
+	#$Vine_launch_sfx.play()
+	$Druid_cast.post_event()
 	var direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
 		rotate(-PI/8)
@@ -61,5 +62,6 @@ func playsound_and_queuefree():
 	# Turn invisible, disable any colliders
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
-	$Vine_hit_sfx.play()
+	#$Vine_hit_sfx.play()
+	$Druid_spell_hit.post_event()
 	end_of_life = true

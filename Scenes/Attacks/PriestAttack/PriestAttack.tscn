@@ -106,6 +106,10 @@ stream = ExtResource("4_0qhho")
 stream = ExtResource("5_buodd")
 
 [node name="Priest_spell_cast" type="AkEvent2D" parent="."]
+event = {
+"id": 2045284888,
+"name": "Play_Priest_heal"
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

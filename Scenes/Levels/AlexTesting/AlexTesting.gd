@@ -16,6 +16,7 @@ var is_Ctrl_pressed = false
 
 func _ready():
 	Globals.AlexTester = self		
+	
 
 # Get all units within the bounds of the drawn rectangle
 func get_units_in_area(area):

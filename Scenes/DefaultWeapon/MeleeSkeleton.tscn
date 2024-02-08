@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://uqy1sjp6o7qv"]
+[gd_scene load_steps=8 format=3 uid="uid://uqy1sjp6o7qv"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_bwoj0"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_0fpum"]
 [ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="3_751ey"]
+[ext_resource type="Script" path="res://Scenes/DefaultWeapon/SkeletonNoises.gd" id="4_cj6ky"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -51,3 +52,19 @@ attackState = NodePath("../SM/Attack")
 [node name="HealthBar" parent="UI" index="0"]
 max_value = 1000.0
 value = 1000.0
+
+[node name="Skeleton_death" type="AkEvent2D" parent="." index="12"]
+event = {
+"id": 386221792,
+"name": "Play_Skeleton_die"
+}
+
+[node name="Skeleton_hit" type="AkEvent2D" parent="." index="13"]
+event = {
+"id": 251412453,
+"name": "Play_Skeleton_hit"
+}
+trigger_on = 2
+script = ExtResource("4_cj6ky")
+
+[connection signal="Hit" from="." to="Skeleton_hit" method="_on_base_unit_hit"]

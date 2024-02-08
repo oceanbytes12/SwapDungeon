@@ -104,3 +104,11 @@ bank = {
 load_on = 1
 
 [node name="AkListener2D" type="AkListener2D" parent="."]
+
+[node name="Battle_track" type="AkEvent2D" parent="."]
+event = {
+"id": 2315903597,
+"name": "Play_Swap_dungeon_track1"
+}
+trigger_on = 2
+stop_on = 3

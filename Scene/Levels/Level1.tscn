@@ -101,4 +101,10 @@ scale = Vector2(0.8, 0.8)
 text = "Attack with Left Click
 "
 
+[node name="Battle_track" type="AkEvent2D" parent="."]
+event = {
+"id": 2315903597,
+"name": "Play_Swap_dungeon_track1"
+}
+
 [connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]

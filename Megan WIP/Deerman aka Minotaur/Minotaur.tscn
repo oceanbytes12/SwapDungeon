@@ -696,6 +696,10 @@ position = Vector2(-54, 6)
 shape = SubResource("RectangleShape2D_v087j")
 disabled = true
 
+[node name="Demon_cry_small" type="AkEvent2D" parent="."]
+
+[node name="Demon_cry_large" type="AkEvent2D" parent="."]
+
 [node name="Demon_Laugh_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_rpljp")
 

@@ -80,4 +80,16 @@ volume_db = -8.914
 stream = ExtResource("4_wrbe4")
 volume_db = -6.933
 
+[node name="Necro_cast" type="AkEvent2D" parent="."]
+event = {
+"id": 3627064400,
+"name": "Play_Necro_spell_cast"
+}
+
+[node name="Necro_spell_hit" type="AkEvent2D" parent="."]
+event = {
+"id": 1892375056,
+"name": "Play_Necro_spell_hit"
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

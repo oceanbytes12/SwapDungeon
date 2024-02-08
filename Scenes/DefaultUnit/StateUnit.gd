@@ -111,7 +111,6 @@ func take_hit(hit_position, damage, hitstun=50):
 		get_parent().get_parent().add_child(newNode)
 	if $UI/HealthBar.value <= 0:
 		is_dead = true
-		$Skeleton_death.post_event()
 		$UI/HealthBar.visible = false
 		$CollisionShape2D.queue_free()
 		#$Art/BlueHat.visible = false
@@ -131,7 +130,7 @@ func take_hit(hit_position, damage, hitstun=50):
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction, damage, hitstun)
 		$EffectAnimations.play("hitAnimation")
-		#$Skeleton_hit.post_event()
+		
 	
 
 func take_hit_with_slowdown(hit_position, damage, slowdown=false, hitstun=50):

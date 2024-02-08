@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://1no2wnxq1rbi"]
+[gd_scene load_steps=9 format=3 uid="uid://1no2wnxq1rbi"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_ywvar"]
 [ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/SkelyBoyPartsx3.png" id="4_q828j"]
+[ext_resource type="Script" path="res://Scenes/Units/Enemies/SkeletonNoises.gd" id="5_0lp5a"]
 [ext_resource type="PackedScene" uid="uid://dqdlj0tjd7j18" path="res://Scenes/DefaultWeapon/dagger1.tscn" id="5_jw3rv"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="5_pie7s"]
 
@@ -60,3 +61,19 @@ event = {
 "name": "Play_Skeleton_hit_v1"
 }
 trigger_on = 2
+
+[node name="Skeleton_death" type="AkEvent2D" parent="." index="13"]
+event = {
+"id": 625299376,
+"name": "Play_Skeleton_die_v1"
+}
+
+[node name="Skeleton_hit" type="AkEvent2D" parent="." index="14"]
+event = {
+"id": 1030092179,
+"name": "Play_Skeleton_hit_v1"
+}
+trigger_on = 2
+script = ExtResource("5_0lp5a")
+
+[connection signal="Hit" from="." to="Skeleton_hit" method="_on_roguer_hit"]

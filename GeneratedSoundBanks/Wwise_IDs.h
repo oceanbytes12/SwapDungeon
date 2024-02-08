@@ -15,31 +15,60 @@ namespace AK
     {
         static const AkUniqueID PLAY_3D_TEST_BEEP = 356218121U;
         static const AkUniqueID PLAY_3D_TEST_BEEP_LOOP = 2277864726U;
-        static const AkUniqueID PLAY_ARROW_HIT_BASE_V1 = 619000523U;
-        static const AkUniqueID PLAY_ARROW_HIT_SKELETON_V1 = 392055725U;
-        static const AkUniqueID PLAY_ARROW_RELEASE_BASE_V1 = 1232109819U;
-        static const AkUniqueID PLAY_ARROW_WHOOSH_V1 = 2199016850U;
-        static const AkUniqueID PLAY_BOW_STRING_V1 = 3044881066U;
-        static const AkUniqueID PLAY_DRUID_VINE_V1 = 2943709935U;
-        static const AkUniqueID PLAY_MAGE_SPELL_CAST_V1 = 1769490029U;
-        static const AkUniqueID PLAY_MAGE_SPELL_HIT_V1 = 3651852639U;
-        static const AkUniqueID PLAY_NECRO_SPELL_CAST_V1 = 180876128U;
-        static const AkUniqueID PLAY_NECRO_SPELL_HIT_V1 = 1854458016U;
-        static const AkUniqueID PLAY_PLACE_UNIT_V1 = 839182324U;
-        static const AkUniqueID PLAY_ROGUE_STAB_V1 = 1253814853U;
-        static const AkUniqueID PLAY_SKELETON_DIE_V1 = 625299376U;
-        static const AkUniqueID PLAY_SKELETON_HIT_V1 = 1030092179U;
-        static const AkUniqueID PLAY_SWAP_DUNGEON_TRACK1_V1 = 1251915995U;
-        static const AkUniqueID PLAY_SWORD_HIT_BASE_V1 = 262019043U;
-        static const AkUniqueID PLAY_SWORD_HIT_SKELETON_V1 = 2689971269U;
-        static const AkUniqueID PLAY_SWORD_WHOOSH_V1 = 55459642U;
-        static const AkUniqueID PLAY_TELEPORT_V1 = 568508605U;
+        static const AkUniqueID PLAY_ARROW_HIT_BASE = 1590198109U;
+        static const AkUniqueID PLAY_ARROW_HIT_SKELETON = 3011360147U;
+        static const AkUniqueID PLAY_ARROW_RELEASE_BASE = 607451085U;
+        static const AkUniqueID PLAY_ARROW_WHOOSH = 2062833046U;
+        static const AkUniqueID PLAY_BOW_STRING = 3560353006U;
+        static const AkUniqueID PLAY_DRUID_VINE = 1915697033U;
+        static const AkUniqueID PLAY_MAGE_SPELL_CAST = 1218235603U;
+        static const AkUniqueID PLAY_MAGE_SPELL_HIT = 3858693177U;
+        static const AkUniqueID PLAY_MIMIC_CLOSE = 3292416408U;
+        static const AkUniqueID PLAY_MIMIC_CLOSE_V2 = 3251339083U;
+        static const AkUniqueID PLAY_MIMIC_OPEN = 1658952028U;
+        static const AkUniqueID PLAY_NECRO_BOSS_PORTAL = 3423241424U;
+        static const AkUniqueID PLAY_NECRO_BOSS_SPELL_CAST = 1577244246U;
+        static const AkUniqueID PLAY_NECRO_BOSS_TELEPORT = 1798958351U;
+        static const AkUniqueID PLAY_NECRO_SPELL_CAST = 3627064400U;
+        static const AkUniqueID PLAY_NECRO_SPELL_HIT = 1892375056U;
+        static const AkUniqueID PLAY_PALADIN_SHIELD = 96507441U;
+        static const AkUniqueID PLAY_PLACE_UNIT = 816236220U;
+        static const AkUniqueID PLAY_PRIEST_BIG_HEAL = 1242518153U;
+        static const AkUniqueID PLAY_PRIEST_HEAL = 2045284888U;
+        static const AkUniqueID PLAY_REROLL = 129866204U;
+        static const AkUniqueID PLAY_ROGUE_STAB = 2418389963U;
+        static const AkUniqueID PLAY_SELL = 4044256362U;
+        static const AkUniqueID PLAY_SKELETON_DIE = 386221792U;
+        static const AkUniqueID PLAY_SKELETON_HIT = 251412453U;
+        static const AkUniqueID PLAY_SWAP_DUNGEON_TRACK1 = 2315903597U;
+        static const AkUniqueID PLAY_SWORD_HIT_BASE = 1476361333U;
+        static const AkUniqueID PLAY_SWORD_HIT_SKELETON = 2184214987U;
+        static const AkUniqueID PLAY_SWORD_WHOOSH = 2468916862U;
+        static const AkUniqueID PLAY_TELEPORT = 3785065891U;
         static const AkUniqueID PLAY_TEST_BEEP = 27511013U;
         static const AkUniqueID PLAY_TEST_BEEP_LOOP = 2850136426U;
-        static const AkUniqueID PLAY_VICTORY_TRUMPT_V1 = 1528880901U;
+        static const AkUniqueID PLAY_UI_BUTTON = 43599987U;
+        static const AkUniqueID PLAY_VICTORY_TRUMPT = 1459872523U;
         static const AkUniqueID STOP_3D_TEST_BEEP_LOOP = 618533600U;
         static const AkUniqueID STOP_TEST_BEEP_LOOP = 646803528U;
     } // namespace EVENTS
+
+    namespace STATES
+    {
+        namespace MATERIAL
+        {
+            static const AkUniqueID GROUP = 3865314626U;
+
+            namespace STATE
+            {
+                static const AkUniqueID DIRT = 2195636714U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID STONE = 1216965916U;
+                static const AkUniqueID WATER = 2654748154U;
+            } // namespace STATE
+        } // namespace MATERIAL
+
+    } // namespace STATES
 
     namespace GAME_PARAMETERS
     {

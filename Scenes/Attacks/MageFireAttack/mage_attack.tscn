@@ -99,14 +99,14 @@ stream = ExtResource("5_j4f7k")
 
 [node name="Mage_spell_hit" type="AkEvent2D" parent="."]
 event = {
-"id": 3651852639,
-"name": "Play_Mage_spell_hit_v1"
+"id": 3858693177,
+"name": "Play_Mage_spell_hit"
 }
 
 [node name="Mage_cast" type="AkEvent2D" parent="."]
 event = {
-"id": 1769490029,
-"name": "Play_Mage_spell_cast_v1"
+"id": 1218235603,
+"name": "Play_Mage_spell_cast"
 }
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

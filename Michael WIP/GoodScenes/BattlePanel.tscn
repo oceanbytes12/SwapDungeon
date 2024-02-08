@@ -99,5 +99,11 @@ position = Vector2(30, 30)
 shape = SubResource("RectangleShape2D_nm2ik")
 debug_color = Color(0.847059, 0, 0.901961, 0.419608)
 
+[node name="UI_button" type="AkEvent2D" parent="."]
+event = {
+"id": 43599987,
+"name": "Play_UI_button"
+}
+
 [connection signal="mouse_entered" from="UIParent/Front_Panel/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="UIParent/Front_Panel/Area2D" to="." method="_on_area_2d_mouse_exited"]

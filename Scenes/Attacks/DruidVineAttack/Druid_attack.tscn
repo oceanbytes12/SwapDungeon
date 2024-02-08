@@ -49,4 +49,16 @@ stream = ExtResource("3_dpyog")
 [node name="Vine_launch_sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_dpyog")
 
+[node name="Druid_cast" type="AkEvent2D" parent="."]
+event = {
+"id": 1218235603,
+"name": "Play_Mage_spell_cast"
+}
+
+[node name="Druid_spell_hit" type="AkEvent2D" parent="."]
+event = {
+"id": 1915697033,
+"name": "Play_Druid_vine"
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

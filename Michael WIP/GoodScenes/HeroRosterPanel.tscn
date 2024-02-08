@@ -134,5 +134,11 @@ patch_margin_bottom = 8
 [node name="Place_unit_sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_45uk6")
 
+[node name="Place_unit" type="AkEvent2D" parent="."]
+event = {
+"id": 816236220,
+"name": "Play_Place_unit"
+}
+
 [connection signal="mouse_entered" from="ExpandInUI/Front_Panel/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="ExpandInUI/Front_Panel/Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -11,7 +11,8 @@ var eol_timer = 2
 
 func _ready():
 	$AnimatedSprite2D.play("Spell")
-	$Necro_cast_sfx.play()
+	#$Necro_cast_sfx.play()
+	$Necro_cast.post_event()
 	var direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
 		rotate(-PI/5)
@@ -56,5 +57,6 @@ func playsound_and_queuefree():
 	# Turn invisible, disable any colliders
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
-	$Necro_spell_hit_sfx.play()
+	#$Necro_spell_hit_sfx.play()
+	$Necro_spell_hit.post_event()
 	end_of_life = true

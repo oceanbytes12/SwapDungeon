@@ -17,4 +17,5 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("unit") and body.teamColor != source_team_color:
 		if body.has_method("take_hit"):
 			body.take_hit(global_position, damage, hitstun)
-			$Shield_hit_sfx.play()
+			#$Shield_hit_sfx.play()
+			$Shield_hit.post_event()

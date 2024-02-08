@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F28189A8-17F2-B1F9-D709-1EE5FCD071A7}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{BADAB6B1-A4D2-A604-0C8C-E2799F69A228}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -33,6 +33,16 @@
 				<GameParameter Id="3847924954" Name="SS_Air_Presence"/>
 				<GameParameter Id="4160247818" Name="SS_Air_Turbulence"/>
 			</GameParameters>
+			<StateGroups>
+				<StateGroup Id="3865314626" Name="Material">
+					<States>
+						<State Id="748895195" Name="None"/>
+						<State Id="1216965916" Name="Stone"/>
+						<State Id="2195636714" Name="Dirt"/>
+						<State Id="2654748154" Name="Water"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 			<AcousticTextures>
 				<AcousticTexture Id="504532776" Name="Brick">
 					<Properties>
@@ -162,7 +172,7 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{4A7764BF-05B1-AF6A-B745-2F6859F2678F}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{4562DB2F-F02B-14F8-6A08-3CA1747A1BDB}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -176,11 +186,19 @@
 				</File>
 				<File Id="98333622" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Swap_dungeon_track1_v1.wav</ShortName>
-					<CachePath>SFX/Swap_dungeon_track1_v1_818F3B66.wem</CachePath>
+					<CachePath>SFX/Swap_dungeon_track1_v1_FBC78EF0.wem</CachePath>
+				</File>
+				<File Id="109330367" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sell_v1.wav</ShortName>
+					<CachePath>SFX/Sell_v1_818F3B66.wem</CachePath>
 				</File>
 				<File Id="152509317" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Arrow_hit_skeleton_v1.wav</ShortName>
 					<CachePath>SFX/Arrow_hit_skeleton_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="226190786" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mimic_open_v1.wav</ShortName>
+					<CachePath>SFX/Mimic_open_v1_818F3B66.wem</CachePath>
 				</File>
 				<File Id="244546825" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Mage_spell_hit_v1.wav</ShortName>
@@ -190,6 +208,10 @@
 					<ShortName>Arrow_release_base_v1.wav</ShortName>
 					<CachePath>SFX/Arrow_release_base_v1_818F3B66.wem</CachePath>
 				</File>
+				<File Id="362243556" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Reroll_v1.wav</ShortName>
+					<CachePath>SFX/Reroll_v1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="367808546" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Necro_spell_hit_v1.wav</ShortName>
 					<CachePath>SFX/Necro_spell_hit_v1_818F3B66.wem</CachePath>
@@ -197,6 +219,10 @@
 				<File Id="417827522" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Skeleton_die_v1.wav</ShortName>
 					<CachePath>SFX/Skeleton_die_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="564450022" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Paladin_shield_v1.wav</ShortName>
+					<CachePath>SFX/Paladin_shield_v1_818F3B66.wem</CachePath>
 				</File>
 				<File Id="624884114" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Sword_whoosh_v1.wav</ShortName>
@@ -226,9 +252,21 @@
 					<ShortName>Rogue_stab_v1.wav</ShortName>
 					<CachePath>SFX/Rogue_stab_v1_818F3B66.wem</CachePath>
 				</File>
+				<File Id="774450577" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Portal_sfx.wav</ShortName>
+					<CachePath>SFX/Portal_sfx_818F3B66.wem</CachePath>
+				</File>
+				<File Id="798546496" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Priest_heal_v1.wav</ShortName>
+					<CachePath>SFX/Priest_heal_v1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="803556371" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Druid_vine_v1.wav</ShortName>
 					<CachePath>SFX/Druid_vine_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="812179058" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mimic_close_v2.wav</ShortName>
+					<CachePath>SFX/Mimic_close_v2_818F3B66.wem</CachePath>
 				</File>
 				<File Id="857041361" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Skeleton_hit_v1.wav</ShortName>
@@ -238,6 +276,10 @@
 					<ShortName>Arrow_hit_base_v1.wav</ShortName>
 					<CachePath>SFX/Arrow_hit_base_v1_818F3B66.wem</CachePath>
 				</File>
+				<File Id="862452418" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>UI_button_v1.wav</ShortName>
+					<CachePath>SFX/UI_button_v1_818F3B66.wem</CachePath>
+				</File>
 				<File Id="884542603" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Arrow_whoosh_v1.wav</ShortName>
 					<CachePath>SFX/Arrow_whoosh_v1_818F3B66.wem</CachePath>
@@ -246,16 +288,27 @@
 					<ShortName>Bow_string_v1.wav</ShortName>
 					<CachePath>SFX/Bow_string_v1_818F3B66.wem</CachePath>
 				</File>
+				<File Id="1034849082" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Mimic_close_v1.wav</ShortName>
+					<CachePath>SFX/Mimic_close_v1_818F3B66.wem</CachePath>
+				</File>
 			</Media>
 			<Plugins>
 				<Custom>
 					<Plugin Id="79038726" Name="Tone Generator" LibName="Wwise Tone Generator" LibId="6684674"/>
+					<Plugin Id="235610115" Name="Delay (Custom)" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="265326175" Name="Delay (Custom)" LibName="Wwise Delay" LibId="6946819"/>
 					<Plugin Id="283319715" Name="Tone Generator" LibName="Wwise Tone Generator" LibId="6684674"/>
+					<Plugin Id="810984873" Name="Delay (Custom)" LibName="Wwise Delay" LibId="6946819"/>
+					<Plugin Id="823670401" Name="Time Stretch (Custom)" LibName="Wwise Time Stretch" LibId="8519683"/>
 					<Plugin Id="887559946" Name="Tone Generator" LibName="Wwise Tone Generator" LibId="6684674"/>
 					<Plugin Id="1068792302" Name="Tone Generator" LibName="Wwise Tone Generator" LibId="6684674"/>
 				</Custom>
 				<ShareSets>
+					<Plugin Id="701863527" Name="Inside_My_Head" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="1590660382" Name="Nearly_Forever" LibName="Wwise Delay" LibId="6946819"/>
 					<Plugin Id="1674078407" Name="Chorus_Like" LibName="Wwise Flanger" LibId="8192003"/>
+					<Plugin Id="2653529179" Name="Three_Voices" LibName="Wwise Harmonizer" LibId="9043971"/>
 				</ShareSets>
 			</Plugins>
 			<Events>
@@ -273,47 +326,89 @@
 						</Custom>
 					</PluginRefs>
 				</Event>
-				<Event Id="619000523" Name="Play_Arrow_hit_base_v1">
+				<Event Id="1590198109" Name="Play_Arrow_hit_base">
 					<MediaRefs>
 						<MediaRef Id="861288031"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="392055725" Name="Play_Arrow_hit_skeleton_v1">
+				<Event Id="3011360147" Name="Play_Arrow_hit_skeleton">
 					<MediaRefs>
 						<MediaRef Id="152509317"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1232109819" Name="Play_Arrow_release_base_v1">
+				<Event Id="607451085" Name="Play_Arrow_release_base">
 					<MediaRefs>
 						<MediaRef Id="290807889"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2199016850" Name="Play_Arrow_whoosh_v1">
+				<Event Id="2062833046" Name="Play_Arrow_whoosh">
 					<MediaRefs>
 						<MediaRef Id="884542603"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3044881066" Name="Play_Bow_string_v1">
+				<Event Id="3560353006" Name="Play_Bow_string">
 					<MediaRefs>
 						<MediaRef Id="929135621"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2943709935" Name="Play_Druid_vine_v1">
+				<Event Id="1915697033" Name="Play_Druid_vine">
 					<MediaRefs>
 						<MediaRef Id="803556371"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1769490029" Name="Play_Mage_spell_cast_v1">
+				<Event Id="1218235603" Name="Play_Mage_spell_cast">
 					<MediaRefs>
 						<MediaRef Id="703280036"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="3651852639" Name="Play_Mage_spell_hit_v1">
+				<Event Id="3858693177" Name="Play_Mage_spell_hit">
 					<MediaRefs>
 						<MediaRef Id="244546825"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="180876128" Name="Play_Necro_spell_cast_v1">
+				<Event Id="3292416408" Name="Play_Mimic_close">
+					<MediaRefs>
+						<MediaRef Id="1034849082"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3251339083" Name="Play_Mimic_close_v2">
+					<MediaRefs>
+						<MediaRef Id="812179058"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1658952028" Name="Play_Mimic_open">
+					<MediaRefs>
+						<MediaRef Id="226190786"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3423241424" Name="Play_Necro_boss_portal">
+					<MediaRefs>
+						<MediaRef Id="774450577"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1577244246" Name="Play_Necro_boss_spell_cast">
+					<MediaRefs>
+						<MediaRef Id="680376164"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="235610115"/>
+							<PluginRef Id="265326175"/>
+							<PluginRef Id="810984873"/>
+							<PluginRef Id="823670401"/>
+						</Custom>
+						<ShareSets>
+							<PluginRef Id="701863527"/>
+							<PluginRef Id="1674078407"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="1798958351" Name="Play_Necro_boss_Teleport">
+					<MediaRefs>
+						<MediaRef Id="17564888"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3627064400" Name="Play_Necro_spell_cast">
 					<MediaRefs>
 						<MediaRef Id="680376164"/>
 					</MediaRefs>
@@ -323,52 +418,83 @@
 						</ShareSets>
 					</PluginRefs>
 				</Event>
-				<Event Id="1854458016" Name="Play_Necro_spell_hit_v1">
+				<Event Id="1892375056" Name="Play_Necro_spell_hit">
 					<MediaRefs>
 						<MediaRef Id="367808546"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="839182324" Name="Play_Place_unit_v1">
+				<Event Id="96507441" Name="Play_Paladin_shield">
+					<MediaRefs>
+						<MediaRef Id="564450022"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="816236220" Name="Play_Place_unit">
 					<MediaRefs>
 						<MediaRef Id="754468445"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1253814853" Name="Play_Rogue_stab_v1">
+				<Event Id="1242518153" Name="Play_Priest_big_heal">
+					<MediaRefs>
+						<MediaRef Id="798546496"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1590660382"/>
+							<PluginRef Id="2653529179"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="2045284888" Name="Play_Priest_heal">
+					<MediaRefs>
+						<MediaRef Id="798546496"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="129866204" Name="Play_Reroll">
+					<MediaRefs>
+						<MediaRef Id="362243556"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2418389963" Name="Play_Rogue_stab">
 					<MediaRefs>
 						<MediaRef Id="763417924"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="625299376" Name="Play_Skeleton_die_v1">
+				<Event Id="4044256362" Name="Play_Sell">
+					<MediaRefs>
+						<MediaRef Id="109330367"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="386221792" Name="Play_Skeleton_die">
 					<MediaRefs>
 						<MediaRef Id="417827522"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1030092179" Name="Play_Skeleton_hit_v1">
+				<Event Id="251412453" Name="Play_Skeleton_hit">
 					<MediaRefs>
 						<MediaRef Id="857041361"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1251915995" Name="Play_Swap_dungeon_track1_v1">
+				<Event Id="2315903597" Name="Play_Swap_dungeon_track1">
 					<MediaRefs>
 						<MediaRef Id="98333622"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="262019043" Name="Play_Sword_hit_base_v1">
+				<Event Id="1476361333" Name="Play_Sword_hit_base">
 					<MediaRefs>
 						<MediaRef Id="676843821"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2689971269" Name="Play_Sword_hit_skeleton_v1">
+				<Event Id="2184214987" Name="Play_Sword_hit_skeleton">
 					<MediaRefs>
 						<MediaRef Id="39681179"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="55459642" Name="Play_Sword_whoosh_v1">
+				<Event Id="2468916862" Name="Play_Sword_whoosh">
 					<MediaRefs>
 						<MediaRef Id="624884114"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="568508605" Name="Play_Teleport_v1">
+				<Event Id="3785065891" Name="Play_Teleport">
 					<MediaRefs>
 						<MediaRef Id="17564888"/>
 					</MediaRefs>
@@ -387,7 +513,12 @@
 						</Custom>
 					</PluginRefs>
 				</Event>
-				<Event Id="1528880901" Name="Play_Victory_trumpt_v1">
+				<Event Id="43599987" Name="Play_UI_button">
+					<MediaRefs>
+						<MediaRef Id="862452418"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1459872523" Name="Play_Victory_trumpt">
 					<MediaRefs>
 						<MediaRef Id="753745932"/>
 					</MediaRefs>
@@ -397,5 +528,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{FE3FAEF8-A4EB-4A6C-149E-E7DAF87B0D6C}</FileHash>
+	<FileHash>{9CE5D142-2248-0304-EA08-2B155911CD36}</FileHash>
 </SoundBanksInfo>

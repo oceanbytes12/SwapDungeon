@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvv6hayk4kcun"]
+[gd_scene load_steps=8 format=3 uid="uid://dvv6hayk4kcun"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/DefaultUnit/BaseUnit.tscn" id="1_env67"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_5gi0p"]
 [ext_resource type="PackedScene" uid="uid://bdf66a53p3661" path="res://Scenes/DefaultWeapon/bow.tscn" id="3_0drtb"]
+[ext_resource type="Script" path="res://Scenes/Units/Enemies/SkeletonNoises.gd" id="4_178k8"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -54,3 +55,19 @@ event = {
 "name": "Play_Skeleton_hit_v1"
 }
 trigger_on = 2
+
+[node name="Skeleton_death" type="AkEvent2D" parent="." index="13"]
+event = {
+"id": 625299376,
+"name": "Play_Skeleton_die_v1"
+}
+
+[node name="Skeleton_hit" type="AkEvent2D" parent="." index="14"]
+event = {
+"id": 1030092179,
+"name": "Play_Skeleton_hit_v1"
+}
+trigger_on = 2
+script = ExtResource("4_178k8")
+
+[connection signal="Hit" from="." to="Skeleton_hit" method="_on_ranger_hit"]

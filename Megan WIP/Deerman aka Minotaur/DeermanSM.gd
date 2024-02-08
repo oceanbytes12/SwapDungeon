@@ -140,7 +140,8 @@ func rage():
 	if(raged): 
 		return
 	raged = true
-	$Demon_Laugh_sfx.play()
+	#$Demon_Laugh_sfx.play()
+	$Demon_cry_large.post_event()
 	orig_walkSpeed = orig_walkSpeed * rageMult
 	walkSpeed = walkSpeed * rageMult
 	orig_runSpeed = orig_runSpeed * rageMult

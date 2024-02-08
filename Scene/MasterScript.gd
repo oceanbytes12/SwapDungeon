@@ -33,7 +33,8 @@ func _ready():
 	Levels = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadLevels()
 	UnupgradedDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadUnupgradedUnits()
 	CostDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadCosts()
-
+	
+	
 func _physics_process(_delta):
 	if (use_context_cursors):
 		var object = check_object_under_mouse()
@@ -115,7 +116,6 @@ func _GetIconInstanceOfType(HeroType):
 
 func _reset():
 	get_tree().reload_current_scene()
-
 func _quit():
 	get_tree().quit()
 

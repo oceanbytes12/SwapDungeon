@@ -153,4 +153,41 @@ stream = ExtResource("6_81qqf")
 volume_db = -8.432
 autoplay = true
 
+[node name="Battle_track" type="AkEvent2D" parent="."]
+event = {
+"id": 2315903597,
+"name": "Play_Swap_dungeon_track1"
+}
+
+[node name="UI_button" type="AkEvent2D" parent="."]
+event = {
+"id": 43599987,
+"name": "Play_UI_button"
+}
+
+[node name="Reroll" type="AkEvent2D" parent="."]
+event = {
+"id": 129866204,
+"name": "Play_Reroll"
+}
+
+[node name="Mimic_shut" type="AkEvent2D" parent="."]
+event = {
+"id": 3292416408,
+"name": "Play_Mimic_close"
+}
+
+[node name="Mimic_close" type="AkEvent2D" parent="."]
+event = {
+"id": 3251339083,
+"name": "Play_Mimic_close_v2"
+}
+
+[node name="Mimic_open" type="AkEvent2D" parent="."]
+event = {
+"id": 1658952028,
+"name": "Play_Mimic_open"
+}
+
 [connection signal="pressed" from="TitleScreen/NinePatchRect/Button" to="LoadScene" method="_Start_Game"]
+[connection signal="pressed" from="TitleScreen/NinePatchRect/Button" to="TitleScreen/NinePatchRect/Button" method="_on_pressed"]
