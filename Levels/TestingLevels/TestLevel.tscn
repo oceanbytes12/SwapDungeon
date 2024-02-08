@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="2_wdnob"]
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/TileArt/DungeonTiles.png" id="3_ksch6"]
 [ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/Camera2D.gd" id="4_dpfmg"]
-[ext_resource type="PackedScene" uid="uid://8m6kuwd85l7w" path="res://Scenes/Units/Players/Mage2.tscn" id="5_nw5yx"]
+[ext_resource type="PackedScene" uid="uid://8m6kuwd85l7w" path="res://Scenes/Units/Heros/Mage2.tscn" id="5_nw5yx"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Weapons/MeleeSkeleton.tscn" id="5_sky41"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iq15"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://uqy1sjp6o7qv"]
 
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/DefaultUnit/BaseUnit.tscn" id="1_bwoj0"]
-[ext_resource type="Shader" path="res://Scenes/Units/DefaultUnit/hitEffect.gdshader" id="2_0fpum"]
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/BaseUnit/BaseUnit.tscn" id="1_bwoj0"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="2_0fpum"]
 [ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/weapon.tscn" id="3_751ey"]
 
 [sub_resource type="Shader" id="Shader_2y081"]

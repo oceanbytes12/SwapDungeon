@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/weapon.tscn" id="1_a0ash"]
 [ext_resource type="PackedScene" uid="uid://b36pm263dqogc" path="res://Scenes/Effects/AttacksEffects/SmolSlashAttack/SmolSlashAttack.tscn" id="2_issys"]
-[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/AttackArt/HerosTwo.png" id="2_uuias"]
+[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/CharacterArt/HerosTwo.png" id="2_uuias"]
 
 [node name="Dagger1" instance=ExtResource("1_a0ash")]
 weaponEffectScene = ExtResource("2_issys")

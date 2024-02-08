@@ -1,0 +1,458 @@
+[gd_scene load_steps=26 format=3 uid="uid://c4dyy4kax1ogv"]
+
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_kwkx1"]
+[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/CharacterArt/BaseUnits.png" id="2_sl3nq"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="4_x4imc"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/StateMachine.gd" id="5_foff2"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/EnemyFollow.gd" id="6_8col6"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/EnemyIdle.gd" id="7_mura8"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/EnemyAttack.gd" id="8_u6q7r"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/EnemyStun.gd" id="9_f6npj"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/PlayerWalk.gd" id="10_qqo2e"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/EnemyDead.gd" id="11_3kvc6"]
+[ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/UIArt/HealthBar2.png" id="12_vaypi"]
+[ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="13_tnq6t"]
+
+[sub_resource type="Animation" id="Animation_h2q2f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterArt/Body:material:shader_parameter/flash_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterArt/Head:material:shader_parameter/flash_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ofoju"]
+resource_name = "hitAnimation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterArt/Body:material:shader_parameter/flash_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterArt/Head:material:shader_parameter/flash_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rt51"]
+_data = {
+"RESET": SubResource("Animation_h2q2f"),
+"hitAnimation": SubResource("Animation_ofoju")
+}
+
+[sub_resource type="Animation" id="Animation_80goa"]
+resource_name = "Die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterArt:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterArt/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -14), Vector2(0, -18), Vector2(0, -10), Vector2(0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterArt/Head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.57657, 3.14159]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterArt/Body:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_psedn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterArt:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterArt/Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -14)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterArt/Head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterArt/LeftLeg:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterArt:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CharacterArt/LeftLeg:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CharacterArt/RightLeg:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 2)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterArt/RightLeg:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5chxr"]
+resource_name = "WalkFast"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterArt:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.139626, -0.139626]
+}
+
+[sub_resource type="Animation" id="Animation_0ovdg"]
+resource_name = "Walk"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterArt/LeftLeg:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(3, 2), Vector2(5, 2), Vector2(3, 4), Vector2(3, 2), Vector2(3, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterArt:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 3), Vector2(0, 1), Vector2(0, 3), Vector2(0, 1), Vector2(0, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterArt/LeftLeg:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, -1.5708, 0.0, 0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterArt/RightLeg:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-3, 4), Vector2(-3, 2), Vector2(-3, 2), Vector2(-5, 2), Vector2(-3, 4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterArt/RightLeg:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 0.0, 1.5708, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qn2uv"]
+_data = {
+"Die": SubResource("Animation_80goa"),
+"RESET": SubResource("Animation_psedn"),
+"Walk": SubResource("Animation_0ovdg"),
+"WalkFast": SubResource("Animation_5chxr")
+}
+
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrtso"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykg6r"]
+resource_local_to_scene = true
+shader = ExtResource("4_x4imc")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
+radius = 258.048
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ysvin"]
+radius = 5.0
+
+[node name="BaseUnit" type="CharacterBody2D" groups=["unit"]]
+platform_on_leave = 2
+script = ExtResource("1_kwkx1")
+unitHealth = 100.0
+
+[node name="SM" type="Node" parent="." node_paths=PackedStringArray("initial_state", "own_body")]
+script = ExtResource("5_foff2")
+initial_state = NodePath("Idle")
+own_body = NodePath("..")
+
+[node name="Follow" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
+script = ExtResource("6_8col6")
+own_body = NodePath("../..")
+
+[node name="Idle" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
+script = ExtResource("7_mura8")
+own_body = NodePath("../..")
+
+[node name="Attack" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
+script = ExtResource("8_u6q7r")
+own_body = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="SM/Attack"]
+
+[node name="Stun" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
+script = ExtResource("9_f6npj")
+own_body = NodePath("../..")
+
+[node name="Walk" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
+script = ExtResource("10_qqo2e")
+own_body = NodePath("../..")
+timeout = 8.0
+
+[node name="Dead" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
+script = ExtResource("11_3kvc6")
+own_body = NodePath("../..")
+
+[node name="EffectAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4rt51")
+}
+speed_scale = 2.0
+
+[node name="MovementAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qn2uv")
+}
+speed_scale = 6.0
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 9)
+texture = ExtResource("2_sl3nq")
+region_enabled = true
+region_rect = Rect2(8, 156, 16, 8)
+
+[node name="CharacterArt" type="Node2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="Body" type="Sprite2D" parent="CharacterArt"]
+material = SubResource("ShaderMaterial_nrtso")
+position = Vector2(0, -2)
+texture = ExtResource("2_sl3nq")
+region_enabled = true
+region_rect = Rect2(35, 129, 26, 10)
+
+[node name="Head" type="Sprite2D" parent="CharacterArt"]
+material = SubResource("ShaderMaterial_ykg6r")
+position = Vector2(0, -14)
+texture = ExtResource("2_sl3nq")
+region_enabled = true
+region_rect = Rect2(38, 101, 20, 22)
+
+[node name="RightLeg" type="Sprite2D" parent="CharacterArt"]
+position = Vector2(-3, 2)
+texture = ExtResource("2_sl3nq")
+region_enabled = true
+region_rect = Rect2(49, 140, 6, 2)
+
+[node name="LeftLeg" type="Sprite2D" parent="CharacterArt"]
+position = Vector2(3, 2)
+texture = ExtResource("2_sl3nq")
+region_enabled = true
+region_rect = Rect2(49, 140, 6, 2)
+
+[node name="SightRange" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
+shape = SubResource("CircleShape2D_5cwag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ysvin")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -24.0
+offset_right = 30.0
+offset_bottom = 16.0
+value = 100.0
+texture_under = ExtResource("12_vaypi")
+texture_progress = ExtResource("13_tnq6t")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="SM/Attack/Timer" to="SM/Attack" method="_on_timer_timeout"]
+[connection signal="body_entered" from="SightRange" to="SM" method="_on_sight_range_body_entered"]
+[connection signal="body_exited" from="SightRange" to="SM" method="_on_sight_range_body_exited"]
+[connection signal="body_shape_entered" from="SightRange" to="SM" method="_on_sight_range_body_shape_entered"]
+[connection signal="body_shape_exited" from="SightRange" to="SM" method="_on_sight_range_body_shape_exited"]

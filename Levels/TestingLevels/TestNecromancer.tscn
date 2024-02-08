@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://yhk0pku0h88l"]
 
 [ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/AlexTesting.gd" id="1_kowf3"]
-[ext_resource type="PackedScene" uid="uid://bs6obl2a02txq" path="res://Scenes/Units/DefaultUnit/Necromancer.tscn" id="2_6fdr2"]
-[ext_resource type="PackedScene" uid="uid://bdv1mfy7gs5lb" path="res://Scenes/Units/Players/Warrior2.tscn" id="2_b4vpr"]
-[ext_resource type="PackedScene" uid="uid://b3hn3jfn1k70h" path="res://Scenes/Units/Players/Archer2.tscn" id="2_cywut"]
+[ext_resource type="PackedScene" uid="uid://bs6obl2a02txq" path="res://Scenes/Units/Enemies/Necromancer.tscn" id="2_6fdr2"]
+[ext_resource type="PackedScene" uid="uid://bdv1mfy7gs5lb" path="res://Scenes/Units/Heros/Warrior2.tscn" id="2_b4vpr"]
+[ext_resource type="PackedScene" uid="uid://b3hn3jfn1k70h" path="res://Scenes/Units/Heros/Archer2.tscn" id="2_cywut"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Levels/TestingLevels/BaseLevel.tscn" id="3_q62oc"]
 [ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/Camera2D.gd" id="5_6t7dv"]
 

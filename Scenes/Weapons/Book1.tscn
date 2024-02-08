@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/weapon.tscn" id="1_f7b81"]
 [ext_resource type="PackedScene" uid="uid://d3rp8trfaao5l" path="res://Scenes/Effects/AttacksEffects/PriestAttack/PriestAttack.tscn" id="2_jpkjh"]
-[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/AttackArt/HerosTwo.png" id="2_mop1u"]
+[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/CharacterArt/HerosTwo.png" id="2_mop1u"]
 
 [node name="Book1" instance=ExtResource("1_f7b81")]
 position = Vector2(0, 4)

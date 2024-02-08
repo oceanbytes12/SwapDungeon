@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/weapon.tscn" id="1_d4ds5"]
 [ext_resource type="PackedScene" uid="uid://bf6kus5d48sb7" path="res://Scenes/Effects/AttacksEffects/DruidVineAttack/Druid_attack.tscn" id="2_yxfjy"]
-[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/AttackArt/HerosTwo.png" id="3_ish0t"]
+[ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/CharacterArt/HerosTwo.png" id="3_ish0t"]
 
 [node name="DruidStaff1" instance=ExtResource("1_d4ds5")]
 weaponEffectScene = ExtResource("2_yxfjy")
