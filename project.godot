@@ -11,15 +11,9 @@ config_version=5
 [application]
 
 config/name="SwapDungeon"
-run/main_scene="res://Michael WIP/UIScenes/title.tscn"
+run/main_scene="res://Levels/TestingLevels/RefactorTesting.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Art/UIArt/SwapText.png"
-
-[autoload]
-
-Globals="*res://Scenes/UI/UIScripts/globals.gd"
-HeroUiController="*res://Scenes/UI/UIScripts/HeroUiController.gd"
-SoundManager="*res://sound_manager.gd"
 
 [display]
 

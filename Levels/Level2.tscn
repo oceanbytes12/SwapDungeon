@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Weapons/MeleeSkeleton.tscn" id="4_3fa6q"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Levels/TestingLevels/BaseLevel.tscn" id="4_8c1s0"]
 [ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Units/Enemies/RangedSkeleton.tscn" id="6_w2vce"]
-[ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="7_14wgo"]
+[ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/UI/spawn_positions.tscn" id="7_14wgo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qaq"]
 bg_color = Color(0.258824, 0.972549, 0.470588, 0.431373)

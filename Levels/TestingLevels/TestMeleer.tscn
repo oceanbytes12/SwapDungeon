@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Weapons/MeleeSkeleton.tscn" id="2_bsdor"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Levels/TestingLevels/BaseLevel.tscn" id="3_3c2kl"]
 [ext_resource type="PackedScene" uid="uid://bdv1mfy7gs5lb" path="res://Scenes/Units/Heros/Warrior2.tscn" id="3_oid8h"]
-[ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="4_2nknn"]
+[ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/UI/spawn_positions.tscn" id="4_2nknn"]
 [ext_resource type="PackedScene" uid="uid://b3hn3jfn1k70h" path="res://Scenes/Units/Heros/Archer2.tscn" id="4_djse2"]
 [ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/Camera2D.gd" id="5_ir3qx"]
 

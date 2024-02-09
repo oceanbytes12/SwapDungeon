@@ -1,36 +1,12 @@
 extends State
 class_name EnemyIdle
-
-signal Idle
-
-@export var own_body: CharacterBody2D
-
-var move_direction : Vector2
-var wander_time : float
-
-func randomize_wander():
-	move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	wander_time = randf_range(1, 3)
 	
-func Enter(_target):
-	emit_signal("Idle")
-	randomize_wander()
+func Update(_delta, own_body, current_target, target_list):
+	if current_target:
+		ChangeState.emit("Follow", current_target)
+	elif not target_list.is_empty():
+		var new_target = find_closest_target(target_list, own_body)
+		ChangeState.emit("Follow", new_target)
 
-func Update(delta: float, target: CharacterBody2D):
-	if target:
-		Transitioned.emit("Follow")
-
-func Physics_Update(_delta: float, _target: CharacterBody2D):
+func Physics_Update(_delta, own_body, _current_target, _target_list):
 	own_body.velocity = Vector2.ZERO
-
-#func Update(delta: float, target: CharacterBody2D):
-	#if target:
-		#Transitioned.emit("Follow")
-	#else:
-		#if wander_time > 0:
-			#wander_time -= delta
-		#else:
-			#randomize_wander()
-
-#func Physics_Update(_delta: float, _target: CharacterBody2D):
-	#own_body.velocity = move_direction.normalized() * own_body.walkSpeed

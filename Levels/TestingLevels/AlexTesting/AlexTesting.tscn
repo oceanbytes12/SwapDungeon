@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/AlexTesting.gd" id="1_ah53m"]
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/TileArt/DungeonTiles.png" id="1_w28te"]
-[ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="3_4265c"]
+[ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/UI/spawn_positions.tscn" id="3_4265c"]
 [ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/Camera2D.gd" id="3_crcg2"]
 [ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Units/Enemies/RangedSkeleton.tscn" id="4_5ywkb"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Weapons/MeleeSkeleton.tscn" id="4_kkry8"]

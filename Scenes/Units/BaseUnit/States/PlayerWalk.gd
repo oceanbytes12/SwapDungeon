@@ -6,8 +6,6 @@ class_name PlayerWalk
 @export var distance_buffer := 10.0
 var target_position : Vector2
 var timeout_timer : float
-
-
 func Enter(_target):
 	timeout_timer = timeout
 
