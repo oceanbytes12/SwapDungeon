@@ -75,4 +75,16 @@ event = {
 "name": "Play_Arrow_hit_base"
 }
 
+[node name="Bow" type="AkEvent2D" parent="."]
+event = {
+"id": 3560353006,
+"name": "Play_Bow_string"
+}
+
+[node name="Arrow_fly" type="AkEvent2D" parent="."]
+event = {
+"id": 2062833046,
+"name": "Play_Arrow_whoosh"
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

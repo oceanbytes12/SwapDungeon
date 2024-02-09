@@ -7,6 +7,9 @@ var rosterPanel = preload("res://Michael WIP/GoodScenes/HeroRosterPanel.tscn")
 signal onPartyAddedTo
 var UpgradeableUnits = []
 
+var end_of_life = false
+var eol_timer = 2
+
 func _ready():
 	HeroUiController.partyRoster = self
 
@@ -29,9 +32,13 @@ func addToParty(panel):
 		partyContainer.add_child(newPanel)
 		var index = upgradedUnit.get_index()
 		partyContainer.move_child(newPanel, index)
-		
+		playsound_and_queuefree()
 		panel.HandleUsed()
-		upgradedUnit.queue_free()
+		# Countdown to queue_free()
+		if end_of_life:
+			eol_timer = 0
+			if eol_timer <= 0: 
+				upgradedUnit.queue_free()
 		
 	else:
 		var newPanel = rosterPanel.instantiate()
@@ -75,3 +82,10 @@ func _check_upgrades():
 		for panel in partyContainer.get_children():
 			if(panel.has_method("HighLight")):
 				panel.HighLight(false)
+
+func playsound_and_queuefree():
+	# Play sfx and start countdown timer to queue_free()
+	# Turn invisible, disable any colliders
+	#$Arrow_hit_sfx.play()
+	$Upgrade.post_event()
+	end_of_life = true

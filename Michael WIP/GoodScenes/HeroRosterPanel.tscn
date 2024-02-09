@@ -140,5 +140,11 @@ event = {
 "name": "Play_Place_unit"
 }
 
+[node name="Upgrade" type="AkEvent2D" parent="."]
+event = {
+"id": 2062295234,
+"name": "Play_Upgrade"
+}
+
 [connection signal="mouse_entered" from="ExpandInUI/Front_Panel/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="ExpandInUI/Front_Panel/Area2D" to="." method="_on_area_2d_mouse_exited"]

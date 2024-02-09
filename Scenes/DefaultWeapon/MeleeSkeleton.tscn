@@ -49,17 +49,17 @@ material = SubResource("ShaderMaterial_ax3d5")
 own_body = NodePath("..")
 attackState = NodePath("../SM/Attack")
 
-[node name="HealthBar" parent="UI" index="0"]
-max_value = 1000.0
-value = 1000.0
-
-[node name="Skeleton_death" type="AkEvent2D" parent="." index="12"]
+[node name="Skeleton_death" type="AkEvent2D" parent="SM/Dead" index="0"]
 event = {
 "id": 386221792,
 "name": "Play_Skeleton_die"
 }
 
-[node name="Skeleton_hit" type="AkEvent2D" parent="." index="13"]
+[node name="HealthBar" parent="UI" index="0"]
+max_value = 1000.0
+value = 1000.0
+
+[node name="Skeleton_hit" type="AkEvent2D" parent="." index="12"]
 event = {
 "id": 251412453,
 "name": "Play_Skeleton_hit"
@@ -67,4 +67,5 @@ event = {
 trigger_on = 2
 script = ExtResource("4_cj6ky")
 
+[connection signal="Died" from="." to="SM/Dead" method="_on_base_unit_died"]
 [connection signal="Hit" from="." to="Skeleton_hit" method="_on_base_unit_hit"]

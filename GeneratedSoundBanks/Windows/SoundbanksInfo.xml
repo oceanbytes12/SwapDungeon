@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{BADAB6B1-A4D2-A604-0C8C-E2799F69A228}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{D4152A8E-8A36-A1D4-F0F4-EEACE6932463}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -172,7 +172,7 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{4562DB2F-F02B-14F8-6A08-3CA1747A1BDB}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{3B1EB578-F306-EFD2-872F-5692AAFD6FC1}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -195,6 +195,10 @@
 				<File Id="152509317" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Arrow_hit_skeleton_v1.wav</ShortName>
 					<CachePath>SFX/Arrow_hit_skeleton_v1_818F3B66.wem</CachePath>
+				</File>
+				<File Id="220649644" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>sword_sharpen1_20200510_tft_sfx.wav</ShortName>
+					<CachePath>SFX/sword_sharpen1_20200510_tft_sfx_888FE7D5.wem</CachePath>
 				</File>
 				<File Id="226190786" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Mimic_open_v1.wav</ShortName>
@@ -299,16 +303,24 @@
 					<Plugin Id="235610115" Name="Delay (Custom)" LibName="Wwise Delay" LibId="6946819"/>
 					<Plugin Id="265326175" Name="Delay (Custom)" LibName="Wwise Delay" LibId="6946819"/>
 					<Plugin Id="283319715" Name="Tone Generator" LibName="Wwise Tone Generator" LibId="6684674"/>
+					<Plugin Id="637886374" Name="Time Stretch (Custom)" LibName="Wwise Time Stretch" LibId="8519683"/>
 					<Plugin Id="810984873" Name="Delay (Custom)" LibName="Wwise Delay" LibId="6946819"/>
 					<Plugin Id="823670401" Name="Time Stretch (Custom)" LibName="Wwise Time Stretch" LibId="8519683"/>
 					<Plugin Id="887559946" Name="Tone Generator" LibName="Wwise Tone Generator" LibId="6684674"/>
+					<Plugin Id="999768578" Name="Time Stretch (Custom)" LibName="Wwise Time Stretch" LibId="8519683"/>
 					<Plugin Id="1068792302" Name="Tone Generator" LibName="Wwise Tone Generator" LibId="6684674"/>
 				</Custom>
 				<ShareSets>
+					<Plugin Id="535667444" Name="Bathroom1" LibName="Wwise Matrix Reverb" LibId="7536643"/>
 					<Plugin Id="701863527" Name="Inside_My_Head" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="1237275451" Name="Octave_Up" LibName="Wwise Pitch Shifter" LibId="8912899"/>
 					<Plugin Id="1590660382" Name="Nearly_Forever" LibName="Wwise Delay" LibId="6946819"/>
 					<Plugin Id="1674078407" Name="Chorus_Like" LibName="Wwise Flanger" LibId="8192003"/>
+					<Plugin Id="1820854077" Name="Noise_Gate_Fast_Attack" LibName="Wwise Expander" LibId="7143427"/>
+					<Plugin Id="2301880513" Name="Many_Even_Harm_Peaks" LibName="Wwise Flanger" LibId="8192003"/>
 					<Plugin Id="2653529179" Name="Three_Voices" LibName="Wwise Harmonizer" LibId="9043971"/>
+					<Plugin Id="3216246379" Name="Space_Dreaming" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="4202347640" Name="Repeat_after_me" LibName="Wwise Harmonizer" LibId="9043971"/>
 				</ShareSets>
 			</Plugins>
 			<Events>
@@ -355,6 +367,31 @@
 					<MediaRefs>
 						<MediaRef Id="803556371"/>
 					</MediaRefs>
+				</Event>
+				<Event Id="2748440822" Name="Play_Mage_big_spell_cast">
+					<MediaRefs>
+						<MediaRef Id="703280036"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="999768578"/>
+						</Custom>
+						<ShareSets>
+							<PluginRef Id="535667444"/>
+							<PluginRef Id="1237275451"/>
+							<PluginRef Id="2301880513"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
+				<Event Id="2835267474" Name="Play_Mage_big_spell_hit">
+					<MediaRefs>
+						<MediaRef Id="244546825"/>
+					</MediaRefs>
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="1820854077"/>
+						</ShareSets>
+					</PluginRefs>
 				</Event>
 				<Event Id="1218235603" Name="Play_Mage_spell_cast">
 					<MediaRefs>
@@ -518,6 +555,20 @@
 						<MediaRef Id="862452418"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2062295234" Name="Play_Upgrade">
+					<MediaRefs>
+						<MediaRef Id="220649644"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="637886374"/>
+						</Custom>
+						<ShareSets>
+							<PluginRef Id="3216246379"/>
+							<PluginRef Id="4202347640"/>
+						</ShareSets>
+					</PluginRefs>
+				</Event>
 				<Event Id="1459872523" Name="Play_Victory_trumpt">
 					<MediaRefs>
 						<MediaRef Id="753745932"/>
@@ -528,5 +579,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{9CE5D142-2248-0304-EA08-2B155911CD36}</FileHash>
+	<FileHash>{3AC17BF7-5F84-AC05-9604-99B9D747D644}</FileHash>
 </SoundBanksInfo>

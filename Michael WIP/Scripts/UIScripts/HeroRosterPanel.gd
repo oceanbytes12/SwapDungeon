@@ -69,6 +69,7 @@ func _EquipPanelToBattleSpace(newBattleSpace):
 		#Requip ourselves to the new battle space
 		FrontPanel.reparent(newBattleSpace)
 		battleSpace = newBattleSpace
+		$Place_unit.post_event()
 	
 func ReturnPanel():
 	print("Returning Roster Panel with name to:  ", name, UIParent)

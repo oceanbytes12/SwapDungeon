@@ -21,6 +21,8 @@ namespace AK
         static const AkUniqueID PLAY_ARROW_WHOOSH = 2062833046U;
         static const AkUniqueID PLAY_BOW_STRING = 3560353006U;
         static const AkUniqueID PLAY_DRUID_VINE = 1915697033U;
+        static const AkUniqueID PLAY_MAGE_BIG_SPELL_CAST = 2748440822U;
+        static const AkUniqueID PLAY_MAGE_BIG_SPELL_HIT = 2835267474U;
         static const AkUniqueID PLAY_MAGE_SPELL_CAST = 1218235603U;
         static const AkUniqueID PLAY_MAGE_SPELL_HIT = 3858693177U;
         static const AkUniqueID PLAY_MIMIC_CLOSE = 3292416408U;
@@ -48,6 +50,7 @@ namespace AK
         static const AkUniqueID PLAY_TEST_BEEP = 27511013U;
         static const AkUniqueID PLAY_TEST_BEEP_LOOP = 2850136426U;
         static const AkUniqueID PLAY_UI_BUTTON = 43599987U;
+        static const AkUniqueID PLAY_UPGRADE = 2062295234U;
         static const AkUniqueID PLAY_VICTORY_TRUMPT = 1459872523U;
         static const AkUniqueID STOP_3D_TEST_BEEP_LOOP = 618533600U;
         static const AkUniqueID STOP_TEST_BEEP_LOOP = 646803528U;

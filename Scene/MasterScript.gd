@@ -18,9 +18,11 @@ var levelIndex = 0
 func _GetNextLevel():
 	if(levelIndex < Levels.size()):
 		return Levels[levelIndex]
+		
 
 func _IncrementLevelIndex():
 	levelIndex=levelIndex+1
+	$Victory.post_event()
 	
 func _GetCost(HeroType):
 	print("Getting cost of: ", HeroType)

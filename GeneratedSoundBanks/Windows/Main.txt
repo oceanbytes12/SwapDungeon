@@ -21,12 +21,15 @@ Event	ID	Name			Wwise Object Path	Notes
 	1892375056	Play_Necro_spell_hit			\Default Work Unit\Play_Necro_spell_hit	
 	1915697033	Play_Druid_vine			\Default Work Unit\Play_Druid_vine	
 	2045284888	Play_Priest_heal			\Default Work Unit\Play_Priest_heal	
+	2062295234	Play_Upgrade			\Default Work Unit\Play_Upgrade	
 	2062833046	Play_Arrow_whoosh			\Default Work Unit\Play_Arrow_whoosh	
 	2184214987	Play_Sword_hit_skeleton			\Default Work Unit\Play_Sword_hit_skeleton	
 	2277864726	Play_3D_Test_Beep_loop			\Default Work Unit\Play_3D_Test_Beep_loop	
 	2315903597	Play_Swap_dungeon_track1			\Default Work Unit\Play_Swap_dungeon_track1	
 	2418389963	Play_Rogue_stab			\Default Work Unit\Play_Rogue_stab	
 	2468916862	Play_Sword_whoosh			\Default Work Unit\Play_Sword_whoosh	
+	2748440822	Play_Mage_big_spell_cast			\Default Work Unit\Play_Mage_big_spell_cast	
+	2835267474	Play_Mage_big_spell_hit			\Default Work Unit\Play_Mage_big_spell_hit	
 	2850136426	Play_Test_Beep_loop			\Default Work Unit\Play_Test_Beep_loop	
 	3011360147	Play_Arrow_hit_skeleton			\Default Work Unit\Play_Arrow_hit_skeleton	
 	3251339083	Play_Mimic_close_v2			\Default Work Unit\Play_Mimic_close_v2	
@@ -41,12 +44,20 @@ Event	ID	Name			Wwise Object Path	Notes
 Effect plug-ins	ID	Name	Type				Notes
 	235610115	Delay (Custom)	Wwise Delay			
 	265326175	Delay (Custom)	Wwise Delay			
+	535667444	Bathroom1	Wwise Matrix Reverb			
+	637886374	Time Stretch (Custom)	Wwise Time Stretch			
 	701863527	Inside_My_Head	Wwise RoomVerb			
 	810984873	Delay (Custom)	Wwise Delay			
 	823670401	Time Stretch (Custom)	Wwise Time Stretch			
+	999768578	Time Stretch (Custom)	Wwise Time Stretch			
+	1237275451	Octave_Up	Wwise Pitch Shifter			
 	1590660382	Nearly_Forever	Wwise Delay			
 	1674078407	Chorus_Like	Wwise Flanger			
+	1820854077	Noise_Gate_Fast_Attack	Wwise Expander			
+	2301880513	Many_Even_Harm_Peaks	Wwise Flanger			
 	2653529179	Three_Voices	Wwise Harmonizer			
+	3216246379	Space_Dreaming	Wwise RoomVerb			
+	4202347640	Repeat_after_me	Wwise Harmonizer			
 
 Source plug-ins	ID	Name	Type		Wwise Object Path	Notes
 	79038726	Tone Generator	Wwise Tone Generator		\Actor-Mixer Hierarchy\TestFiles\3DTestFiles\3D_Test_Beep\Tone Generator	
@@ -60,6 +71,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	98333622	Swap_dungeon_track1	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Swap_dungeon_track1_v1_FBC78EF0.wem		\Actor-Mixer Hierarchy\Default Work Unit\Swap_dungeon_track1		11520096
 	109330367	Sell	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Sell_v1_818F3B66.wem		\Actor-Mixer Hierarchy\UI\Sell		227060
 	152509317	Arrow_hit_skeleton	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Arrow_hit_skeleton_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Ranger\Bow\Arrow_hit_skeleton		195756
+	220649644	Upgrade	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\sword_sharpen1_20200510_tft_sfx_888FE7D5.wem		\Actor-Mixer Hierarchy\UI\Upgrade		294916
 	226190786	Mimic_open	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Mimic_open_v1_818F3B66.wem		\Actor-Mixer Hierarchy\UI\Mimic_open		191840
 	244546825	Mage_spell_hit	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Mage_spell_hit_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Mage\Mage_spell_hit		467976
 	290807889	Arrow_release_base	C:\Users\apink\Documents\WwiseProjects\SwapDungeon\.cache\Windows\SFX\Arrow_release_base_v1_818F3B66.wem		\Actor-Mixer Hierarchy\Attacks\Ranger\Bow\Arrow_release_base		195756

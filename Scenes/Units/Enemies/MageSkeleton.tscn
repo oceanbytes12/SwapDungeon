@@ -58,13 +58,13 @@ region_rect = Rect2(64, 20, 23, 12)
 [node name="Head" parent="Art" index="1"]
 material = SubResource("ShaderMaterial_gmlcj")
 
-[node name="Skeleton_death" type="AkEvent2D" parent="." index="12"]
+[node name="Skeleton_death" type="AkEvent2D" parent="SM/Dead" index="0"]
 event = {
 "id": 625299376,
 "name": "Play_Skeleton_die_v1"
 }
 
-[node name="Skeleton_hit" type="AkEvent2D" parent="." index="13"]
+[node name="Skeleton_hit" type="AkEvent2D" parent="." index="12"]
 event = {
 "id": 1030092179,
 "name": "Play_Skeleton_hit_v1"
@@ -72,6 +72,7 @@ event = {
 trigger_on = 2
 script = ExtResource("5_koykq")
 
+[connection signal="Died" from="." to="SM/Dead" method="_on_mager_died"]
 [connection signal="Hit" from="." to="Skeleton_hit" method="_on_mager_hit"]
 
 [editable path="Staff"]

@@ -77,6 +77,13 @@ mouse_filter = 2
 script = ExtResource("5_3mtj6")
 partyContainer = NodePath("RosterUI/MarginContainer/NewHeroContainer")
 
+[node name="Upgrade" type="AkEvent2D" parent="GameUI/RosterUI/PartyRoster"]
+event = {
+"id": 2062295234,
+"name": "Play_Upgrade"
+}
+position = Vector2(0, -202)
+
 [node name="RosterUI" type="NinePatchRect" parent="GameUI/RosterUI/PartyRoster"]
 layout_mode = 1
 anchors_preset = 15
@@ -268,6 +275,12 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("12_conno")
 
+[node name="UI_button" type="AkEvent2D" parent="GameUI/PartyAddUI/HeroGenerator"]
+event = {
+"id": 43599987,
+"name": "Play_UI_button"
+}
+
 [node name="Reroll" type="Button" parent="GameUI/PartyAddUI/HeroGenerator"]
 layout_mode = 1
 anchors_preset = 3
@@ -285,6 +298,12 @@ text = "Reroll"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("13_hhqc1")
+
+[node name="Reroll2" type="AkEvent2D" parent="GameUI/PartyAddUI/HeroGenerator"]
+event = {
+"id": 129866204,
+"name": "Play_Reroll"
+}
 
 [node name="AddNewPartyMember" type="Label" parent="GameUI/PartyAddUI/HeroGenerator"]
 modulate = Color(1, 0.74902, 0, 1)
@@ -313,6 +332,27 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Mimic_shut" type="AkEvent2D" parent="GameUI/PartyAddUI/HeroGenerator/SellArea/Mimic"]
+event = {
+"id": 3292416408,
+"name": "Play_Mimic_close"
+}
+position = Vector2(-65, -129)
+
+[node name="Mimic_close" type="AkEvent2D" parent="GameUI/PartyAddUI/HeroGenerator/SellArea/Mimic"]
+event = {
+"id": 3251339083,
+"name": "Play_Mimic_close_v2"
+}
+position = Vector2(-65, -129)
+
+[node name="Mimic_open" type="AkEvent2D" parent="GameUI/PartyAddUI/HeroGenerator/SellArea/Mimic"]
+event = {
+"id": 1658952028,
+"name": "Play_Mimic_open"
+}
+position = Vector2(-65, -129)
 
 [node name="Label" type="Label" parent="GameUI/PartyAddUI/HeroGenerator/SellArea/Mimic"]
 layout_mode = 0
@@ -493,34 +533,10 @@ text = "Quit
 "
 script = ExtResource("12_conno")
 
-[node name="Reroll" type="AkEvent2D" parent="."]
+[node name="Victory" type="AkEvent2D" parent="."]
 event = {
-"id": 129866204,
-"name": "Play_Reroll"
-}
-
-[node name="Mimic_shut" type="AkEvent2D" parent="."]
-event = {
-"id": 3292416408,
-"name": "Play_Mimic_close"
-}
-
-[node name="Mimic_close" type="AkEvent2D" parent="."]
-event = {
-"id": 3251339083,
-"name": "Play_Mimic_close_v2"
-}
-
-[node name="Mimic_open" type="AkEvent2D" parent="."]
-event = {
-"id": 1658952028,
-"name": "Play_Mimic_open"
-}
-
-[node name="UI_button" type="AkEvent2D" parent="."]
-event = {
-"id": 43599987,
-"name": "Play_UI_button"
+"id": 1459872523,
+"name": "Play_Victory_trumpt"
 }
 
 [node name="Battle_track" type="AkEvent2D" parent="."]

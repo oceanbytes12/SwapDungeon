@@ -11,7 +11,11 @@ var eol_timer = 2
 
 func _ready():
 	#$Arrow_shoot_sfx.play()
+	$Bow.post_event()
+	await get_tree().create_timer(.15).timeout
 	$Arrow_shoot.post_event()
+	await get_tree().create_timer(.15).timeout
+	$Arrow_fly.post_event()
 
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)

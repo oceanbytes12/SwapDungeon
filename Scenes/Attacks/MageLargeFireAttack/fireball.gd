@@ -11,7 +11,8 @@ var eol_timer = 2
 
 func _ready():
 	$AnimatedSprite2D.play()
-	$Mage_cast_sfx.play()
+	#$Mage_cast_sfx.play()
+	$Mage_big_cast.post_event()
 	var direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
 		rotate(-PI/5)
@@ -44,6 +45,7 @@ func _on_body_entered(body):
 	if body.is_in_group("unit") and body.teamColor != source_team_color:
 		if body.has_method("take_hit"):
 			body.take_hit(global_position, damage)
+			playsound_and_queuefree()
 	elif body.is_in_group("wall"):
 		queue_free()
 
@@ -55,5 +57,6 @@ func playsound_and_queuefree():
 	# Turn invisible, disable any colliders
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
-	$Mage_spell_hit_sfx.play()
+	#$Mage_spell_hit_sfx.play()
+	$Mage_big_spell_hit.post_event()
 	end_of_life = true
