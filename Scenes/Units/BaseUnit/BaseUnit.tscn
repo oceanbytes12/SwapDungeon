@@ -128,14 +128,6 @@ texture = ExtResource("2_sl3nq")
 region_enabled = true
 region_rect = Rect2(8, 156, 16, 8)
 
-[node name="Bow1" parent="." node_paths=PackedStringArray("own_body", "attack_state") instance=ExtResource("13_oi5cf")]
-attack_effect_scene = ExtResource("14_ehqgk")
-own_body = NodePath("..")
-attack_state = NodePath("../StateMachine/Attack")
-damage = 20.0
-knockback_amount = 20.0
-cooldown = 2.0
-
 [node name="Body" type="Marker2D" parent="."]
 
 [node name="Torso" type="Marker2D" parent="Body"]
@@ -179,6 +171,14 @@ position = Vector2(-6, 3)
 texture = ExtResource("11_ox2d3")
 region_enabled = true
 region_rect = Rect2(68, 54, 6, 6)
+
+[node name="Bow1" parent="." node_paths=PackedStringArray("own_body", "attack_state") instance=ExtResource("13_oi5cf")]
+attack_effect_scene = ExtResource("14_ehqgk")
+own_body = NodePath("..")
+attack_state = NodePath("../StateMachine/Attack")
+damage = 20.0
+knockback_amount = 20.0
+cooldown = 2.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 offset_left = -10.0
