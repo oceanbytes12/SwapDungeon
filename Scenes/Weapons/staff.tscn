@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6d5qekk1enak"]
 
-[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/weapon.tscn" id="1_l6f7a"]
+[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/BaseWeapon.tscn" id="1_l6f7a"]
 [ext_resource type="PackedScene" uid="uid://bp0u3h6fwk1y2" path="res://Scenes/Effects/AttacksEffects/MageAttack/mage_attack.tscn" id="2_nc5kr"]
 
 [node name="Staff" instance=ExtResource("1_l6f7a")]

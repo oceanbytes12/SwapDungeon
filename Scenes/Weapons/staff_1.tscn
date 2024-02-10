@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c04ap86578v3j"]
 
-[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/weapon.tscn" id="1_bk0yr"]
+[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/BaseWeapon.tscn" id="1_bk0yr"]
 [ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/CharacterArt/BaseUnits.png" id="2_7wwri"]
 
 [node name="Staff1" instance=ExtResource("1_bk0yr")]

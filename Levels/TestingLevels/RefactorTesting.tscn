@@ -45,7 +45,7 @@ position = Vector2(0, 0)
 
 [node name="BaseUnit2" parent="." instance=ExtResource("1_pvwuj")]
 position = Vector2(-163, -3)
-player_unit = true
+type = "enemy"
 
 [node name="Wall1" type="Sprite2D" parent="."]
 position = Vector2(48.5, -117)

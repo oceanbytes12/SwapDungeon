@@ -18,7 +18,7 @@ func _ready():
 	initial_state.Enter(own_body, current_target, target_list)
 	current_state = initial_state
 
-func _process(delta): 
+func _process(delta):
 	current_state.Update(delta, own_body, current_target, target_list)
 
 func _physics_process(delta):
@@ -32,7 +32,7 @@ func on_state_change(new_state_name, new_target):
 	current_state = new_state
 
 func _on_sight_range_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
-	if body.is_in_group("unit") and body.player_unit != own_body.player_unit and body.name not in target_list:
+	if body.is_in_group("unit") and body.type != own_body.type and body.name not in target_list:
 		target_list[body.name] = body
 		body.Died.connect(_on_target_died)
 
@@ -47,9 +47,7 @@ func unit_hit(source_body, damage, knockback_amount, knockback_direction, freeze
 		target_list[source_body.name] = source_body
 		source_body.Died.connect(_on_target_died)
 	var new_state = states.get("Stun")
-	current_state.Exit()
-	if new_state.has_method("set_stun_params"):
-		new_state.set_stun_params(damage, knockback_amount, knockback_direction, freeze)
+	new_state.trigger_stun(own_body, damage, knockback_amount, knockback_direction, freeze)
 	new_state.Enter(own_body, current_target, target_list)
 	current_state = new_state
 

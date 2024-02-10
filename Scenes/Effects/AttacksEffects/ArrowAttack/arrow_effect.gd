@@ -1,16 +1,14 @@
 extends Area2D
 
-var source_team_color
 @export var speed = 120
-#@export var arrow_hit_scene : PackedScene
-var target
-var damage = 30
+
+var own_body
+var damage
+var knockback_amount
 
 var end_of_life = false
 var eol_timer = 2
 
-func _ready():
-	$Arrow_shoot_sfx.play()
 
 func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)
@@ -24,20 +22,23 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	# Check if hitting self or friend
-	if body.is_in_group("unit") and body.teamColor != source_team_color:
+	if body.is_in_group("unit") and body.type != own_body.type:
 		if body.has_method("take_hit"):
-			body.take_hit(global_position, damage)
-			#var soundnode = arrow_hit_scene.instantiate()
-			#get_parent().add_child(soundnode)
+			var direction = Vector2.RIGHT.rotated(rotation)
+			body.take_hit(own_body, damage, knockback_amount, direction)
 			playsound_and_queuefree()
-			#$Arrow_hit_sfx.play()
-			#queue_free()
 
 func playsound_and_queuefree():
 	# Play sfx and start countdown timer to queue_free()
 	# Turn invisible, disable any colliders
 	$CollisionShape2D.set_deferred("disabled", true)
 	visible = false
-	$Arrow_hit_sfx.play()
+	#$Arrow_hit_sfx.play()
 	end_of_life = true
+
+func set_params(own_body, damage, knockback_amount):
+	own_body = own_body
+	damage = damage
+	knockback_amount = knockback_amount
+
 	

@@ -23,7 +23,6 @@ func _IncrementLevelIndex():
 	levelIndex=levelIndex+1
 	
 func _GetCost(HeroType):
-	print("Getting cost of: ", HeroType)
 	return CostDict[HeroType]
 
 func _ready():

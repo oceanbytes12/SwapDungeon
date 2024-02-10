@@ -1,11 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ceyeak3ionm2v"]
+[gd_scene load_steps=9 format=3 uid="uid://ceyeak3ionm2v"]
 
 [ext_resource type="Texture2D" uid="uid://dy4th0jnrpnnc" path="res://Art/AttackArt/ArrowEffect.png" id="1_a565a"]
 [ext_resource type="Script" path="res://Scenes/Effects/AttacksEffects/ArrowAttack/arrow_effect.gd" id="2_b2avo"]
 [ext_resource type="Texture2D" uid="uid://6b7we6gdyutf" path="res://Art/AttackArt/Attacks-Sheet.png" id="2_vvijp"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/CharacterArt/SkelyBoyParts.png" id="3_37uli"]
-[ext_resource type="AudioStream" uid="uid://oth48p4g1kci" path="res://SFX/Arrow_hit_base_v1.wav" id="6_c0yjb"]
-[ext_resource type="AudioStream" uid="uid://ryw62448wk5h" path="res://SFX/Arrow_whoosh_v1.wav" id="6_d5in4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
 radius = 8.99999
@@ -36,7 +34,6 @@ animations = [{
 [node name="Arrow" type="Area2D"]
 z_index = 2
 script = ExtResource("2_b2avo")
-speed = 180
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
@@ -56,11 +53,5 @@ texture = ExtResource("1_a565a")
 texture = ExtResource("3_37uli")
 region_enabled = true
 region_rect = Rect2(4, 23, 26, 8)
-
-[node name="Arrow_hit_sfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_c0yjb")
-
-[node name="Arrow_shoot_sfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_d5in4")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

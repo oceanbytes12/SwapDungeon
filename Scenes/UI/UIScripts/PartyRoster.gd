@@ -35,7 +35,6 @@ func addToParty(panel):
 		
 	else:
 		var newPanel = rosterPanel.instantiate()
-		print("Making new panel of: ", panel.HeroType)
 		newPanel.InitializeWithHero(panel.HeroType)
 		partyContainer.add_child(newPanel)
 		partyContainer.move_child(newPanel, 0)

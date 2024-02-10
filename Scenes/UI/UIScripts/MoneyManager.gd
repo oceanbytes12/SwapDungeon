@@ -47,18 +47,15 @@ func _process(delta):
 
 func _on_area_2d_mouse_entered():
 	Selected = true
-	print("Selected Money!")
 
 func _on_area_2d_mouse_exited():
 	Selected = false
 
 func HandlePurchase(purchasedHero):
-	print("Getting Cost1: ", purchasedHero)
 	money = money - Globals.unitManager._GetCost(purchasedHero)
 
 func sell(soldHero):
 	money = money + ceil(Globals.unitManager._GetCost(soldHero)/2)
-	print("Selling for: ", ceil(Globals.unitManager._GetCost(soldHero)/2))
 
 func GainMoney(amount):
 	money = money + amount

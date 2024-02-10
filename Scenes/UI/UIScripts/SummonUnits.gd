@@ -16,7 +16,6 @@ func summon_spawn(target):
 	var desiredSummonPoint = own_body.position.lerp(target.position ,0.5)
 	var points = generate_evenly_distributed_points_in_circle(20, num_summoned)
 	for index in num_summoned:
-		print("Summoning a dude2!")
 		var spawnPosition = desiredSummonPoint + points[index]
 
 		#var spawnPosition = target.position + VertOffsets[0] * 20 

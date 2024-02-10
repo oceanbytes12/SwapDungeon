@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-@export var player_unit : bool
-@export var move_speed: float
-@export var starting_health: float
+# player, enemy
+@export var type : String = "player"
+@export var move_speed: float = 30
+@export var starting_health: float = 100
 @export var hit_splat_scene : PackedScene
 
 @onready var health_bar = $HealthBar
@@ -14,6 +15,7 @@ func _ready():
 	health = starting_health
 	health_bar.max_value = starting_health
 	health_bar.value = starting_health
+	print(health)
 	
 func _physics_process(_delta):
 	move_and_slide()

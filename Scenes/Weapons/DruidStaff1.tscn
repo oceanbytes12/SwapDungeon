@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dwxdrua20lvuy"]
 
-[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/weapon.tscn" id="1_r2d3i"]
+[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/BaseWeapon.tscn" id="1_r2d3i"]
 [ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/CharacterArt/HerosTwo.png" id="2_0si0c"]
 [ext_resource type="PackedScene" uid="uid://bf6kus5d48sb7" path="res://Scenes/Effects/AttacksEffects/DruidVineAttack/Druid_attack.tscn" id="2_3j1gb"]
 

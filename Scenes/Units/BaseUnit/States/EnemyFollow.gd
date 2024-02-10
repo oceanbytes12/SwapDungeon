@@ -4,7 +4,7 @@ class_name EnemyFollow
 @export var timeout := 10.0
 
 var timeout_timer
-var weaponRange = 40
+var weaponRange = 200
 var speed = 40
 
 func Enter(_own_body, _current_target, _target_list):
