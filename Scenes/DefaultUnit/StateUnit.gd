@@ -111,7 +111,7 @@ func take_hit(hit_position, damage, hitstun=50):
 		get_parent().get_parent().add_child(newNode)
 	if $UI/HealthBar.value <= 0:
 		is_dead = true
-		$Skeleton_death.post_event()
+		#$Skeleton_death.post_event()
 		$UI/HealthBar.visible = false
 		$CollisionShape2D.queue_free()
 		#$Art/BlueHat.visible = false
