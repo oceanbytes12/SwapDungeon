@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=27 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_kwkx1"]
 [ext_resource type="PackedScene" uid="uid://cj1t02ts4raor" path="res://Scenes/Effects/RandomEffects/HitEffect.tscn" id="2_qxspr"]
@@ -16,7 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="13_tnq6t"]
 [ext_resource type="PackedScene" uid="uid://ceyeak3ionm2v" path="res://Scenes/Effects/AttacksEffects/ArrowAttack/arrow_effect.tscn" id="14_ehqgk"]
 
+[sub_resource type="Animation" id="Animation_c5mp0"]
+resource_name = "Walk"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qn2uv"]
+_data = {
+"Walk": SubResource("Animation_c5mp0")
+}
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -52,7 +58,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Torso/TorsoArt:material:shader_parameter/flash_opacity")
+tracks/0/path = NodePath("CharacterArt/Torso/TorsoArt:material:shader_parameter/flash_opacity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,7 +70,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Head/HeadArt:material:shader_parameter/flash_opacity")
+tracks/1/path = NodePath("CharacterArt/Head/HeadArt:material:shader_parameter/flash_opacity")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -79,7 +85,7 @@ resource_name = "hitAnimation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Torso/TorsoArt:material:shader_parameter/flash_opacity")
+tracks/0/path = NodePath("CharacterArt/Torso/TorsoArt:material:shader_parameter/flash_opacity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -91,7 +97,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Head/HeadArt:material:shader_parameter/flash_opacity")
+tracks/1/path = NodePath("CharacterArt/Head/HeadArt:material:shader_parameter/flash_opacity")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -109,6 +115,9 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
 radius = 258.048
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8o30"]
+size = Vector2(22, 32)
 
 [node name="BaseUnit" type="CharacterBody2D" groups=["unit"]]
 platform_on_leave = 2
@@ -128,45 +137,45 @@ texture = ExtResource("2_sl3nq")
 region_enabled = true
 region_rect = Rect2(8, 156, 16, 8)
 
-[node name="Body" type="Marker2D" parent="."]
+[node name="CharacterArt" type="Marker2D" parent="."]
 
-[node name="Torso" type="Marker2D" parent="Body"]
+[node name="Torso" type="Marker2D" parent="CharacterArt"]
 position = Vector2(0, 3)
 
-[node name="TorsoArt" type="Sprite2D" parent="Body/Torso"]
+[node name="TorsoArt" type="Sprite2D" parent="CharacterArt/Torso"]
 material = SubResource("ShaderMaterial_nrtso")
 texture = ExtResource("11_ox2d3")
 region_enabled = true
 region_rect = Rect2(39, 129, 18, 12)
 
-[node name="Head" type="Marker2D" parent="Body"]
+[node name="Head" type="Marker2D" parent="CharacterArt"]
 position = Vector2(0, -12)
 
-[node name="HeadArt" type="Sprite2D" parent="Body/Head"]
+[node name="HeadArt" type="Sprite2D" parent="CharacterArt/Head"]
 material = SubResource("ShaderMaterial_ykg6r")
 position = Vector2(-1, 0)
 texture = ExtResource("11_ox2d3")
 region_enabled = true
 region_rect = Rect2(37, 101, 20, 22)
 
-[node name="RightLeg" type="Marker2D" parent="Body"]
+[node name="RightLeg" type="Marker2D" parent="CharacterArt"]
 position = Vector2(4, 8)
 
-[node name="RightLegArt" type="Sprite2D" parent="Body/RightLeg"]
+[node name="RightLegArt" type="Sprite2D" parent="CharacterArt/RightLeg"]
 position = Vector2(0, 1)
 texture = ExtResource("11_ox2d3")
 region_enabled = true
 region_rect = Rect2(49, 139, 6, 4)
 
-[node name="LeftLeg" type="Marker2D" parent="Body"]
+[node name="LeftLeg" type="Marker2D" parent="CharacterArt"]
 position = Vector2(-4, 9)
 
-[node name="LeftLegArt" type="Sprite2D" parent="Body/LeftLeg"]
+[node name="LeftLegArt" type="Sprite2D" parent="CharacterArt/LeftLeg"]
 texture = ExtResource("11_ox2d3")
 region_enabled = true
 region_rect = Rect2(41, 139, 6, 4)
 
-[node name="Hand" type="Sprite2D" parent="Body"]
+[node name="LeftHand" type="Sprite2D" parent="CharacterArt"]
 position = Vector2(-6, 3)
 texture = ExtResource("11_ox2d3")
 region_enabled = true
@@ -189,7 +198,7 @@ value = 100.0
 texture_under = ExtResource("12_vaypi")
 texture_progress = ExtResource("13_tnq6t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_ysvin")
 
@@ -223,6 +232,12 @@ script = ExtResource("9_f6npj")
 script = ExtResource("4_hr32h")
 
 [node name="CoolDownTimer" type="Timer" parent="StateMachine/Attack"]
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_g8o30")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
