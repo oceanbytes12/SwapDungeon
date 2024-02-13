@@ -41,10 +41,13 @@ shape = SubResource("RectangleShape2D_o37bt")
 [node name="TileMap" parent="." instance=ExtResource("1_3yndb")]
 position = Vector2(0, 0)
 
-[node name="BaseUnit" parent="." instance=ExtResource("1_pvwuj")]
+[node name="Units" type="Node" parent="."]
 
-[node name="BaseUnit2" parent="." instance=ExtResource("1_pvwuj")]
-position = Vector2(-163, -3)
+[node name="BaseUnit" parent="Units" instance=ExtResource("1_pvwuj")]
+position = Vector2(-179, 82)
+
+[node name="BaseUnit2" parent="Units" instance=ExtResource("1_pvwuj")]
+position = Vector2(148, -40)
 type = "enemy"
 
 [node name="Wall1" type="Sprite2D" parent="."]

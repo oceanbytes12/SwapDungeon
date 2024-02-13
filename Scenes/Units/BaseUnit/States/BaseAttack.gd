@@ -1,11 +1,11 @@
 extends State
-class_name EnemyAttack
+class_name BaseAttack
 signal Attacked
 
 var weapon_cooldown: float
 var can_attack = true
 var range_buffer = 4 # This is to prevent jittering between follow and attack states
-var weapon_range = 200
+var weapon_range : float
 
 
 func Update(_delta, own_body, current_target, target_list):
@@ -15,7 +15,7 @@ func Update(_delta, own_body, current_target, target_list):
 		var target_vector = current_target.global_position - own_body.global_position
 		var target_distance = target_vector.length()
 		if target_distance > weapon_range + range_buffer:
-			ChangeState.emit("Follow", current_target)
+			ChangeState.emit("Approach", current_target)
 		if can_attack:
 			can_attack = false
 			Attacked.emit(current_target)
@@ -31,3 +31,6 @@ func _on_cool_down_timer_timeout():
 
 func set_cooldown(cooldown):
 	weapon_cooldown = cooldown
+	
+func set_weapon_range(weapon_range):
+	self.weapon_range = weapon_range

@@ -18,9 +18,6 @@ var playerUnitsInRange = []
 	#initialize(final_radius, damage, speed)
 	
 func initialize(_radius, _damage, _speed):
-	print("initialize called on aoe_effect")
-	print("position = ")
-	print(position)
 	#location = position
 	final_radius = _radius
 	damage = _damage
@@ -57,12 +54,10 @@ func apply_damage():
 
 func _on_area_2d_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if body.is_in_group("unit") and body.controllable:
-		#print("player body added")
 		playerUnitsInRange.append(body)
 
 
 func _on_area_2d_body_shape_exited(_body_rid, body, _body_shape_index, _local_shape_index):
 	if body in playerUnitsInRange:
-		#print("player body removed")
 		var arrayPos = playerUnitsInRange.find(body)
 		playerUnitsInRange.remove_at(arrayPos)

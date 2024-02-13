@@ -6,18 +6,26 @@ extends CharacterBody2D
 @export var starting_health: float = 100
 @export var hit_splat_scene : PackedScene
 
-@onready var health_bar = $HealthBar
+@onready var health_bar = $Looks/HealthBar
 var health
+var moving = false
 
 signal Died
+signal Moved
+signal Stopped
 
 func _ready():
 	health = starting_health
 	health_bar.max_value = starting_health
 	health_bar.value = starting_health
-	print(health)
 	
 func _physics_process(_delta):
+	if velocity.length() > 0 and not moving:
+		moving = true
+		Moved.emit()
+	elif velocity.length() == 0 and moving:
+		moving = false
+		Stopped.emit()		
 	move_and_slide()
 	
 func take_hit(source_body, damage, knockback_amount, knockback_direction, freeze_time=0):

@@ -37,8 +37,8 @@ func playsound_and_queuefree():
 	end_of_life = true
 
 func set_params(own_body, damage, knockback_amount):
-	own_body = own_body
-	damage = damage
-	knockback_amount = knockback_amount
+	self.own_body = own_body
+	self.damage = damage
+	self.knockback_amount = knockback_amount
 
 	

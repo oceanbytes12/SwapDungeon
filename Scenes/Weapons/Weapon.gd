@@ -2,16 +2,22 @@ extends Marker2D
 
 @export var attack_effect_scene : PackedScene
 @export var own_body : CharacterBody2D
+@export var state_machine : Node
 @export var attack_state : State
+@export var approach_state: State
 @export var damage : float
 @export var knockback_amount : float
 @export var cooldown : float
+@export var weapon_range : float
 
 var target = null
 
 func _ready():
+	state_machine.newTarget.connect(_on_new_target)
 	attack_state.Attacked.connect(_on_attack)
 	attack_state.set_cooldown(cooldown)
+	attack_state.set_weapon_range(weapon_range)
+	approach_state.set_weapon_range(weapon_range)
 	
 func _process(_delta):
 	if target:
@@ -25,12 +31,18 @@ func _process(_delta):
 		scale.y = -1
 
 func _on_attack(target):
-	if target:
-		look_at(target.global_position)
+	$WeaponAnimations.play("Attack")
+
+func run_attack():
 	var attack_node = attack_effect_scene.instantiate()
 	attack_node.global_position = $AttackPoint.global_position
 	attack_node.rotation = rotation
-	attack_node.damage = damage
-	attack_node.knockback_amount = knockback_amount
-	attack_node.own_body = own_body
-	get_parent().get_parent().add_child(attack_node)
+	attack_node.set_params(own_body, damage, knockback_amount)
+	own_body.get_parent().add_child(attack_node)
+
+func _on_new_target(new_target):
+	target = new_target
+
+
+func _on_weapon_animations_animation_finished(anim_name):
+	run_attack()

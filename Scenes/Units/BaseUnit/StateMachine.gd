@@ -3,6 +3,8 @@ extends Node
 @export var initial_state : State
 @export var own_body : CharacterBody2D
 
+signal newTarget
+
 var current_state : State = initial_state
 var states : Dictionary = {}
 var target_list : Dictionary = {}
@@ -26,6 +28,7 @@ func _physics_process(delta):
 
 func on_state_change(new_state_name, new_target):
 	current_target = new_target
+	newTarget.emit(current_target)
 	var new_state = states.get(new_state_name)
 	current_state.Exit()
 	new_state.Enter(own_body, current_target, target_list)
@@ -41,6 +44,7 @@ func _on_target_died(body):
 		target_list.erase(body.name)
 	if current_target == body:
 		current_target = null
+		newTarget.emit(current_target)
 
 func unit_hit(source_body, damage, knockback_amount, knockback_direction, freeze):
 	if source_body.name not in target_list:
@@ -50,4 +54,4 @@ func unit_hit(source_body, damage, knockback_amount, knockback_direction, freeze
 	new_state.trigger_stun(own_body, damage, knockback_amount, knockback_direction, freeze)
 	new_state.Enter(own_body, current_target, target_list)
 	current_state = new_state
-
+	

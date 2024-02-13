@@ -1,5 +1,5 @@
 extends State
-class_name EnemyStun
+class_name BaseStun
 
 @export var stun_time := 0.5
 var stun_clock

@@ -72,7 +72,6 @@ func ReturnPanel():
 	if(battleSpace):
 		battleSpace.equippedPanel = null
 	FrontPanel.reparent(UIParent)
-	print("Parent is now: ", FrontPanel.get_parent().name)
 	battleSpace = null
 
 func HighLight(isOn):
