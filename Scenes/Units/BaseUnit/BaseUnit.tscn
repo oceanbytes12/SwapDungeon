@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=32 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_kwkx1"]
 [ext_resource type="PackedScene" uid="uid://cj1t02ts4raor" path="res://Scenes/Effects/RandomEffects/HitEffect.tscn" id="2_qxspr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/BaseAttack.gd" id="4_hr32h"]
 [ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="4_x4imc"]
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/BaseApproach.gd" id="6_8col6"]
+[ext_resource type="Texture2D" uid="uid://d4mc1pmpo8ibb" path="res://Art/NewArt/BaseUnits2.png" id="6_j58rn"]
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/BaseIdle.gd" id="7_mura8"]
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/BaseStun.gd" id="9_f6npj"]
 [ext_resource type="Texture2D" uid="uid://dbvb5q7nll6yw" path="res://Art/NewArt/BaseUnits.png" id="11_ox2d3"]
@@ -21,7 +22,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Looks/CharacterArt/Torso/TorsoArt:material:shader_parameter/flash_opacity")
+tracks/0/path = NodePath("Looks/CharacterArt/Torso/Front:material:shader_parameter/flash_opacity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +34,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Looks/CharacterArt/Head/HeadArt:material:shader_parameter/flash_opacity")
+tracks/1/path = NodePath("Looks/CharacterArt/Head/Front:material:shader_parameter/flash_opacity")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -48,7 +49,7 @@ resource_name = "hitAnimation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Looks/CharacterArt/Torso/TorsoArt:material:shader_parameter/flash_opacity")
+tracks/0/path = NodePath("Looks/CharacterArt/Torso/Front:material:shader_parameter/flash_opacity")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +61,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Looks/CharacterArt/Head/HeadArt:material:shader_parameter/flash_opacity")
+tracks/1/path = NodePath("Looks/CharacterArt/Head/Front:material:shader_parameter/flash_opacity")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -343,21 +344,33 @@ region_rect = Rect2(8, 156, 16, 8)
 [node name="Torso" type="Marker2D" parent="Looks/CharacterArt"]
 position = Vector2(0, 3)
 
-[node name="TorsoArt" type="Sprite2D" parent="Looks/CharacterArt/Torso"]
+[node name="Front" type="Sprite2D" parent="Looks/CharacterArt/Torso"]
 material = SubResource("ShaderMaterial_nrtso")
 texture = ExtResource("11_ox2d3")
 region_enabled = true
 region_rect = Rect2(39, 129, 18, 12)
 
+[node name="Back" type="Sprite2D" parent="Looks/CharacterArt/Torso"]
+visible = false
+texture = ExtResource("6_j58rn")
+region_enabled = true
+region_rect = Rect2(87, 131, 18, 14)
+
 [node name="Head" type="Marker2D" parent="Looks/CharacterArt"]
 position = Vector2(0, -12)
 
-[node name="HeadArt" type="Sprite2D" parent="Looks/CharacterArt/Head"]
+[node name="Front" type="Sprite2D" parent="Looks/CharacterArt/Head"]
 material = SubResource("ShaderMaterial_ykg6r")
 position = Vector2(-1, 0)
 texture = ExtResource("11_ox2d3")
 region_enabled = true
 region_rect = Rect2(37, 101, 20, 22)
+
+[node name="Back" type="Sprite2D" parent="Looks/CharacterArt/Head"]
+visible = false
+texture = ExtResource("6_j58rn")
+region_enabled = true
+region_rect = Rect2(85, 103, 20, 22)
 
 [node name="RightLeg" type="Marker2D" parent="Looks/CharacterArt"]
 position = Vector2(4, 8)

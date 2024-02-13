@@ -10,7 +10,18 @@ func _process(_delta):
 			$CharacterArt.scale.x = -1
 		elif target_vector.x > 0:
 			$CharacterArt.scale.x = 1
-
+		var vector_to_target = (current_target.global_position - global_position).normalized()
+		
+		if vector_to_target.y >= -0.25:
+			$CharacterArt/Head/Back.visible = false
+			$CharacterArt/Head/Front.visible = true
+			$CharacterArt/Torso/Back.visible = false
+			$CharacterArt/Torso/Front.visible = true
+		else:
+			$CharacterArt/Head/Back.visible = true
+			$CharacterArt/Head/Front.visible = false
+			$CharacterArt/Torso/Back.visible = true
+			$CharacterArt/Torso/Front.visible = false
 
 func _on_state_machine_new_target(new_target):
 	self.current_target = new_target

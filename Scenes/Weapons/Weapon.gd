@@ -22,13 +22,18 @@ func _ready():
 func _process(_delta):
 	if target:
 		look_at(target.global_position)
+		var direction = Vector2.RIGHT.rotated(rotation)
+		if direction.x >= 0:
+			scale.y = 1
+		else:
+			scale.y = -1
+		var vector_to_target = (target.global_position - own_body.global_position).normalized()
+		if vector_to_target.y >= -0.25:
+			z_index = 1
+		else:
+			z_index = -1
 	else:
 		look_at(Vector2.RIGHT+global_position)
-	var direction = Vector2.RIGHT.rotated(rotation)
-	if direction.x >= 0:
-		scale.y = 1
-	else:
-		scale.y = -1
 
 func _on_attack(target):
 	$WeaponAnimations.play("Attack")
