@@ -1,12 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=33 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/StateUnit.gd" id="1_ft0sp"]
+[ext_resource type="PackedScene" uid="uid://doxnu564en2fw" path="res://ParticleSystem/HitParticles.tscn" id="2_ei3nm"]
 [ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/SkelyBoyParts.png" id="2_nu0w1"]
-[ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="3_spybr"]
 [ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="3_wioxq"]
 [ext_resource type="Texture2D" uid="uid://pt6ga01gn812" path="res://Art/SkelyBoyParts2x.png" id="4_lth50"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/StateMachine.gd" id="4_mbm05"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyFollow.gd" id="5_bf3th"]
+[ext_resource type="Shader" path="res://Scenes/DefaultUnit/BaseUnit.gdshader" id="5_dmf74"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyIdle.gd" id="6_bjb5g"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyAttack.gd" id="7_o8q00"]
 [ext_resource type="Script" path="res://Scenes/DefaultUnit/States/EnemyStun.gd" id="8_gqa3m"]
@@ -17,31 +18,15 @@
 [ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/HealthBar2.png" id="13_ueqmf"]
 [ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/HealthBar1.png" id="14_u6fep"]
 
-[sub_resource type="Shader" id="Shader_2y081"]
-code = "shader_type canvas_item;
-
-uniform float flash_opacity = 0;
-uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
-
-void fragment() {
-	vec4 tex_color = texture(TEXTURE, UV);
-    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
-
-	COLOR.rgb = blended_color;
-	COLOR.a = tex_color.a;
-}"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nrtso"]
 resource_local_to_scene = true
-shader = SubResource("Shader_2y081")
-shader_parameter/flash_opacity = 0.0
-shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader = ExtResource("5_dmf74")
+shader_parameter/active = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ykg6r"]
 resource_local_to_scene = true
-shader = ExtResource("3_spybr")
-shader_parameter/flash_opacity = 0.0
-shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader = ExtResource("5_dmf74")
+shader_parameter/active = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pv03d"]
 radius = 5.0
@@ -75,6 +60,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Art/Body:material:shader_parameter/active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Art/Head:material:shader_parameter/active")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_itt8p"]
@@ -120,11 +129,67 @@ tracks/1/keys = {
 "values": [1.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_o18y3"]
+resource_name = "hit_Animation_New"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Art/Body:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Art/Head:material:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitParticles")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4rt51"]
 _data = {
 "RESET": SubResource("Animation_h2q2f"),
 "Walk": SubResource("Animation_itt8p"),
-"hitAnimation": SubResource("Animation_ofoju")
+"hitAnimation": SubResource("Animation_ofoju"),
+"hit_Animation_New": SubResource("Animation_o18y3")
 }
 
 [sub_resource type="Animation" id="Animation_80goa"]
@@ -314,6 +379,11 @@ platform_on_leave = 2
 script = ExtResource("1_ft0sp")
 unitHealth = 100.0
 
+[node name="HitParticles" parent="." instance=ExtResource("2_ei3nm")]
+scale = Vector2(0.4, 0.4)
+randomness = 0.5
+collision_base_size = 0.5
+
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 9)
 texture = ExtResource("2_nu0w1")
@@ -414,7 +484,6 @@ shape = SubResource("CircleShape2D_5cwag")
 libraries = {
 "": SubResource("AnimationLibrary_4rt51")
 }
-speed_scale = 2.0
 
 [node name="UI" type="Node2D" parent="."]
 

@@ -130,7 +130,7 @@ func take_hit(hit_position, damage, hitstun=50):
 		print("StateUnit getting hit: ", name)
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction, damage, hitstun)
-		$EffectAnimations.play("hitAnimation")
+		$EffectAnimations.play("hit_Animation_New")
 		#$Skeleton_hit.post_event()
 	
 
@@ -164,7 +164,7 @@ func take_hit_with_slowdown(hit_position, damage, slowdown=false, hitstun=50):
 		print("StateUnit getting hit: ", name)
 		var direction = (global_position-hit_position).normalized()
 		Hit.emit(direction, damage, hitstun)
-		$EffectAnimations.play("hitAnimation")
+		$EffectAnimations.play("hit_Animation_New")
 			
 		
 func Die():
