@@ -32,7 +32,7 @@ func _BattlePartyGreaterThanOne():
 	return false
 
 func _StartBattle():
-	HeroUiController.ResetUI()
+	Globals.ResetUI()
 	if(is_instance_valid(battleParent)):
 		battleParent._Toggle(true)
 		
@@ -87,7 +87,7 @@ func _WinBattle():
 	await get_tree().create_timer(1).timeout
 	battleParent.queue_free()
 	Globals.spawnPositions.clear()
-	HeroUiController.moneyManager.GainMoney(10)
+	Globals.moneyManager.GainMoney(10)
 	GameScript._IncrementLevelIndex()
 	if(GameScript._GetNextLevel()):
 		emit_signal("finish_battle")
@@ -103,20 +103,20 @@ func _LoseBattle():
 	emit_signal("lose_battle")
 
 func _kill_all_enemies():
-	if(is_instance_valid(Globals.AlexTester)):
-		Globals.AlexTester._kill_all_enemies()
+	if(is_instance_valid(Globals.CurrentUnitController)):
+		Globals.CurrentUnitController._kill_all_enemies()
 
 func _kill_all_players():
-	if(is_instance_valid(Globals.AlexTester)):
-		Globals.AlexTester._kill_all_players()
+	if(is_instance_valid(Globals.CurrentUnitController)):
+		Globals.CurrentUnitController._kill_all_players()
 
 func EnemiesAreDead():
-	if(is_instance_valid(Globals.AlexTester)):
-		return Globals.AlexTester.EnemiesAreDead()
+	if(is_instance_valid(Globals.CurrentUnitController)):
+		return Globals.CurrentUnitController.EnemiesAreDead()
 	return false
 
 func PlayersAreDead():
-	if(is_instance_valid(Globals.AlexTester)):
-		return Globals.AlexTester.PlayersAreDead()
+	if(is_instance_valid(Globals.CurrentUnitController)):
+		return Globals.CurrentUnitController.PlayersAreDead()
 	return false
 

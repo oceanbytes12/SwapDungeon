@@ -7,6 +7,7 @@ var UnupgradedDict: Dictionary
 var CostDict : Dictionary
 var Levels : Array
 var levelIndex = 0
+@onready var loader = $Preloader
 
 @export var use_context_cursors = true
 #@export var mouse_pointer: Resource
@@ -28,11 +29,11 @@ func _GetCost(HeroType):
 
 func _ready():
 	Globals.unitManager = self
-	unitIcons = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadIcons()
-	UnitDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadUnits()
-	Levels = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadLevels()
-	UnupgradedDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadUnupgradedUnits()
-	CostDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadCosts()
+	unitIcons = loader.loadIcons()
+	UnitDict = loader.loadUnits()
+	Levels = loader.loadLevels()
+	UnupgradedDict = loader.loadUnupgradedUnits()
+	CostDict = loader.loadCosts()
 
 func _physics_process(_delta):
 	if (use_context_cursors):
