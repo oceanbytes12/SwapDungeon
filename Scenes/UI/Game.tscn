@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/MasterScript.gd" id="1_hlhcr"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/SeperateLoadBecauseItIsaUnholySinToHaveAScriptLongerThanTenLines.gd" id="2_mgxy4"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/BattleManager.gd" id="3_0ajd3"]
-[ext_resource type="Script" path="res://Scenes/UI/UIScripts/Tweeners/SlideInUI.gd" id="4_drtcp"]
+[ext_resource type="Script" path="res://Scenes/UI/Tweeners/SlideInUI.gd" id="4_drtcp"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/PartyRoster.gd" id="5_3mtj6"]
 [ext_resource type="Texture2D" uid="uid://v64bjsldrabw" path="res://Art/UIArt/MikeCrushSheet.png" id="6_qpsri"]
 [ext_resource type="Texture2D" uid="uid://b83sdt1m7s25b" path="res://Art/UIArt/StartButtons1.png" id="7_n4u85"]
