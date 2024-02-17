@@ -33,7 +33,7 @@ func _BattlePartyGreaterThanOne():
 
 func _StartBattle():
 	HeroUiController.ResetUI()
-	if(is_instance_valid(battleParent)):
+	if(is_instance_valid(battleParent) and battleParent.has_method("_Toggle")):
 		battleParent._Toggle(true)
 		
 	#tileMap.visible = false
@@ -54,17 +54,17 @@ func _SpawnHeros():
 		#res://Scenes/Units/
 		
 		var newHero = GameScript._GetUnitInstanceOfType(currentEnum)
-		newHero.controllable = true
+		#newHero.controllable = true
 		
 		#Position them properly
 		battleParent.add_child(newHero)
-		newHero.global_position = spawns[heroEnumIndex].global_position
+		#newHero.global_position = spawns[heroEnumIndex].global_position
 
 func _FinishPartyAddition():
 	tileMap.visible = false
 	battleParent = GameScript._GetNextLevel().instantiate()
 	get_parent().get_parent().add_child(battleParent)
-	if(is_instance_valid(battleParent)):
+	if(is_instance_valid(battleParent) and battleParent.has_method("_Toggle")):
 		battleParent._Toggle(false)
 	emit_signal("move_To_Ready_Screen")
 
