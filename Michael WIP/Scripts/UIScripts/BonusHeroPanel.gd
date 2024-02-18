@@ -9,7 +9,6 @@ class_name DraggableHeroPanel
 var speed = 10
 var isDragged = false
 signal dragStateChange(old_value, new_value)
-var HeroType 
 var HeroIcon
 var data : HeroData
 var Gray = Color(0.411765, 0.411765, 0.411765, 1)
@@ -53,14 +52,17 @@ func _on_area_2d_mouse_exited():
 
 func _generateRandomHero():
 	#HeroType = Globals.unitManager._GetRandomUnupgradedType()
-	HeroIcon = Globals.unitManager._GetRandomUnupgradedIcon()
-	data = HeroIcon.data
+	data = Globals.unitManager._GetRandomUnupgradedHero()
+	HeroIcon = Globals.unitManager.GetIcon(data)
+
 	$Front_Panel/Price.text = str(data.cost)
 	if(is_instance_valid(HeroIcon)):
 		var TargetChild = FrontPanel.get_child(0)
 		TargetChild.add_child(HeroIcon)
 		HeroIcon.position = Vector2.ZERO + TargetChild.size / 2
-		
+		HeroIcon.name = "RandomHeroIcon"
+	else:
+		print("No hero Icon!")
 	
 	var randomHeroNum = RandomNumberGenerator.new().randf()
 	#name = str(HeroType) + str(randomHeroNum)

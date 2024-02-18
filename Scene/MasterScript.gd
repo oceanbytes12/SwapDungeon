@@ -2,8 +2,14 @@ extends Node2D
 
 var money = 0
 var unitIcons : Array
-var basicIcons : Array
 var Levels : Array
+
+@export var HeroDataScenes : Array[PackedScene]
+var HeroDatas : Array[HeroData]
+var BasicHeroDatas : Array[HeroData]
+
+@export var iconScene : PackedScene
+
 var levelIndex = 0
 @onready var loader = $Preloader
 
@@ -26,9 +32,16 @@ func _IncrementLevelIndex():
 
 func _ready():
 	Globals.unitManager = self
-	unitIcons = loader.loadIcons()
+	
 	Levels = loader.loadLevels()
-	basicIcons = loader.loadBasicIcons()
+	
+	for dataScene in HeroDataScenes:
+		var newData = dataScene.instantiate()
+		$Data.add_child(newData)
+		HeroDatas.append(newData)
+		if("1" in newData.name):
+			BasicHeroDatas.append(newData)
+	
 
 func _physics_process(_delta):
 	if (use_context_cursors):
@@ -73,9 +86,14 @@ func check_collider_under_mouse():
 #	var randomIndex = randi() % UnupgradedDict.size()
 #	return UnupgradedDict.keys()[randomIndex]
 
-func _GetRandomUnupgradedIcon():
-	var randomIndex = randi() % basicIcons.size()
-	return basicIcons[randomIndex].instantiate()
+func GetIcon(data):
+	var newIcon = iconScene.instantiate()
+	newIcon.get_node("HeroSprite").texture = data.art
+	return newIcon
+	
+func _GetRandomUnupgradedHero():
+	var randomIndex = randi() % BasicHeroDatas.size()
+	return BasicHeroDatas[randomIndex]
 	
 func findSubstringAfterLastSlashBeforeTscn(input_string: String) -> String:
 	var regex_pattern := "/([^/]+)\\.tscn$"
@@ -98,7 +116,7 @@ func splitString(s):
 	return [classname, classnum]
 
 func _GetUpgradedType(heroType):
-	var nameandtype = splitString(heroType)
+	var nameandtype = splitString(heroType.unit.filename)
 	var level = int(nameandtype[1])
 	var name = nameandtype[0]
 	level = level+1

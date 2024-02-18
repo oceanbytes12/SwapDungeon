@@ -16,18 +16,18 @@ signal finish_battle
 signal lose_battle
 signal finish_game
 
-func _GetHeroTypesFromBattleUIPanels():
+func _GetHeroDatasFromBattleUIPanels():
 	var ret = []
 	for heroPanel in battlePanels:
-		if(heroPanel.GetHeroType()):
-			ret.append(heroPanel.GetHeroType())
+		if(heroPanel.GetHeroData()):
+			ret.append(heroPanel.GetHeroData())
 		else:
 			ret.append(null)
 	return ret
 
 func _BattlePartyGreaterThanOne():
 	for heroPanel in battlePanels:
-		if(heroPanel.GetHeroType() != null):
+		if(heroPanel.GetHeroData() != null):
 			return true
 	return false
 
@@ -43,24 +43,27 @@ func _StartBattle():
 	
 func _SpawnHeros():
 	var spawns = Globals.spawnPositions
-	var heros = _GetHeroTypesFromBattleUIPanels()
+	var heros = _GetHeroDatasFromBattleUIPanels()
 	for heroEnumIndex in heros.size():
-		var currentEnum = heros[heroEnumIndex]
+		var currentHeroData = heros[heroEnumIndex]
 		
-		if(!currentEnum):
+		if(!currentHeroData):
 			continue
 		
 		#Swap this out for a reference to a real hero!
 		#res://Scenes/Units/
 		
-		var newHero = GameScript._GetUnitInstanceOfType(currentEnum)
+		var newHero = currentHeroData.unit.instantiate()
+		print("New hero is: ", newHero.name)
+		
+		#GameScript._GetUnitInstanceOfType(currentHeroData)
 		if(is_instance_valid(newHero)):
 			newHero.controllable = true
 			#Position them properly
 			battleParent.add_child(newHero)
 			newHero.global_position = spawns[heroEnumIndex].global_position
 		else:
-			print("No new hero made for: " + str(currentEnum))
+			print("No new hero made for: " + str(currentHeroData))
 func _FinishPartyAddition():
 	tileMap.visible = false
 	battleParent = GameScript._GetNextLevel().instantiate()

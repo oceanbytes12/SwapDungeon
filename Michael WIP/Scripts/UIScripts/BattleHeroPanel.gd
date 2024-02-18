@@ -20,6 +20,6 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	Globals._SetSelectedBattleSpace(null)
 
-func GetHeroType():
+func GetHeroData():
 	if(is_instance_valid(equippedPanel)):
-		return equippedPanel.heroType
+		return equippedPanel.data

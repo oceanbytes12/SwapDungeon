@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxgalpram8qcb"]
+[gd_scene load_steps=25 format=3 uid="uid://bxgalpram8qcb"]
 
 [ext_resource type="Script" path="res://Scene/MasterScript.gd" id="1_hlhcr"]
 [ext_resource type="Script" path="res://Scene/SeperateLoadBecauseItIsaUnholySinToHaveAScriptLongerThanTenLines.gd" id="2_mgxy4"]
+[ext_resource type="PackedScene" uid="uid://ct563bad0ifvj" path="res://Scenes/HeroDatas/Archer1Data.tscn" id="2_yvmpo"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/BattleManager.gd" id="3_0ajd3"]
+[ext_resource type="PackedScene" uid="uid://bh4kd4tdp6wrf" path="res://Michael WIP/GoodScenes/HeroIcon.tscn" id="3_0apew"]
 [ext_resource type="Script" path="res://Michael WIP/Scripts/UIScripts/Tweeners/SlideInUI.gd" id="4_drtcp"]
 [ext_resource type="Script" path="res://Scene/PartyRoster.gd" id="5_3mtj6"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Michael WIP/MikeCrushSheet.png" id="6_qpsri"]
@@ -29,6 +31,10 @@ size = Vector2(56, 26)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_hlhcr")
+HeroDataScenes = Array[PackedScene]([ExtResource("2_yvmpo")])
+iconScene = ExtResource("3_0apew")
+
+[node name="Data" type="Node2D" parent="."]
 
 [node name="Preloader" type="Node" parent="."]
 script = ExtResource("2_mgxy4")

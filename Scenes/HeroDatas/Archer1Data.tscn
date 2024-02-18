@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct563bad0ifvj"]
+
+[ext_resource type="Script" path="res://HeroData.gd" id="1_essot"]
+[ext_resource type="Texture2D" uid="uid://lnwliv2fics" path="res://Art/MimicArt1.png" id="2_leh8j"]
+[ext_resource type="PackedScene" uid="uid://cyn4v2fksoy82" path="res://Scenes/Units/Players/Archer1.tscn" id="3_1sexk"]
+[ext_resource type="PackedScene" uid="uid://mtt2amyra80x" path="res://Scenes/HeroDatas/Archer2Data.tscn" id="4_yqmnw"]
+
+[node name="Archer1Data" type="Node2D"]
+script = ExtResource("1_essot")
+art = ExtResource("2_leh8j")
+unit = ExtResource("3_1sexk")
+UpgradedType = ExtResource("4_yqmnw")

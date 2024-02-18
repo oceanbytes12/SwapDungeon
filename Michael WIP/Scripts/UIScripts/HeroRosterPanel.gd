@@ -8,7 +8,7 @@ class_name HeroRosterPanel
 @onready var HighlightPanel : Control = $ExpandInUI/HighLightPanel
 var isDragged = false
 var speed = 10
-var heroData
+var data
 var battleSpace
 var Gray = Color(0.411765, 0.411765, 0.411765, 1) # Dim Gray
 func ToggleDrag(newDragState):
@@ -16,13 +16,15 @@ func ToggleDrag(newDragState):
 
 func InitializeWithHero(newHeroData):
 	print("Initializing with type: ", newHeroData)
-	heroData = newHeroData
+	data = newHeroData
 	
-	var HeroIcon = heroData.HeroIcon.Instantiate()
+	var HeroIcon = Globals.unitManager.GetIcon(newHeroData)
+	#var HeroIcon = heroData.HeroIcon.Instantiate()
 	FrontPanel.add_child(HeroIcon)
 	HeroIcon.position += FrontPanel.size / 2
 	
-	var HeroIconBack = heroData.HeroIcon.Instantiate()
+	var HeroIconBack = Globals.unitManager.GetIcon(newHeroData)
+	#var HeroIconBack = heroData.HeroIcon.Instantiate()
 	HeroIconBack.modulate = Gray
 	BackPanel.add_child(HeroIconBack)
 	HeroIconBack.position += BackPanel.size / 2
