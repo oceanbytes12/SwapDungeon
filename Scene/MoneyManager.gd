@@ -16,7 +16,7 @@ var PartyCount = 0
 signal rerolled
 
 func _ready():
-	HeroUiController.moneyManager = self
+	Globals.moneyManager = self
 	Mimic.modulate.a = targetMimicAlpha
 	RerollButton.modulate.a = targetRerollAlpha
 	SkipButton.modulate.a = targetRerollAlpha
@@ -64,6 +64,6 @@ func GainMoney(amount):
 	money = money + amount
 
 func AttemptReroll():
-	if(money > rerollcost && HeroUiController.partyRoster.getPartyCount() > 0):
+	if(money > rerollcost && Globals.partyRoster.getPartyCount() > 0):
 		money = money - rerollcost
 		emit_signal("rerolled")
