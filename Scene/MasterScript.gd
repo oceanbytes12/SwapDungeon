@@ -5,6 +5,7 @@ var unitIcons : Array
 var basicIcons : Array
 var Levels : Array
 var levelIndex = 0
+@onready var loader = $Preloader
 
 @export var use_context_cursors = true
 #@export var mouse_pointer: Resource
@@ -25,9 +26,10 @@ func _IncrementLevelIndex():
 
 func _ready():
 	Globals.unitManager = self
-	unitIcons = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadIcons()
-	Levels = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadLevels()
-	basicIcons = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadBasicIcons()
+	unitIcons = loader.loadIcons()
+	Levels = loader.loadLevels()
+	basicIcons = loader.loadBasicIcons()
+
 func _physics_process(_delta):
 	if (use_context_cursors):
 		var object = check_object_under_mouse()

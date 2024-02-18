@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bvn5ridq36mbs"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_ah53m"]
+[ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/UnitController.gd" id="1_ah53m"]
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/DungeonTiles.png" id="1_w28te"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="3_4265c"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="3_crcg2"]

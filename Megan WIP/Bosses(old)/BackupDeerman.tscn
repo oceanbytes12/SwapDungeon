@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dibyc283ekuj1"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_bpy01"]
+[ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/UnitController.gd" id="1_bpy01"]
 [ext_resource type="PackedScene" uid="uid://b3hn3jfn1k70h" path="res://Scenes/Units/Players/Archer2.tscn" id="2_pjwvq"]
 [ext_resource type="PackedScene" uid="uid://bdv1mfy7gs5lb" path="res://Scenes/Units/Players/Warrior2.tscn" id="3_r7krb"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="4_ecf43"]

@@ -34,7 +34,7 @@ func Target(isTargeted):
 		FrontPanel.scale = Vector2.ONE
 
 func _process(delta):
-	if(HeroUiController.moneyManager.money < HeroCost):
+	if(Globals.moneyManager.money < HeroCost):
 		FrontPanel.modulate = Gray
 		
 	if(isDragged):
@@ -45,11 +45,11 @@ func _process(delta):
 		FrontPanel.position = FrontPanel.position.lerp(Vector2.ZERO, delta * speed)
 
 func _on_area_2d_mouse_entered():
-	if(HeroUiController.moneyManager.money >= HeroCost):
-		HeroUiController._SetSelectedDraggableHeroPanel(self)
+	if(Globals.moneyManager.money >= HeroCost):
+		Globals._SetSelectedDraggableHeroPanel(self)
 
 func _on_area_2d_mouse_exited():
-	HeroUiController._SetSelectedDraggableHeroPanel(null)
+	Globals._SetSelectedDraggableHeroPanel(null)
 
 func _generateRandomHero():
 	#HeroType = Globals.unitManager._GetRandomUnupgradedType()
@@ -68,8 +68,8 @@ func _generateRandomHero():
 
 func HandleUsed():
 	mouse_filter =Control.MOUSE_FILTER_IGNORE
-	HeroUiController._SetDraggableAsNull()
-	HeroUiController._SetSelectedDraggableHeroPanel(null)
+	Globals._SetDraggableAsNull()
+	Globals._SetSelectedDraggableHeroPanel(null)
 	
 	set_process(false)
 	if(is_instance_valid(FrontPanel)):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cynwug6wlolep"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_iel8s"]
+[ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/UnitController.gd" id="1_iel8s"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/spawn_positions.tscn" id="3_g1tfb"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="3_qdt64"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="5_4ksmb"]

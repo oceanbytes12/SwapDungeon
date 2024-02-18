@@ -15,10 +15,10 @@ func HandlePanel(addedPanel):
 
 
 func _on_area_2d_mouse_entered():
-	HeroUiController._SetSelectedBattleSpace(self)
+	Globals._SetSelectedBattleSpace(self)
 
 func _on_area_2d_mouse_exited():
-	HeroUiController._SetSelectedBattleSpace(null)
+	Globals._SetSelectedBattleSpace(null)
 
 func GetHeroType():
 	if(is_instance_valid(equippedPanel)):

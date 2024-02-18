@@ -34,10 +34,10 @@ func Target(isTargeted):
 		FrontPanel.scale = Vector2.ONE
 	
 func _on_area_2d_mouse_entered():
-	HeroUiController._SetSelectedHeroRosterPanel(self)
+	Globals._SetSelectedHeroRosterPanel(self)
 
 func _on_area_2d_mouse_exited():
-	HeroUiController._SetSelectedHeroRosterPanel(null)
+	Globals._SetSelectedHeroRosterPanel(null)
 
 func _process(delta):
 	if(isDragged):

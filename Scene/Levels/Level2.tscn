@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dn8y8e1qbyjbj"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/AlexTesting.gd" id="1_c8ybf"]
+[ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/UnitController.gd" id="1_c8ybf"]
 [ext_resource type="Script" path="res://Scenes/Levels/AlexTesting/Camera2D.gd" id="3_mjq13"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/DefaultWeapon/MeleeSkeleton.tscn" id="4_3fa6q"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scene/BaseLevel.tscn" id="4_8c1s0"]
