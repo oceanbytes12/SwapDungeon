@@ -63,7 +63,7 @@ func _generateRandomHero():
 		
 	
 	var randomHeroNum = RandomNumberGenerator.new().randf()
-	name = HeroType + str(randomHeroNum)
+	#name = str(HeroType) + str(randomHeroNum)
 
 func HandleUsed():
 	mouse_filter =Control.MOUSE_FILTER_IGNORE

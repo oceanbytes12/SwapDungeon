@@ -1,5 +1,26 @@
 extends Node
 
+const warrior1Index = 0
+const warrior2Index = 1
+
+const archer1Index = 2
+const archer2Index = 3
+
+const mage1Index = 4
+const mage2Index = 5
+
+const rogue1Index = 6
+const rogue2Index = 7
+
+const paladin1Index = 8
+const paladin2Index = 9
+
+const druid1Index = 10
+const druid2Index = 11
+
+const priest1Index = 12
+const priest2Index = 13
+
 var warrior1Icon = preload("res://Michael WIP/HeroIcons/HeroIconWarrior1.tscn")
 var warrior2Icon = preload("res://Michael WIP/HeroIcons/HeroIconWarrior2.tscn")
 var aracher1Icon = preload("res://Michael WIP/HeroIcons/HeroIconArcher1.tscn")
@@ -40,51 +61,61 @@ var level4 = preload("res://Scene/Levels/NecroMancerBoss.tscn")
 var level5 = preload("res://Scene/Levels/Level5.tscn")
 var level6 = preload("res://Scene/Levels/Level6.tscn")
 var level7 = preload("res://Scene/Levels/DeermanBoss.tscn")
+
 func loadIcons():
 	var heroIcons = {}
-	heroIcons["warrior1"] = warrior1Icon
-	heroIcons["warrior2"] = warrior2Icon
-	heroIcons["archer1"] = aracher1Icon
-	heroIcons["archer2"] = aracher2Icon
-	heroIcons["mage1"] = mage1Icon
-	heroIcons["mage2"] = mage2Icon
-	heroIcons["rogue1"] = rogue1Icon
-	heroIcons["rogue2"] = rogue2Icon
-	heroIcons["paladin1"] = paladin1Icon
-	heroIcons["paladin2"] = paladin2Icon
-	heroIcons["druid1"] = druid1Icon
-	heroIcons["druid2"] = druid2Icon
-	heroIcons["priest1"] = priest1Icon
-	heroIcons["priest2"] = priest2Icon
+	heroIcons[warrior1Index] = warrior1Icon
+	heroIcons[warrior2Index] = warrior2Icon
+	
+	heroIcons[archer1Index] = aracher1Icon
+	heroIcons[archer2Index] = aracher2Icon
+	
+	heroIcons[mage1Index] = mage1Icon
+	heroIcons[mage2Index] = mage2Icon
+	
+	heroIcons[rogue1Index] = rogue1Icon
+	heroIcons[rogue2Index] = rogue2Icon
+	
+	heroIcons[paladin1Index] = paladin1Icon
+	heroIcons[paladin2Index] = paladin2Icon
+	
+	heroIcons[druid1Index] = druid1Icon
+	heroIcons[druid2Index] = druid2Icon
+	
+	heroIcons[priest1Index] = priest1Icon
+	heroIcons[priest2Index] = priest2Icon
+	
 	return heroIcons
 
 func loadUnits():
 	var units = {}
-	units["warrior1"] = warrior1
-	units["warrior2"] = warrior2
-	units["archer1"] = archer1
-	units["archer2"] = archer2
-	units["mage1"] = mage1
-	units["mage2"] = mage2
-	units["rogue1"] = rogue1
-	units["rogue2"] = rogue2
-	units["paladin1"] = paladin1
-	units["paladin2"] = paladin2
-	units["druid1"] = druid1
-	units["druid2"] = druid2	
-	units["priest1"] = priest1
-	units["priest2"] = priest2
+	units[warrior1Index] = warrior1
+	units[warrior2Index] = warrior2
+	units[archer1Index] = archer1
+	units[archer2Index] = archer2
+	units[mage1Index] = mage1
+	units[mage2Index] = mage2
+	units[rogue1Index] = rogue1
+	units[rogue2Index] = rogue2
+	units[paladin1Index] = paladin1
+	units[paladin2Index] = paladin2
+	units[druid1Index] = druid1
+	units[druid2Index] = druid2	
+	units[priest1Index] = priest1
+	units[priest2Index] = priest2
 	return units
 
 func loadUnupgradedUnits():
 	var unupgradedUnits = {}
-	unupgradedUnits["warrior1"] = warrior1
-	unupgradedUnits["archer1"] = archer1
-	unupgradedUnits["mage1"] = mage1
-	unupgradedUnits["rogue1"] = rogue1
-	unupgradedUnits["paladin1"] = paladin1
-	unupgradedUnits["druid1"] = druid1
-	unupgradedUnits["priest1"] = priest1
+	
+	unupgradedUnits[warrior1Index] = warrior1
+	unupgradedUnits[archer1Index] = archer1
+	unupgradedUnits[mage1Index] = mage1
+	unupgradedUnits[rogue1Index] = rogue1
+	unupgradedUnits[paladin1Index] = paladin1
+	unupgradedUnits[druid1Index] = druid1
+	unupgradedUnits[priest1Index] = priest1
+	
 	return unupgradedUnits
 
 func loadLevels():
@@ -100,17 +131,17 @@ func loadLevels():
 
 func loadCosts():
 	var Costs = {}
-	Costs["warrior1"] = 6
-	Costs["archer1"] = 8
-	Costs["mage1"] = 7
-	Costs["rogue1"] = 5
-	Costs["warrior2"] = 12
-	Costs["archer2"] = 16
-	Costs["mage2"] = 14
-	Costs["paladin1"] = 8
-	Costs["paladin2"] = 14
-	Costs["druid1"] = 8
-	Costs["druid2"] = 16
-	Costs["priest1"] = 8
-	Costs["priest2"] = 14
+	Costs[warrior1Index] = 6
+	Costs[archer1Index] = 8
+	Costs[mage1Index] = 7
+	Costs[rogue1Index] = 5
+	Costs[warrior2Index] = 12
+	Costs[archer2Index] = 16
+	Costs[mage2Index] = 14
+	Costs[paladin1Index] = 8
+	Costs[paladin2Index] = 14
+	Costs[druid1Index] = 8
+	Costs[druid2Index] = 16
+	Costs[priest1Index] = 8
+	Costs[priest2Index] = 14
 	return Costs

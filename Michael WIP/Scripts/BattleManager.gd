@@ -54,12 +54,13 @@ func _SpawnHeros():
 		#res://Scenes/Units/
 		
 		var newHero = GameScript._GetUnitInstanceOfType(currentEnum)
-		newHero.controllable = true
-		
-		#Position them properly
-		battleParent.add_child(newHero)
-		newHero.global_position = spawns[heroEnumIndex].global_position
-
+		if(is_instance_valid(newHero)):
+			newHero.controllable = true
+			#Position them properly
+			battleParent.add_child(newHero)
+			newHero.global_position = spawns[heroEnumIndex].global_position
+		else:
+			print("No new hero made for: " + str(currentEnum))
 func _FinishPartyAddition():
 	tileMap.visible = false
 	battleParent = GameScript._GetNextLevel().instantiate()
