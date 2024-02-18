@@ -63,60 +63,49 @@ var level6 = preload("res://Scene/Levels/Level6.tscn")
 var level7 = preload("res://Scene/Levels/DeermanBoss.tscn")
 
 func loadIcons():
-	var heroIcons = {}
-	heroIcons[warrior1Index] = warrior1Icon
-	heroIcons[warrior2Index] = warrior2Icon
+	var heroIcons = []
 	
-	heroIcons[archer1Index] = aracher1Icon
-	heroIcons[archer2Index] = aracher2Icon
+	heroIcons.append(warrior1Icon)
+	heroIcons.append(warrior2Icon)
 	
-	heroIcons[mage1Index] = mage1Icon
-	heroIcons[mage2Index] = mage2Icon
+	heroIcons.append(aracher1Icon)
+	heroIcons.append(aracher2Icon)
 	
-	heroIcons[rogue1Index] = rogue1Icon
-	heroIcons[rogue2Index] = rogue2Icon
+	heroIcons.append(mage1Icon)
+	heroIcons.append(mage2Icon)
 	
-	heroIcons[paladin1Index] = paladin1Icon
-	heroIcons[paladin2Index] = paladin2Icon
+	heroIcons.append(rogue1Icon)
+	heroIcons.append(rogue2Icon)
 	
-	heroIcons[druid1Index] = druid1Icon
-	heroIcons[druid2Index] = druid2Icon
+	heroIcons.append(paladin1Icon)
+	heroIcons.append(paladin2Icon)
 	
-	heroIcons[priest1Index] = priest1Icon
-	heroIcons[priest2Index] = priest2Icon
+	heroIcons.append(druid1Icon)
+	heroIcons.append(druid2Icon)
+	
+	heroIcons.append(priest1Icon)
+	heroIcons.append(priest2Icon)
 	
 	return heroIcons
 
-func loadUnits():
-	var units = {}
-	units[warrior1Index] = warrior1
-	units[warrior2Index] = warrior2
-	units[archer1Index] = archer1
-	units[archer2Index] = archer2
-	units[mage1Index] = mage1
-	units[mage2Index] = mage2
-	units[rogue1Index] = rogue1
-	units[rogue2Index] = rogue2
-	units[paladin1Index] = paladin1
-	units[paladin2Index] = paladin2
-	units[druid1Index] = druid1
-	units[druid2Index] = druid2	
-	units[priest1Index] = priest1
-	units[priest2Index] = priest2
-	return units
+func loadBasicIcons():
+	var heroIcons = []
+	
+	heroIcons.append(warrior1Icon)
+	
+	heroIcons.append(aracher1Icon)
+	
+	heroIcons.append(mage1Icon)
+	
+	heroIcons.append(rogue1Icon)
+	
+	heroIcons.append(paladin1Icon)
+	
+	heroIcons.append(druid1Icon)
+	
+	heroIcons.append(priest1Icon)
 
-func loadUnupgradedUnits():
-	var unupgradedUnits = {}
-	
-	unupgradedUnits[warrior1Index] = warrior1
-	unupgradedUnits[archer1Index] = archer1
-	unupgradedUnits[mage1Index] = mage1
-	unupgradedUnits[rogue1Index] = rogue1
-	unupgradedUnits[paladin1Index] = paladin1
-	unupgradedUnits[druid1Index] = druid1
-	unupgradedUnits[priest1Index] = priest1
-	
-	return unupgradedUnits
+	return heroIcons
 
 func loadLevels():
 	var levels = []
@@ -128,20 +117,3 @@ func loadLevels():
 	levels.append(level6)
 	levels.append(level7)
 	return levels
-
-func loadCosts():
-	var Costs = {}
-	Costs[warrior1Index] = 6
-	Costs[archer1Index] = 8
-	Costs[mage1Index] = 7
-	Costs[rogue1Index] = 5
-	Costs[warrior2Index] = 12
-	Costs[archer2Index] = 16
-	Costs[mage2Index] = 14
-	Costs[paladin1Index] = 8
-	Costs[paladin2Index] = 14
-	Costs[druid1Index] = 8
-	Costs[druid2Index] = 16
-	Costs[priest1Index] = 8
-	Costs[priest2Index] = 14
-	return Costs

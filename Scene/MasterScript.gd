@@ -1,10 +1,8 @@
 extends Node2D
 
 var money = 0
-var unitIcons : Dictionary
-var UnitDict : Dictionary
-var UnupgradedDict: Dictionary
-var CostDict : Dictionary
+var unitIcons : Array
+var basicIcons : Array
 var Levels : Array
 var levelIndex = 0
 
@@ -22,18 +20,14 @@ func _GetNextLevel():
 func _IncrementLevelIndex():
 	levelIndex=levelIndex+1
 	
-func _GetCost(HeroType):
-	print("Getting cost of: ", HeroType)
-	return CostDict[HeroType]
+#	print("Getting cost of: ", HeroType)
+#	return CostDict[HeroType]
 
 func _ready():
 	Globals.unitManager = self
 	unitIcons = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadIcons()
-	UnitDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadUnits()
 	Levels = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadLevels()
-	UnupgradedDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadUnupgradedUnits()
-	CostDict = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadCosts()
-
+	basicIcons = $SeperateLoadBecauseItIsAnUnholySinToHaveAScriptLongerThanTenLines.loadBasicIcons()
 func _physics_process(_delta):
 	if (use_context_cursors):
 		var object = check_object_under_mouse()
@@ -68,19 +62,19 @@ func check_collider_under_mouse():
 	else:
 		return null
 
-func _GetUnitInstanceOfType(HeroType):
-	return UnitDict[HeroType].instantiate()
+#func _GetCost(HeroType):
 
-func _GetOnlyUnupgradedUnits():
-	var ret = {}
-	for unit in UnitDict.keys():
-		if "1" in unit:
-			ret[unit] = UnitDict[unit]
+#func _GetUnitInstanceOfType(HeroType):
+#	return UnitDict[HeroType].instantiate()
 
-func _GetRandomUnupgradedType():
-	var randomIndex = randi() % UnupgradedDict.size()
-	return UnupgradedDict.keys()[randomIndex]
+#func _GetRandomUnupgradedType():
+#	var randomIndex = randi() % UnupgradedDict.size()
+#	return UnupgradedDict.keys()[randomIndex]
 
+func _GetRandomUnupgradedIcon():
+	var randomIndex = randi() % basicIcons.size()
+	return basicIcons[randomIndex].instantiate()
+	
 func findSubstringAfterLastSlashBeforeTscn(input_string: String) -> String:
 	var regex_pattern := "/([^/]+)\\.tscn$"
 	var regex := RegEx.new()

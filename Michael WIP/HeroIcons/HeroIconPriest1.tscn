@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://6ys5mynjk5td"]
+[gd_scene load_steps=7 format=3 uid="uid://6ys5mynjk5td"]
 
+[ext_resource type="Script" path="res://Michael WIP/HeroIcons/Icon.gd" id="1_tmbdo"]
 [ext_resource type="Texture2D" uid="uid://05kwctktfvq0" path="res://Art/HerosTwo.png" id="1_uvsrc"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_33k5g"]
 
@@ -29,7 +30,8 @@ shader = ExtResource("2_33k5g")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
-[node name="HeroIconDruid1" type="CanvasGroup"]
+[node name="HeroIconPriest1" type="CanvasGroup"]
+script = ExtResource("1_tmbdo")
 
 [node name="Art" type="Node2D" parent="."]
 

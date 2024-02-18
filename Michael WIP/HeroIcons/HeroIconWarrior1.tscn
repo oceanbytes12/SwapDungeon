@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://duxtnvk4lskhn"]
+[gd_scene load_steps=7 format=3 uid="uid://duxtnvk4lskhn"]
 
 [ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/BaseUnits.png" id="1_6ifkh"]
+[ext_resource type="Script" path="res://Michael WIP/HeroIcons/Icon.gd" id="1_if3b8"]
 [ext_resource type="Shader" path="res://Scenes/DefaultUnit/hitEffect.gdshader" id="2_ypl4i"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
@@ -30,6 +31,7 @@ shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [node name="HeroIconWarrior1" type="CanvasGroup"]
+script = ExtResource("1_if3b8")
 
 [node name="Art" type="Node2D" parent="."]
 

@@ -52,9 +52,10 @@ func _on_area_2d_mouse_exited():
 	HeroUiController._SetSelectedDraggableHeroPanel(null)
 
 func _generateRandomHero():
-	HeroType = Globals.unitManager._GetRandomUnupgradedType()
-	HeroIcon = Globals.unitManager._GetIconInstanceOfType(HeroType)
-	HeroCost = Globals.unitManager._GetCost(HeroType)
+	#HeroType = Globals.unitManager._GetRandomUnupgradedType()
+	HeroIcon = Globals.unitManager._GetRandomUnupgradedIcon()
+	HeroCost = HeroIcon.cost
+	
 	$Front_Panel/Price.text = str(HeroCost)
 	if(is_instance_valid(HeroIcon)):
 		var TargetChild = FrontPanel.get_child(0)
