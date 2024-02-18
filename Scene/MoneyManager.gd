@@ -52,9 +52,8 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	Selected = false
 
-func HandlePurchase(purchasedHero):
-	print("Getting Cost1: ", purchasedHero)
-	money = money - Globals.unitManager._GetCost(purchasedHero)
+func HandlePurchase(cost):
+	money = money - cost
 
 func sell(soldHero):
 	money = money + ceil(Globals.unitManager._GetCost(soldHero)/2)

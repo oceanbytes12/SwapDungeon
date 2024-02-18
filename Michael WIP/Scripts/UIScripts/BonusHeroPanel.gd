@@ -11,7 +11,7 @@ var isDragged = false
 signal dragStateChange(old_value, new_value)
 var HeroType 
 var HeroIcon
-var HeroCost = 0
+var data : HeroData
 var Gray = Color(0.411765, 0.411765, 0.411765, 1)
 
 @export var CreateRandomHero : bool = false
@@ -34,7 +34,7 @@ func Target(isTargeted):
 		FrontPanel.scale = Vector2.ONE
 
 func _process(delta):
-	if(Globals.moneyManager.money < HeroCost):
+	if(Globals.moneyManager.money < GetCost()):
 		FrontPanel.modulate = Gray
 		
 	if(isDragged):
@@ -45,7 +45,7 @@ func _process(delta):
 		FrontPanel.position = FrontPanel.position.lerp(Vector2.ZERO, delta * speed)
 
 func _on_area_2d_mouse_entered():
-	if(Globals.moneyManager.money >= HeroCost):
+	if(Globals.moneyManager.money >= GetCost()):
 		Globals._SetSelectedDraggableHeroPanel(self)
 
 func _on_area_2d_mouse_exited():
@@ -54,9 +54,8 @@ func _on_area_2d_mouse_exited():
 func _generateRandomHero():
 	#HeroType = Globals.unitManager._GetRandomUnupgradedType()
 	HeroIcon = Globals.unitManager._GetRandomUnupgradedIcon()
-	HeroCost = HeroIcon.cost
-	
-	$Front_Panel/Price.text = str(HeroCost)
+	data = HeroIcon.data
+	$Front_Panel/Price.text = str(data.cost)
 	if(is_instance_valid(HeroIcon)):
 		var TargetChild = FrontPanel.get_child(0)
 		TargetChild.add_child(HeroIcon)
@@ -77,3 +76,6 @@ func HandleUsed():
 
 func HighLight(isOn):
 	HighlightPanel.visible = isOn
+
+func GetCost():
+	return data.cost

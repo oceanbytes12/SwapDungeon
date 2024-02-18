@@ -104,11 +104,6 @@ func _GetUpgradedType(heroType):
 	level = level+1
 	return name + str(level)
 
-
-func _GetIconInstanceOfType(HeroType):
-	#return HeroIconPackedScenesArray[0].instantiate()#Chad Array Line
-	return unitIcons[HeroType].instantiate()#Virgin Dictionary Line
-
 func _reset():
 	get_tree().reload_current_scene()
 

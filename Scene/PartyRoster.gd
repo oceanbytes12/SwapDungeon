@@ -19,7 +19,7 @@ func _on_area_2d_mouse_exited():
 func addToParty(panel):
 	emit_signal("onPartyAddedTo")
 	
-	Globals.Purchase(panel.HeroType)
+	Globals.Purchase(panel.GetCost())
 	
 	if(UpgradeableUnits.size()> 0):
 		var upgradedUnit = UpgradeableUnits[0]
@@ -36,7 +36,7 @@ func addToParty(panel):
 	else:
 		var newPanel = rosterPanel.instantiate()
 		print("Making new panel of: ", panel.HeroType)
-		newPanel.InitializeWithHero(panel.HeroType)
+		newPanel.InitializeWithHero(panel.data)
 		partyContainer.add_child(newPanel)
 		partyContainer.move_child(newPanel, 0)
 		

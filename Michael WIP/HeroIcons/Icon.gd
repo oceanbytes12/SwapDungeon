@@ -1,3 +1,5 @@
 extends CanvasGroup
 
-@export var cost = 1
+class_name Icon
+
+@export var data : HeroData
