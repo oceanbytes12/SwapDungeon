@@ -8,7 +8,7 @@ var range_buffer = 4 # This is to prevent jittering between follow and attack st
 var weapon_range : float
 
 
-func Update(_delta, own_body, current_target, target_list):
+func Update(_delta, own_body, current_target, _target_list):
 	if not current_target:
 		ChangeState.emit("Idle", current_target)
 	else:
@@ -32,5 +32,5 @@ func _on_cool_down_timer_timeout():
 func set_cooldown(cooldown):
 	weapon_cooldown = cooldown
 	
-func set_weapon_range(weapon_range):
-	self.weapon_range = weapon_range
+func set_weapon_range(new_weapon_range):
+	self.weapon_range = new_weapon_range

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=36 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_kwkx1"]
 [ext_resource type="PackedScene" uid="uid://cj1t02ts4raor" path="res://Scenes/Effects/RandomEffects/HitEffect.tscn" id="2_qxspr"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/BaseIdle.gd" id="7_mura8"]
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/BaseStun.gd" id="9_f6npj"]
 [ext_resource type="Texture2D" uid="uid://dbvb5q7nll6yw" path="res://Art/NewArt/BaseUnits.png" id="11_ox2d3"]
+[ext_resource type="Texture2D" uid="uid://dd3t1akbeusg5" path="res://Art/CharacterArt/SelectionMarker-Sheet.png" id="12_ifmi8"]
 [ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/UIArt/HealthBar2.png" id="12_vaypi"]
 [ext_resource type="PackedScene" uid="uid://6jcr4qkrw7v2" path="res://Scenes/Weapons/bow_1.tscn" id="13_oi5cf"]
 [ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="13_tnq6t"]
@@ -310,14 +311,46 @@ _data = {
 "Walk": SubResource("Animation_c5mp0")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfdci"]
+atlas = ExtResource("12_ifmi8")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l3kc"]
+atlas = ExtResource("12_ifmi8")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a40jf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfdci")
+}],
+"loop": true,
+"name": &"EnemySelected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l3kc")
+}],
+"loop": true,
+"name": &"FriendlySelected",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"NotSelected",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ysvin"]
 radius = 5.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
-radius = 520.116
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8o30"]
 size = Vector2(22, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
+radius = 520.116
 
 [node name="BaseUnit" type="CharacterBody2D" groups=["unit"]]
 platform_on_leave = 2
@@ -431,6 +464,10 @@ libraries = {
 }
 speed_scale = 6.0
 
+[node name="Selection" type="AnimatedSprite2D" parent="Looks"]
+sprite_frames = SubResource("SpriteFrames_a40jf")
+animation = &"EnemySelected"
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "own_body")]
 script = ExtResource("4_4ntpo")
 initial_state = NodePath("Idle")
@@ -451,22 +488,21 @@ script = ExtResource("4_hr32h")
 [node name="CoolDownTimer" type="Timer" parent="StateMachine/Attack"]
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_ysvin")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_g8o30")
 
 [node name="SightRange" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
 shape = SubResource("CircleShape2D_5cwag")
-
-[node name="HitBox" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_g8o30")
 
 [connection signal="Moved" from="." to="Looks" method="_on_base_unit_moved"]
 [connection signal="Stopped" from="." to="Looks" method="_on_base_unit_stopped"]

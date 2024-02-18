@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/AlexTesting.gd" id="1_mbhdq"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/UI/spawn_positions.tscn" id="3_3bba1"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Levels/TestingLevels/BaseLevel.tscn" id="3_fe3ee"]
-[ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/Camera2D.gd" id="5_u2nlv"]
+[ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="5_u2nlv"]
 [ext_resource type="Texture2D" uid="uid://nopcxawbslql" path="res://Art/AttackArt/MouseHints-Sheet.png" id="6_hypbf"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Weapons/MeleeSkeleton.tscn" id="6_q2vtn"]
 

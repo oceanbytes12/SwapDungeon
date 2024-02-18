@@ -17,7 +17,7 @@ func Update(delta, _own_body, current_target, target_list):
 	else:
 		ChangeState.emit("Idle", current_target)
 
-func Physics_Update(_delta, own_body, current_target, target_list):
+func Physics_Update(_delta, own_body, current_target, _target_list):
 	if current_target:
 		var target_vector = current_target.global_position - own_body.global_position
 		var target_distance = target_vector.length()
@@ -28,5 +28,5 @@ func Physics_Update(_delta, own_body, current_target, target_list):
 	else:
 		ChangeState.emit("Idle", current_target)
 
-func set_weapon_range(weapon_range):
-	self.weapon_range = weapon_range
+func set_weapon_range(new_weapon_range):
+	self.weapon_range = new_weapon_range

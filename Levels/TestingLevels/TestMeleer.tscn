@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdv1mfy7gs5lb" path="res://Scenes/Units/Heros/Warrior2.tscn" id="3_oid8h"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/UI/spawn_positions.tscn" id="4_2nknn"]
 [ext_resource type="PackedScene" uid="uid://b3hn3jfn1k70h" path="res://Scenes/Units/Heros/Archer2.tscn" id="4_djse2"]
-[ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/Camera2D.gd" id="5_ir3qx"]
+[ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="5_ir3qx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qaq"]
 bg_color = Color(0.258824, 0.972549, 0.470588, 0.431373)

@@ -5,6 +5,7 @@ extends Area2D
 var own_body
 var damage
 var knockback_amount
+var source_type
 
 var end_of_life = false
 var eol_timer = 2
@@ -22,7 +23,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	# Check if hitting self or friend
-	if body.is_in_group("unit") and body.type != own_body.type:
+	if body.is_in_group("unit") and body.type != source_type:
 		if body.has_method("take_hit"):
 			var direction = Vector2.RIGHT.rotated(rotation)
 			body.take_hit(own_body, damage, knockback_amount, direction)
@@ -36,9 +37,10 @@ func playsound_and_queuefree():
 	#$Arrow_hit_sfx.play()
 	end_of_life = true
 
-func set_params(own_body, damage, knockback_amount):
-	self.own_body = own_body
-	self.damage = damage
-	self.knockback_amount = knockback_amount
+func set_params(new_own_body, new_damage, new_knockback_amount):
+	self.own_body = new_own_body
+	self.damage = new_damage
+	self.knockback_amount = new_knockback_amount
+	self.source_type = self.own_body.type
 
 	

@@ -5,8 +5,10 @@ extends CharacterBody2D
 @export var move_speed: float = 30
 @export var starting_health: float = 100
 @export var hit_splat_scene : PackedScene
-
 @onready var health_bar = $Looks/HealthBar
+
+signal Selected
+
 var health
 var moving = false
 
@@ -25,7 +27,7 @@ func _physics_process(_delta):
 		Moved.emit()
 	elif velocity.length() == 0 and moving:
 		moving = false
-		Stopped.emit()		
+		Stopped.emit()
 	move_and_slide()
 	
 func take_hit(source_body, damage, knockback_amount, knockback_direction, freeze_time=0):
@@ -38,10 +40,13 @@ func take_hit(source_body, damage, knockback_amount, knockback_direction, freeze
 	if health <= 0:
 		Die()
 	else:
-		var direction = (global_position-source_body.global_position).normalized()
 		$StateMachine.unit_hit(source_body, damage, knockback_amount, knockback_direction, freeze_time)
 		$EffectAnimations.play("hitAnimation")
 		
 func Die():
 	Died.emit(self)
 	queue_free()
+
+
+func set_selected(new_selection):
+	Selected.emit(type)

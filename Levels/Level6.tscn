@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/AlexTesting.gd" id="1_pmwpa"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Levels/TestingLevels/BaseLevel.tscn" id="2_fj0j2"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/UI/spawn_positions.tscn" id="3_fri5r"]
-[ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/Camera2D.gd" id="4_71ewd"]
+[ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="4_71ewd"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Weapons/MeleeSkeleton.tscn" id="5_wocpq"]
 [ext_resource type="PackedScene" uid="uid://dm5nafv3bkhex" path="res://Scenes/Units/Enemies/MageSkeleton.tscn" id="6_t055t"]
 [ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Units/Enemies/RangedSkeleton.tscn" id="7_lgfh8"]

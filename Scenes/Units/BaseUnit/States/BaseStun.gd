@@ -10,10 +10,10 @@ func Update(delta,_own_body, current_target, _target_list):
 	else:
 		ChangeState.emit("Idle", current_target)
 
-func Physics_Update(delta, own_body, _current_target, _target_list):
+func Physics_Update(_delta, own_body, _current_target, _target_list):
 	own_body.velocity *= 0.95
 
-func trigger_stun(own_body, damage, knockback_amount, knockback_direction, freeze):
+func trigger_stun(own_body, _damage, knockback_amount, knockback_direction, _freeze):
 	knockback_amount = knockback_amount
 	knockback_direction = knockback_direction
 	stun_clock = stun_time

@@ -4,7 +4,7 @@ extends Camera2D
 signal area_selected
 signal start_move_selection
 
-@onready var box = get_node("../UI/SelectionPanel")
+@export var box : Panel
 
 # Used for drawing select rectangle
 var mousePos = Vector2()

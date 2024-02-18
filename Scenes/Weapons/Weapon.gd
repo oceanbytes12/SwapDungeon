@@ -35,7 +35,7 @@ func _process(_delta):
 	else:
 		look_at(Vector2.RIGHT+global_position)
 
-func _on_attack(target):
+func _on_attack(_target):
 	$WeaponAnimations.play("Attack")
 
 func run_attack():
@@ -49,5 +49,5 @@ func _on_new_target(new_target):
 	target = new_target
 
 
-func _on_weapon_animations_animation_finished(anim_name):
+func _on_weapon_animations_animation_finished(_anim_name):
 	run_attack()
