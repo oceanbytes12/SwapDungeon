@@ -53,29 +53,14 @@ tileMap = NodePath("../GameUI/TileMap")
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 
-[node name="PartyRoster" type="Control" parent="GameUI" node_paths=PackedStringArray("SlidingUI")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 8
-mouse_filter = 2
-script = ExtResource("11_ywi7a")
-SlidingUI = NodePath("PartyRoster/RosterUI")
-Automatic = true
-
-[node name="PartyRoster" type="Control" parent="GameUI/PartyRoster" node_paths=PackedStringArray("partyContainer")]
+[node name="PartyRoster" type="Control" parent="GameUI" node_paths=PackedStringArray("partyContainer")]
 custom_minimum_size = Vector2(0, 60)
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -66.0
-offset_bottom = 2.0
+offset_top = -68.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -83,7 +68,7 @@ script = ExtResource("12_hdwe8")
 partyContainer = NodePath("RosterUI/MarginContainer/NewHeroContainer")
 rosterPanel = ExtResource("13_vwdfc")
 
-[node name="RosterUI" type="NinePatchRect" parent="GameUI/PartyRoster/PartyRoster"]
+[node name="RosterUI" type="NinePatchRect" parent="GameUI/PartyRoster"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,7 +82,7 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="GameUI/PartyRoster/PartyRoster/RosterUI"]
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/PartyRoster/RosterUI"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -108,14 +93,14 @@ offset_bottom = 30.0
 grow_vertical = 2
 theme_override_constants/margin_left = 3
 
-[node name="NewHeroContainer" type="GridContainer" parent="GameUI/PartyRoster/PartyRoster/RosterUI/MarginContainer"]
+[node name="NewHeroContainer" type="GridContainer" parent="GameUI/PartyRoster/RosterUI/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_constants/h_separation = 2
 columns = 9
 
-[node name="EmptySlot" type="NinePatchRect" parent="GameUI/PartyRoster/PartyRoster/RosterUI/MarginContainer/NewHeroContainer"]
+[node name="EmptySlot" type="NinePatchRect" parent="GameUI/PartyRoster/RosterUI/MarginContainer/NewHeroContainer"]
 layout_mode = 2
 texture = ExtResource("14_tnysx")
 region_rect = Rect2(164, 198, 54, 54)
@@ -124,12 +109,121 @@ patch_margin_top = 30
 patch_margin_right = 30
 patch_margin_bottom = 30
 
-[node name="Area2D" type="Area2D" parent="GameUI/PartyRoster/PartyRoster"]
+[node name="Area2D" type="Area2D" parent="GameUI/PartyRoster"]
 position = Vector2(222, 30)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameUI/PartyRoster/PartyRoster/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameUI/PartyRoster/Area2D"]
 position = Vector2(18, 0)
 shape = SubResource("RectangleShape2D_fnua3")
+
+[node name="HeroShop" type="Control" parent="GameUI" node_paths=PackedStringArray("parent")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_28nhm")
+parent = NodePath("GridContainer")
+numToGenerate = 3
+NewHero = ExtResource("20_tdk32")
+
+[node name="GridContainer" type="GridContainer" parent="GameUI/HeroShop"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+columns = 6
+
+[node name="SkipButton" type="Button" parent="GameUI/HeroShop"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = -150.0
+offset_right = -82.0
+offset_bottom = -119.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Skip"
+icon_alignment = 1
+expand_icon = true
+
+[node name="RerollButton" type="Button" parent="GameUI/HeroShop"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -109.0
+offset_right = -80.0
+offset_bottom = -78.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Reroll"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Text" type="Label" parent="GameUI/HeroShop"]
+modulate = Color(1, 0.74902, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = 39.0
+offset_right = 96.0
+offset_bottom = 62.0
+grow_horizontal = 2
+text = "ADD NEW PARTY MEMBER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellArea" type="Area2D" parent="GameUI/HeroShop"]
+position = Vector2(65, 129)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameUI/HeroShop/SellArea"]
+position = Vector2(20, 19)
+shape = SubResource("RectangleShape2D_c2n7c")
+
+[node name="Mimic" type="Control" parent="GameUI/HeroShop/SellArea"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="GameUI/HeroShop/SellArea/Mimic"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -27.0
+offset_right = 46.0
+offset_bottom = -4.0
+text = "Sell"
+
+[node name="MimicButton" type="TextureButton" parent="GameUI/HeroShop/SellArea/Mimic"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 53.0
+offset_bottom = 48.0
+texture_normal = ExtResource("21_aqest")
+texture_hover = ExtResource("22_hqbda")
 
 [node name="DeployZone" type="Control" parent="GameUI"]
 layout_mode = 3
@@ -206,150 +300,29 @@ theme_override_colors/font_color = Color(0.929412, 0.737255, 0.054902, 1)
 text = "READY YOUR TEAM"
 horizontal_alignment = 1
 
-[node name="HeroShop" type="Control" parent="GameUI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-mouse_filter = 2
-script = ExtResource("11_ywi7a")
-Automatic = true
-
-[node name="HeroShop" type="Control" parent="GameUI/HeroShop" node_paths=PackedStringArray("parent")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("19_28nhm")
-parent = NodePath("GridContainer")
-numToGenerate = 3
-NewHero = ExtResource("20_tdk32")
-
-[node name="GridContainer" type="GridContainer" parent="GameUI/HeroShop/HeroShop"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-columns = 6
-
-[node name="SkipButton" type="Button" parent="GameUI/HeroShop/HeroShop"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -131.0
-offset_top = -150.0
-offset_right = -82.0
-offset_bottom = -119.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Skip"
-icon_alignment = 1
-expand_icon = true
-
-[node name="RerollButton" type="Button" parent="GameUI/HeroShop/HeroShop"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -134.0
-offset_top = -109.0
-offset_right = -80.0
-offset_bottom = -78.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Reroll"
-icon_alignment = 1
-expand_icon = true
-
-[node name="Text" type="Label" parent="GameUI/HeroShop/HeroShop"]
-modulate = Color(1, 0.74902, 0, 1)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -105.0
-offset_top = 39.0
-offset_right = 96.0
-offset_bottom = 62.0
-grow_horizontal = 2
-text = "ADD NEW PARTY MEMBER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SellArea" type="Area2D" parent="GameUI/HeroShop/HeroShop"]
-position = Vector2(65, 129)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameUI/HeroShop/HeroShop/SellArea"]
-position = Vector2(20, 19)
-shape = SubResource("RectangleShape2D_c2n7c")
-
-[node name="Mimic" type="Control" parent="GameUI/HeroShop/HeroShop/SellArea"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="GameUI/HeroShop/HeroShop/SellArea/Mimic"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = -27.0
-offset_right = 46.0
-offset_bottom = -4.0
-text = "Sell"
-
-[node name="MimicButton" type="TextureButton" parent="GameUI/HeroShop/HeroShop/SellArea/Mimic"]
-layout_mode = 0
-offset_left = -11.0
-offset_top = -16.0
-offset_right = 53.0
-offset_bottom = 48.0
-texture_normal = ExtResource("21_aqest")
-texture_hover = ExtResource("22_hqbda")
-
 [node name="PlayerMoney" type="Control" parent="GameUI" node_paths=PackedStringArray("Mimic", "MimicButton", "RerollButton", "SkipButton")]
 layout_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -48.0
-offset_bottom = 40.0
-grow_horizontal = 0
+anchors_preset = 0
+offset_right = 39.0
+offset_bottom = 25.0
 script = ExtResource("26_qcadi")
-Mimic = NodePath("../HeroShop/HeroShop/SellArea/Mimic")
-MimicButton = NodePath("../HeroShop/HeroShop/SellArea/Mimic/MimicButton")
-RerollButton = NodePath("../HeroShop/HeroShop/RerollButton")
-SkipButton = NodePath("../HeroShop/HeroShop/SkipButton")
+Mimic = NodePath("../HeroShop/SellArea/Mimic")
+MimicButton = NodePath("../HeroShop/SellArea/Mimic/MimicButton")
+RerollButton = NodePath("../HeroShop/RerollButton")
+SkipButton = NodePath("../HeroShop/SkipButton")
 
 [node name="Label" type="Label" parent="GameUI/PlayerMoney"]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -403.0
-offset_top = -17.0
-offset_right = -363.0
-offset_bottom = 6.0
+offset_left = -40.0
+offset_top = -11.5
+offset_right = 55.0
+offset_bottom = 11.5
+grow_horizontal = 0
 grow_vertical = 2
 pivot_offset = Vector2(40, 0)
 theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
@@ -361,16 +334,10 @@ uppercase = true
 
 [node name="TextureRect" type="TextureRect" parent="GameUI/PlayerMoney"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -469.0
-offset_top = -15.0
-offset_right = -445.0
-offset_bottom = 9.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("27_vraty")
 expand_mode = 1
@@ -485,26 +452,19 @@ grow_vertical = 2
 text = "Quit
 "
 
-[connection signal="finish_battle" from="BattleManager" to="GameUI/PartyRoster" method="slide_in"]
-[connection signal="finish_battle" from="BattleManager" to="GameUI/PartyRoster/PartyRoster" method="_return_all_panels"]
-[connection signal="finish_battle" from="BattleManager" to="GameUI/HeroShop" method="slide_in"]
+[connection signal="finish_battle" from="BattleManager" to="GameUI/PartyRoster" method="_return_all_panels"]
 [connection signal="finish_game" from="BattleManager" to="GameUI/GameWinScreen" method="slide_in"]
 [connection signal="lose_battle" from="BattleManager" to="GameUI/GameOverScreen" method="slide_in"]
 [connection signal="move_To_Ready_Screen" from="BattleManager" to="GameUI/DeployZone" method="slide_in"]
-[connection signal="move_To_Ready_Screen" from="BattleManager" to="GameUI/HeroShop" method="slide_out"]
-[connection signal="onPartyAddedTo" from="GameUI/PartyRoster/PartyRoster" to="BattleManager" method="_FinishPartyAddition"]
-[connection signal="mouse_entered" from="GameUI/PartyRoster/PartyRoster/Area2D" to="GameUI/PartyRoster/PartyRoster" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="GameUI/PartyRoster/PartyRoster/Area2D" to="GameUI/PartyRoster/PartyRoster" method="_on_area_2d_mouse_exited"]
+[connection signal="onPartyAddedTo" from="GameUI/PartyRoster" to="BattleManager" method="_FinishPartyAddition"]
+[connection signal="mouse_entered" from="GameUI/PartyRoster/Area2D" to="GameUI/PartyRoster" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="GameUI/PartyRoster/Area2D" to="GameUI/PartyRoster" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="GameUI/HeroShop/SkipButton" to="BattleManager" method="_FinishPartyAddition"]
+[connection signal="pressed" from="GameUI/HeroShop/RerollButton" to="GameUI/PlayerMoney" method="AttemptReroll"]
+[connection signal="mouse_entered" from="GameUI/HeroShop/SellArea" to="GameUI/PlayerMoney" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="GameUI/HeroShop/SellArea" to="GameUI/PlayerMoney" method="_on_area_2d_mouse_exited"]
 [connection signal="pressed" from="GameUI/DeployZone/StartBattleButton" to="BattleManager" method="_StartBattle"]
-[connection signal="pressed" from="GameUI/DeployZone/StartBattleButton" to="GameUI/PartyRoster" method="slide_out"]
 [connection signal="pressed" from="GameUI/DeployZone/StartBattleButton" to="GameUI/DeployZone" method="slide_out"]
-[connection signal="on_tween_in_start" from="GameUI/HeroShop" to="GameUI/HeroShop/HeroShop" method="Generate"]
-[connection signal="on_tween_out_finish" from="GameUI/HeroShop" to="GameUI/HeroShop/HeroShop" method="Demolish"]
-[connection signal="pressed" from="GameUI/HeroShop/HeroShop/SkipButton" to="BattleManager" method="_FinishPartyAddition"]
-[connection signal="pressed" from="GameUI/HeroShop/HeroShop/RerollButton" to="GameUI/PlayerMoney" method="AttemptReroll"]
-[connection signal="mouse_entered" from="GameUI/HeroShop/HeroShop/SellArea" to="GameUI/PlayerMoney" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="GameUI/HeroShop/HeroShop/SellArea" to="GameUI/PlayerMoney" method="_on_area_2d_mouse_exited"]
-[connection signal="rerolled" from="GameUI/PlayerMoney" to="GameUI/HeroShop" method="slide_out_then_in"]
 [connection signal="pressed" from="GameUI/GameOverScreen/Button" to="." method="_reset"]
 [connection signal="pressed" from="GameUI/GameWinScreen/Button" to="." method="_reset"]
 [connection signal="pressed" from="GameUI/PausedScreen/Button" to="." method="_quit"]
