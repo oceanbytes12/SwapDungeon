@@ -1,10 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bqppco1s6evwj"]
 
-[ext_resource type="Script" path="res://UI/HeroShop/ShopPanel.gd" id="1_gphoo"]
+[ext_resource type="Script" path="res://UI/Panels/ShopPanel.gd" id="1_gphoo"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Art/MikeCrushSheet.png" id="2_1p46c"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ls6dh"]
-load_path = "res://.godot/imported/MikeCrushSheet.png-ff6dba74345dad9f8a87d50ebb347143.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63y8u"]
 size = Vector2(48, 48)

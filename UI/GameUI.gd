@@ -6,6 +6,7 @@ var Levels : Array
 var HeroDatas : Array[HeroData]
 var BasicHeroDatas : Array[HeroData]
 var levelIndex = 0
+var levels = []
 
 @export var HeroDataScenes : Array[PackedScene]
 @export var use_context_cursors = true
@@ -14,18 +15,29 @@ var levelIndex = 0
 @export var mouse_grab = preload("res://Art/MousePointer2.png")
 @export var mouse_open = preload("res://Art/MousePointer3.png")
 @export var mouse_attack = preload("res://Art/MousePointer4.png")
-@onready var loader = $Preloader
 
-func _GetNextLevel():
-	if(levelIndex < Levels.size()):
-		return Levels[levelIndex]
+@export var level1 : PackedScene
+@export var level2 : PackedScene
+@export var level3 : PackedScene
+@export var level4 : PackedScene
+@export var level5 : PackedScene
+
+func GetNextLevel():
+	print(levelIndex)
+	if(levelIndex < levels.size()):
+		var temp = levels[levelIndex]
+		return temp
 
 func _IncrementLevelIndex():
 	levelIndex=levelIndex+1
 
 func _ready():
 	Globals.unitManager = self
-	Levels = loader.loadLevels()
+	levels.append(level1)
+	levels.append(level2)
+	levels.append(level3)
+	levels.append(level4)
+	levels.append(level5)
 	for dataScene in HeroDataScenes:
 		var newData = dataScene.instantiate()
 		$Data.add_child(newData)

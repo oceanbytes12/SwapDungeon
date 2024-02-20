@@ -52,7 +52,6 @@ func _SpawnHeros():
 		#Swap this out for a reference to a real hero!
 		#res://Scenes/Units/
 		var newHero = currentHeroData.unit.instantiate()
-		print("New hero is: ", newHero.name)
 		
 		#GameScript._GetUnitInstanceOfType(currentHeroData)
 		if(is_instance_valid(newHero)):
@@ -60,12 +59,11 @@ func _SpawnHeros():
 			#Position them properly
 			battleParent.add_child(newHero)
 			newHero.global_position = spawns[heroEnumIndex].global_position
-		else:
-			print("No new hero made for: " + str(currentHeroData))
 			
 func _FinishPartyAddition():
 	tileMap.visible = false
-	battleParent = GameScript._GetNextLevel().instantiate()
+	var temp = GameScript.GetNextLevel()
+	battleParent = temp.instantiate()
 	get_parent().get_parent().add_child(battleParent)
 	if(is_instance_valid(battleParent)):
 		battleParent._Toggle(false)
@@ -92,7 +90,7 @@ func _WinBattle():
 	Globals.spawnPositions.clear()
 	Globals.moneyManager.GainMoney(10)
 	GameScript._IncrementLevelIndex()
-	if(GameScript._GetNextLevel()):
+	if(GameScript.GetNextLevel()):
 		emit_signal("finish_battle")
 		tileMap.visible = true
 	else:

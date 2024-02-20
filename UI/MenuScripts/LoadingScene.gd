@@ -22,5 +22,3 @@ func _process(_delta: float) -> void:
 			# When done loading, change to the target scene:
 			get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(target_scene_path))
 		ResourceLoader.THREAD_LOAD_FAILED:
-			# Well some error happend:
-			print("Error. Could not load Resource")

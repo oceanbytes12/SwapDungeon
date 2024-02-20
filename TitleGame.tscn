@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ci7t1k5ppcjqt"]
 
 [ext_resource type="Script" path="res://UI/Scripts/LoadScene.gd" id="1_atl56"]
-[ext_resource type="PackedScene" uid="uid://d4e0k2kylakpm" path="res://UI/loading.tscn" id="2_8fa3j"]
+[ext_resource type="PackedScene" uid="uid://d4e0k2kylakpm" path="res://UI/MenuScripts/loading.tscn" id="2_8fa3j"]
 [ext_resource type="Texture2D" uid="uid://drn1kqi0nixw7" path="res://Art/SplashScreen.png" id="2_vbuqf"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Art/MikeCrushSheet.png" id="3_txnfh"]
 [ext_resource type="AudioStream" uid="uid://osicxr4ooiot" path="res://Sound/SFX/Feed_track1_demo_v1.wav" id="6_81qqf"]

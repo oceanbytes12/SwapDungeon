@@ -17,7 +17,7 @@ config/icon="res://Art/SwapText.png"
 
 [autoload]
 
-Globals="*res://UI/globals.gd"
+Globals="*res://UI/Globals.gd"
 
 [display]
 

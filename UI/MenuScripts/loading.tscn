@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4e0k2kylakpm"]
 
-[ext_resource type="Script" path="res://UI/LoadingScene.gd" id="1_le43p"]
+[ext_resource type="Script" path="res://UI/MenuScripts/LoadingScene.gd" id="1_le43p"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Scenes/Levels/tile_map.tscn" id="2_34pj4"]
 
 [node name="LoadingScene" type="Node2D"]

@@ -18,9 +18,6 @@ var playerUnitsInRange = []
 	#initialize(final_radius, damage, speed)
 	
 func initialize(_radius, _damage, _speed):
-	print("initialize called on aoe_effect")
-	print("position = ")
-	print(position)
 	#location = position
 	final_radius = _radius
 	damage = _damage

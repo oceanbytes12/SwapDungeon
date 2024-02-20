@@ -36,7 +36,6 @@ func addToParty(panel):
 		
 	else:
 		var newPanel = rosterPanel.instantiate()
-		print("Making new panel of: ", panel.data)
 		newPanel.InitializeWithHero(panel.data)
 		partyContainer.add_child(newPanel)
 		partyContainer.move_child(newPanel, 0)
@@ -51,8 +50,6 @@ func find_Panels_Of_Type(heroType):
 	var panels = []
 	for panel in partyContainer.get_children():
 		if(panel is HeroRosterPanel):
-			print("HeroType is: ", heroType.name)
-			print("And panel is: ", panel.data.name)
 			if(panel.data == heroType):
 				panels.append(panel)
 	return panels
@@ -68,9 +65,7 @@ func _process(_delta):
 func _check_upgrades():
 	if(Globals.draggedDraggableHeroPanel):
 		var CheckedDataTypeForUpgrade = Globals.draggedDraggableHeroPanel.data
-		print(CheckedDataTypeForUpgrade.name)
 		UpgradeableUnits = find_Panels_Of_Type(CheckedDataTypeForUpgrade)
-		print("Found upgradeableunits: ", UpgradeableUnits.size())
 		for upgradeAbleUnit in UpgradeableUnits:
 			upgradeAbleUnit.HighLight(true)
 		if(UpgradeableUnits.size() > 0):

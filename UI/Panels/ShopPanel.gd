@@ -61,8 +61,6 @@ func _generateRandomHero():
 		TargetChild.add_child(HeroIcon)
 		HeroIcon.position = Vector2.ZERO + TargetChild.size / 2
 		HeroIcon.name = "RandomHeroIcon"
-	else:
-		print("No hero Icon!")
 	
 	var randomHeroNum = RandomNumberGenerator.new().randf()
 	#name = str(HeroType) + str(randomHeroNum)
