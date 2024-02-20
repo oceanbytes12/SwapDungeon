@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/RandomEffects/HitEffect.gd" id="1_n68sr"]
 [ext_resource type="Texture2D" uid="uid://bj4epc7f01exb" path="res://Art/HitSplat-Sheet.png" id="2_w84w3"]
 [ext_resource type="Texture2D" uid="uid://mhqle8rhigdd" path="res://Art/HealSplat-Sheet.png" id="3_ogbpw"]
-[ext_resource type="AudioStream" uid="uid://d3ysx1pfpavuk" path="res://SFX/Priest_heal_v1.wav" id="4_mmbee"]
+[ext_resource type="AudioStream" uid="uid://d3ysx1pfpavuk" path="res://Sound/SFX/Priest_heal_v1.wav" id="4_mmbee"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1wfjf"]
 atlas = ExtResource("2_w84w3")

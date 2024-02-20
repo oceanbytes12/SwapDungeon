@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://mtt2amyra80x"]
 
-[ext_resource type="Script" path="res://HeroData.gd" id="1_ddlyp"]
+[ext_resource type="Script" path="res://UI/HeroData.gd" id="1_ddlyp"]
 [ext_resource type="Texture2D" uid="uid://lnwliv2fics" path="res://Art/MimicArt1.png" id="2_u1xxw"]
 [ext_resource type="PackedScene" uid="uid://cyn4v2fksoy82" path="res://Scenes/Units/Players/Archer1.tscn" id="3_bmwba"]
 

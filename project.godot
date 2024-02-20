@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="SwapDungeon"
-run/main_scene="res://Michael WIP/GoodScenes/Game.tscn"
+run/main_scene="res://UI/GameUI.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Art/SwapText.png"
 
 [autoload]
 
-WwiseRuntimeManager="*res://addons/Wwise/runtime/wwise_runtime_manager.gd"
-Globals="*res://Michael WIP/Scripts/Globals/globals.gd"
+Globals="*res://UI/globals.gd"
 
 [display]
 

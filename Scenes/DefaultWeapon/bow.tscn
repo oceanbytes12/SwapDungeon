@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/DefaultWeapon/weapon.tscn" id="1_1pi1d"]
 [ext_resource type="PackedScene" uid="uid://ceyeak3ionm2v" path="res://Scenes/Attacks/ArrowAttack/arrow_effect.tscn" id="2_yntf1"]
-[ext_resource type="AudioStream" uid="uid://cjyq2l0sura3t" path="res://SFX/Bow_string_v1.wav" id="3_5tegi"]
-[ext_resource type="AudioStream" uid="uid://b2amrsh072tsv" path="res://SFX/Arrow_release_base_v1.wav" id="4_emmdy"]
+[ext_resource type="AudioStream" uid="uid://cjyq2l0sura3t" path="res://Sound/SFX/Bow_string_v1.wav" id="3_5tegi"]
+[ext_resource type="AudioStream" uid="uid://b2amrsh072tsv" path="res://Sound/SFX/Arrow_release_base_v1.wav" id="4_emmdy"]
 
 [node name="Bow" instance=ExtResource("1_1pi1d")]
 weaponEffectScene = ExtResource("2_yntf1")

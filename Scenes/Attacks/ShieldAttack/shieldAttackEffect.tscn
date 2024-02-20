@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bbltt3vtbeo47" path="res://Art/SwordAttack.png" id="1_amqux"]
 [ext_resource type="Texture2D" uid="uid://cbnl4lmglgapk" path="res://Art/ShieldBash-Sheet.png" id="1_jv73p"]
 [ext_resource type="Script" path="res://Scenes/Attacks/ShieldAttack/shieldAttackEffect.gd" id="3_pnbk0"]
-[ext_resource type="AudioStream" uid="uid://bpa6yc8wb2ttv" path="res://SFX/Paladin_shield_v1.wav" id="4_j3wdw"]
+[ext_resource type="AudioStream" uid="uid://bpa6yc8wb2ttv" path="res://Sound/SFX/Paladin_shield_v1.wav" id="4_j3wdw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_34ijk"]
 atlas = ExtResource("1_jv73p")

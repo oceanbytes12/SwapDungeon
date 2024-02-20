@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba5kdg7x50leh"]
+
+[ext_resource type="Script" path="res://UI/HeroData.gd" id="1_sr0fi"]
+
+[node name="HeroData" type="Node2D"]
+script = ExtResource("1_sr0fi")

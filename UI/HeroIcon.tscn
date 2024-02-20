@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh4kd4tdp6wrf"]
+
+[ext_resource type="Texture2D" uid="uid://byk3nxbono87c" path="res://Art/TileArt.png" id="1_axebo"]
+
+[node name="HeroIcon" type="CanvasGroup"]
+
+[node name="HeroSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_axebo")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Attacks/DruidVineAttack/Druid_attack.gd" id="1_yqbcf"]
 [ext_resource type="Texture2D" uid="uid://drr7kr17fcksd" path="res://Art/VineAttack-Sheet.png" id="2_vp037"]
-[ext_resource type="AudioStream" uid="uid://70wbo0wupoco" path="res://SFX/Druid_vine_v1.wav" id="3_dpyog"]
+[ext_resource type="AudioStream" uid="uid://70wbo0wupoco" path="res://Sound/SFX/Druid_vine_v1.wav" id="3_dpyog"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
 height = 22.0

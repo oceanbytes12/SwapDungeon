@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk43t6h5qswor"]
+
+[ext_resource type="Script" path="res://UI/PartyRoster/RosterSpace.gd" id="1_bw8ej"]
+[ext_resource type="Script" path="res://UI/Tweeners/SpinInUI.gd" id="2_x6uum"]
+[ext_resource type="AudioStream" uid="uid://08xbdwqhcsad" path="res://Sound/SFX/Place_unit_v1.wav" id="4_amh18"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ls6dh"]
+load_path = "res://.godot/imported/MikeCrushSheet.png-ff6dba74345dad9f8a87d50ebb347143.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nm2ik"]
+size = Vector2(48, 48)
+
+[node name="HeroRosterPanel" type="Control" node_paths=PackedStringArray("BackPanel", "FrontPanel", "UIParent")]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+script = ExtResource("1_bw8ej")
+BackPanel = NodePath("ExpandInUI/Back_Panel")
+FrontPanel = NodePath("ExpandInUI/Front_Panel")
+UIParent = NodePath("ExpandInUI")
+metadata/_edit_group_ = true
+
+[node name="ExpandInUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+mouse_filter = 2
+script = ExtResource("2_x6uum")
+
+[node name="Back_Panel" type="Panel" parent="ExpandInUI"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+mouse_filter = 2
+metadata/_edit_group_ = true
+
+[node name="NinePatchRectBack" type="NinePatchRect" parent="ExpandInUI/Back_Panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+texture = SubResource("CompressedTexture2D_ls6dh")
+region_rect = Rect2(70, 68, 54, 54)
+
+[node name="Front_Panel" type="Panel" parent="ExpandInUI"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+mouse_filter = 2
+metadata/_edit_group_ = true
+
+[node name="NinePatchRectFront" type="NinePatchRect" parent="ExpandInUI/Front_Panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+texture = SubResource("CompressedTexture2D_ls6dh")
+region_rect = Rect2(4, 4, 54, 54)
+
+[node name="Area2D" type="Area2D" parent="ExpandInUI/Front_Panel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExpandInUI/Front_Panel/Area2D"]
+position = Vector2(30, 30)
+shape = SubResource("RectangleShape2D_nm2ik")
+debug_color = Color(0.847059, 0, 0.901961, 0.419608)
+
+[node name="HighLightPanel" type="Panel" parent="ExpandInUI"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 999
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+mouse_filter = 2
+metadata/_edit_group_ = true
+
+[node name="NinePatchRectHighlight" type="NinePatchRect" parent="ExpandInUI/HighLightPanel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture = SubResource("CompressedTexture2D_ls6dh")
+region_rect = Rect2(68, 36, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Place_unit_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_amh18")
+
+[connection signal="mouse_entered" from="ExpandInUI/Front_Panel/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="ExpandInUI/Front_Panel/Area2D" to="." method="_on_area_2d_mouse_exited"]

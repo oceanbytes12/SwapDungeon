@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bbltt3vtbeo47" path="res://Art/SwordAttack.png" id="1_nrbou"]
 [ext_resource type="Script" path="res://Scenes/Attacks/SlashAttack/slash_attack_effect.gd" id="2_21l2s"]
-[ext_resource type="AudioStream" uid="uid://d276ddwhno86" path="res://SFX/Sword_whoosh_v1.wav" id="3_46mjk"]
-[ext_resource type="AudioStream" uid="uid://ced3nogo0peqt" path="res://SFX/Sword_hit_base_SD.wav" id="4_pkmk6"]
+[ext_resource type="AudioStream" uid="uid://d276ddwhno86" path="res://Sound/SFX/Sword_whoosh_v1.wav" id="3_46mjk"]
+[ext_resource type="AudioStream" uid="uid://ced3nogo0peqt" path="res://Sound/SFX/Sword_hit_base_SD.wav" id="4_pkmk6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhbib"]
 atlas = ExtResource("1_nrbou")

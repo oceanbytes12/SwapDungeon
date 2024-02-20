@@ -1,0 +1,520 @@
+[gd_scene load_steps=32 format=3 uid="uid://bxgalpram8qcb"]
+
+[ext_resource type="Script" path="res://UI/GameUI.gd" id="1_ljg2h"]
+[ext_resource type="PackedScene" uid="uid://ct563bad0ifvj" path="res://Scenes/HeroDatas/Archer1Data.tscn" id="2_x8r06"]
+[ext_resource type="PackedScene" uid="uid://bh4kd4tdp6wrf" path="res://UI/HeroIcon.tscn" id="3_kqi7e"]
+[ext_resource type="Script" path="res://UI/LevelLoader.gd" id="4_apd85"]
+[ext_resource type="PackedScene" uid="uid://db2bmrfjuccta" path="res://Scenes/Levels/Level1.tscn" id="5_2sahv"]
+[ext_resource type="PackedScene" uid="uid://dn8y8e1qbyjbj" path="res://Scenes/Levels/Level2.tscn" id="6_1sj3a"]
+[ext_resource type="PackedScene" uid="uid://c05cqors27ki7" path="res://Scenes/Levels/Level3.tscn" id="7_610u6"]
+[ext_resource type="PackedScene" uid="uid://cynwug6wlolep" path="res://Scenes/Levels/Level4.tscn" id="8_wgulc"]
+[ext_resource type="PackedScene" uid="uid://uit57ouifxxn" path="res://Scenes/Levels/Level5.tscn" id="9_axa5b"]
+[ext_resource type="Script" path="res://UI/Scripts/BattleManager.gd" id="10_v2kbk"]
+[ext_resource type="Script" path="res://UI/Scripts/UIScripts/Tweeners/SlideInUI.gd" id="11_ywi7a"]
+[ext_resource type="Script" path="res://UI/PartyRoster/PartyRoster.gd" id="12_hdwe8"]
+[ext_resource type="PackedScene" uid="uid://bk43t6h5qswor" path="res://UI/PartyRoster/RosterSpace.tscn" id="13_vwdfc"]
+[ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Art/MikeCrushSheet.png" id="14_tnysx"]
+[ext_resource type="Texture2D" uid="uid://b83sdt1m7s25b" path="res://Art/StartButtons1.png" id="15_nvic1"]
+[ext_resource type="Texture2D" uid="uid://dw5suyq414m44" path="res://Art/StartButtons3.png" id="16_t8p2a"]
+[ext_resource type="Texture2D" uid="uid://c4wgljp44rdc5" path="res://Art/StartButtons2.png" id="17_pi7ym"]
+[ext_resource type="PackedScene" uid="uid://dysjvo3gsiwfg" path="res://UI/BattleDeployment/DeploySpace.tscn" id="18_0nhhf"]
+[ext_resource type="Script" path="res://UI/HeroGenerator.gd" id="19_28nhm"]
+[ext_resource type="PackedScene" uid="uid://bqppco1s6evwj" path="res://UI/AddableHero.tscn" id="20_tdk32"]
+[ext_resource type="Texture2D" uid="uid://kq5a4tr16av" path="res://Art/Mimic1.png" id="21_aqest"]
+[ext_resource type="Texture2D" uid="uid://b6qv0oyr38dqg" path="res://Art/Mimic2.png" id="22_hqbda"]
+[ext_resource type="Texture2D" uid="uid://cn5hlcg8bvwu6" path="res://Art/LoseScreen.png" id="23_cs70b"]
+[ext_resource type="Texture2D" uid="uid://b76mhmgtyxmp4" path="res://Art/WinScreen.png" id="24_n4ld2"]
+[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Scenes/Levels/tile_map.tscn" id="25_tsa70"]
+[ext_resource type="Script" path="res://UI/MoneyManager.gd" id="26_qcadi"]
+[ext_resource type="Texture2D" uid="uid://bfincd5804dwt" path="res://Art/MoneyPouch.png" id="27_vraty"]
+[ext_resource type="Script" path="res://UI/PauseMenu.gd" id="28_qhpyi"]
+[ext_resource type="Texture2D" uid="uid://drn1kqi0nixw7" path="res://Art/SplashScreen.png" id="29_gjw7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnua3"]
+size = Vector2(464, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2n7c"]
+size = Vector2(56, 26)
+
+[node name="GameUI" type="Node2D"]
+script = ExtResource("1_ljg2h")
+HeroDataScenes = Array[PackedScene]([ExtResource("2_x8r06")])
+iconScene = ExtResource("3_kqi7e")
+
+[node name="Preloader" type="Node" parent="."]
+script = ExtResource("4_apd85")
+level1 = ExtResource("5_2sahv")
+level2 = ExtResource("6_1sj3a")
+level3 = ExtResource("7_610u6")
+level4 = ExtResource("8_wgulc")
+level5 = ExtResource("9_axa5b")
+
+[node name="Data" type="Node2D" parent="."]
+
+[node name="BattleManager" type="Node" parent="." node_paths=PackedStringArray("PartyBattleUI", "battlePanels", "StartBattleButton", "GameScript", "tileMap")]
+script = ExtResource("10_v2kbk")
+PartyBattleUI = NodePath("../GameUI/BattleDeployment")
+battlePanels = [NodePath("../GameUI/BattleDeployment/DeploySpace1"), NodePath("../GameUI/BattleDeployment/DeploySpace2"), NodePath("../GameUI/BattleDeployment/DeploySpace3")]
+StartBattleButton = NodePath("../GameUI/BattleDeployment/StartBattleButton")
+GameScript = NodePath("..")
+tileMap = NodePath("../GameUI/TileMap")
+
+[node name="Party" type="Node2D" parent="BattleManager"]
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+
+[node name="PartyRosterParent" type="Control" parent="GameUI" node_paths=PackedStringArray("SlidingUI")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+mouse_filter = 2
+script = ExtResource("11_ywi7a")
+SlidingUI = NodePath("PartyRoster/RosterUI")
+Automatic = true
+
+[node name="PartyRoster" type="Control" parent="GameUI/PartyRosterParent" node_paths=PackedStringArray("partyContainer")]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("12_hdwe8")
+partyContainer = NodePath("RosterUI/MarginContainer/NewHeroContainer")
+rosterPanel = ExtResource("13_vwdfc")
+
+[node name="RosterUI" type="NinePatchRect" parent="GameUI/PartyRosterParent/PartyRoster"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_tnysx")
+region_rect = Rect2(5, 68, 53, 54)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI/PartyRosterParent/PartyRoster/RosterUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -30.0
+offset_right = 60.0
+offset_bottom = 30.0
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+
+[node name="NewHeroContainer" type="GridContainer" parent="GameUI/PartyRosterParent/PartyRoster/RosterUI/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/h_separation = 2
+columns = 9
+
+[node name="EmptySlot" type="NinePatchRect" parent="GameUI/PartyRosterParent/PartyRoster/RosterUI/MarginContainer/NewHeroContainer"]
+layout_mode = 2
+texture = ExtResource("14_tnysx")
+region_rect = Rect2(164, 198, 54, 54)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Area2D" type="Area2D" parent="GameUI/PartyRosterParent/PartyRoster"]
+position = Vector2(222, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameUI/PartyRosterParent/PartyRoster/Area2D"]
+position = Vector2(18, 0)
+shape = SubResource("RectangleShape2D_fnua3")
+
+[node name="BattleDeployment" type="Control" parent="GameUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("11_ywi7a")
+
+[node name="StartBattleButton" type="TextureButton" parent="GameUI/BattleDeployment"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2875
+anchor_top = 0.664815
+anchor_right = 0.3
+anchor_bottom = 0.664815
+offset_left = -23.0
+offset_top = -15.5
+offset_right = 23.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("15_nvic1")
+texture_pressed = ExtResource("16_t8p2a")
+texture_hover = ExtResource("17_pi7ym")
+metadata/_edit_use_anchors_ = true
+
+[node name="DeploySpace1" parent="GameUI/BattleDeployment" instance=ExtResource("18_0nhhf")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 65.0
+offset_top = 90.0
+offset_right = 125.0
+offset_bottom = 150.0
+size_flags_horizontal = 4
+
+[node name="DeploySpace2" parent="GameUI/BattleDeployment" instance=ExtResource("18_0nhhf")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 4.0
+offset_top = 49.0
+offset_right = 64.0
+offset_bottom = 109.0
+
+[node name="DeploySpace3" parent="GameUI/BattleDeployment" instance=ExtResource("18_0nhhf")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 4.0
+offset_top = 136.0
+offset_right = 64.0
+offset_bottom = 196.0
+
+[node name="Label" type="Label" parent="GameUI/BattleDeployment"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 39.0
+offset_right = 314.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.929412, 0.737255, 0.054902, 1)
+text = "READY YOUR TEAM"
+horizontal_alignment = 1
+
+[node name="PartyAddUI" type="Control" parent="GameUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+script = ExtResource("11_ywi7a")
+Automatic = true
+
+[node name="HeroGenerator" type="Control" parent="GameUI/PartyAddUI" node_paths=PackedStringArray("parent")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_28nhm")
+parent = NodePath("GridContainer")
+numToGenerate = 3
+NewHero = ExtResource("20_tdk32")
+
+[node name="GridContainer" type="GridContainer" parent="GameUI/PartyAddUI/HeroGenerator"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+columns = 6
+
+[node name="SkipButton" type="Button" parent="GameUI/PartyAddUI/HeroGenerator"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = -150.0
+offset_right = -82.0
+offset_bottom = -119.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Skip"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Reroll" type="Button" parent="GameUI/PartyAddUI/HeroGenerator"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -109.0
+offset_right = -80.0
+offset_bottom = -78.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Reroll"
+icon_alignment = 1
+expand_icon = true
+
+[node name="AddNewPartyMember" type="Label" parent="GameUI/PartyAddUI/HeroGenerator"]
+modulate = Color(1, 0.74902, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = 39.0
+offset_right = 96.0
+offset_bottom = 62.0
+grow_horizontal = 2
+text = "ADD NEW PARTY MEMBER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellArea" type="Area2D" parent="GameUI/PartyAddUI/HeroGenerator"]
+position = Vector2(65, 129)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameUI/PartyAddUI/HeroGenerator/SellArea"]
+position = Vector2(20, 19)
+shape = SubResource("RectangleShape2D_c2n7c")
+
+[node name="Mimic" type="Control" parent="GameUI/PartyAddUI/HeroGenerator/SellArea"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="GameUI/PartyAddUI/HeroGenerator/SellArea/Mimic"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -27.0
+offset_right = 46.0
+offset_bottom = -4.0
+text = "Sell"
+
+[node name="MimicButton" type="TextureButton" parent="GameUI/PartyAddUI/HeroGenerator/SellArea/Mimic"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 53.0
+offset_bottom = 48.0
+texture_normal = ExtResource("21_aqest")
+texture_hover = ExtResource("22_hqbda")
+
+[node name="GameOver" type="Panel" parent="GameUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_ywi7a")
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/GameOver"]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 269.0
+texture = ExtResource("23_cs70b")
+
+[node name="Button" type="Button" parent="GameUI/GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 48.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again
+"
+
+[node name="GameWin" type="Panel" parent="GameUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_ywi7a")
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/GameWin"]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("24_n4ld2")
+
+[node name="Label" type="Label" parent="GameUI/GameWin"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.0
+offset_top = 64.0
+offset_right = 37.0
+offset_bottom = 87.0
+grow_horizontal = 2
+text = "You Win!"
+
+[node name="Button" type="Button" parent="GameUI/GameWin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 74.0
+offset_right = 43.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again
+"
+
+[node name="TileMap" parent="GameUI" instance=ExtResource("25_tsa70")]
+
+[node name="Money" type="Control" parent="GameUI" node_paths=PackedStringArray("Mimic", "MimicButton", "RerollButton", "SkipButton")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("26_qcadi")
+Mimic = NodePath("../PartyAddUI/HeroGenerator/SellArea/Mimic")
+MimicButton = NodePath("../PartyAddUI/HeroGenerator/SellArea/Mimic/MimicButton")
+RerollButton = NodePath("../PartyAddUI/HeroGenerator/Reroll")
+SkipButton = NodePath("../PartyAddUI/HeroGenerator/SkipButton")
+
+[node name="Label" type="Label" parent="GameUI/Money"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -403.0
+offset_top = -17.0
+offset_right = -363.0
+offset_bottom = 6.0
+grow_vertical = 2
+pivot_offset = Vector2(40, 0)
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+text = "100
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/Money"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -469.0
+offset_top = -15.0
+offset_right = -445.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("27_vraty")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Paused" type="Panel" parent="GameUI"]
+process_mode = 3
+visible = false
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("28_qhpyi")
+
+[node name="TextureRect" type="TextureRect" parent="GameUI/Paused"]
+layout_mode = 0
+offset_right = 478.0
+offset_bottom = 269.0
+texture = ExtResource("29_gjw7g")
+
+[node name="Button" type="Button" parent="GameUI/Paused"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -10.0
+offset_right = 48.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit
+"
+
+[connection signal="finish_battle" from="BattleManager" to="GameUI/PartyRosterParent" method="slide_in"]
+[connection signal="finish_battle" from="BattleManager" to="GameUI/PartyRosterParent/PartyRoster" method="_return_all_panels"]
+[connection signal="finish_battle" from="BattleManager" to="GameUI/PartyAddUI" method="slide_in"]
+[connection signal="finish_game" from="BattleManager" to="GameUI/GameWin" method="slide_in"]
+[connection signal="lose_battle" from="BattleManager" to="GameUI/GameOver" method="slide_in"]
+[connection signal="move_To_Ready_Screen" from="BattleManager" to="GameUI/BattleDeployment" method="slide_in"]
+[connection signal="move_To_Ready_Screen" from="BattleManager" to="GameUI/PartyAddUI" method="slide_out"]
+[connection signal="onPartyAddedTo" from="GameUI/PartyRosterParent/PartyRoster" to="BattleManager" method="_FinishPartyAddition"]
+[connection signal="mouse_entered" from="GameUI/PartyRosterParent/PartyRoster/Area2D" to="GameUI/PartyRosterParent/PartyRoster" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="GameUI/PartyRosterParent/PartyRoster/Area2D" to="GameUI/PartyRosterParent/PartyRoster" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="GameUI/BattleDeployment/StartBattleButton" to="BattleManager" method="_StartBattle"]
+[connection signal="pressed" from="GameUI/BattleDeployment/StartBattleButton" to="GameUI/PartyRosterParent" method="slide_out"]
+[connection signal="pressed" from="GameUI/BattleDeployment/StartBattleButton" to="GameUI/BattleDeployment" method="slide_out"]
+[connection signal="on_tween_in_start" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroGenerator" method="Generate"]
+[connection signal="on_tween_out_finish" from="GameUI/PartyAddUI" to="GameUI/PartyAddUI/HeroGenerator" method="Demolish"]
+[connection signal="pressed" from="GameUI/PartyAddUI/HeroGenerator/SkipButton" to="BattleManager" method="_FinishPartyAddition"]
+[connection signal="pressed" from="GameUI/PartyAddUI/HeroGenerator/Reroll" to="GameUI/Money" method="AttemptReroll"]
+[connection signal="mouse_entered" from="GameUI/PartyAddUI/HeroGenerator/SellArea" to="GameUI/Money" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="GameUI/PartyAddUI/HeroGenerator/SellArea" to="GameUI/Money" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="GameUI/GameOver/Button" to="." method="_reset"]
+[connection signal="pressed" from="GameUI/GameWin/Button" to="." method="_reset"]
+[connection signal="rerolled" from="GameUI/Money" to="GameUI/PartyAddUI" method="slide_out_then_in"]
+[connection signal="pressed" from="GameUI/Paused/Button" to="." method="_quit"]

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Attacks/MageAttack/mage_attack.gd" id="1_ydhox"]
 [ext_resource type="Texture2D" uid="uid://dlivpfjjuhlhg" path="res://Art/MagicAttack2x2-Sheet.png" id="2_f41wm"]
-[ext_resource type="AudioStream" uid="uid://cjar8mkpffp5b" path="res://SFX/Necro_spell_cast_v1.wav" id="3_8l707"]
-[ext_resource type="AudioStream" uid="uid://06nasvdu5228" path="res://SFX/Necro_spell_hit_v1.wav" id="4_wrbe4"]
+[ext_resource type="AudioStream" uid="uid://cjar8mkpffp5b" path="res://Sound/SFX/Necro_spell_cast_v1.wav" id="3_8l707"]
+[ext_resource type="AudioStream" uid="uid://06nasvdu5228" path="res://Sound/SFX/Necro_spell_hit_v1.wav" id="4_wrbe4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
 height = 22.0

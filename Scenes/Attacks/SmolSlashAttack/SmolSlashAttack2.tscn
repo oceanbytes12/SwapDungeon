@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bbltt3vtbeo47" path="res://Art/SwordAttack.png" id="1_vtchi"]
 [ext_resource type="Texture2D" uid="uid://dsajmenv8p1jg" path="res://Art/DaggerSlash-Sheet.png" id="2_ewx6v"]
 [ext_resource type="Script" path="res://Scenes/Attacks/SmolSlashAttack/SmolSlashAttack2.gd" id="3_lsn1w"]
-[ext_resource type="AudioStream" uid="uid://blck4tjllm1mm" path="res://SFX/Rogue_stab_v1.wav" id="4_rs7ac"]
+[ext_resource type="AudioStream" uid="uid://blck4tjllm1mm" path="res://Sound/SFX/Rogue_stab_v1.wav" id="4_rs7ac"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhbib"]
 atlas = ExtResource("1_vtchi")

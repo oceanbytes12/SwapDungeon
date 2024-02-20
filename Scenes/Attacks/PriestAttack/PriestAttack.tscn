@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Attacks/PriestAttack/PriestAttack.gd" id="1_ob4jc"]
 [ext_resource type="Texture2D" uid="uid://dlivpfjjuhlhg" path="res://Art/MagicAttack2x2-Sheet.png" id="2_hwtbl"]
 [ext_resource type="Texture2D" uid="uid://g8ip6uceaa12" path="res://Art/HolyAttack-Sheet.png" id="3_eel36"]
-[ext_resource type="AudioStream" uid="uid://d3ysx1pfpavuk" path="res://SFX/Priest_heal_v1.wav" id="4_0qhho"]
-[ext_resource type="AudioStream" uid="uid://da3npdaidwhkg" path="res://SFX/Mage_spell_cast_v1.wav" id="5_buodd"]
+[ext_resource type="AudioStream" uid="uid://d3ysx1pfpavuk" path="res://Sound/SFX/Priest_heal_v1.wav" id="4_0qhho"]
+[ext_resource type="AudioStream" uid="uid://da3npdaidwhkg" path="res://Sound/SFX/Mage_spell_cast_v1.wav" id="5_buodd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
 radius = 7.0

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4e0k2kylakpm"]
+
+[ext_resource type="Script" path="res://UI/LoadingScene.gd" id="1_le43p"]
+[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Scenes/Levels/tile_map.tscn" id="2_34pj4"]
+
+[node name="LoadingScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LoadingScene" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_le43p")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/LoadingScene"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TileMap" parent="CanvasLayer" instance=ExtResource("2_34pj4")]

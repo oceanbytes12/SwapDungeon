@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bql4sjxuay7s1"]
+
+[ext_resource type="Script" path="res://UI/UnitControls/UnitController.gd" id="1_mo7b4"]
+[ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scenes/Levels/BaseLevel.tscn" id="2_sifn1"]
+[ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/Levels/spawn_positions.tscn" id="3_nphcp"]
+[ext_resource type="Script" path="res://UI/UnitControls/Camera2D.gd" id="4_h6kv8"]
+[ext_resource type="PackedScene" path="res://Megan WIP/Deerman aka Minotaur/Minotaur.tscn" id="5_5m73q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qaq"]
+bg_color = Color(0.258824, 0.972549, 0.470588, 0.431373)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_mo7b4")
+
+[node name="Level1" parent="." instance=ExtResource("2_sifn1")]
+
+[node name="SpawnPositions" parent="." instance=ExtResource("3_nphcp")]
+
+[node name="Camera" type="Camera2D" parent="."]
+script = ExtResource("4_h6kv8")
+
+[node name="Minotaur" parent="." instance=ExtResource("5_5m73q")]
+position = Vector2(152, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SelectionPanel" type="Panel" parent="UI"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_j3qaq")
+
+[connection signal="area_selected" from="Camera" to="." method="_on_camera_area_selected"]
