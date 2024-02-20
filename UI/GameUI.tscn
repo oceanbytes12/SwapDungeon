@@ -1,13 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxgalpram8qcb"]
+[gd_scene load_steps=28 format=3 uid="uid://bxgalpram8qcb"]
 
 [ext_resource type="Script" path="res://UI/GameUI.gd" id="1_ljg2h"]
 [ext_resource type="PackedScene" uid="uid://ct563bad0ifvj" path="res://Scenes/HeroDatas/Archer1Data.tscn" id="2_x8r06"]
 [ext_resource type="PackedScene" uid="uid://bh4kd4tdp6wrf" path="res://UI/HeroIcons/HeroIcon.tscn" id="3_kqi7e"]
 [ext_resource type="PackedScene" uid="uid://db2bmrfjuccta" path="res://Scenes/Levels/Level1.tscn" id="5_2sahv"]
 [ext_resource type="PackedScene" uid="uid://dn8y8e1qbyjbj" path="res://Scenes/Levels/Level2.tscn" id="6_1sj3a"]
-[ext_resource type="PackedScene" uid="uid://c05cqors27ki7" path="res://Scenes/Levels/Level3.tscn" id="7_610u6"]
-[ext_resource type="PackedScene" uid="uid://cynwug6wlolep" path="res://Scenes/Levels/Level4.tscn" id="8_wgulc"]
-[ext_resource type="PackedScene" uid="uid://uit57ouifxxn" path="res://Scenes/Levels/Level5.tscn" id="9_axa5b"]
 [ext_resource type="Script" path="res://UI/UnitControls/BattleManager.gd" id="10_v2kbk"]
 [ext_resource type="Script" path="res://UI/Tweeners/SlideInUI.gd" id="11_ywi7a"]
 [ext_resource type="Script" path="res://UI/PartyRoster.gd" id="12_hdwe8"]
@@ -39,11 +36,8 @@ size = Vector2(56, 26)
 script = ExtResource("1_ljg2h")
 HeroDataScenes = Array[PackedScene]([ExtResource("2_x8r06")])
 iconScene = ExtResource("3_kqi7e")
-level1 = ExtResource("5_2sahv")
-level2 = ExtResource("6_1sj3a")
-level3 = ExtResource("7_610u6")
-level4 = ExtResource("8_wgulc")
-level5 = ExtResource("9_axa5b")
+levels = Array[PackedScene]([ExtResource("5_2sahv"), ExtResource("6_1sj3a")])
+heros = Array[PackedScene]([null])
 
 [node name="Data" type="Node2D" parent="."]
 

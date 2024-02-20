@@ -6,24 +6,20 @@ var Levels : Array
 var HeroDatas : Array[HeroData]
 var BasicHeroDatas : Array[HeroData]
 var levelIndex = 0
-var levels = []
 
 @export var HeroDataScenes : Array[PackedScene]
 @export var use_context_cursors = true
 @export var iconScene : PackedScene   # preload("res://Michael WIP/GoodScenes/HeroIcon.tscn")
-@export var mouse_pointer = preload("res://Art/MousePointer1.png")
-@export var mouse_grab = preload("res://Art/MousePointer2.png")
-@export var mouse_open = preload("res://Art/MousePointer3.png")
-@export var mouse_attack = preload("res://Art/MousePointer4.png")
+@onready var mouse_pointer = preload("res://Art/MousePointer1.png")
+@onready var mouse_grab = preload("res://Art/MousePointer2.png")
+@onready var mouse_open = preload("res://Art/MousePointer3.png")
+@onready var mouse_attack = preload("res://Art/MousePointer4.png")
 
-@export var level1 : PackedScene
-@export var level2 : PackedScene
-@export var level3 : PackedScene
-@export var level4 : PackedScene
-@export var level5 : PackedScene
+
+@export var levels : Array[PackedScene]
+@export var heros : Array[PackedScene]
 
 func GetNextLevel():
-	print(levelIndex)
 	if(levelIndex < levels.size()):
 		var temp = levels[levelIndex]
 		return temp
@@ -33,11 +29,6 @@ func _IncrementLevelIndex():
 
 func _ready():
 	Globals.unitManager = self
-	levels.append(level1)
-	levels.append(level2)
-	levels.append(level3)
-	levels.append(level4)
-	levels.append(level5)
 	for dataScene in HeroDataScenes:
 		var newData = dataScene.instantiate()
 		$Data.add_child(newData)

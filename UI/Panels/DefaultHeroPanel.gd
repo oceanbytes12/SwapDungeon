@@ -1,10 +1,10 @@
 extends Control
 
-class_name RosterSpace
+class_name HeroRosterPanel
 
-@export var BackPanel : Control
-@export var FrontPanel : Control
-@export var UIParent : Control
+@onready var BackPanel = $Back_Panel
+@onready var FrontPanel = $Front_Panel
+@onready var UIParent = $ExpandInUI
 @onready var HighlightPanel : Control = $ExpandInUI/HighLightPanel
 var isDragged = false
 var speed = 10

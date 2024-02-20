@@ -13,11 +13,9 @@ var HeroIcon
 var data : HeroData
 var Gray = Color(0.411765, 0.411765, 0.411765, 1)
 
-@export var CreateRandomHero : bool = false
 
 func _ready():
-	if(CreateRandomHero):
-		_generateRandomHero()
+	_generateRandomHero()
 
 func ToggleDrag(newDragState):
 	dragStateChange.emit(isDragged, newDragState)
