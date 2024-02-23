@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cos46j3ppybq6"]
+
+[ext_resource type="PackedScene" uid="uid://s6pvfixrc808" path="res://UI/HeroPanels/default_panel.tscn" id="1_j13xu"]
+[ext_resource type="Script" path="res://UI/HeroPanels/drag_panel.gd" id="2_h33eo"]
+
+[node name="DragPanel" instance=ExtResource("1_j13xu")]
+script = ExtResource("2_h33eo")
+
+[node name="Back_Panel" parent="." index="0"]
+visible = false

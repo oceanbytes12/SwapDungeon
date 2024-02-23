@@ -1,20 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxgalpram8qcb"]
+[gd_scene load_steps=11 format=3 uid="uid://bxgalpram8qcb"]
 
 [ext_resource type="Script" path="res://UI/GameUI.gd" id="1_ljg2h"]
 [ext_resource type="PackedScene" uid="uid://ct563bad0ifvj" path="res://Scenes/HeroDatas/Archer1Data.tscn" id="2_x8r06"]
 [ext_resource type="PackedScene" uid="uid://bh4kd4tdp6wrf" path="res://UI/HeroIcons/HeroIcon.tscn" id="3_kqi7e"]
 [ext_resource type="PackedScene" uid="uid://db2bmrfjuccta" path="res://Scenes/Levels/Level1.tscn" id="5_2sahv"]
 [ext_resource type="PackedScene" uid="uid://dn8y8e1qbyjbj" path="res://Scenes/Levels/Level2.tscn" id="6_1sj3a"]
+[ext_resource type="PackedScene" uid="uid://bl8kwwtmf1wup" path="res://UI/PartyRoster/party_roster.tscn" id="6_dbpm7"]
 [ext_resource type="PackedScene" uid="uid://dkvhyi7tr5mja" path="res://UI/HeroShop/hero_shop.tscn" id="10_tucnc"]
-[ext_resource type="Script" path="res://UI/PartyRoster.gd" id="12_hdwe8"]
-[ext_resource type="PackedScene" uid="uid://bk43t6h5qswor" path="res://UI/Panels/RosterSpace.tscn" id="13_vwdfc"]
-[ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Art/MikeCrushSheet.png" id="14_tnysx"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Scenes/Levels/tile_map.tscn" id="25_tsa70"]
 [ext_resource type="Script" path="res://UI/MoneyManager.gd" id="26_qcadi"]
 [ext_resource type="Texture2D" uid="uid://bfincd5804dwt" path="res://Art/MoneyPouch.png" id="27_vraty"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnua3"]
-size = Vector2(464, 64)
 
 [node name="GameUI" type="Node2D"]
 script = ExtResource("1_ljg2h")
@@ -25,69 +20,7 @@ heros = Array[PackedScene]([null])
 
 [node name="GameUI" type="CanvasLayer" parent="."]
 
-[node name="PartyRoster" type="Control" parent="GameUI"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 3
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -68.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-script = ExtResource("12_hdwe8")
-rosterPanel = ExtResource("13_vwdfc")
-partyContainer = Object(GridContainer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":2,"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_constants/h_separation":2,"columns":9,"script":null)
-
-
-[node name="RosterUI" type="NinePatchRect" parent="GameUI/PartyRoster"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("14_tnysx")
-region_rect = Rect2(5, 68, 53, 54)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="MarginContainer" type="MarginContainer" parent="GameUI/PartyRoster/RosterUI"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -30.0
-offset_right = 60.0
-offset_bottom = 30.0
-grow_vertical = 2
-theme_override_constants/margin_left = 3
-
-[node name="NewHeroContainer" type="GridContainer" parent="GameUI/PartyRoster/RosterUI/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-theme_override_constants/h_separation = 2
-columns = 9
-
-[node name="EmptySlot" type="NinePatchRect" parent="GameUI/PartyRoster/RosterUI/MarginContainer/NewHeroContainer"]
-layout_mode = 2
-texture = ExtResource("14_tnysx")
-region_rect = Rect2(164, 198, 54, 54)
-patch_margin_left = 30
-patch_margin_top = 30
-patch_margin_right = 30
-patch_margin_bottom = 30
-
-[node name="Area2D" type="Area2D" parent="GameUI/PartyRoster"]
-position = Vector2(222, 30)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameUI/PartyRoster/Area2D"]
-position = Vector2(18, 0)
-shape = SubResource("RectangleShape2D_fnua3")
+[node name="PartyRoster" parent="GameUI" instance=ExtResource("6_dbpm7")]
 
 [node name="HeroShop" parent="GameUI" node_paths=PackedStringArray("PartyRoster") instance=ExtResource("10_tucnc")]
 PartyRoster = NodePath("../PartyRoster")
@@ -132,6 +65,3 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Background" parent="GameUI" instance=ExtResource("25_tsa70")]
-
-[connection signal="mouse_entered" from="GameUI/PartyRoster/Area2D" to="GameUI/PartyRoster" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="GameUI/PartyRoster/Area2D" to="GameUI/PartyRoster" method="_on_area_2d_mouse_exited"]

@@ -14,8 +14,8 @@ var UpgradeableUnits = []
 func _on_area_2d_mouse_entered():
 	Selected = true
 
-func _on_area_2d_mouse_exited():
-	Selected = false
+#func _on_area_2d_mouse_exited():
+	#Selected = false
 
 #func addToParty(panel):
 	#emit_signal("onPartyAddedTo")

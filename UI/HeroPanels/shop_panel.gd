@@ -3,16 +3,14 @@ class_name HeroRosterPanel
 
 signal panel_chosen
 
-
 var mouse_target = false
 
 func _input(event):
 	if event.is_action_released("LeftClick") and mouse_target:
 		$Front_Panel.visible = false
 		panel_chosen.emit(self)
-	if event.is_action_pressed()
-		
-		
+	#if event.is_action_pressed():
+		#pass
 
 func _on_mouse_test_mouse_entered():
 	scale = Vector2.ONE * 1.1

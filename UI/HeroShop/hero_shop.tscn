@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkvhyi7tr5mja"]
+[gd_scene load_steps=5 format=3 uid="uid://dkvhyi7tr5mja"]
 
-[ext_resource type="Script" path="res://UI/HeroShop.gd" id="1_ur6gg"]
+[ext_resource type="Script" path="res://UI/HeroShop/HeroShop.gd" id="1_1ulwn"]
 [ext_resource type="PackedScene" uid="uid://bh4kd4tdp6wrf" path="res://UI/HeroIcons/HeroIcon.tscn" id="2_7qc6p"]
-[ext_resource type="PackedScene" uid="uid://s6pvfixrc808" path="res://UI/HeroPanels/default_panel.tscn" id="2_bb4y1"]
-[ext_resource type="Texture2D" uid="uid://kq5a4tr16av" path="res://Art/Mimic1.png" id="3_v576j"]
-[ext_resource type="Texture2D" uid="uid://b6qv0oyr38dqg" path="res://Art/Mimic2.png" id="4_hmx7s"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2n7c"]
-size = Vector2(56, 26)
+[ext_resource type="PackedScene" uid="uid://b7qoonppusl0e" path="res://UI/HeroPanels/shop_panel.tscn" id="3_2pw3m"]
+[ext_resource type="PackedScene" uid="uid://cos46j3ppybq6" path="res://UI/HeroPanels/drag_panel.tscn" id="4_2j2n2"]
 
 [node name="HeroShop" type="Control"]
 layout_mode = 3
@@ -17,9 +13,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_ur6gg")
+script = ExtResource("1_1ulwn")
 hero_list = Array[PackedScene]([ExtResource("2_7qc6p")])
-hero_panal_scene = ExtResource("2_bb4y1")
+hero_panal_scene = ExtResource("3_2pw3m")
+drag_panel_scene = ExtResource("4_2j2n2")
 
 [node name="ShopIconDisplay" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(60, 60)
@@ -86,33 +83,3 @@ grow_horizontal = 2
 text = "ADD NEW PARTY MEMBER"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="SellArea" type="Area2D" parent="."]
-position = Vector2(65, 129)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SellArea"]
-position = Vector2(20, 19)
-shape = SubResource("RectangleShape2D_c2n7c")
-
-[node name="Mimic" type="Control" parent="SellArea"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="SellArea/Mimic"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = -27.0
-offset_right = 46.0
-offset_bottom = -4.0
-text = "Sell"
-
-[node name="MimicButton" type="TextureButton" parent="SellArea/Mimic"]
-layout_mode = 0
-offset_left = -11.0
-offset_top = -16.0
-offset_right = 53.0
-offset_bottom = 48.0
-texture_normal = ExtResource("3_v576j")
-texture_hover = ExtResource("4_hmx7s")

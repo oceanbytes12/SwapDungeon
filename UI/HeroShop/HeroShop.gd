@@ -4,10 +4,14 @@ extends Control
 @export var hero_list : Array[PackedScene]
 @export var hero_panal_scene : PackedScene
 @export var PartyRoster : Control
+@export var drag_panel_scene : PackedScene
 #@export var NewHero : PackedScene
 
 func _ready():
 	roll_new_heros()
+	PartyRoster.mouse_entered_roster.connect(mouse_on_roster)
+	PartyRoster.mouse_exited_roster.connect(mouse_off_roster)
+	
 
 func roll_new_heros():
 	for i in shop_size:
@@ -18,10 +22,17 @@ func roll_new_heros():
 		$ShopIconDisplay.add_child(new_hero_panel)
 
 func on_panel_chosen(panel):
-	print("TEST")
+	var new_hero_panel = hero_panal_scene.instantiate()
+	PartyRoster.add_panel(new_hero_panel)
+	
+	#var new_drag_panel = drag_panel_scene.instantiate()
+	#get_parent().add_child(new_drag_panel)
 
-#func Demolish():
-	#for n in parent.get_children():
-		#parent.remove_child(n)
-		#n.queue_free() 
+
+func mouse_on_roster():
+	print("entered")
+
+
+func mouse_off_roster():
+	print("exited")
 
