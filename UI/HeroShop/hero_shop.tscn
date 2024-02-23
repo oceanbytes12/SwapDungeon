@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkvhyi7tr5mja"]
+
+[ext_resource type="Script" path="res://UI/HeroShop.gd" id="1_ur6gg"]
+[ext_resource type="PackedScene" uid="uid://bh4kd4tdp6wrf" path="res://UI/HeroIcons/HeroIcon.tscn" id="2_7qc6p"]
+[ext_resource type="PackedScene" uid="uid://s6pvfixrc808" path="res://UI/HeroPanels/default_panel.tscn" id="2_bb4y1"]
+[ext_resource type="Texture2D" uid="uid://kq5a4tr16av" path="res://Art/Mimic1.png" id="3_v576j"]
+[ext_resource type="Texture2D" uid="uid://b6qv0oyr38dqg" path="res://Art/Mimic2.png" id="4_hmx7s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2n7c"]
+size = Vector2(56, 26)
+
+[node name="HeroShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ur6gg")
+hero_list = Array[PackedScene]([ExtResource("2_7qc6p")])
+hero_panal_scene = ExtResource("2_bb4y1")
+
+[node name="ShopIconDisplay" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+columns = 6
+
+[node name="SkipButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = -150.0
+offset_right = -82.0
+offset_bottom = -119.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Skip"
+icon_alignment = 1
+expand_icon = true
+
+[node name="RerollButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -109.0
+offset_right = -80.0
+offset_bottom = -78.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Reroll"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Text" type="Label" parent="."]
+modulate = Color(1, 0.74902, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = 39.0
+offset_right = 96.0
+offset_bottom = 62.0
+grow_horizontal = 2
+text = "ADD NEW PARTY MEMBER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellArea" type="Area2D" parent="."]
+position = Vector2(65, 129)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SellArea"]
+position = Vector2(20, 19)
+shape = SubResource("RectangleShape2D_c2n7c")
+
+[node name="Mimic" type="Control" parent="SellArea"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="SellArea/Mimic"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -27.0
+offset_right = 46.0
+offset_bottom = -4.0
+text = "Sell"
+
+[node name="MimicButton" type="TextureButton" parent="SellArea/Mimic"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 53.0
+offset_bottom = 48.0
+texture_normal = ExtResource("3_v576j")
+texture_hover = ExtResource("4_hmx7s")

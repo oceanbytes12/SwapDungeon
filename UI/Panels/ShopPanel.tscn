@@ -84,7 +84,6 @@ position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_63y8u")
 
 [node name="HighLightPanel" type="Panel" parent="Front_Panel"]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = 999
 custom_minimum_size = Vector2(60, 60)
@@ -115,7 +114,6 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 
 [node name="Price" type="Label" parent="Front_Panel"]
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

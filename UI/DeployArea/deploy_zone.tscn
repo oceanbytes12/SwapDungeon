@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://qgij7kskhhhg"]
+
+[ext_resource type="Script" path="res://UI/Tweeners/SlideInUI.gd" id="1_71jqk"]
+[ext_resource type="Texture2D" uid="uid://b83sdt1m7s25b" path="res://Art/StartButtons1.png" id="2_wknob"]
+[ext_resource type="Texture2D" uid="uid://dw5suyq414m44" path="res://Art/StartButtons3.png" id="3_q1xfj"]
+[ext_resource type="Texture2D" uid="uid://c4wgljp44rdc5" path="res://Art/StartButtons2.png" id="4_jwymq"]
+[ext_resource type="PackedScene" uid="uid://dysjvo3gsiwfg" path="res://UI/Panels/DeploySpace.tscn" id="5_2pl71"]
+
+[node name="DeployZone" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_71jqk")
+
+[node name="StartBattleButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2875
+anchor_top = 0.664815
+anchor_right = 0.3
+anchor_bottom = 0.664815
+offset_left = -23.0
+offset_top = -15.5
+offset_right = 23.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_wknob")
+texture_pressed = ExtResource("3_q1xfj")
+texture_hover = ExtResource("4_jwymq")
+metadata/_edit_use_anchors_ = true
+
+[node name="DeploySpace1" parent="." instance=ExtResource("5_2pl71")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 65.0
+offset_top = 90.0
+offset_right = 125.0
+offset_bottom = 150.0
+size_flags_horizontal = 4
+
+[node name="DeploySpace2" parent="." instance=ExtResource("5_2pl71")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 4.0
+offset_top = 49.0
+offset_right = 64.0
+offset_bottom = 109.0
+
+[node name="DeploySpace3" parent="." instance=ExtResource("5_2pl71")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 4.0
+offset_top = 136.0
+offset_right = 64.0
+offset_bottom = 196.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 39.0
+offset_right = 314.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.929412, 0.737255, 0.054902, 1)
+text = "READY YOUR TEAM"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="StartBattleButton" to="." method="slide_out"]

@@ -15,10 +15,6 @@ run/main_scene="res://UI/GameUI.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Art/SwapText.png"
 
-[autoload]
-
-Globals="*res://UI/Globals.gd"
-
 [display]
 
 window/size/viewport_width=480

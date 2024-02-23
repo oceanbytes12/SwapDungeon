@@ -3,8 +3,8 @@ extends Node2D
 var money = 0
 var unitIcons : Array
 var Levels : Array
-var HeroDatas : Array[HeroData]
-var BasicHeroDatas : Array[HeroData]
+#var HeroDatas : Array[HeroData]
+#var BasicHeroDatas : Array[HeroData]
 var levelIndex = 0
 
 @export var HeroDataScenes : Array[PackedScene]
@@ -27,14 +27,14 @@ func GetNextLevel():
 func _IncrementLevelIndex():
 	levelIndex=levelIndex+1
 
-func _ready():
-	Globals.unitManager = self
-	for dataScene in HeroDataScenes:
-		var newData = dataScene.instantiate()
-		$Data.add_child(newData)
-		HeroDatas.append(newData)
-		if("1" in newData.name):
-			BasicHeroDatas.append(newData)
+#func _ready():
+	#Globals.unitManager = self
+	#for dataScene in HeroDataScenes:
+		#var newData = dataScene.instantiate()
+		#$Data.add_child(newData)
+		#HeroDatas.append(newData)
+		#if("1" in newData.name):
+			#BasicHeroDatas.append(newData)
 	
 
 func _physics_process(_delta):
@@ -80,9 +80,9 @@ func GetIcon(data):
 	return newIcon
 
 
-func _GetRandomUnupgradedHero():
-	var randomIndex = randi() % BasicHeroDatas.size()
-	return BasicHeroDatas[randomIndex]
+#func _GetRandomUnupgradedHero():
+	#var randomIndex = randi() % BasicHeroDatas.size()
+	#return BasicHeroDatas[randomIndex]
 	
 	
 func findSubstringAfterLastSlashBeforeTscn(input_string: String) -> String:

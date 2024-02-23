@@ -15,11 +15,11 @@ var fade_duration = 0.2
 var PartyCount = 0
 signal rerolled
 
-func _ready():
-	Globals.moneyManager = self
-	Mimic.modulate.a = targetMimicAlpha
-	RerollButton.modulate.a = targetRerollAlpha
-	SkipButton.modulate.a = targetRerollAlpha
+#func _ready():
+	#Globals.moneyManager = self
+	#Mimic.modulate.a = targetMimicAlpha
+	#RerollButton.modulate.a = targetRerollAlpha
+	#SkipButton.modulate.a = targetRerollAlpha
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -29,21 +29,21 @@ func _physics_process(delta):
 		displayedText = displayedText - delta * textspeed
 	$Label.text = "%s" % roundf(displayedText)
 
-func _process(delta):
-
-	targetMimicAlpha = (1 if PartyCount > 1 else 0)
-	targetRerollAlpha = (1 if PartyCount > 0 else 0)
-		
-	Mimic.modulate.a = lerp(Mimic.modulate.a, targetMimicAlpha, delta/fade_duration)
-	RerollButton.modulate.a = lerp(RerollButton.modulate.a, targetRerollAlpha, delta/fade_duration)
-	SkipButton.modulate.a = targetRerollAlpha
-	
-	if(targetRerollAlpha == 0):
-		RerollButton.disabled = true
-		SkipButton.disabled = true
-	else:
-		RerollButton.disabled = false
-		SkipButton.disabled = false
+#func _process(delta):
+#
+	#targetMimicAlpha = (1 if PartyCount > 1 else 0)
+	#targetRerollAlpha = (1 if PartyCount > 0 else 0)
+		#
+	#Mimic.modulate.a = lerp(Mimic.modulate.a, targetMimicAlpha, delta/fade_duration)
+	#RerollButton.modulate.a = lerp(RerollButton.modulate.a, targetRerollAlpha, delta/fade_duration)
+	#SkipButton.modulate.a = targetRerollAlpha
+	#
+	#if(targetRerollAlpha == 0):
+		#RerollButton.disabled = true
+		#SkipButton.disabled = true
+	#else:
+		#RerollButton.disabled = false
+		#SkipButton.disabled = false
 
 func _on_area_2d_mouse_entered():
 	Selected = true
@@ -53,14 +53,14 @@ func _on_area_2d_mouse_exited():
 
 func HandlePurchase(cost):
 	money = money - cost
-
-func sell(soldHero):
-	money = money + ceil(Globals.unitManager._GetCost(soldHero)/2)
-
-func GainMoney(amount):
-	money = money + amount
-
-func AttemptReroll():
-	if(money > rerollcost && Globals.partyRoster.getPartyCount() > 0):
-		money = money - rerollcost
-		emit_signal("rerolled")
+#
+#func sell(soldHero):
+	#money = money + ceil(Globals.unitManager._GetCost(soldHero)/2)
+#
+#func GainMoney(amount):
+	#money = money + amount
+#
+#func AttemptReroll():
+	#if(money > rerollcost && Globals.partyRoster.getPartyCount() > 0):
+		#money = money - rerollcost
+		#emit_signal("rerolled")

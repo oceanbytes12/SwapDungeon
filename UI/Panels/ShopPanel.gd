@@ -10,7 +10,6 @@ var speed = 10
 var isDragged = false
 signal dragStateChange(old_value, new_value)
 var HeroIcon
-var data : HeroData
 var Gray = Color(0.411765, 0.411765, 0.411765, 1)
 
 

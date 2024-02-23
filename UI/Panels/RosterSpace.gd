@@ -13,32 +13,32 @@ var battleSpace
 var Gray = Color(0.411765, 0.411765, 0.411765, 1) # Dim Gray
 func ToggleDrag(newDragState):
 	isDragged = newDragState
-
-func InitializeWithHero(newHeroData):
-	data = newHeroData
-	
-	var HeroIcon = Globals.unitManager.GetIcon(newHeroData)
-	#var HeroIcon = heroData.HeroIcon.Instantiate()
-	FrontPanel.add_child(HeroIcon)
-	HeroIcon.position += FrontPanel.size / 2
-	
-	var HeroIconBack = Globals.unitManager.GetIcon(newHeroData)
-	#var HeroIconBack = heroData.HeroIcon.Instantiate()
-	HeroIconBack.modulate = Gray
-	BackPanel.add_child(HeroIconBack)
-	HeroIconBack.position += BackPanel.size / 2
-
-func Target(isTargeted):
-	if(isTargeted):
-		FrontPanel.scale = Vector2.ONE * 1.1
-	else:
-		FrontPanel.scale = Vector2.ONE
-	
-func _on_area_2d_mouse_entered():
-	Globals._SetSelectedHeroRosterPanel(self)
-
-func _on_area_2d_mouse_exited():
-	Globals._SetSelectedHeroRosterPanel(null)
+#
+#func InitializeWithHero(newHeroData):
+	#data = newHeroData
+	#
+	#var HeroIcon = Globals.unitManager.GetIcon(newHeroData)
+	##var HeroIcon = heroData.HeroIcon.Instantiate()
+	#FrontPanel.add_child(HeroIcon)
+	#HeroIcon.position += FrontPanel.size / 2
+	#
+	#var HeroIconBack = Globals.unitManager.GetIcon(newHeroData)
+	##var HeroIconBack = heroData.HeroIcon.Instantiate()
+	#HeroIconBack.modulate = Gray
+	#BackPanel.add_child(HeroIconBack)
+	#HeroIconBack.position += BackPanel.size / 2
+#
+#func Target(isTargeted):
+	#if(isTargeted):
+		#FrontPanel.scale = Vector2.ONE * 1.1
+	#else:
+		#FrontPanel.scale = Vector2.ONE
+	#
+#func _on_area_2d_mouse_entered():
+	#Globals._SetSelectedHeroRosterPanel(self)
+#
+#func _on_area_2d_mouse_exited():
+	#Globals._SetSelectedHeroRosterPanel(null)
 
 func _process(delta):
 	if(isDragged):
