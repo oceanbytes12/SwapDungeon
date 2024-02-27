@@ -56,40 +56,23 @@ func check_object_under_mouse():
 	return null
 
 func _input(event):
-	if event.is_action_pressed("Ctrl"):
-		is_Ctrl_pressed = true
-	if event.is_action_released("Ctrl"):
-		is_Ctrl_pressed = false
 	if event.is_action_pressed("RightClick"):
 		if targeted_unit:
-			targeted_unit.set_targeted(false)
-
+			targeted_unit.set_selected("red")
 		var clicked_unit = check_object_under_mouse()
-		# if Unit isn't controllable we know it's a enemy unit
-		if clicked_unit and not clicked_unit.controllable and not clicked_unit.is_dead:
-			clicked_unit.set_targeted(true)
+		if clicked_unit and clicked_unit.type == "enemy":
+			clicked_unit.set_selected("red")
 			targeted_unit = clicked_unit
 			for unit in selected_units:
-				if unit.controllable:
-					unit.set_target(clicked_unit)
-			#var effect = attack_effect.instantiate()
-			#effect.global_position = get_global_mouse_position()
-			#add_child(effect)
+				unit.set_target(clicked_unit)
 		else:
 			for unit in selected_units:
-				if clicked_unit and clicked_unit.controllable and unit.support_unit:
-					unit.set_target(clicked_unit)
-				elif unit.controllable:
-					unit.set_walk()
-			#var effect = click_effect.instantiate()
-			#effect.global_position = get_global_mouse_position()
-			#add_child(effect)
+				unit.set_walk(get_global_mouse_position())
 	if event.is_action_pressed("LeftClick"):
 		deselect_all_units()
 		var clicked_unit = check_object_under_mouse()
-		# if Unit is controllable we know it's a player unit
 		if clicked_unit and clicked_unit.type == "player":
-			clicked_unit.set_selected(true)
+			clicked_unit.set_selected("green")
 			selected_units.append(clicked_unit)
 	if event.is_action_pressed("KillEnemies"):
 		_kill_all_enemies()
@@ -97,15 +80,10 @@ func _input(event):
 		_kill_all_players()
 
 func deselect_all_units():
-	# If player is pressing ctrl, don't deselect already selected units
-	if (!is_Ctrl_pressed):
-		selected_units = []
-		for unit in get_children():
-			if unit.is_in_group("unit"):
-				unit.set_selected(false)
-		if targeted_unit:
-			targeted_unit.set_targeted(false)
-			targeted_unit = null
+	selected_units = []
+	for unit in $Units.get_children():
+		if unit.is_in_group("unit"):
+			unit.set_selected("none")
 	
 func _kill_all_enemies():
 	for unit in get_children():

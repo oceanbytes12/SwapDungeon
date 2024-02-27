@@ -78,6 +78,38 @@ _data = {
 "hitAnimation": SubResource("Animation_ofoju")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfdci"]
+atlas = ExtResource("12_ifmi8")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l3kc"]
+atlas = ExtResource("12_ifmi8")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a40jf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfdci")
+}],
+"loop": true,
+"name": &"EnemySelected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l3kc")
+}],
+"loop": true,
+"name": &"FriendlySelected",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"NotSelected",
+"speed": 5.0
+}]
+
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
 
@@ -311,38 +343,6 @@ _data = {
 "Walk": SubResource("Animation_c5mp0")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yfdci"]
-atlas = ExtResource("12_ifmi8")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6l3kc"]
-atlas = ExtResource("12_ifmi8")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_a40jf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yfdci")
-}],
-"loop": true,
-"name": &"EnemySelected",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6l3kc")
-}],
-"loop": true,
-"name": &"FriendlySelected",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"NotSelected",
-"speed": 5.0
-}]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ysvin"]
 radius = 5.0
 
@@ -365,6 +365,11 @@ speed_scale = 2.0
 
 [node name="Looks" type="Node2D" parent="."]
 script = ExtResource("3_qxp5q")
+
+[node name="Selection" type="AnimatedSprite2D" parent="Looks"]
+position = Vector2(0, 11)
+sprite_frames = SubResource("SpriteFrames_a40jf")
+animation = &"NotSelected"
 
 [node name="Shadow" type="Sprite2D" parent="Looks"]
 position = Vector2(0, 10)
@@ -464,10 +469,6 @@ libraries = {
 }
 speed_scale = 6.0
 
-[node name="Selection" type="AnimatedSprite2D" parent="Looks"]
-sprite_frames = SubResource("SpriteFrames_a40jf")
-animation = &"EnemySelected"
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "own_body")]
 script = ExtResource("4_4ntpo")
 initial_state = NodePath("Idle")
@@ -505,6 +506,7 @@ visible = false
 shape = SubResource("CircleShape2D_5cwag")
 
 [connection signal="Moved" from="." to="Looks" method="_on_base_unit_moved"]
+[connection signal="Selected" from="." to="Looks" method="_on_base_unit_selected"]
 [connection signal="Stopped" from="." to="Looks" method="_on_base_unit_stopped"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://d0hnammgx2r4u"]
 
-[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Levels/tile_map.tscn" id="1_3yndb"]
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/BaseUnit/BaseUnit.tscn" id="1_pvwuj"]
-[ext_resource type="Script" path="res://Levels/TestingLevels/UnitController.gd" id="1_r6evd"]
-[ext_resource type="Texture2D" uid="uid://dyhbvux0iui25" path="res://Art/TileArt/Wall1.png" id="2_5ccap"]
-[ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="3_q3cva"]
-[ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="4_abh0q"]
-[ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="10_yoc3k"]
+[ext_resource type="Script" path="res://Levels/TestingLevels/UnitController.gd" id="1_5n0ut"]
+[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Levels/tile_map.tscn" id="2_6crap"]
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/BaseUnit/BaseUnit.tscn" id="3_0c4en"]
+[ext_resource type="Texture2D" uid="uid://dyhbvux0iui25" path="res://Art/TileArt/Wall1.png" id="4_501ba"]
+[ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="5_1krqr"]
+[ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="6_u75t2"]
+[ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="7_a3vur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o37bt"]
 size = Vector2(514, 20)
@@ -25,7 +25,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_r6evd")
+script = ExtResource("1_5n0ut")
 
 [node name="WallTop" type="StaticBody2D" parent="." groups=["wall"]]
 
@@ -54,37 +54,37 @@ rotation = 1.5708
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
 shape = SubResource("RectangleShape2D_o37bt")
 
-[node name="TileMap" parent="." instance=ExtResource("1_3yndb")]
+[node name="TileMap" parent="." instance=ExtResource("2_6crap")]
 position = Vector2(0, 0)
 
 [node name="Units" type="Node" parent="."]
 
-[node name="BaseUnit" parent="Units" instance=ExtResource("1_pvwuj")]
+[node name="BaseUnit" parent="Units" instance=ExtResource("3_0c4en")]
 position = Vector2(118, -29)
-
-[node name="BaseUnit2" parent="Units" instance=ExtResource("1_pvwuj")]
-position = Vector2(-114, 75)
 type = "enemy"
+
+[node name="BaseUnit2" parent="Units" instance=ExtResource("3_0c4en")]
+position = Vector2(-114, 75)
 
 [node name="Wall1" type="Sprite2D" parent="."]
 position = Vector2(48.5, -117)
-texture = ExtResource("2_5ccap")
+texture = ExtResource("4_501ba")
 
 [node name="Wall2" type="Sprite2D" parent="."]
 position = Vector2(-209.5, -117)
-texture = ExtResource("2_5ccap")
+texture = ExtResource("4_501ba")
 region_enabled = true
 region_rect = Rect2(0, 0, 139, 44)
 
 [node name="WallSide" type="Sprite2D" parent="."]
 position = Vector2(225, 5)
-texture = ExtResource("3_q3cva")
+texture = ExtResource("5_1krqr")
 region_enabled = true
 region_rect = Rect2(0, 0, 26, 204)
 
 [node name="WallSide2" type="Sprite2D" parent="."]
 position = Vector2(225, 209)
-texture = ExtResource("3_q3cva")
+texture = ExtResource("5_1krqr")
 region_enabled = true
 region_rect = Rect2(0, 0, 26, 204)
 
@@ -109,14 +109,14 @@ offset_right = 249.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_abh0q")
+texture = ExtResource("6_u75t2")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("box")]
-script = ExtResource("10_yoc3k")
+script = ExtResource("7_a3vur")
 box = NodePath("../UI/SelectionPanel")
 
 [node name="UI" type="CanvasLayer" parent="."]

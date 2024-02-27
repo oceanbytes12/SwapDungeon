@@ -47,6 +47,11 @@ func Die():
 	Died.emit(self)
 	queue_free()
 
-
 func set_selected(new_selection):
-	Selected.emit(type)
+	Selected.emit(new_selection)
+
+func set_walk(walk_position):
+	pass
+
+func set_target(new_target):
+	pass

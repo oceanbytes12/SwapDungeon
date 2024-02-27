@@ -35,3 +35,12 @@ func _on_base_unit_stopped():
 	$MovementAnimations.play("RESET")
 
 
+func _on_base_unit_selected(new_selection):
+	if new_selection == "green":
+		$Selection.play("FriendlySelected")
+		$Selection.visible = true
+	elif new_selection == "red":
+		$Selection.play("EnemySelected")
+		$Selection.visible = true
+	else:
+		$Selection.visible = false
