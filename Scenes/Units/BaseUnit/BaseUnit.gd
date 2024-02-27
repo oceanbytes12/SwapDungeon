@@ -51,7 +51,7 @@ func set_selected(new_selection):
 	Selected.emit(new_selection)
 
 func set_walk(walk_position):
-	pass
+	$StateMachine.walk_command(walk_position)
 
 func set_target(new_target):
 	pass

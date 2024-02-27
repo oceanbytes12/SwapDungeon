@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=37 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_kwkx1"]
 [ext_resource type="PackedScene" uid="uid://cj1t02ts4raor" path="res://Scenes/Effects/RandomEffects/HitEffect.tscn" id="2_qxspr"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://6jcr4qkrw7v2" path="res://Scenes/Weapons/bow_1.tscn" id="13_oi5cf"]
 [ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="13_tnq6t"]
 [ext_resource type="PackedScene" uid="uid://ceyeak3ionm2v" path="res://Scenes/Effects/AttacksEffects/ArrowAttack/arrow_effect.tscn" id="14_ehqgk"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/PlayerWalk.gd" id="18_5ditg"]
 
 [sub_resource type="Animation" id="Animation_h2q2f"]
 length = 0.001
@@ -487,6 +488,9 @@ script = ExtResource("9_f6npj")
 script = ExtResource("4_hr32h")
 
 [node name="CoolDownTimer" type="Timer" parent="StateMachine/Attack"]
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("18_5ditg")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

@@ -8,7 +8,7 @@ var range_buffer = 4 # This is to prevent jittering between follow and attack st
 var weapon_range : float
 
 
-func Update(_delta, own_body, current_target, _target_list):
+func Update(_delta, own_body, current_target, _target_list, walk_target):
 	if not current_target:
 		ChangeState.emit("Idle", current_target)
 	else:
@@ -22,7 +22,7 @@ func Update(_delta, own_body, current_target, _target_list):
 			$CoolDownTimer.wait_time = weapon_cooldown
 			$CoolDownTimer.start()
 
-func Physics_Update(_delta, own_body, _current_target, _target_list):
+func Physics_Update(_delta, own_body, _current_target, _target_list, walk_target):
 	own_body.velocity = Vector2.ZERO
 	
 	

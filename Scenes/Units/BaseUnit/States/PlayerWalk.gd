@@ -1,27 +1,29 @@
 extends State
 class_name PlayerWalk
 
-@export var own_body : CharacterBody2D
-@export var timeout := 3.0
-@export var distance_buffer := 10.0
-var target_position : Vector2
-var timeout_timer : float
-func Enter(_target):
+@export var timeout := 10.0
+
+var timeout_timer
+var spot_buffer = 2
+var speed = 40
+
+func Enter(_own_body, _current_target, _target_list):
 	timeout_timer = timeout
 
-func Update(delta: float, target: CharacterBody2D):
-	if target:
-		Transitioned.emit("Follow")
+
+func Update(delta, _own_body, current_target, target_list, walk_target):
 	if timeout_timer > 0:
 		timeout_timer -= delta
 	else:
-		Transitioned.emit("Idle")
+		ChangeState.emit("Idle", current_target)
 
-func Physics_Update(_delta: float, _target: CharacterBody2D):
-	var target_vector = target_position - own_body.global_position
-	var target_distance = target_vector.length()
-	if target_distance <= distance_buffer:
-		Transitioned.emit("Idle")
+func Physics_Update(_delta, own_body, current_target, _target_list, walk_target):
+	if walk_target:
+		var target_vector = walk_target.global_position - own_body.global_position
+		var target_distance = target_vector.length()
+		if 	target_distance < spot_buffer:
+			ChangeState.emit("Idle", current_target)
+		else:
+			own_body.velocity = target_vector.normalized() * speed
 	else:
-		own_body.velocity = target_vector.normalized() * own_body.runSpeed
-			
+		ChangeState.emit("Idle", current_target)

@@ -9,6 +9,7 @@ var current_state : State = initial_state
 var states : Dictionary = {}
 var target_list : Dictionary = {}
 var current_target : CharacterBody2D = null
+var walk_target : Vector2
 
 func _ready():
 	# Connect to all the states
@@ -21,10 +22,12 @@ func _ready():
 	current_state = initial_state
 
 func _process(delta):
-	current_state.Update(delta, own_body, current_target, target_list)
+	#if own_body.type == "player":
+		#print(current_target)
+	current_state.Update(delta, own_body, current_target, target_list, walk_target)
 
 func _physics_process(delta):
-	current_state.Physics_Update(delta, own_body, current_target, target_list)
+	current_state.Physics_Update(delta, own_body, current_target, target_list, walk_target)
 
 func on_state_change(new_state_name, new_target):
 	current_target = new_target
@@ -55,3 +58,6 @@ func unit_hit(source_body, damage, knockback_amount, knockback_direction, freeze
 	new_state.Enter(own_body, current_target, target_list)
 	current_state = new_state
 	
+func walk_command(walk_position):
+	current_target = null
+	walk_target = walk_position
