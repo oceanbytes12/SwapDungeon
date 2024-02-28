@@ -18,20 +18,6 @@ func get_units_in_area(area):
 					result.append(unit)
 	return result
 
-func _on_camera_area_selected(object):
-	# Create visual area
-	var area = []
-	var start = object.start
-	var end = object.end
-	area.append(Vector2(min(start.x, end.x), min(start.y, end.y)))
-	area.append(Vector2(max(start.x, end.x), max(start.y, end.y)))
-
-	# Select units in area
-	deselect_all_units()
-	selected_units = get_units_in_area(area)
-	for unit in selected_units: # Select the units in selection box
-		unit.set_selected(true)
-
 func check_collider_under_mouse():
 	# Get the mouse's position
 	var space = get_world_2d().direct_space_state
@@ -117,3 +103,17 @@ func _Toggle(isOn):
 	set_process(isOn)
 	set_physics_process(isOn)
 	set_process_input(isOn)
+
+
+func _on_camera_2d_area_selected(object):
+	# Create visual area
+	var area = []
+	var start = object.start
+	var end = object.end
+	area.append(Vector2(min(start.x, end.x), min(start.y, end.y)))
+	area.append(Vector2(max(start.x, end.x), max(start.y, end.y)))
+	# Select units in area
+	deselect_all_units()
+	selected_units = get_units_in_area(area)
+	for unit in selected_units: # Select the units in selection box
+		unit.set_selected(true)

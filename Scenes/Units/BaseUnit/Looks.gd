@@ -1,16 +1,22 @@
 extends Node2D
 
 var current_target : CharacterBody2D = null
+var current_walk : Vector2 = Vector2.ZERO
 
 
 func _process(_delta):
-	if current_target:
-		var target_vector = current_target.global_position - global_position
+	if current_target or current_walk != Vector2.ZERO:
+		var target_vector = null
+		if current_walk != Vector2.ZERO:
+			target_vector = current_walk - global_position
+		else:
+			target_vector = current_target.global_position - global_position
+			
 		if target_vector.x < 0:
 			$CharacterArt.scale.x = -1
 		elif target_vector.x > 0:
 			$CharacterArt.scale.x = 1
-		var vector_to_target = (current_target.global_position - global_position).normalized()
+		var vector_to_target = (target_vector).normalized()
 		
 		if vector_to_target.y >= -0.25:
 			$CharacterArt/Head/Back.visible = false
@@ -25,6 +31,10 @@ func _process(_delta):
 
 func _on_state_machine_new_target(new_target):
 	self.current_target = new_target
+
+func _on_state_machine_new_walk(new_walk):
+	self.current_walk = new_walk
+	self.current_target = null
 
 
 func _on_base_unit_moved():

@@ -10,12 +10,12 @@ var weapon_range : float
 
 func Update(_delta, own_body, current_target, _target_list, walk_target):
 	if not current_target:
-		ChangeState.emit("Idle", current_target)
+		ChangeState.emit("Idle", current_target, walk_target)
 	else:
 		var target_vector = current_target.global_position - own_body.global_position
 		var target_distance = target_vector.length()
 		if target_distance > weapon_range + range_buffer:
-			ChangeState.emit("Approach", current_target)
+			ChangeState.emit("Approach", current_target, walk_target)
 		if can_attack:
 			can_attack = false
 			Attacked.emit(current_target)

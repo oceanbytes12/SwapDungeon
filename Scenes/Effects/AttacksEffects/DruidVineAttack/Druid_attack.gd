@@ -45,7 +45,6 @@ func _on_body_entered(body):
 	if body.is_in_group("unit") and body.teamColor != source_team_color:
 		# If available, Call special take_hit fxn that can account for slowdown.
 		if body.has_method("take_hit_with_slowdown"):
-			print("take_hit_with_slowdown called from druid_attack")
 			body.take_hit_with_slowdown(global_position, damage, true)
 			playsound_and_queuefree()
 		# Otherwise do regular take_hit

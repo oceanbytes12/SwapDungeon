@@ -54,4 +54,4 @@ func set_walk(walk_position):
 	$StateMachine.walk_command(walk_position)
 
 func set_target(new_target):
-	pass
+	$StateMachine.attack_command(new_target)

@@ -1,14 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://6jcr4qkrw7v2"]
 
-[ext_resource type="PackedScene" uid="uid://yvo3r23olkdw" path="res://Scenes/Weapons/BaseWeapon.tscn" id="1_rs0ex"]
+[ext_resource type="Script" path="res://Scenes/Weapons/Weapon.gd" id="1_vhg8s"]
 [ext_resource type="Texture2D" uid="uid://dbvb5q7nll6yw" path="res://Art/NewArt/BaseUnits.png" id="2_u7g60"]
 
-[node name="Bow1" instance=ExtResource("1_rs0ex")]
+[node name="Bow1" type="Marker2D"]
+script = ExtResource("1_vhg8s")
 
-[node name="AttackPoint" parent="." index="0"]
+[node name="AttackPoint" type="Marker2D" parent="."]
 position = Vector2(14, 0)
 
-[node name="Art" parent="." index="1"]
+[node name="Art" type="Sprite2D" parent="."]
 position = Vector2(10, 0)
 texture = ExtResource("2_u7g60")
+region_enabled = true
 region_rect = Rect2(67, 115, 10, 26)

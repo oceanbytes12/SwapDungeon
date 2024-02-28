@@ -123,3 +123,5 @@ box = NodePath("../UI/SelectionPanel")
 
 [node name="SelectionPanel" type="Panel" parent="UI"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_ordp1")
+
+[connection signal="area_selected" from="Camera2D" to="." method="_on_camera_2d_area_selected"]

@@ -4,12 +4,13 @@ extends Node
 @export var own_body : CharacterBody2D
 
 signal newTarget
+signal newWalk
 
 var current_state : State = initial_state
 var states : Dictionary = {}
 var target_list : Dictionary = {}
 var current_target : CharacterBody2D = null
-var walk_target : Vector2
+var walk_target : Vector2 = Vector2.ZERO 
 
 func _ready():
 	# Connect to all the states
@@ -22,14 +23,17 @@ func _ready():
 	current_state = initial_state
 
 func _process(delta):
-	#if own_body.type == "player":
-		#print(current_target)
 	current_state.Update(delta, own_body, current_target, target_list, walk_target)
 
 func _physics_process(delta):
 	current_state.Physics_Update(delta, own_body, current_target, target_list, walk_target)
 
-func on_state_change(new_state_name, new_target):
+func on_state_change(new_state_name, new_target, walk_target):
+	self.walk_target = walk_target
+	if walk_target != Vector2.ZERO:
+		newWalk.emit(walk_target)
+	else:
+		newWalk.emit(Vector2.ZERO)
 	current_target = new_target
 	newTarget.emit(current_target)
 	var new_state = states.get(new_state_name)
@@ -59,5 +63,10 @@ func unit_hit(source_body, damage, knockback_amount, knockback_direction, freeze
 	current_state = new_state
 	
 func walk_command(walk_position):
+	newWalk.emit(walk_position)
 	current_target = null
 	walk_target = walk_position
+
+func attack_command(new_target):
+	current_target = new_target
+	walk_target = Vector2.ZERO

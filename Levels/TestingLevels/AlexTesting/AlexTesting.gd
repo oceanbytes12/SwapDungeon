@@ -140,7 +140,6 @@ func PlayersAreDead():
 	return true
 
 func _Toggle(isOn):
-	print("Turning: ", isOn)
 	cameraScript.set_process(isOn)
 	cameraScript.set_physics_process(isOn)
 	cameraScript.set_process_input(isOn)

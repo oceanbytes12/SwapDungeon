@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=33 format=3 uid="uid://c4dyy4kax1ogv"]
 
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_kwkx1"]
 [ext_resource type="PackedScene" uid="uid://cj1t02ts4raor" path="res://Scenes/Effects/RandomEffects/HitEffect.tscn" id="2_qxspr"]
@@ -11,13 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://d4mc1pmpo8ibb" path="res://Art/NewArt/BaseUnits2.png" id="6_j58rn"]
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/BaseIdle.gd" id="7_mura8"]
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/BaseStun.gd" id="9_f6npj"]
+[ext_resource type="PackedScene" uid="uid://b1m6pccxxude2" path="res://Scenes/Weapons/BaseWeapon2.tscn" id="9_qwrwn"]
 [ext_resource type="Texture2D" uid="uid://dbvb5q7nll6yw" path="res://Art/NewArt/BaseUnits.png" id="11_ox2d3"]
 [ext_resource type="Texture2D" uid="uid://dd3t1akbeusg5" path="res://Art/CharacterArt/SelectionMarker-Sheet.png" id="12_ifmi8"]
 [ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/UIArt/HealthBar2.png" id="12_vaypi"]
-[ext_resource type="PackedScene" uid="uid://6jcr4qkrw7v2" path="res://Scenes/Weapons/bow_1.tscn" id="13_oi5cf"]
 [ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="13_tnq6t"]
-[ext_resource type="PackedScene" uid="uid://ceyeak3ionm2v" path="res://Scenes/Effects/AttacksEffects/ArrowAttack/arrow_effect.tscn" id="14_ehqgk"]
-[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/PlayerWalk.gd" id="18_5ditg"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/BaseWalk.gd" id="18_5ditg"]
 
 [sub_resource type="Animation" id="Animation_h2q2f"]
 length = 0.001
@@ -136,43 +135,6 @@ resource_local_to_scene = true
 shader = ExtResource("4_x4imc")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Animation" id="Animation_ph536"]
-resource_name = "Attack"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LeftHand:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2(-6, 3), Vector2(1, 2), Vector2(6, 0), Vector2(-6, 3)]
-}
-
-[sub_resource type="Animation" id="Animation_xte1w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LeftHand:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-6, 3)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_12u10"]
-_data = {
-"Attack": SubResource("Animation_ph536"),
-"RESET": SubResource("Animation_xte1w")
-}
 
 [sub_resource type="Animation" id="Animation_rybsu"]
 length = 0.001
@@ -430,28 +392,7 @@ region_rect = Rect2(41, 139, 6, 4)
 
 [node name="Weapon" type="Marker2D" parent="Looks"]
 
-[node name="Bow1" parent="Looks/Weapon" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state") instance=ExtResource("13_oi5cf")]
-attack_effect_scene = ExtResource("14_ehqgk")
-own_body = NodePath("../../..")
-state_machine = NodePath("../../../StateMachine")
-attack_state = NodePath("../../../StateMachine/Attack")
-approach_state = NodePath("../../../StateMachine/Approach")
-damage = 20.0
-knockback_amount = 40.0
-cooldown = 2.0
-weapon_range = 100.0
-
-[node name="LeftHand" type="Sprite2D" parent="Looks/Weapon/Bow1"]
-position = Vector2(-6, 3)
-texture = ExtResource("11_ox2d3")
-region_enabled = true
-region_rect = Rect2(68, 54, 6, 6)
-
-[node name="WeaponAnimations" type="AnimationPlayer" parent="Looks/Weapon/Bow1"]
-libraries = {
-"": SubResource("AnimationLibrary_12u10")
-}
-speed_scale = 8.0
+[node name="Bow1" parent="Looks/Weapon" instance=ExtResource("9_qwrwn")]
 
 [node name="HealthBar" type="TextureProgressBar" parent="Looks"]
 offset_left = -10.0
@@ -514,13 +455,11 @@ shape = SubResource("CircleShape2D_5cwag")
 [connection signal="Stopped" from="." to="Looks" method="_on_base_unit_stopped"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="animation_finished" from="Looks/Weapon/Bow1/WeaponAnimations" to="Looks/Weapon/Bow1" method="_on_weapon_animations_animation_finished"]
 [connection signal="newTarget" from="StateMachine" to="Looks" method="_on_state_machine_new_target"]
+[connection signal="newWalk" from="StateMachine" to="Looks" method="_on_state_machine_new_walk"]
 [connection signal="Attacked" from="StateMachine/Attack" to="Looks" method="_on_attack_attacked"]
 [connection signal="timeout" from="StateMachine/Attack/CoolDownTimer" to="StateMachine/Attack" method="_on_cool_down_timer_timeout"]
 [connection signal="body_entered" from="SightRange" to="StateMachine" method="_on_sight_range_body_entered"]
 [connection signal="body_exited" from="SightRange" to="StateMachine" method="_on_sight_range_body_exited"]
 [connection signal="body_shape_entered" from="SightRange" to="StateMachine" method="_on_sight_range_body_shape_entered"]
 [connection signal="body_shape_exited" from="SightRange" to="StateMachine" method="_on_sight_range_body_shape_exited"]
-
-[editable path="Looks/Weapon/Bow1"]
