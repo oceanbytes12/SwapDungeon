@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmjkc0bg5bxpb"]
+
+[ext_resource type="PackedScene" uid="uid://b1m6pccxxude2" path="res://Scenes/Weapons/BaseWeapon.tscn" id="1_ftmm5"]
+[ext_resource type="PackedScene" uid="uid://cbjcpkicuuhru" path="res://Scenes/Effects/AttacksEffects/SlashAttack/slash_attack_effect.tscn" id="2_u1pa1"]
+
+[node name="IronSword" instance=ExtResource("1_ftmm5")]
+attack_effect_scene = ExtResource("2_u1pa1")
+weapon_range = 30.0
+
+[node name="WeaponArt" parent="." index="1"]
+position = Vector2(10, -6)
+region_rect = Rect2(67, 70, 10, 25)

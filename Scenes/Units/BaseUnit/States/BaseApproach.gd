@@ -11,7 +11,7 @@ func Enter(_own_body, _current_target, _target_list):
 	timeout_timer = timeout
 
 
-func Update(delta, _own_body, current_target, target_list, walk_target):
+func Update(delta, _own_body, current_target, _target_list, walk_target):
 	if timeout_timer > 0:
 		timeout_timer -= delta
 	else:

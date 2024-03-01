@@ -22,7 +22,7 @@ func Update(_delta, own_body, current_target, _target_list, walk_target):
 			$CoolDownTimer.wait_time = weapon_cooldown
 			$CoolDownTimer.start()
 
-func Physics_Update(_delta, own_body, _current_target, _target_list, walk_target):
+func Physics_Update(_delta, own_body, _current_target, _target_list, _walk_target):
 	own_body.velocity = Vector2.ZERO
 	
 	

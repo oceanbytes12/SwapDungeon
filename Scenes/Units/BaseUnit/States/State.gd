@@ -11,11 +11,11 @@ func Exit():
 	pass
 
 
-func Update(_delta: float, _own_body :CharacterBody2D, _current_target: CharacterBody2D, _target_list : Dictionary, walk_target):
+func Update(_delta: float, _own_body :CharacterBody2D, _current_target: CharacterBody2D, _target_list : Dictionary, _walk_target):
 	pass
 
 
-func Physics_Update(_delta: float, _own_body :CharacterBody2D, _current_target: CharacterBody2D, _target_list : Dictionary, walk_target):
+func Physics_Update(_delta: float, _own_body :CharacterBody2D, _current_target: CharacterBody2D, _target_list : Dictionary, _walk_target):
 	pass
 
 

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://0oaesnrvhwqy"]
+
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/BaseUnit/BaseUnit.tscn" id="1_yhov4"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="2_jr5vd"]
+[ext_resource type="PackedScene" uid="uid://doetb61g0uux1" path="res://Scenes/Weapons/oak_bow.tscn" id="3_58c4w"]
+
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvjhy"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tyugn"]
+resource_local_to_scene = true
+shader = ExtResource("2_jr5vd")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[node name="Archer" instance=ExtResource("1_yhov4")]
+
+[node name="Front" parent="Looks/CharacterArt/Torso" index="0"]
+material = SubResource("ShaderMaterial_bvjhy")
+
+[node name="Front" parent="Looks/CharacterArt/Head" index="0"]
+material = SubResource("ShaderMaterial_tyugn")
+
+[node name="OakBow" parent="Looks/Weapon" index="0" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state") instance=ExtResource("3_58c4w")]
+own_body = NodePath("../../..")
+state_machine = NodePath("../../../StateMachine")
+attack_state = NodePath("../../../StateMachine/Attack")
+approach_state = NodePath("../../../StateMachine/Approach")

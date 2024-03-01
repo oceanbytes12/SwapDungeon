@@ -28,8 +28,8 @@ func _process(delta):
 func _physics_process(delta):
 	current_state.Physics_Update(delta, own_body, current_target, target_list, walk_target)
 
-func on_state_change(new_state_name, new_target, walk_target):
-	self.walk_target = walk_target
+func on_state_change(new_state_name, new_target, new_walk_target):
+	self.walk_target = new_walk_target
 	if walk_target != Vector2.ZERO:
 		newWalk.emit(walk_target)
 	else:

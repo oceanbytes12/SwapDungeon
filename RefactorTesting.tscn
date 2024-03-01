@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0hnammgx2r4u"]
+[gd_scene load_steps=11 format=3 uid="uid://d0hnammgx2r4u"]
 
 [ext_resource type="Script" path="res://Levels/TestingLevels/UnitController.gd" id="1_5n0ut"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Levels/tile_map.tscn" id="2_6crap"]
-[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/BaseUnit/BaseUnit.tscn" id="3_0c4en"]
+[ext_resource type="PackedScene" uid="uid://0oaesnrvhwqy" path="res://Scenes/Units/Heros/Archer.tscn" id="3_nus11"]
+[ext_resource type="PackedScene" uid="uid://clmlld4jbk2kr" path="res://Scenes/Units/Heros/Warrior.tscn" id="3_xjcyb"]
 [ext_resource type="Texture2D" uid="uid://dyhbvux0iui25" path="res://Art/TileArt/Wall1.png" id="4_501ba"]
 [ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="5_1krqr"]
 [ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="6_u75t2"]
@@ -59,12 +60,11 @@ position = Vector2(0, 0)
 
 [node name="Units" type="Node" parent="."]
 
-[node name="BaseUnit" parent="Units" instance=ExtResource("3_0c4en")]
-position = Vector2(118, -29)
-type = "enemy"
+[node name="Warrior" parent="Units" instance=ExtResource("3_xjcyb")]
 
-[node name="BaseUnit2" parent="Units" instance=ExtResource("3_0c4en")]
-position = Vector2(-114, 75)
+[node name="Archer2" parent="Units" instance=ExtResource("3_nus11")]
+position = Vector2(122, -13)
+type = "enemy"
 
 [node name="Wall1" type="Sprite2D" parent="."]
 position = Vector2(48.5, -117)
@@ -76,44 +76,17 @@ texture = ExtResource("4_501ba")
 region_enabled = true
 region_rect = Rect2(0, 0, 139, 44)
 
-[node name="WallSide" type="Sprite2D" parent="."]
-position = Vector2(225, 5)
-texture = ExtResource("5_1krqr")
-region_enabled = true
-region_rect = Rect2(0, 0, 26, 204)
-
 [node name="WallSide2" type="Sprite2D" parent="."]
 position = Vector2(225, 209)
 texture = ExtResource("5_1krqr")
 region_enabled = true
 region_rect = Rect2(0, 0, 26, 204)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -239.0
-offset_top = 113.0
-offset_right = 216.0
-offset_bottom = 134.0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -229.5
-offset_top = -9.5
-offset_right = 249.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_u75t2")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+[node name="WallSide" type="Sprite2D" parent="."]
+position = Vector2(225, 5)
+texture = ExtResource("5_1krqr")
+region_enabled = true
+region_rect = Rect2(0, 0, 26, 204)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("box")]
 script = ExtResource("7_a3vur")
@@ -123,5 +96,28 @@ box = NodePath("../UI/SelectionPanel")
 
 [node name="SelectionPanel" type="Panel" parent="UI"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_ordp1")
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_u75t2")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
 
 [connection signal="area_selected" from="Camera2D" to="." method="_on_camera_2d_area_selected"]

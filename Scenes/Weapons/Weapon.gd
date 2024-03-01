@@ -30,7 +30,6 @@ func _process(_delta):
 		else:
 			look_at(target.global_position)
 			vector_to_target = (target.global_position - own_body.global_position).normalized()
-		
 		var direction = Vector2.RIGHT.rotated(rotation)
 		if direction.x >= 0:
 			scale.y = 1
@@ -44,7 +43,10 @@ func _process(_delta):
 		look_at(Vector2.RIGHT+global_position)
 
 func _on_attack(_target):
-	$WeaponAnimations.play("Attack")
+	if has_node("WeaponAnimation"):
+		$WeaponAnimations.play("Attack")
+	else:
+		run_attack()
 
 func run_attack():
 	var attack_node = attack_effect_scene.instantiate()
