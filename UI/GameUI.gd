@@ -27,16 +27,6 @@ func GetNextLevel():
 func _IncrementLevelIndex():
 	levelIndex=levelIndex+1
 
-#func _ready():
-	#Globals.unitManager = self
-	#for dataScene in HeroDataScenes:
-		#var newData = dataScene.instantiate()
-		#$Data.add_child(newData)
-		#HeroDatas.append(newData)
-		#if("1" in newData.name):
-			#BasicHeroDatas.append(newData)
-	
-
 func _physics_process(_delta):
 	if (use_context_cursors):
 		var object = check_object_under_mouse()
@@ -78,11 +68,6 @@ func GetIcon(data):
 	var newIcon = iconScene.instantiate()
 	newIcon.get_node("HeroSprite").texture = data.art
 	return newIcon
-
-
-#func _GetRandomUnupgradedHero():
-	#var randomIndex = randi() % BasicHeroDatas.size()
-	#return BasicHeroDatas[randomIndex]
 	
 	
 func findSubstringAfterLastSlashBeforeTscn(input_string: String) -> String:
