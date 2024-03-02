@@ -2,11 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b1m6pccxxude2" path="res://Scenes/Weapons/BaseWeapon.tscn" id="1_6o5un"]
 [ext_resource type="Texture2D" uid="uid://vho0618wfc86" path="res://Art/CharacterArt/MageArt.png" id="2_bj67b"]
-[ext_resource type="PackedScene" uid="uid://bgoj5ydtylqws" path="res://Scenes/Effects/AttacksEffects/MageFireAttack/mage_attack.tscn" id="2_db1en"]
+[ext_resource type="PackedScene" uid="uid://bgoj5ydtylqws" path="res://Scenes/Effects/AttacksEffects/MageFireAttack/FireBolt.tscn" id="2_p2tlf"]
 
 [node name="AirStaff" instance=ExtResource("1_6o5un")]
-attack_effect_scene = ExtResource("2_db1en")
-cooldown = 4.0
+attack_effect_scene = ExtResource("2_p2tlf")
 
 [node name="WeaponArt" parent="." index="1"]
 position = Vector2(12, -3)

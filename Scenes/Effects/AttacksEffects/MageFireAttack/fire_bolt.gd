@@ -34,15 +34,6 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_v = true
 	position += direction * speed * delta
 
-func _on_body_entered(body):
-	# Check if hitting self or friend
-	if body.is_in_group("unit") and body.type != source_type:
-		if body.has_method("take_hit"):
-			var direction = Vector2.RIGHT.rotated(rotation)
-			body.take_hit(own_body, damage, knockback_amount, direction)
-	elif body.is_in_group("wall"):
-		queue_free()
-
 func angle_to_angle(from, to):
 	return fposmod(to-from + PI, PI*2) - PI
 
@@ -52,3 +43,15 @@ func set_params(new_own_body, new_damage, new_knockback_amount, target=null):
 	self.damage = new_damage
 	self.knockback_amount = new_knockback_amount
 	self.source_type = self.own_body.type
+
+
+func _on_area_entered(area):
+	# Check if hitting self or friend
+	var parent_node = area.get_parent()
+	if parent_node.is_in_group("unit") and parent_node.type != source_type:
+		if parent_node.has_method("take_hit"):
+			var direction = Vector2.RIGHT.rotated(rotation)
+			parent_node.take_hit(own_body, damage, knockback_amount, direction)
+		queue_free()
+	elif area.is_in_group("wall"):
+		queue_free()

@@ -27,6 +27,7 @@ func _on_body_entered(body):
 		if body.has_method("take_hit"):
 			var direction = Vector2.RIGHT.rotated(rotation)
 			body.take_hit(own_body, damage, knockback_amount, direction)
+		queue_free()
 
 func set_params(new_own_body, new_damage, new_knockback_amount, target):
 	self.own_body = new_own_body

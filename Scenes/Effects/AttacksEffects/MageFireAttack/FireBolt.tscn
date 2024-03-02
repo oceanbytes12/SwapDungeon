@@ -1,42 +1,42 @@
 [gd_scene load_steps=14 format=3 uid="uid://bgoj5ydtylqws"]
 
-[ext_resource type="Script" path="res://Scenes/Effects/AttacksEffects/MageFireAttack/FireMageAttack.gd" id="1_qm8qh"]
-[ext_resource type="Texture2D" uid="uid://dlivpfjjuhlhg" path="res://Art/AttackArt/MagicAttack2x2-Sheet.png" id="2_6vdkg"]
-[ext_resource type="Texture2D" uid="uid://d2acrt60husqc" path="res://Art/AttackArt/AirAttack-Sheet.png" id="2_uoxh4"]
+[ext_resource type="Script" path="res://Scenes/Effects/AttacksEffects/MageFireAttack/fire_bolt.gd" id="1_lthpg"]
+[ext_resource type="Texture2D" uid="uid://d2acrt60husqc" path="res://Art/AttackArt/AirAttack-Sheet.png" id="2_a1r0r"]
+[ext_resource type="Texture2D" uid="uid://dlivpfjjuhlhg" path="res://Art/AttackArt/MagicAttack2x2-Sheet.png" id="3_fahsj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
 height = 22.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jfy6t"]
-atlas = ExtResource("2_uoxh4")
+atlas = ExtResource("2_a1r0r")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucikc"]
-atlas = ExtResource("2_uoxh4")
+atlas = ExtResource("2_a1r0r")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uo1co"]
-atlas = ExtResource("2_6vdkg")
+atlas = ExtResource("3_fahsj")
 region = Rect2(0, 0, 28, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vohte"]
-atlas = ExtResource("2_6vdkg")
+atlas = ExtResource("3_fahsj")
 region = Rect2(28, 0, 28, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kisgf"]
-atlas = ExtResource("2_6vdkg")
+atlas = ExtResource("3_fahsj")
 region = Rect2(56, 0, 28, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mgn8g"]
-atlas = ExtResource("2_6vdkg")
+atlas = ExtResource("3_fahsj")
 region = Rect2(0, 22, 28, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vmcy"]
-atlas = ExtResource("2_6vdkg")
+atlas = ExtResource("3_fahsj")
 region = Rect2(28, 22, 28, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_keqdw"]
-atlas = ExtResource("2_6vdkg")
+atlas = ExtResource("3_fahsj")
 region = Rect2(56, 22, 28, 22)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q78e8"]
@@ -76,9 +76,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="FireMageAttack" type="Area2D"]
+[node name="FireBolt" type="Area2D"]
 z_index = 2
-script = ExtResource("1_qm8qh")
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_lthpg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -89,4 +91,4 @@ sprite_frames = SubResource("SpriteFrames_q78e8")
 animation = &"FireSpell"
 autoplay = "FireSpell"
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
