@@ -9,7 +9,7 @@ var source_type
 func _on_animation_finished():
 	queue_free()
 
-func set_params(new_own_body, new_damage, new_knockback_amount):
+func set_params(new_own_body, new_damage, new_knockback_amount, target):
 	self.own_body = new_own_body
 	self.damage = new_damage
 	self.knockback_amount = new_knockback_amount

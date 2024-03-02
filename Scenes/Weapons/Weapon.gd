@@ -52,7 +52,7 @@ func run_attack():
 	var attack_node = attack_effect_scene.instantiate()
 	attack_node.global_position = $AttackPoint.global_position
 	attack_node.rotation = rotation
-	attack_node.set_params(own_body, damage, knockback_amount)
+	attack_node.set_params(own_body, damage, knockback_amount, target)
 	own_body.get_parent().add_child(attack_node)
 
 func _on_new_target(new_target):

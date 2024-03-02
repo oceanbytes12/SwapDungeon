@@ -27,17 +27,8 @@ func _on_body_entered(body):
 		if body.has_method("take_hit"):
 			var direction = Vector2.RIGHT.rotated(rotation)
 			body.take_hit(own_body, damage, knockback_amount, direction)
-			playsound_and_queuefree()
 
-func playsound_and_queuefree():
-	# Play sfx and start countdown timer to queue_free()
-	# Turn invisible, disable any colliders
-	$CollisionShape2D.set_deferred("disabled", true)
-	visible = false
-	#$Arrow_hit_sfx.play()
-	end_of_life = true
-
-func set_params(new_own_body, new_damage, new_knockback_amount):
+func set_params(new_own_body, new_damage, new_knockback_amount, target):
 	self.own_body = new_own_body
 	self.damage = new_damage
 	self.knockback_amount = new_knockback_amount

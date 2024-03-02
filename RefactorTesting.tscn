@@ -1,16 +1,43 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0hnammgx2r4u"]
+[gd_scene load_steps=15 format=3 uid="uid://d0hnammgx2r4u"]
 
 [ext_resource type="Script" path="res://Levels/TestingLevels/UnitController.gd" id="1_5n0ut"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Levels/tile_map.tscn" id="2_6crap"]
-[ext_resource type="PackedScene" uid="uid://0oaesnrvhwqy" path="res://Scenes/Units/Heros/Archer.tscn" id="3_nus11"]
 [ext_resource type="PackedScene" uid="uid://clmlld4jbk2kr" path="res://Scenes/Units/Heros/Warrior.tscn" id="3_xjcyb"]
 [ext_resource type="Texture2D" uid="uid://dyhbvux0iui25" path="res://Art/TileArt/Wall1.png" id="4_501ba"]
+[ext_resource type="PackedScene" uid="uid://dfxjs6aqdsic2" path="res://Scenes/Units/Heros/Mage.tscn" id="4_dymnt"]
 [ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="5_1krqr"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="5_532g4"]
 [ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="6_u75t2"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="7_a3vur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o37bt"]
 size = Vector2(514, 20)
+
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ok2vh"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8tbf"]
+resource_local_to_scene = true
+shader = ExtResource("5_532g4")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ordp1"]
 bg_color = Color(0.258824, 0.972549, 0.470588, 0.431373)
@@ -61,10 +88,16 @@ position = Vector2(0, 0)
 [node name="Units" type="Node" parent="."]
 
 [node name="Warrior" parent="Units" instance=ExtResource("3_xjcyb")]
-
-[node name="Archer2" parent="Units" instance=ExtResource("3_nus11")]
-position = Vector2(122, -13)
 type = "enemy"
+
+[node name="Mage" parent="Units" instance=ExtResource("4_dymnt")]
+position = Vector2(-153, 14)
+
+[node name="Front" parent="Units/Mage/Looks/CharacterArt/Torso" index="0"]
+material = SubResource("ShaderMaterial_ok2vh")
+
+[node name="Front" parent="Units/Mage/Looks/CharacterArt/Head" index="0"]
+material = SubResource("ShaderMaterial_r8tbf")
 
 [node name="Wall1" type="Sprite2D" parent="."]
 position = Vector2(48.5, -117)
@@ -121,3 +154,5 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [connection signal="area_selected" from="Camera2D" to="." method="_on_camera_2d_area_selected"]
+
+[editable path="Units/Mage"]

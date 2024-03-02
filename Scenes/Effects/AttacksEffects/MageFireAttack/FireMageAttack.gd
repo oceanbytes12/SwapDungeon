@@ -1,17 +1,18 @@
 extends Area2D
 
-var source_team_color
+var own_body
+var damage
+var knockback_amount
+var source_type
 var speed = 100
-var target
 var turn_speed = 1
-var damage = 40
+var target = null
 
 var end_of_life = false
 var eol_timer = 2
 
 func _ready():
 	$AnimatedSprite2D.play()
-	$Mage_cast_sfx.play()
 	var direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
 		rotate(-PI/5)
@@ -32,28 +33,22 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite2D.flip_v = true
 	position += direction * speed * delta
-	
-	# Countdown to queue_free()
-	if (end_of_life):
-		eol_timer = eol_timer - delta
-		if eol_timer <= 0: 
-			queue_free()
 
 func _on_body_entered(body):
 	# Check if hitting self or friend
-	if body.is_in_group("unit") and body.teamColor != source_team_color:
+	if body.is_in_group("unit") and body.type != source_type:
 		if body.has_method("take_hit"):
-			body.take_hit(global_position, damage)
+			var direction = Vector2.RIGHT.rotated(rotation)
+			body.take_hit(own_body, damage, knockback_amount, direction)
 	elif body.is_in_group("wall"):
 		queue_free()
 
 func angle_to_angle(from, to):
 	return fposmod(to-from + PI, PI*2) - PI
 
-func playsound_and_queuefree():
-	# Play sfx and start countdown timer to queue_free()
-	# Turn invisible, disable any colliders
-	$CollisionShape2D.set_deferred("disabled", true)
-	visible = false
-	$Mage_spell_hit_sfx.play()
-	end_of_life = true
+func set_params(new_own_body, new_damage, new_knockback_amount, target=null):
+	self.target = target
+	self.own_body = new_own_body
+	self.damage = new_damage
+	self.knockback_amount = new_knockback_amount
+	self.source_type = self.own_body.type
