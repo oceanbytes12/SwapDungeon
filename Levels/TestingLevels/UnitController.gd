@@ -43,7 +43,7 @@ func check_object_under_mouse():
 
 func _input(event):
 	if event.is_action_pressed("RightClick"):
-		if targeted_unit:
+		if is_instance_valid(targeted_unit):
 			targeted_unit.set_selected("red")
 		var clicked_unit = check_object_under_mouse()
 		if clicked_unit and clicked_unit.type == "enemy":
