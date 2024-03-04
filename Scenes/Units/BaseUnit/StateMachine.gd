@@ -1,5 +1,7 @@
 extends Node
 
+class_name StateMachine
+
 @export var initial_state : State
 @export var own_body : CharacterBody2D
 
@@ -11,8 +13,9 @@ var states : Dictionary = {}
 var target_list : Dictionary = {}
 var current_target : CharacterBody2D = null
 var walk_target : Vector2 = Vector2.ZERO 
-
+var newname
 func _ready():
+	newname = own_body.name
 	# Connect to all the states
 	# All states have a ChangeState signal inherited from State.gd
 	for child in get_children():
@@ -23,11 +26,13 @@ func _ready():
 	current_state = initial_state
 
 func _process(delta):
-	current_state.Update(delta, own_body, current_target, target_list, walk_target)
+	if(is_instance_valid(own_body)):
+		current_state.Update(delta, own_body, current_target, target_list, walk_target)
 
 func _physics_process(delta):
-	current_state.Physics_Update(delta, own_body, current_target, target_list, walk_target)
-
+	if(is_instance_valid(own_body)):
+		current_state.Physics_Update(delta, own_body, current_target, target_list, walk_target)
+		
 func on_state_change(new_state_name, new_target, new_walk_target):
 	self.walk_target = new_walk_target
 	if walk_target != Vector2.ZERO:
@@ -54,6 +59,12 @@ func _on_target_died(body):
 		newTarget.emit(current_target)
 
 func unit_hit(source_body, damage, knockback_amount, knockback_direction, freeze):
+	if !is_instance_valid(own_body):
+		return
+		
+	if !is_instance_valid(source_body):
+		return
+		
 	if source_body.name not in target_list:
 		target_list[source_body.name] = source_body
 		source_body.Died.connect(_on_target_died)

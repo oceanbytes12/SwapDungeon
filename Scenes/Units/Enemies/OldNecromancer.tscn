@@ -1,26 +1,25 @@
-[gd_scene load_steps=37 format=3 uid="uid://bs6obl2a02txq"]
+[gd_scene load_steps=36 format=3 uid="uid://bs6obl2a02txq"]
 
-[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_ndyto"]
-[ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/CharacterArt/SkelyBoyParts.png" id="2_fbp13"]
-[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/CharacterArt/BaseUnits.png" id="3_0jk0f"]
-[ext_resource type="PackedScene" uid="uid://dlgckynb5p00u" path="res://Scenes/Weapons/staff_necro.tscn" id="4_bh627"]
-[ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/CharacterArt/SkelyBoyPartsx3.png" id="5_jilbq"]
-[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="6_ebyem"]
-[ext_resource type="Texture2D" uid="uid://pt6ga01gn812" path="res://Art/CharacterArt/SkelyBoyParts2x.png" id="7_uo4um"]
-[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/StateMachine.gd" id="8_tr0dp"]
-[ext_resource type="Script" path="res://Scenes/States/BaseApproach.gd" id="9_4271h"]
-[ext_resource type="Script" path="res://Scenes/States/BaseIdle.gd" id="10_va3w8"]
-[ext_resource type="Script" path="res://Scenes/States/BaseAttack.gd" id="11_r7o45"]
-[ext_resource type="Script" path="res://Scenes/States/BossStun.gd" id="12_rh1dx"]
-[ext_resource type="Script" path="res://Scenes/States/Teleport.gd" id="13_c316p"]
-[ext_resource type="Script" path="res://Scenes/States/BaseWalk.gd" id="13_sh6dp"]
-[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/States/EnemyDead.gd" id="14_60q3r"]
-[ext_resource type="Script" path="res://Scenes/UI/UIScripts/MouseOver.gd" id="15_fmvea"]
-[ext_resource type="Script" path="res://Scenes/UI/UIScripts/SummonUnits.gd" id="15_x0nxg"]
-[ext_resource type="Texture2D" uid="uid://bo1opgc28somc" path="res://Art/UIArt/MousePointer1.png" id="16_07ppq"]
-[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Weapons/MeleeSkeleton.tscn" id="16_i0xfi"]
-[ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/UIArt/HealthBar2.png" id="18_jxqtm"]
-[ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="19_uw5ki"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_bxtsr"]
+[ext_resource type="Texture2D" uid="uid://ompg3iyrakdd" path="res://Art/CharacterArt/SkelyBoyParts.png" id="2_qnk8c"]
+[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/CharacterArt/BaseUnits.png" id="3_s5d6m"]
+[ext_resource type="PackedScene" uid="uid://dlgckynb5p00u" path="res://Scenes/Weapons/staff_necro.tscn" id="4_sasu1"]
+[ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/CharacterArt/SkelyBoyPartsx3.png" id="5_1fame"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="6_17fc1"]
+[ext_resource type="Texture2D" uid="uid://pt6ga01gn812" path="res://Art/CharacterArt/SkelyBoyParts2x.png" id="7_s4kou"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/StateMachine.gd" id="8_gswsu"]
+[ext_resource type="Script" path="res://Scenes/States/BaseApproach.gd" id="9_bmi6g"]
+[ext_resource type="Script" path="res://Scenes/States/BaseIdle.gd" id="10_66aju"]
+[ext_resource type="Script" path="res://Scenes/States/BaseAttack.gd" id="11_qy577"]
+[ext_resource type="Script" path="res://Scenes/States/ThresholdStun.gd" id="12_cc25s"]
+[ext_resource type="Script" path="res://Scenes/States/Teleport.gd" id="13_at3wr"]
+[ext_resource type="Script" path="res://Scenes/States/BaseWalk.gd" id="14_34xdj"]
+[ext_resource type="Script" path="res://Scenes/UI/UIScripts/SummonUnits.gd" id="15_s33us"]
+[ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Weapons/MeleeSkeleton.tscn" id="16_xcutu"]
+[ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/UIArt/HealthBar2.png" id="17_lffbq"]
+[ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="18_h7io2"]
+[ext_resource type="Script" path="res://Scenes/UI/UIScripts/MouseOver.gd" id="19_v1ca4"]
+[ext_resource type="Texture2D" uid="uid://bo1opgc28somc" path="res://Art/UIArt/MousePointer1.png" id="20_udxi1"]
 
 [sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
@@ -44,7 +43,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ykg6r"]
 resource_local_to_scene = true
-shader = ExtResource("6_ebyem")
+shader = ExtResource("6_17fc1")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
@@ -314,58 +313,50 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_541oc"]
 size = Vector2(20, 27.6377)
 
-[node name="Necromancer" type="CharacterBody2D" groups=["unit"]]
-script = ExtResource("1_ndyto")
-teamColor = "red"
-walkSpeed = 1.0
-runSpeed = 1.0
-weaponRange = 1000.0
-weaponCooldown = 100.0
-weaponDamage = 1
-unitHealth = 1000.0
+[node name="OldNecromancer" type="CharacterBody2D" groups=["unit"]]
+script = ExtResource("1_bxtsr")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 9)
-texture = ExtResource("2_fbp13")
+texture = ExtResource("2_qnk8c")
 region_enabled = true
 region_rect = Rect2(43, 32, 12, 8)
 
 [node name="Selection" type="Sprite2D" parent="."]
 position = Vector2(0, 10)
-texture = ExtResource("2_fbp13")
+texture = ExtResource("2_qnk8c")
 region_enabled = true
 region_rect = Rect2(40, 49, 20, 13)
 
 [node name="Targeted" type="Sprite2D" parent="."]
 position = Vector2(0, 10)
-texture = ExtResource("3_0jk0f")
+texture = ExtResource("3_s5d6m")
 region_enabled = true
 region_rect = Rect2(38, 153, 20, 13)
 
-[node name="NecroStaff" parent="." node_paths=PackedStringArray("own_body", "attackState") instance=ExtResource("4_bh627")]
+[node name="NecroStaff" parent="." node_paths=PackedStringArray("own_body") instance=ExtResource("4_sasu1")]
 own_body = NodePath("..")
-attackState = NodePath("../SM/Attack")
 
 [node name="Art" type="Node2D" parent="."]
 position = Vector2(0, 3)
 
 [node name="Body" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_nrtso")
-texture = ExtResource("5_jilbq")
+texture = ExtResource("5_1fame")
 region_enabled = true
 region_rect = Rect2(64, 22, 22, 10)
 
 [node name="Head" type="Sprite2D" parent="Art"]
 material = SubResource("ShaderMaterial_ykg6r")
 position = Vector2(0, -14)
-texture = ExtResource("5_jilbq")
+texture = ExtResource("5_1fame")
 region_enabled = true
 region_rect = Rect2(64, 0, 24, 20)
 
 [node name="DeadHead" type="Sprite2D" parent="Art"]
 visible = false
 position = Vector2(0, -13)
-texture = ExtResource("7_uo4um")
+texture = ExtResource("7_s4kou")
 region_enabled = true
 region_rect = Rect2(21, 3, 18, 16)
 
@@ -375,21 +366,24 @@ position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_pv03d")
 
 [node name="SM" type="Node" parent="." node_paths=PackedStringArray("initial_state", "own_body")]
-script = ExtResource("8_tr0dp")
+script = ExtResource("8_gswsu")
 initial_state = NodePath("SummonUnits")
 own_body = NodePath("..")
 
-[node name="Follow" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("9_4271h")
-own_body = NodePath("../..")
+[node name="SummonUnits" type="Node" parent="SM"]
+script = ExtResource("15_s33us")
+spawn_object = ExtResource("16_xcutu")
+nextState = "Attack"
+num_summoned = 1
 
-[node name="Idle" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("10_va3w8")
-own_body = NodePath("../..")
+[node name="Follow" type="Node" parent="SM"]
+script = ExtResource("9_bmi6g")
 
-[node name="Attack" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("11_r7o45")
-own_body = NodePath("../..")
+[node name="Idle" type="Node" parent="SM"]
+script = ExtResource("10_66aju")
+
+[node name="Attack" type="Node" parent="SM"]
+script = ExtResource("11_qy577")
 
 [node name="Portal_sfx" type="AudioStreamPlayer2D" parent="SM/Attack"]
 
@@ -398,35 +392,21 @@ own_body = NodePath("../..")
 [node name="Necro_cast_sfx" type="AudioStreamPlayer2D" parent="SM/Attack"]
 
 [node name="Stun" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("12_rh1dx")
-own_body = NodePath("../..")
-transitionStateOnDamageTaken = "Teleport"
+script = ExtResource("12_cc25s")
+own_body = NodePath("")
 damageThreshold = 300
 
-[node name="Teleport" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("13_c316p")
-own_body = NodePath("../..")
+[node name="Teleport" type="Node" parent="SM"]
+script = ExtResource("13_at3wr")
 nextState = "SummonUnits"
 
 [node name="Teleport_sfx" type="AudioStreamPlayer2D" parent="SM/Teleport"]
 
-[node name="Walk" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("13_sh6dp")
-own_body = NodePath("../..")
-timeout = 8.0
+[node name="Walk" type="Node" parent="SM"]
+script = ExtResource("14_34xdj")
 
-[node name="Dead" type="Node" parent="SM" node_paths=PackedStringArray("own_body")]
-script = ExtResource("14_60q3r")
-own_body = NodePath("../..")
-
-[node name="SummonUnits" type="Node" parent="SM" node_paths=PackedStringArray("own_body", "body_art")]
-script = ExtResource("15_x0nxg")
-own_body = NodePath("../..")
-body_art = NodePath("../../Art/Body")
-spawn_object = ExtResource("16_i0xfi")
-nextState = "Attack"
-num_summoned = 1
-increment_amount_post_summon = 1
+[node name="Dead" type="Node" parent="SM"]
+script = ExtResource("11_qy577")
 
 [node name="SightRange" type="Area2D" parent="."]
 
@@ -448,8 +428,8 @@ offset_right = 30.0
 offset_bottom = 10.0
 max_value = 1000.0
 value = 1000.0
-texture_under = ExtResource("18_jxqtm")
-texture_progress = ExtResource("19_uw5ki")
+texture_under = ExtResource("17_lffbq")
+texture_progress = ExtResource("18_h7io2")
 
 [node name="MovementAnimations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -460,8 +440,8 @@ speed_scale = 2.0
 [node name="ClickBox" type="Area2D" parent="."]
 visible = false
 monitorable = false
-script = ExtResource("15_fmvea")
-mouse_over_cursor = ExtResource("16_07ppq")
+script = ExtResource("19_v1ca4")
+mouse_over_cursor = ExtResource("20_udxi1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickBox"]
 position = Vector2(0, -2)
@@ -469,7 +449,6 @@ rotation = -3.14159
 scale = Vector2(0.872446, -1.08547)
 shape = SubResource("RectangleShape2D_541oc")
 
-[connection signal="Hit" from="." to="SM" method="_on_unit_sm_hit"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="SM/Attack/Timer" to="SM/Attack" method="_on_timer_timeout"]

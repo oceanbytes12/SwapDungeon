@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Levels/TestingLevels/BaseLevel.tscn" id="2_ck62r"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/UI/spawn_positions.tscn" id="2_un34y"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="3_gslsw"]
-[ext_resource type="PackedScene" uid="uid://bs6obl2a02txq" path="res://Scenes/Units/Enemies/Necromancer.tscn" id="4_rjbc3"]
+[ext_resource type="PackedScene" uid="uid://bs6obl2a02txq" path="res://Scenes/Units/Enemies/OldNecromancer.tscn" id="4_rjbc3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3qaq"]
 bg_color = Color(0.258824, 0.972549, 0.470588, 0.431373)

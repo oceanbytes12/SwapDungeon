@@ -1,6 +1,5 @@
 extends Area2D
 
-var source_team_color
 @export var speed :float
 @export var lifetime:float = 10
 @export var grow_time:float = 0.25
@@ -14,6 +13,10 @@ var source_team_color
 var target
 var current_speed
 var accelerating
+var source_type
+var source_body
+var knockback_amount
+var direction 
 
 func _ready():
 	
@@ -81,7 +84,7 @@ func _physics_process(delta):
 	else:
 		_rotate_to_target(delta)
 	
-	var direction = Vector2.RIGHT.rotated(rotation)
+	direction = Vector2.RIGHT.rotated(rotation)
 	if direction.x > 0:
 		$AnimatedSprite2D.flip_v = false
 	else:
@@ -91,9 +94,10 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	# Check if hitting self or friend
-	if body.is_in_group("unit") and body.teamColor != source_team_color:
+	if body.is_in_group("unit") and body.type != source_type:
 		if body.has_method("take_hit"):
-			body.take_hit(global_position, damage)
+			body.take_hit(source_body,damage,knockback_amount,direction)
+			#func take_hit(source_body, damage, knockback_amount, knockback_direction, freeze_time=0):
 			queue_free()
 
 func angle_to_angle(from, to):

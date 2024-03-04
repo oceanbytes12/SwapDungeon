@@ -44,8 +44,9 @@ func take_hit(source_body, damage, knockback_amount, knockback_direction, freeze
 		$EffectAnimations.play("hitAnimation")
 		
 func Die():
-	Died.emit(self)
-	queue_free()
+	Died.emit(self) 
+	$StateMachine.queue_free()
+	call_deferred("free")
 
 func set_selected(new_selection):
 	Selected.emit(new_selection)

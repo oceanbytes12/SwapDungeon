@@ -21,6 +21,14 @@ func _ready():
 	
 
 func _physics_process(delta):
+	
+	if(!is_instance_valid(target)):
+		queue_free()
+		return
+		
+	if(!is_instance_valid(self)):
+		return
+	
 	var goal_rotation = position.angle_to_point(target.position)
 	var diff_rotation = angle_to_angle(rotation, goal_rotation)
 	if diff_rotation > 0:
@@ -36,6 +44,10 @@ func _physics_process(delta):
 
 func angle_to_angle(from, to):
 	return fposmod(to-from + PI, PI*2) - PI
+
+func set_transform_params(global_position, rotation):
+	self.rotation = rotation
+	self.global_position = global_position
 
 func set_params(new_own_body, new_damage, new_knockback_amount, target=null):
 	self.target = target

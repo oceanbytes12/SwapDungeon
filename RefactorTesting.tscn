@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0hnammgx2r4u"]
+[gd_scene load_steps=50 format=3 uid="uid://d0hnammgx2r4u"]
 
 [ext_resource type="Script" path="res://Levels/TestingLevels/UnitController.gd" id="1_5n0ut"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Levels/tile_map.tscn" id="2_6crap"]
@@ -7,8 +7,28 @@
 [ext_resource type="PackedScene" uid="uid://dfxjs6aqdsic2" path="res://Scenes/Units/Heros/Mage.tscn" id="4_dymnt"]
 [ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="5_1krqr"]
 [ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="5_532g4"]
+[ext_resource type="PackedScene" uid="uid://h6ifrlhgappl" path="res://new_necromancer.tscn" id="6_2jvlj"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="6_atkmu"]
 [ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="6_u75t2"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="7_a3vur"]
+[ext_resource type="PackedScene" uid="uid://cj1t02ts4raor" path="res://Scenes/Effects/RandomEffects/HitEffect.tscn" id="7_jw30t"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/Looks.gd" id="8_64os7"]
+[ext_resource type="Texture2D" uid="uid://dd3t1akbeusg5" path="res://Art/CharacterArt/SelectionMarker-Sheet.png" id="9_q7xbk"]
+[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/CharacterArt/BaseUnits.png" id="10_injct"]
+[ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/CharacterArt/SkelyBoyPartsx3.png" id="11_emv0j"]
+[ext_resource type="Texture2D" uid="uid://dbvb5q7nll6yw" path="res://Art/NewArt/BaseUnits.png" id="12_x25s5"]
+[ext_resource type="PackedScene" uid="uid://dlgckynb5p00u" path="res://Scenes/Weapons/staff_necro.tscn" id="13_y55gj"]
+[ext_resource type="PackedScene" uid="uid://b10y87uf3wkvx" path="res://Scenes/Effects/AttacksEffects/MultiMageAttack/multi_mage_attack.tscn" id="14_ulnmj"]
+[ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/UIArt/HealthBar2.png" id="15_sjqtn"]
+[ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="16_5pynm"]
+[ext_resource type="Script" path="res://StateDisplay.gd" id="17_o8bc1"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/StateMachine.gd" id="18_vq31n"]
+[ext_resource type="Script" path="res://Scenes/States/ThresholdStun.gd" id="19_2kn6u"]
+[ext_resource type="Script" path="res://Scenes/States/Teleport.gd" id="20_q3hxl"]
+[ext_resource type="Script" path="res://Scenes/UI/UIScripts/SummonUnits.gd" id="21_yqxtj"]
+[ext_resource type="Script" path="res://Scenes/States/BaseApproach.gd" id="23_i16lw"]
+[ext_resource type="Script" path="res://Scenes/States/BaseIdle.gd" id="24_v7dy0"]
+[ext_resource type="Script" path="res://Scenes/States/BaseAttack.gd" id="25_8mobu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o37bt"]
 size = Vector2(514, 20)
@@ -38,6 +58,291 @@ resource_local_to_scene = true
 shader = ExtResource("5_532g4")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_h2q2f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Looks/CharacterArt/Torso/Front:material:shader_parameter/flash_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Looks/CharacterArt/Head/Front:material:shader_parameter/flash_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ofoju"]
+resource_name = "hitAnimation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Looks/CharacterArt/Torso/Front:material:shader_parameter/flash_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Looks/CharacterArt/Head/Front:material:shader_parameter/flash_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rt51"]
+_data = {
+"RESET": SubResource("Animation_h2q2f"),
+"hitAnimation": SubResource("Animation_ofoju")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfdci"]
+atlas = ExtResource("9_q7xbk")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l3kc"]
+atlas = ExtResource("9_q7xbk")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a40jf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfdci")
+}],
+"loop": true,
+"name": &"EnemySelected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l3kc")
+}],
+"loop": true,
+"name": &"FriendlySelected",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"NotSelected",
+"speed": 5.0
+}]
+
+[sub_resource type="Shader" id="Shader_0ggm1"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iifbo"]
+resource_local_to_scene = true
+shader = SubResource("Shader_0ggm1")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nr1mm"]
+resource_local_to_scene = true
+shader = ExtResource("5_532g4")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_rybsu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Looks/CharacterArt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Looks/CharacterArt/RightLeg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(4, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Looks/CharacterArt/LeftLeg:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-4, 9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Looks/CharacterArt:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Looks/CharacterArt/Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -12), Vector2(0, -12)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Looks/Weapon:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c5mp0"]
+resource_name = "Walk"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Looks/CharacterArt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0), Vector2(0, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Looks/CharacterArt/RightLeg:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(4, 7), Vector2(4, 7), Vector2(4, 8), Vector2(4, 7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Looks/CharacterArt/LeftLeg:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-4, 9), Vector2(-4, 8), Vector2(-4, 8), Vector2(-4, 8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Looks/CharacterArt:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-0.0349066, 0.0349066]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Looks/CharacterArt/Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -12), Vector2(0, -10)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Looks/Weapon:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0), Vector2(0, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qn2uv"]
+_data = {
+"RESET": SubResource("Animation_rybsu"),
+"Walk": SubResource("Animation_c5mp0")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ysvin"]
+radius = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8o30"]
+size = Vector2(22, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
+radius = 520.116
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ordp1"]
 bg_color = Color(0.258824, 0.972549, 0.470588, 0.431373)
@@ -88,7 +393,10 @@ position = Vector2(0, 0)
 [node name="Units" type="Node" parent="."]
 
 [node name="Warrior" parent="Units" instance=ExtResource("3_xjcyb")]
-type = "enemy"
+position = Vector2(-104, 0)
+
+[node name="Warrior2" parent="Units" instance=ExtResource("3_xjcyb")]
+position = Vector2(-106, 57)
 
 [node name="Mage" parent="Units" instance=ExtResource("4_dymnt")]
 position = Vector2(-153, 14)
@@ -98,6 +406,207 @@ material = SubResource("ShaderMaterial_ok2vh")
 
 [node name="Front" parent="Units/Mage/Looks/CharacterArt/Head" index="0"]
 material = SubResource("ShaderMaterial_r8tbf")
+
+[node name="Mage2" parent="Units" instance=ExtResource("4_dymnt")]
+position = Vector2(-154, 62)
+
+[node name="Front" parent="Units/Mage2/Looks/CharacterArt/Torso" index="0"]
+material = SubResource("ShaderMaterial_ok2vh")
+
+[node name="Front" parent="Units/Mage2/Looks/CharacterArt/Head" index="0"]
+material = SubResource("ShaderMaterial_r8tbf")
+
+[node name="AirStaff" parent="Units/Mage2/Looks/Weapon" index="0" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state")]
+own_body = NodePath("../../../../Mage")
+state_machine = NodePath("../../../../Mage/StateMachine")
+attack_state = NodePath("../../../../Mage/StateMachine/Attack")
+approach_state = NodePath("../../../../Mage/StateMachine/Approach")
+
+[node name="StateMachine" parent="Units/Mage2" index="2" node_paths=PackedStringArray("initial_state", "own_body")]
+initial_state = NodePath("../../Mage/StateMachine/Idle")
+own_body = NodePath("../../Mage")
+
+[node name="NewNecromancer" type="CharacterBody2D" parent="Units" groups=["unit"]]
+position = Vector2(114, 21)
+platform_on_leave = 2
+script = ExtResource("6_atkmu")
+type = "enemy"
+starting_health = 1000.0
+hit_splat_scene = ExtResource("7_jw30t")
+
+[node name="EffectAnimations" type="AnimationPlayer" parent="Units/NewNecromancer"]
+libraries = {
+"": SubResource("AnimationLibrary_4rt51")
+}
+speed_scale = 2.0
+
+[node name="Looks" type="Node2D" parent="Units/NewNecromancer"]
+script = ExtResource("8_64os7")
+
+[node name="Selection" type="AnimatedSprite2D" parent="Units/NewNecromancer/Looks"]
+position = Vector2(0, 11)
+sprite_frames = SubResource("SpriteFrames_a40jf")
+animation = &"NotSelected"
+
+[node name="Shadow" type="Sprite2D" parent="Units/NewNecromancer/Looks"]
+position = Vector2(0, 10)
+texture = ExtResource("10_injct")
+region_enabled = true
+region_rect = Rect2(8, 156, 16, 8)
+
+[node name="CharacterArt" type="Marker2D" parent="Units/NewNecromancer/Looks"]
+
+[node name="Torso" type="Marker2D" parent="Units/NewNecromancer/Looks/CharacterArt"]
+position = Vector2(0, 3)
+
+[node name="Front" type="Sprite2D" parent="Units/NewNecromancer/Looks/CharacterArt/Torso"]
+material = SubResource("ShaderMaterial_iifbo")
+position = Vector2(1, 1)
+texture = ExtResource("11_emv0j")
+region_enabled = true
+region_rect = Rect2(64, 22, 22, 10)
+
+[node name="Back" type="Sprite2D" parent="Units/NewNecromancer/Looks/CharacterArt/Torso"]
+visible = false
+position = Vector2(1, 1)
+texture = ExtResource("11_emv0j")
+region_enabled = true
+region_rect = Rect2(32, 29, 18, 14)
+
+[node name="Head" type="Marker2D" parent="Units/NewNecromancer/Looks/CharacterArt"]
+position = Vector2(0, -12)
+
+[node name="Front" type="Sprite2D" parent="Units/NewNecromancer/Looks/CharacterArt/Head"]
+material = SubResource("ShaderMaterial_nr1mm")
+position = Vector2(1, 1)
+texture = ExtResource("11_emv0j")
+region_enabled = true
+region_rect = Rect2(64, 0, 24, 20)
+
+[node name="Back" type="Sprite2D" parent="Units/NewNecromancer/Looks/CharacterArt/Head"]
+visible = false
+position = Vector2(1, 1)
+texture = ExtResource("11_emv0j")
+region_enabled = true
+region_rect = Rect2(4, 29, 22, 19)
+
+[node name="RightLeg" type="Marker2D" parent="Units/NewNecromancer/Looks/CharacterArt"]
+visible = false
+position = Vector2(4, 8)
+
+[node name="RightLegArt" type="Sprite2D" parent="Units/NewNecromancer/Looks/CharacterArt/RightLeg"]
+position = Vector2(0, 1)
+texture = ExtResource("12_x25s5")
+region_enabled = true
+region_rect = Rect2(49, 139, 6, 4)
+
+[node name="LeftLeg" type="Marker2D" parent="Units/NewNecromancer/Looks/CharacterArt"]
+visible = false
+position = Vector2(-4, 9)
+
+[node name="LeftLegArt" type="Sprite2D" parent="Units/NewNecromancer/Looks/CharacterArt/LeftLeg"]
+texture = ExtResource("12_x25s5")
+region_enabled = true
+region_rect = Rect2(41, 139, 6, 4)
+
+[node name="Weapon" type="Marker2D" parent="Units/NewNecromancer/Looks"]
+
+[node name="NecroStaff" parent="Units/NewNecromancer/Looks/Weapon" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state") instance=ExtResource("13_y55gj")]
+attack_effect_scene = ExtResource("14_ulnmj")
+own_body = NodePath("../../..")
+state_machine = NodePath("../../../StateMachine")
+attack_state = NodePath("../../../StateMachine/Attack")
+approach_state = NodePath("../../../StateMachine/Approach")
+cooldown = 10.0
+weapon_range = 300.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="Units/NewNecromancer/Looks"]
+offset_left = -10.0
+offset_top = -27.0
+offset_right = 10.0
+offset_bottom = -25.0
+value = 100.0
+texture_under = ExtResource("15_sjqtn")
+texture_progress = ExtResource("16_5pynm")
+metadata/_edit_use_anchors_ = true
+
+[node name="MovementAnimations" type="AnimationPlayer" parent="Units/NewNecromancer/Looks"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qn2uv")
+}
+speed_scale = 6.0
+
+[node name="StateDisplay" type="Label" parent="Units/NewNecromancer/Looks" node_paths=PackedStringArray("state_machine")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -50.0
+offset_right = 18.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_o8bc1")
+state_machine = NodePath("../../StateMachine")
+
+[node name="StateMachine" type="Node" parent="Units/NewNecromancer" node_paths=PackedStringArray("initial_state", "own_body")]
+script = ExtResource("18_vq31n")
+initial_state = NodePath("Idle")
+own_body = NodePath("..")
+
+[node name="Stun" type="Node" parent="Units/NewNecromancer/StateMachine" node_paths=PackedStringArray("own_body")]
+script = ExtResource("19_2kn6u")
+own_body = NodePath("../..")
+stunTime = 1.0
+threshold_state = "Teleport"
+
+[node name="Teleport" type="Node" parent="Units/NewNecromancer/StateMachine" node_paths=PackedStringArray("own_body")]
+script = ExtResource("20_q3hxl")
+own_body = NodePath("../..")
+nextState = "SummonUnits"
+state_duration = 0.1
+
+[node name="SummonUnits" type="Node" parent="Units/NewNecromancer/StateMachine" node_paths=PackedStringArray("own_body")]
+script = ExtResource("21_yqxtj")
+own_body = NodePath("../..")
+spawn_object = ExtResource("6_2jvlj")
+nextState = "Idle"
+num_summoned = 1
+summon_increment_amount = 1
+state_duration = 2.0
+
+[node name="Approach" type="Node" parent="Units/NewNecromancer/StateMachine"]
+script = ExtResource("23_i16lw")
+
+[node name="Idle" type="Node" parent="Units/NewNecromancer/StateMachine"]
+script = ExtResource("24_v7dy0")
+
+[node name="Attack" type="Node" parent="Units/NewNecromancer/StateMachine"]
+script = ExtResource("25_8mobu")
+
+[node name="CoolDownTimer" type="Timer" parent="Units/NewNecromancer/StateMachine/Attack"]
+wait_time = 2.0
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Units/NewNecromancer"]
+visible = false
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ysvin")
+
+[node name="HitBox" type="Area2D" parent="Units/NewNecromancer"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Units/NewNecromancer/HitBox"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_g8o30")
+
+[node name="SightRange" type="Area2D" parent="Units/NewNecromancer"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Units/NewNecromancer/SightRange"]
+shape = SubResource("CircleShape2D_5cwag")
 
 [node name="Wall1" type="Sprite2D" parent="."]
 position = Vector2(48.5, -117)
@@ -153,6 +662,20 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
+[connection signal="Moved" from="Units/NewNecromancer" to="Units/NewNecromancer/Looks" method="_on_base_unit_moved"]
+[connection signal="Selected" from="Units/NewNecromancer" to="Units/NewNecromancer/Looks" method="_on_base_unit_selected"]
+[connection signal="Stopped" from="Units/NewNecromancer" to="Units/NewNecromancer/Looks" method="_on_base_unit_stopped"]
+[connection signal="mouse_entered" from="Units/NewNecromancer" to="Units/NewNecromancer" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Units/NewNecromancer" to="Units/NewNecromancer" method="_on_mouse_exited"]
+[connection signal="newTarget" from="Units/NewNecromancer/StateMachine" to="Units/NewNecromancer/Looks" method="_on_state_machine_new_target"]
+[connection signal="newWalk" from="Units/NewNecromancer/StateMachine" to="Units/NewNecromancer/Looks" method="_on_state_machine_new_walk"]
+[connection signal="Attacked" from="Units/NewNecromancer/StateMachine/Attack" to="Units/NewNecromancer/Looks" method="_on_attack_attacked"]
+[connection signal="timeout" from="Units/NewNecromancer/StateMachine/Attack/CoolDownTimer" to="Units/NewNecromancer/StateMachine/Attack" method="_on_cool_down_timer_timeout"]
+[connection signal="body_entered" from="Units/NewNecromancer/SightRange" to="Units/NewNecromancer/StateMachine" method="_on_sight_range_body_entered"]
+[connection signal="body_exited" from="Units/NewNecromancer/SightRange" to="Units/NewNecromancer/StateMachine" method="_on_sight_range_body_exited"]
+[connection signal="body_shape_entered" from="Units/NewNecromancer/SightRange" to="Units/NewNecromancer/StateMachine" method="_on_sight_range_body_shape_entered"]
+[connection signal="body_shape_exited" from="Units/NewNecromancer/SightRange" to="Units/NewNecromancer/StateMachine" method="_on_sight_range_body_shape_exited"]
 [connection signal="area_selected" from="Camera2D" to="." method="_on_camera_2d_area_selected"]
 
 [editable path="Units/Mage"]
+[editable path="Units/Mage2"]

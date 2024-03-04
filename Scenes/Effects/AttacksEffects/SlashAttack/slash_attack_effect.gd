@@ -15,6 +15,9 @@ func set_params(new_own_body, new_damage, new_knockback_amount, target):
 	self.knockback_amount = new_knockback_amount
 	self.source_type = self.own_body.type
 
+func set_transform_params(global_position, rotation):
+	self.rotation = rotation
+	self.global_position = global_position
 
 func _on_area_2d_body_entered(body):
 	# Check if hitting self or friend

@@ -22,12 +22,12 @@ func _ready():
 	approach_state.set_weapon_range(weapon_range)
 	
 func _process(_delta):
-	if target or walk:
+	if is_instance_valid(target) or walk:
 		var vector_to_target = Vector2.ZERO
 		if walk:
 			look_at(walk)
 			vector_to_target = (walk - own_body.global_position).normalized()
-		else:
+		elif(is_instance_valid(target) and is_instance_valid(own_body)):
 			look_at(target.global_position)
 			vector_to_target = (target.global_position - own_body.global_position).normalized()
 		var direction = Vector2.RIGHT.rotated(rotation)
@@ -50,8 +50,7 @@ func _on_attack(_target):
 
 func run_attack():
 	var attack_node = attack_effect_scene.instantiate()
-	attack_node.global_position = $AttackPoint.global_position
-	attack_node.rotation = rotation
+	attack_node.set_transform_params($AttackPoint.global_position, rotation)
 	attack_node.set_params(own_body, damage, knockback_amount, target)
 	own_body.get_parent().add_child(attack_node)
 

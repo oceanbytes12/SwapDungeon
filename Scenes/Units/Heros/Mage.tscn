@@ -69,6 +69,3 @@ approach_state = NodePath("../../../StateMachine/Approach")
 
 [node name="CollisionBox" parent="." index="3"]
 visible = false
-
-[node name="HitBox" parent="." index="4"]
-visible = false
