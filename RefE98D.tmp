@@ -2,19 +2,19 @@
 
 [ext_resource type="Script" path="res://Levels/TestingLevels/UnitController.gd" id="1_5n0ut"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Levels/tile_map.tscn" id="2_6crap"]
-[ext_resource type="PackedScene" uid="uid://bxo6tud3tpweo" path="res://Scenes/Units/Enemies/Bomb.tscn" id="3_pq4uy"]
 [ext_resource type="PackedScene" uid="uid://clmlld4jbk2kr" path="res://Scenes/Units/Heros/Warrior.tscn" id="3_xjcyb"]
 [ext_resource type="Texture2D" uid="uid://dyhbvux0iui25" path="res://Art/TileArt/Wall1.png" id="4_501ba"]
 [ext_resource type="PackedScene" uid="uid://dfxjs6aqdsic2" path="res://Scenes/Units/Heros/Mage.tscn" id="4_dymnt"]
 [ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="5_1krqr"]
 [ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="5_532g4"]
+[ext_resource type="PackedScene" uid="uid://c5vwrc1xlfrir" path="res://Scenes/Units/Enemies/Necromancer.tscn" id="6_lu1me"]
 [ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="6_u75t2"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="7_a3vur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o37bt"]
 size = Vector2(514, 20)
 
-[sub_resource type="Shader" id="Shader_fhc76"]
+[sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
 
 uniform float flash_opacity = 0;
@@ -30,7 +30,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ok2vh"]
 resource_local_to_scene = true
-shader = SubResource("Shader_fhc76")
+shader = SubResource("Shader_2y081")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
@@ -91,6 +91,9 @@ position = Vector2(0, 0)
 [node name="Warrior" parent="Units" instance=ExtResource("3_xjcyb")]
 position = Vector2(-104, 0)
 
+[node name="Warrior2" parent="Units" instance=ExtResource("3_xjcyb")]
+position = Vector2(-106, 57)
+
 [node name="Mage" parent="Units" instance=ExtResource("4_dymnt")]
 position = Vector2(-153, 14)
 
@@ -100,13 +103,26 @@ material = SubResource("ShaderMaterial_ok2vh")
 [node name="Front" parent="Units/Mage/Looks/CharacterArt/Head" index="0"]
 material = SubResource("ShaderMaterial_r8tbf")
 
-[node name="Bomb" parent="Units" instance=ExtResource("3_pq4uy")]
-type = "enemy"
-starting_health = 300.0
+[node name="Mage2" parent="Units" instance=ExtResource("4_dymnt")]
+position = Vector2(-154, 62)
 
-[node name="Bomb2" parent="Units" instance=ExtResource("3_pq4uy")]
-type = "enemy"
-starting_health = 300.0
+[node name="Front" parent="Units/Mage2/Looks/CharacterArt/Torso" index="0"]
+material = SubResource("ShaderMaterial_ok2vh")
+
+[node name="Front" parent="Units/Mage2/Looks/CharacterArt/Head" index="0"]
+material = SubResource("ShaderMaterial_r8tbf")
+
+[node name="AirStaff" parent="Units/Mage2/Looks/Weapon" index="0" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state")]
+own_body = NodePath("../../../../Mage")
+state_machine = NodePath("../../../../Mage/StateMachine")
+attack_state = NodePath("../../../../Mage/StateMachine/Attack")
+approach_state = NodePath("../../../../Mage/StateMachine/Approach")
+
+[node name="StateMachine" parent="Units/Mage2" index="2" node_paths=PackedStringArray("initial_state", "own_body")]
+initial_state = NodePath("../../Mage/StateMachine/Idle")
+own_body = NodePath("../../Mage")
+
+[node name="Necromancer" parent="Units" instance=ExtResource("6_lu1me")]
 
 [node name="Wall1" type="Sprite2D" parent="."]
 position = Vector2(48.5, -117)
@@ -165,3 +181,4 @@ patch_margin_bottom = 4
 [connection signal="area_selected" from="Camera2D" to="." method="_on_camera_2d_area_selected"]
 
 [editable path="Units/Mage"]
+[editable path="Units/Mage2"]

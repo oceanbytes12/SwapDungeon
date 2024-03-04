@@ -101,11 +101,6 @@ material = SubResource("ShaderMaterial_ok2vh")
 material = SubResource("ShaderMaterial_r8tbf")
 
 [node name="Bomb" parent="Units" instance=ExtResource("3_pq4uy")]
-type = "enemy"
-starting_health = 300.0
-
-[node name="Bomb2" parent="Units" instance=ExtResource("3_pq4uy")]
-type = "enemy"
 starting_health = 300.0
 
 [node name="Wall1" type="Sprite2D" parent="."]

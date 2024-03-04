@@ -1,25 +1,24 @@
-[gd_scene load_steps=36 format=3 uid="uid://h6ifrlhgappl"]
+[gd_scene load_steps=36 format=3 uid="uid://bxo6tud3tpweo"]
 
-[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_sy5r1"]
-[ext_resource type="PackedScene" uid="uid://cj1t02ts4raor" path="res://Scenes/Effects/RandomEffects/HitEffect.tscn" id="2_embgd"]
-[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/Looks.gd" id="3_qltsp"]
-[ext_resource type="Texture2D" uid="uid://dd3t1akbeusg5" path="res://Art/CharacterArt/SelectionMarker-Sheet.png" id="4_akh4y"]
-[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/CharacterArt/BaseUnits.png" id="5_ohw0f"]
-[ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/CharacterArt/SkelyBoyPartsx3.png" id="6_hqpct"]
-[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="7_q34iv"]
-[ext_resource type="Texture2D" uid="uid://dbvb5q7nll6yw" path="res://Art/NewArt/BaseUnits.png" id="8_1m3ni"]
-[ext_resource type="PackedScene" uid="uid://dlgckynb5p00u" path="res://Scenes/Weapons/staff_necro.tscn" id="9_elqji"]
-[ext_resource type="PackedScene" uid="uid://b10y87uf3wkvx" path="res://Scenes/Effects/AttacksEffects/MultiMageAttack/multi_mage_attack.tscn" id="10_mn7rn"]
-[ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/UIArt/HealthBar2.png" id="11_tt6t0"]
-[ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="12_02to2"]
-[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/StateMachine.gd" id="13_dvppm"]
-[ext_resource type="Script" path="res://StateDisplay.gd" id="14_k7whf"]
-[ext_resource type="Script" path="res://Scenes/States/BaseApproach.gd" id="14_t0wns"]
-[ext_resource type="Script" path="res://Scenes/UI/UIScripts/SummonUnits.gd" id="15_8awmb"]
-[ext_resource type="Script" path="res://Scenes/States/Teleport.gd" id="15_38yx8"]
-[ext_resource type="Script" path="res://Scenes/States/BaseIdle.gd" id="15_iev6s"]
-[ext_resource type="Script" path="res://Scenes/States/BaseAttack.gd" id="17_ekeag"]
-[ext_resource type="Script" path="res://Scenes/States/ThresholdStun.gd" id="21_53kk2"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_j8th3"]
+[ext_resource type="PackedScene" uid="uid://cj1t02ts4raor" path="res://Scenes/Effects/RandomEffects/HitEffect.tscn" id="2_b2u18"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/Looks.gd" id="3_j704i"]
+[ext_resource type="Texture2D" uid="uid://dd3t1akbeusg5" path="res://Art/CharacterArt/SelectionMarker-Sheet.png" id="4_t1pnr"]
+[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/CharacterArt/BaseUnits.png" id="5_eepu2"]
+[ext_resource type="Texture2D" uid="uid://dbvb5q7nll6yw" path="res://Art/NewArt/BaseUnits.png" id="6_jmiml"]
+[ext_resource type="Texture2D" uid="uid://ccuorn767b0n" path="res://Art/CharacterArt/WarriorArt.png" id="7_qcqo1"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="8_limeu"]
+[ext_resource type="PackedScene" uid="uid://f8rvnj6lkcob" path="res://Scenes/Weapons/explode.tscn" id="9_pxue1"]
+[ext_resource type="PackedScene" uid="uid://bukbd5l4r8vai" path="res://Scenes/Effects/AttacksEffects/ExplosionAttack/Explosion.tscn" id="10_15gc0"]
+[ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/UIArt/HealthBar2.png" id="10_ink6t"]
+[ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="11_b1s7a"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/StateMachine.gd" id="12_e3g0v"]
+[ext_resource type="Script" path="res://Scenes/States/BaseApproach.gd" id="13_hcvlv"]
+[ext_resource type="Script" path="res://StateDisplay.gd" id="13_qnjoa"]
+[ext_resource type="Script" path="res://Scenes/States/BaseIdle.gd" id="14_qvqoq"]
+[ext_resource type="Script" path="res://Scenes/States/StunStates/ThresholdStun.gd" id="15_fsd3j"]
+[ext_resource type="Script" path="res://Scenes/States/BaseWalk.gd" id="17_eb68y"]
+[ext_resource type="Script" path="res://Scenes/States/DelayedAttack.gd" id="17_u1x0h"]
 
 [sub_resource type="Animation" id="Animation_h2q2f"]
 length = 0.001
@@ -82,11 +81,11 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfdci"]
-atlas = ExtResource("4_akh4y")
+atlas = ExtResource("4_t1pnr")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6l3kc"]
-atlas = ExtResource("4_akh4y")
+atlas = ExtResource("4_t1pnr")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a40jf"]
@@ -113,7 +112,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Shader" id="Shader_0ggm1"]
+[sub_resource type="Shader" id="Shader_2y081"]
 code = "shader_type canvas_item;
 
 uniform float flash_opacity = 0;
@@ -127,15 +126,15 @@ void fragment() {
 	COLOR.a = tex_color.a;
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ok2vh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xlaq2"]
 resource_local_to_scene = true
-shader = SubResource("Shader_0ggm1")
+shader = SubResource("Shader_2y081")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8tbf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cl6ef"]
 resource_local_to_scene = true
-shader = ExtResource("7_q34iv")
+shader = ExtResource("8_limeu")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
@@ -212,6 +211,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Looks:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_c5mp0"]
@@ -291,8 +302,39 @@ tracks/5/keys = {
 "values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0), Vector2(0, -2)]
 }
 
+[sub_resource type="Animation" id="Animation_j2deb"]
+resource_name = "Attack"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Looks:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 11, 11.1, 11.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0), Vector2(2, 0), Vector2(-2, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Attack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(9.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish_attack"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qn2uv"]
 _data = {
+"Attack": SubResource("Animation_j2deb"),
 "RESET": SubResource("Animation_rybsu"),
 "Walk": SubResource("Animation_c5mp0")
 }
@@ -306,11 +348,12 @@ size = Vector2(22, 32)
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
 radius = 520.116
 
-[node name="NewNecromancer" type="CharacterBody2D" groups=["unit"]]
-position = Vector2(114, 21)
+[node name="Bomb" type="CharacterBody2D" groups=["unit"]]
+position = Vector2(110, 0)
 platform_on_leave = 2
-script = ExtResource("1_sy5r1")
-hit_splat_scene = ExtResource("2_embgd")
+script = ExtResource("1_j8th3")
+type = "bomb"
+hit_splat_scene = ExtResource("2_b2u18")
 
 [node name="EffectAnimations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -319,7 +362,8 @@ libraries = {
 speed_scale = 2.0
 
 [node name="Looks" type="Node2D" parent="."]
-script = ExtResource("3_qltsp")
+position = Vector2(2, 0)
+script = ExtResource("3_j704i")
 
 [node name="Selection" type="AnimatedSprite2D" parent="Looks"]
 position = Vector2(0, 11)
@@ -328,7 +372,7 @@ animation = &"NotSelected"
 
 [node name="Shadow" type="Sprite2D" parent="Looks"]
 position = Vector2(0, 10)
-texture = ExtResource("5_ohw0f")
+texture = ExtResource("5_eepu2")
 region_enabled = true
 region_rect = Rect2(8, 156, 16, 8)
 
@@ -338,65 +382,67 @@ region_rect = Rect2(8, 156, 16, 8)
 position = Vector2(0, 3)
 
 [node name="Front" type="Sprite2D" parent="Looks/CharacterArt/Torso"]
-material = SubResource("ShaderMaterial_ok2vh")
-position = Vector2(1, 1)
-texture = ExtResource("6_hqpct")
+modulate = Color(0.733333, 0, 0.733333, 1)
+self_modulate = Color(0.835294, 0, 0.835294, 1)
+material = SubResource("ShaderMaterial_xlaq2")
+position = Vector2(0, -1)
+texture = ExtResource("6_jmiml")
 region_enabled = true
-region_rect = Rect2(64, 22, 22, 10)
+region_rect = Rect2(7, 81, 18, 9)
 
 [node name="Back" type="Sprite2D" parent="Looks/CharacterArt/Torso"]
 visible = false
-position = Vector2(1, 1)
-texture = ExtResource("6_hqpct")
+position = Vector2(0, -1)
+texture = ExtResource("7_qcqo1")
 region_enabled = true
-region_rect = Rect2(32, 29, 18, 14)
+region_rect = Rect2(4, 47, 18, 9)
 
 [node name="Head" type="Marker2D" parent="Looks/CharacterArt"]
 position = Vector2(0, -12)
 
 [node name="Front" type="Sprite2D" parent="Looks/CharacterArt/Head"]
-material = SubResource("ShaderMaterial_r8tbf")
-position = Vector2(1, 1)
-texture = ExtResource("6_hqpct")
+material = SubResource("ShaderMaterial_cl6ef")
+position = Vector2(0, 2)
+texture = ExtResource("6_jmiml")
 region_enabled = true
-region_rect = Rect2(64, 0, 24, 20)
+region_rect = Rect2(7, 57, 18, 17)
 
 [node name="Back" type="Sprite2D" parent="Looks/CharacterArt/Head"]
 visible = false
-position = Vector2(1, 1)
-texture = ExtResource("6_hqpct")
+position = Vector2(0, 2)
+texture = ExtResource("7_qcqo1")
 region_enabled = true
-region_rect = Rect2(4, 29, 22, 19)
+region_rect = Rect2(34, 2, 18, 17)
 
 [node name="RightLeg" type="Marker2D" parent="Looks/CharacterArt"]
-visible = false
 position = Vector2(4, 8)
 
 [node name="RightLegArt" type="Sprite2D" parent="Looks/CharacterArt/RightLeg"]
 position = Vector2(0, 1)
-texture = ExtResource("8_1m3ni")
+texture = ExtResource("6_jmiml")
 region_enabled = true
-region_rect = Rect2(49, 139, 6, 4)
+region_rect = Rect2(17, 90, 6, 5)
 
 [node name="LeftLeg" type="Marker2D" parent="Looks/CharacterArt"]
-visible = false
 position = Vector2(-4, 9)
 
 [node name="LeftLegArt" type="Sprite2D" parent="Looks/CharacterArt/LeftLeg"]
-texture = ExtResource("8_1m3ni")
+texture = ExtResource("6_jmiml")
 region_enabled = true
-region_rect = Rect2(41, 139, 6, 4)
+region_rect = Rect2(9, 90, 6, 5)
 
 [node name="Weapon" type="Marker2D" parent="Looks"]
 
-[node name="NecroStaff" parent="Looks/Weapon" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state") instance=ExtResource("9_elqji")]
-attack_effect_scene = ExtResource("10_mn7rn")
+[node name="Explode" parent="Looks/Weapon" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state") instance=ExtResource("9_pxue1")]
+attack_effect_scene = ExtResource("10_15gc0")
 own_body = NodePath("../../..")
 state_machine = NodePath("../../../StateMachine")
 attack_state = NodePath("../../../StateMachine/Attack")
 approach_state = NodePath("../../../StateMachine/Approach")
-cooldown = 10.0
-weapon_range = 300.0
+damage = 300.0
+knockback_amount = 150.0
+cooldown = 100.0
+weapon_range = 50.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="Looks"]
 offset_left = -10.0
@@ -404,8 +450,8 @@ offset_top = -27.0
 offset_right = 10.0
 offset_bottom = -25.0
 value = 100.0
-texture_under = ExtResource("11_tt6t0")
-texture_progress = ExtResource("12_02to2")
+texture_under = ExtResource("10_ink6t")
+texture_progress = ExtResource("11_b1s7a")
 metadata/_edit_use_anchors_ = true
 
 [node name="MovementAnimations" type="AnimationPlayer" parent="Looks"]
@@ -427,49 +473,36 @@ offset_right = 18.5
 offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("14_k7whf")
+script = ExtResource("13_qnjoa")
 state_machine = NodePath("../../StateMachine")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "own_body")]
-script = ExtResource("13_dvppm")
+script = ExtResource("12_e3g0v")
 initial_state = NodePath("Idle")
 own_body = NodePath("..")
 
-[node name="Stun" type="Node" parent="StateMachine" node_paths=PackedStringArray("own_body")]
-script = ExtResource("21_53kk2")
-own_body = NodePath("../..")
-stunTime = 1.0
-threshold_state = "Teleport"
-
-[node name="Teleport" type="Node" parent="StateMachine" node_paths=PackedStringArray("own_body")]
-script = ExtResource("15_38yx8")
-own_body = NodePath("../..")
-nextState = "SummonUnits"
-state_duration = 0.1
-
-[node name="SummonUnits" type="Node" parent="StateMachine" node_paths=PackedStringArray("own_body")]
-script = ExtResource("15_8awmb")
-own_body = NodePath("../..")
-spawn_object = null
-nextState = "SummonUnits"
-num_summoned = 1
-summon_increment_amount = 1
-state_duration = 2.0
-
 [node name="Approach" type="Node" parent="StateMachine"]
-script = ExtResource("14_t0wns")
+script = ExtResource("13_hcvlv")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("15_iev6s")
+script = ExtResource("14_qvqoq")
 
-[node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource("17_ekeag")
+[node name="Stun" type="Node" parent="StateMachine"]
+script = ExtResource("15_fsd3j")
+recovery_rate = 5.0
+damage_to_stun = 100.0
+stun_time = 5.0
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation")]
+script = ExtResource("17_u1x0h")
+animation = NodePath("../../Looks/MovementAnimations")
 
 [node name="CoolDownTimer" type="Timer" parent="StateMachine/Attack"]
-wait_time = 2.0
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("17_eb68y")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_ysvin")
 
@@ -481,9 +514,9 @@ position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_g8o30")
 
 [node name="SightRange" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
+visible = false
 shape = SubResource("CircleShape2D_5cwag")
 
 [connection signal="Moved" from="." to="Looks" method="_on_base_unit_moved"]

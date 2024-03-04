@@ -1,15 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0hnammgx2r4u"]
+[gd_scene load_steps=16 format=3 uid="uid://umlt1phg7sjd"]
 
-[ext_resource type="Script" path="res://Levels/TestingLevels/UnitController.gd" id="1_5n0ut"]
-[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Levels/tile_map.tscn" id="2_6crap"]
-[ext_resource type="PackedScene" uid="uid://bxo6tud3tpweo" path="res://Scenes/Units/Enemies/Bomb.tscn" id="3_pq4uy"]
-[ext_resource type="PackedScene" uid="uid://clmlld4jbk2kr" path="res://Scenes/Units/Heros/Warrior.tscn" id="3_xjcyb"]
-[ext_resource type="Texture2D" uid="uid://dyhbvux0iui25" path="res://Art/TileArt/Wall1.png" id="4_501ba"]
-[ext_resource type="PackedScene" uid="uid://dfxjs6aqdsic2" path="res://Scenes/Units/Heros/Mage.tscn" id="4_dymnt"]
-[ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="5_1krqr"]
-[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="5_532g4"]
-[ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="6_u75t2"]
-[ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="7_a3vur"]
+[ext_resource type="Script" path="res://Levels/TestingLevels/UnitController.gd" id="1_3xb8v"]
+[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Levels/tile_map.tscn" id="2_16uf2"]
+[ext_resource type="PackedScene" uid="uid://clmlld4jbk2kr" path="res://Scenes/Units/Heros/Warrior.tscn" id="3_nhedn"]
+[ext_resource type="PackedScene" uid="uid://dfxjs6aqdsic2" path="res://Scenes/Units/Heros/Mage.tscn" id="4_spn0e"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="5_k1tu3"]
+[ext_resource type="PackedScene" uid="uid://c5vwrc1xlfrir" path="res://Scenes/Units/Enemies/Necromancer.tscn" id="6_db4y5"]
+[ext_resource type="Texture2D" uid="uid://dyhbvux0iui25" path="res://Art/TileArt/Wall1.png" id="7_n8vr4"]
+[ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="8_g4okl"]
+[ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="9_mlg6f"]
+[ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="10_yqxhj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o37bt"]
 size = Vector2(514, 20)
@@ -36,7 +36,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r8tbf"]
 resource_local_to_scene = true
-shader = ExtResource("5_532g4")
+shader = ExtResource("5_k1tu3")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
@@ -54,7 +54,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_5n0ut")
+script = ExtResource("1_3xb8v")
 
 [node name="WallTop" type="StaticBody2D" parent="." groups=["wall"]]
 
@@ -83,15 +83,15 @@ rotation = 1.5708
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
 shape = SubResource("RectangleShape2D_o37bt")
 
-[node name="TileMap" parent="." instance=ExtResource("2_6crap")]
+[node name="TileMap" parent="." instance=ExtResource("2_16uf2")]
 position = Vector2(0, 0)
 
 [node name="Units" type="Node" parent="."]
 
-[node name="Warrior" parent="Units" instance=ExtResource("3_xjcyb")]
+[node name="Warrior" parent="Units" instance=ExtResource("3_nhedn")]
 position = Vector2(-104, 0)
 
-[node name="Mage" parent="Units" instance=ExtResource("4_dymnt")]
+[node name="Mage" parent="Units" instance=ExtResource("4_spn0e")]
 position = Vector2(-153, 14)
 
 [node name="Front" parent="Units/Mage/Looks/CharacterArt/Torso" index="0"]
@@ -100,38 +100,32 @@ material = SubResource("ShaderMaterial_ok2vh")
 [node name="Front" parent="Units/Mage/Looks/CharacterArt/Head" index="0"]
 material = SubResource("ShaderMaterial_r8tbf")
 
-[node name="Bomb" parent="Units" instance=ExtResource("3_pq4uy")]
-type = "enemy"
-starting_health = 300.0
-
-[node name="Bomb2" parent="Units" instance=ExtResource("3_pq4uy")]
-type = "enemy"
-starting_health = 300.0
+[node name="Necromancer" parent="Units" instance=ExtResource("6_db4y5")]
 
 [node name="Wall1" type="Sprite2D" parent="."]
 position = Vector2(48.5, -117)
-texture = ExtResource("4_501ba")
+texture = ExtResource("7_n8vr4")
 
 [node name="Wall2" type="Sprite2D" parent="."]
 position = Vector2(-209.5, -117)
-texture = ExtResource("4_501ba")
+texture = ExtResource("7_n8vr4")
 region_enabled = true
 region_rect = Rect2(0, 0, 139, 44)
 
 [node name="WallSide2" type="Sprite2D" parent="."]
 position = Vector2(225, 209)
-texture = ExtResource("5_1krqr")
+texture = ExtResource("8_g4okl")
 region_enabled = true
 region_rect = Rect2(0, 0, 26, 204)
 
 [node name="WallSide" type="Sprite2D" parent="."]
 position = Vector2(225, 5)
-texture = ExtResource("5_1krqr")
+texture = ExtResource("8_g4okl")
 region_enabled = true
 region_rect = Rect2(0, 0, 26, 204)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("box")]
-script = ExtResource("7_a3vur")
+script = ExtResource("9_mlg6f")
 box = NodePath("../UI/SelectionPanel")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -156,7 +150,7 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_u75t2")
+texture = ExtResource("10_yqxhj")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4

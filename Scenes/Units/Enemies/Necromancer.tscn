@@ -1,21 +1,26 @@
-[gd_scene load_steps=32 format=3 uid="uid://c4dyy4kax1ogv"]
+[gd_scene load_steps=37 format=3 uid="uid://c5vwrc1xlfrir"]
 
-[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_kwkx1"]
-[ext_resource type="PackedScene" uid="uid://cj1t02ts4raor" path="res://Scenes/Effects/RandomEffects/HitEffect.tscn" id="2_qxspr"]
-[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/CharacterArt/BaseUnits.png" id="2_sl3nq"]
-[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/Looks.gd" id="3_qxp5q"]
-[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/StateMachine.gd" id="4_4ntpo"]
-[ext_resource type="Script" path="res://Scenes/States/BaseAttack.gd" id="4_hr32h"]
-[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="4_x4imc"]
-[ext_resource type="Script" path="res://Scenes/States/BaseApproach.gd" id="6_8col6"]
-[ext_resource type="Texture2D" uid="uid://d4mc1pmpo8ibb" path="res://Art/NewArt/BaseUnits2.png" id="6_j58rn"]
-[ext_resource type="Script" path="res://Scenes/States/BaseIdle.gd" id="7_mura8"]
-[ext_resource type="Script" path="res://Scenes/States/StunStates/BaseStun.gd" id="9_f6npj"]
-[ext_resource type="Texture2D" uid="uid://dbvb5q7nll6yw" path="res://Art/NewArt/BaseUnits.png" id="11_ox2d3"]
-[ext_resource type="Texture2D" uid="uid://dd3t1akbeusg5" path="res://Art/CharacterArt/SelectionMarker-Sheet.png" id="12_ifmi8"]
-[ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/UIArt/HealthBar2.png" id="12_vaypi"]
-[ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="13_tnq6t"]
-[ext_resource type="Script" path="res://Scenes/States/BaseWalk.gd" id="18_5ditg"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/BaseUnit.gd" id="1_x2lx2"]
+[ext_resource type="PackedScene" uid="uid://cj1t02ts4raor" path="res://Scenes/Effects/RandomEffects/HitEffect.tscn" id="2_hesi5"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/Looks.gd" id="3_6dfvh"]
+[ext_resource type="Texture2D" uid="uid://dd3t1akbeusg5" path="res://Art/CharacterArt/SelectionMarker-Sheet.png" id="4_hbgfc"]
+[ext_resource type="Texture2D" uid="uid://fbbadc82es6v" path="res://Art/CharacterArt/BaseUnits.png" id="5_f5kpf"]
+[ext_resource type="Texture2D" uid="uid://e1bgygf7kivp" path="res://Art/CharacterArt/SkelyBoyPartsx3.png" id="6_pi8n5"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="7_88tcx"]
+[ext_resource type="Texture2D" uid="uid://dbvb5q7nll6yw" path="res://Art/NewArt/BaseUnits.png" id="8_15nsg"]
+[ext_resource type="PackedScene" uid="uid://dlgckynb5p00u" path="res://Scenes/Weapons/staff_necro.tscn" id="9_4n0ka"]
+[ext_resource type="PackedScene" uid="uid://b10y87uf3wkvx" path="res://Scenes/Effects/AttacksEffects/MultiMageAttack/multi_mage_attack.tscn" id="10_q7e80"]
+[ext_resource type="Texture2D" uid="uid://dm5ieeq1ro88h" path="res://Art/UIArt/HealthBar2.png" id="11_bv4qx"]
+[ext_resource type="Texture2D" uid="uid://coq3gquawvlud" path="res://Art/UIArt/HealthBar1.png" id="12_n67l3"]
+[ext_resource type="Script" path="res://StateDisplay.gd" id="13_c3cdt"]
+[ext_resource type="Script" path="res://Scenes/Units/BaseUnit/StateMachine.gd" id="14_ymrid"]
+[ext_resource type="Script" path="res://Scenes/States/StunStates/StateChangeStun.gd" id="15_lff0m"]
+[ext_resource type="Script" path="res://Scenes/States/Teleport.gd" id="16_e4kpe"]
+[ext_resource type="Script" path="res://Scenes/UI/UIScripts/SummonUnits.gd" id="17_a1dq7"]
+[ext_resource type="Script" path="res://Scenes/States/BaseApproach.gd" id="18_07abp"]
+[ext_resource type="PackedScene" uid="uid://bvn3tt13mn8wl" path="res://Scenes/Units/Enemies/MeleeSkeleton.tscn" id="18_ub2so"]
+[ext_resource type="Script" path="res://Scenes/States/BaseIdle.gd" id="19_m4m6r"]
+[ext_resource type="Script" path="res://Scenes/States/BaseAttack.gd" id="20_0r7i6"]
 
 [sub_resource type="Animation" id="Animation_h2q2f"]
 length = 0.001
@@ -78,11 +83,11 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfdci"]
-atlas = ExtResource("12_ifmi8")
+atlas = ExtResource("4_hbgfc")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6l3kc"]
-atlas = ExtResource("12_ifmi8")
+atlas = ExtResource("4_hbgfc")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a40jf"]
@@ -109,7 +114,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Shader" id="Shader_2y081"]
+[sub_resource type="Shader" id="Shader_0ggm1"]
 code = "shader_type canvas_item;
 
 uniform float flash_opacity = 0;
@@ -123,15 +128,15 @@ void fragment() {
 	COLOR.a = tex_color.a;
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrtso"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etexx"]
 resource_local_to_scene = true
-shader = SubResource("Shader_2y081")
+shader = SubResource("Shader_0ggm1")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykg6r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bl71s"]
 resource_local_to_scene = true
-shader = ExtResource("4_x4imc")
+shader = ExtResource("7_88tcx")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
@@ -293,19 +298,22 @@ _data = {
 "Walk": SubResource("Animation_c5mp0")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ysvin"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_jru8b"]
 radius = 5.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8o30"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34vll"]
 size = Vector2(22, 32)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5cwag"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ases"]
 radius = 520.116
 
-[node name="BaseUnit" type="CharacterBody2D" groups=["unit"]]
+[node name="Necromancer" type="CharacterBody2D" groups=["unit"]]
+position = Vector2(114, 21)
 platform_on_leave = 2
-script = ExtResource("1_kwkx1")
-hit_splat_scene = ExtResource("2_qxspr")
+script = ExtResource("1_x2lx2")
+type = "enemy"
+starting_health = 1000.0
+hit_splat_scene = ExtResource("2_hesi5")
 
 [node name="EffectAnimations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -314,7 +322,7 @@ libraries = {
 speed_scale = 2.0
 
 [node name="Looks" type="Node2D" parent="."]
-script = ExtResource("3_qxp5q")
+script = ExtResource("3_6dfvh")
 
 [node name="Selection" type="AnimatedSprite2D" parent="Looks"]
 position = Vector2(0, 11)
@@ -323,7 +331,7 @@ animation = &"NotSelected"
 
 [node name="Shadow" type="Sprite2D" parent="Looks"]
 position = Vector2(0, 10)
-texture = ExtResource("2_sl3nq")
+texture = ExtResource("5_f5kpf")
 region_enabled = true
 region_rect = Rect2(8, 156, 16, 8)
 
@@ -333,51 +341,66 @@ region_rect = Rect2(8, 156, 16, 8)
 position = Vector2(0, 3)
 
 [node name="Front" type="Sprite2D" parent="Looks/CharacterArt/Torso"]
-material = SubResource("ShaderMaterial_nrtso")
-texture = ExtResource("11_ox2d3")
+material = SubResource("ShaderMaterial_etexx")
+position = Vector2(1, 1)
+texture = ExtResource("6_pi8n5")
 region_enabled = true
-region_rect = Rect2(39, 129, 18, 12)
+region_rect = Rect2(64, 22, 22, 10)
 
 [node name="Back" type="Sprite2D" parent="Looks/CharacterArt/Torso"]
 visible = false
-texture = ExtResource("6_j58rn")
+position = Vector2(1, 1)
+texture = ExtResource("6_pi8n5")
 region_enabled = true
-region_rect = Rect2(87, 131, 18, 14)
+region_rect = Rect2(32, 29, 18, 14)
 
 [node name="Head" type="Marker2D" parent="Looks/CharacterArt"]
 position = Vector2(0, -12)
 
 [node name="Front" type="Sprite2D" parent="Looks/CharacterArt/Head"]
-material = SubResource("ShaderMaterial_ykg6r")
-position = Vector2(-1, 0)
-texture = ExtResource("11_ox2d3")
+material = SubResource("ShaderMaterial_bl71s")
+position = Vector2(1, 1)
+texture = ExtResource("6_pi8n5")
 region_enabled = true
-region_rect = Rect2(37, 101, 20, 22)
+region_rect = Rect2(64, 0, 24, 20)
 
 [node name="Back" type="Sprite2D" parent="Looks/CharacterArt/Head"]
 visible = false
-texture = ExtResource("6_j58rn")
+position = Vector2(1, 1)
+texture = ExtResource("6_pi8n5")
 region_enabled = true
-region_rect = Rect2(85, 103, 20, 22)
+region_rect = Rect2(4, 29, 22, 19)
 
 [node name="RightLeg" type="Marker2D" parent="Looks/CharacterArt"]
+visible = false
 position = Vector2(4, 8)
 
 [node name="RightLegArt" type="Sprite2D" parent="Looks/CharacterArt/RightLeg"]
 position = Vector2(0, 1)
-texture = ExtResource("11_ox2d3")
+texture = ExtResource("8_15nsg")
 region_enabled = true
 region_rect = Rect2(49, 139, 6, 4)
 
 [node name="LeftLeg" type="Marker2D" parent="Looks/CharacterArt"]
+visible = false
 position = Vector2(-4, 9)
 
 [node name="LeftLegArt" type="Sprite2D" parent="Looks/CharacterArt/LeftLeg"]
-texture = ExtResource("11_ox2d3")
+texture = ExtResource("8_15nsg")
 region_enabled = true
 region_rect = Rect2(41, 139, 6, 4)
 
 [node name="Weapon" type="Marker2D" parent="Looks"]
+
+[node name="NecroStaff" parent="Looks/Weapon" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state") instance=ExtResource("9_4n0ka")]
+attack_effect_scene = ExtResource("10_q7e80")
+own_body = NodePath("../../..")
+state_machine = NodePath("../../../StateMachine")
+attack_state = NodePath("../../../StateMachine/Attack")
+approach_state = NodePath("../../../StateMachine/Approach")
+damage = 10.0
+cooldown = 15.0
+weapon_range = 300.0
 
 [node name="HealthBar" type="TextureProgressBar" parent="Looks"]
 offset_left = -10.0
@@ -385,8 +408,8 @@ offset_top = -27.0
 offset_right = 10.0
 offset_bottom = -25.0
 value = 100.0
-texture_under = ExtResource("12_vaypi")
-texture_progress = ExtResource("13_tnq6t")
+texture_under = ExtResource("11_bv4qx")
+texture_progress = ExtResource("12_n67l3")
 metadata/_edit_use_anchors_ = true
 
 [node name="MovementAnimations" type="AnimationPlayer" parent="Looks"]
@@ -396,44 +419,77 @@ libraries = {
 }
 speed_scale = 6.0
 
+[node name="StateDisplay" type="Label" parent="Looks" node_paths=PackedStringArray("state_machine")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -50.0
+offset_right = 18.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_c3cdt")
+state_machine = NodePath("../../StateMachine")
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "own_body")]
-script = ExtResource("4_4ntpo")
+script = ExtResource("14_ymrid")
 initial_state = NodePath("Idle")
 own_body = NodePath("..")
 
+[node name="Stun" type="Node" parent="StateMachine" node_paths=PackedStringArray("own_body")]
+script = ExtResource("15_lff0m")
+own_body = NodePath("../..")
+stunTime = 1.0
+threshold_state = "Teleport"
+damageThreshold = 200
+
+[node name="Teleport" type="Node" parent="StateMachine" node_paths=PackedStringArray("own_body")]
+script = ExtResource("16_e4kpe")
+own_body = NodePath("../..")
+nextState = "SummonUnits"
+state_duration = 0.1
+
+[node name="SummonUnits" type="Node" parent="StateMachine" node_paths=PackedStringArray("own_body")]
+script = ExtResource("17_a1dq7")
+own_body = NodePath("../..")
+spawn_object = ExtResource("18_ub2so")
+nextState = "Idle"
+num_summoned = 1
+summon_increment_amount = 1
+state_duration = 2.0
+
 [node name="Approach" type="Node" parent="StateMachine"]
-script = ExtResource("6_8col6")
+script = ExtResource("18_07abp")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("7_mura8")
-
-[node name="Stun" type="Node" parent="StateMachine"]
-script = ExtResource("9_f6npj")
+script = ExtResource("19_m4m6r")
 
 [node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource("4_hr32h")
+script = ExtResource("20_0r7i6")
 
 [node name="CoolDownTimer" type="Timer" parent="StateMachine/Attack"]
-
-[node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource("18_5ditg")
+wait_time = 2.0
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_ysvin")
+shape = SubResource("CircleShape2D_jru8b")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_g8o30")
+shape = SubResource("RectangleShape2D_34vll")
 
 [node name="SightRange" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightRange"]
-shape = SubResource("CircleShape2D_5cwag")
+shape = SubResource("CircleShape2D_8ases")
 
 [connection signal="Moved" from="." to="Looks" method="_on_base_unit_moved"]
 [connection signal="Selected" from="." to="Looks" method="_on_base_unit_selected"]

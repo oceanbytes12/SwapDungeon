@@ -1,11 +1,23 @@
 extends State
+class_name BaseAttack
 signal Attacked
 
 var weapon_cooldown: float
 var can_attack = true
 var range_buffer = 4 # This is to prevent jittering between follow and attack states
 var weapon_range : float
+var target
+@export var animation : AnimationPlayer
 
+func start_attack(current_target):
+	target = current_target
+	animation.play("Attack")
+
+func finish_attack():
+	can_attack = false
+	Attacked.emit(target)
+	$CoolDownTimer.wait_time = weapon_cooldown
+	$CoolDownTimer.start()
 
 func Update(_delta, own_body, current_target, _target_list, walk_target):
 	if not current_target:
@@ -16,10 +28,7 @@ func Update(_delta, own_body, current_target, _target_list, walk_target):
 		if target_distance > weapon_range + range_buffer:
 			ChangeState.emit("Approach", current_target, walk_target)
 		if can_attack:
-			can_attack = false
-			Attacked.emit(current_target)
-			$CoolDownTimer.wait_time = weapon_cooldown
-			$CoolDownTimer.start()
+			start_attack(current_target)
 
 func Physics_Update(_delta, own_body, _current_target, _target_list, _walk_target):
 	own_body.velocity = Vector2.ZERO

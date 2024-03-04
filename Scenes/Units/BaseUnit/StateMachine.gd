@@ -68,10 +68,12 @@ func unit_hit(source_body, damage, knockback_amount, knockback_direction, freeze
 	if source_body.name not in target_list:
 		target_list[source_body.name] = source_body
 		source_body.Died.connect(_on_target_died)
+		
 	var new_state = states.get("Stun")
-	new_state.trigger_stun(own_body, damage, knockback_amount, knockback_direction, freeze)
-	new_state.Enter(own_body, current_target, target_list)
-	current_state = new_state
+	new_state.handle_hit(own_body, damage, knockback_amount, 
+	knockback_direction, freeze, current_target, walk_target)
+	#new_state.Enter(own_body, current_target, target_list)
+	#current_state = new_state
 	
 func walk_command(walk_position):
 	newWalk.emit(walk_position)

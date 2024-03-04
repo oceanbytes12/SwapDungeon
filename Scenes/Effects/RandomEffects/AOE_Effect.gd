@@ -13,9 +13,9 @@ var circleCollider
 var playerUnitsInRange = []
 
 
-#func _ready():
+func _ready():
 	## Test init here
-	#initialize(final_radius, damage, speed)
+	initialize(100, 50, 10)
 	
 func initialize(_radius, _damage, _speed):
 	#location = position

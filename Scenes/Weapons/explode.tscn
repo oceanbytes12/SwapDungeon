@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://f8rvnj6lkcob"]
+
+[ext_resource type="PackedScene" uid="uid://b1m6pccxxude2" path="res://Scenes/Weapons/BaseWeapon.tscn" id="1_o1g7a"]
+
+[node name="Explode" instance=ExtResource("1_o1g7a")]
+attack_effect_scene = null
+damage = 0.0
+knockback_amount = 0.0
+cooldown = 0.0
+weapon_range = 0.0
+
+[node name="WeaponArt" parent="." index="1"]
+visible = false
+position = Vector2(10, -6)
+region_rect = Rect2(67, 70, 10, 25)
+
+[node name="LeftHand" parent="." index="2"]
+visible = false

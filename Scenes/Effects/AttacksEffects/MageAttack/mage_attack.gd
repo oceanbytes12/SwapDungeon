@@ -18,7 +18,9 @@ func _ready():
 	else:
 		rotate(PI/5)
 	
-
+func set_transform_params(global_position, rotation):
+	pass
+	
 func _physics_process(delta):
 	var goal_rotation = position.angle_to_point(target.position)
 	var diff_rotation = angle_to_angle(rotation, goal_rotation)
