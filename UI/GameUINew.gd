@@ -30,7 +30,7 @@ func add_panel_to_roster(new_hero_card):
 	$Roster/Background/Roster.add_child(new_hero_panel)
 
 func add_panel_to_deployment(new_hero_card):
-	player_roster.append(new_hero_card)
+	deployment.append(new_hero_card)
 	var new_hero_panel = hero_panal_scene.instantiate()
 	var new_panel_index = hero_cards.size()
 	new_hero_panel.set_hero_card(new_hero_card, new_panel_index)
