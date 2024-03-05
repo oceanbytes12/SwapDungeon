@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0g10wiclxn4b"]
+
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/BaseUnit/BaseUnit.tscn" id="1_nl1u2"]
+[ext_resource type="Texture2D" uid="uid://ccuorn767b0n" path="res://Art/CharacterArt/WarriorArt.png" id="2_irwbe"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="3_68dp0"]
+[ext_resource type="PackedScene" uid="uid://7kn54eee4y5o" path="res://Scenes/Weapons/grappel_hook.tscn" id="4_1xt40"]
+
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2asep"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uljvj"]
+resource_local_to_scene = true
+shader = ExtResource("3_68dp0")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[node name="Puller" instance=ExtResource("1_nl1u2")]
+
+[node name="Front" parent="Looks/CharacterArt/Torso" index="0"]
+material = SubResource("ShaderMaterial_2asep")
+position = Vector2(0, -1)
+region_rect = Rect2(7, 81, 18, 9)
+
+[node name="Back" parent="Looks/CharacterArt/Torso" index="1"]
+visible = true
+position = Vector2(0, -1)
+texture = ExtResource("2_irwbe")
+region_rect = Rect2(4, 47, 18, 9)
+
+[node name="Front" parent="Looks/CharacterArt/Head" index="0"]
+material = SubResource("ShaderMaterial_uljvj")
+position = Vector2(0, 2)
+region_rect = Rect2(7, 57, 18, 17)
+
+[node name="Back" parent="Looks/CharacterArt/Head" index="1"]
+visible = true
+position = Vector2(0, 2)
+texture = ExtResource("2_irwbe")
+region_rect = Rect2(34, 2, 18, 17)
+
+[node name="RightLegArt" parent="Looks/CharacterArt/RightLeg" index="0"]
+region_rect = Rect2(17, 90, 6, 5)
+
+[node name="LeftLegArt" parent="Looks/CharacterArt/LeftLeg" index="0"]
+region_rect = Rect2(9, 90, 6, 5)
+
+[node name="Hook" parent="Looks/Weapon" index="0" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state") instance=ExtResource("4_1xt40")]
+own_body = NodePath("../../..")
+state_machine = NodePath("../../../StateMachine")
+attack_state = NodePath("../../../StateMachine/Attack")
+approach_state = NodePath("../../../StateMachine/Approach")
+weapon_range = 200.0
+
+[node name="Stun" parent="StateMachine" index="2"]
+knockback_multiplier = 0
+
+[node name="CollisionBox" parent="." index="3"]
+visible = false
+
+[node name="HitBox" parent="." index="4"]
+visible = false

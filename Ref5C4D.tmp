@@ -95,7 +95,6 @@ starting_health = 300.0
 
 [node name="Warrior" parent="Units" instance=ExtResource("3_xjcyb")]
 position = Vector2(-104, -57)
-move_speed = 0.0
 
 [node name="Mage" parent="Units" instance=ExtResource("4_dymnt")]
 position = Vector2(-153, 14)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://7kn54eee4y5o"]
+
+[ext_resource type="PackedScene" uid="uid://b1m6pccxxude2" path="res://Scenes/Weapons/BaseWeapon.tscn" id="1_ti7vp"]
+[ext_resource type="PackedScene" uid="uid://d4gs1w0lgl7hp" path="res://Scenes/Effects/AttacksEffects/Hook_attack/Hook_Attack.tscn" id="2_b71hg"]
+
+[node name="Hook" instance=ExtResource("1_ti7vp")]
+attack_effect_scene = ExtResource("2_b71hg")
+cooldown = 5.0
+weapon_range = 30.0
+
+[node name="AttackPoint" parent="." index="0"]
+position = Vector2(10, 1)
+
+[node name="WeaponArt" parent="." index="1"]
+position = Vector2(10, 1)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = null
+region_rect = Rect2(7, 0, 20, 30)

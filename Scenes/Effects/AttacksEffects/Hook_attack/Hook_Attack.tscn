@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4gs1w0lgl7hp"]
+
+[ext_resource type="Script" path="res://Scenes/Effects/AttacksEffects/Hook_attack/Hook_Attack.gd" id="1_cfqxv"]
+[ext_resource type="Texture2D" uid="uid://dups8pknc0csl" path="res://Art/HookChain.png" id="3_7gg3u"]
+[ext_resource type="AudioStream" uid="uid://70wbo0wupoco" path="res://SFX/Druid_vine_v1.wav" id="3_d37ri"]
+[ext_resource type="Texture2D" uid="uid://86mjys1jsoha" path="res://Art/HookHead.png" id="4_ac5vv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
+height = 22.0
+
+[node name="HookAttack" type="Area2D" node_paths=PackedStringArray("tip", "links", "LinksSprite", "Collision")]
+z_index = 2
+script = ExtResource("1_cfqxv")
+tip = NodePath("Tip")
+links = NodePath("Links")
+LinksSprite = NodePath("Links/LinksSprite")
+Collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(11, -1)
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CapsuleShape2D_w3hqt")
+
+[node name="Vine_launch_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_d37ri")
+
+[node name="Tip" type="Node2D" parent="."]
+position = Vector2(12, 0)
+rotation = 3.14159
+
+[node name="HookSprite" type="Sprite2D" parent="Tip"]
+rotation = -1.5708
+texture = ExtResource("4_ac5vv")
+
+[node name="Links" type="Node2D" parent="."]
+position = Vector2(3, 0)
+rotation = 3.14159
+
+[node name="LinksSprite" type="Sprite2D" parent="Links"]
+texture_repeat = 2
+rotation = -1.5708
+texture = ExtResource("3_7gg3u")
+centered = false
+offset = Vector2(-3, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 6, 6)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

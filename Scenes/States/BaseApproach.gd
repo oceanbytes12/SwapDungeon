@@ -5,7 +5,7 @@ class_name BaseApproach
 
 var timeout_timer
 var weapon_range : float
-var speed = 40
+var speed = 0
 
 func Enter(_own_body, _current_target, _target_list):
 	timeout_timer = timeout

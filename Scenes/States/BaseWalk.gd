@@ -2,7 +2,7 @@ extends State
 class_name PlayerWalk
 
 var spot_buffer = 10
-var speed = 40
+var speed = 0
 
 func Physics_Update(_delta, own_body, current_target, _target_list, walk_target):
 	if walk_target:

@@ -1,5 +1,5 @@
 extends Marker2D
-
+class_name Weapon
 @export var attack_effect_scene : PackedScene
 @export var own_body : CharacterBody2D
 @export var state_machine : Node
