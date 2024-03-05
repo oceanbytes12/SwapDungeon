@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HeroCard" load_steps=3 format=3 uid="uid://v58jheo5v1x"]
+
+[ext_resource type="Script" path="res://UI/hero_cards/hero_card.gd" id="1_b3kho"]
+[ext_resource type="Texture2D" uid="uid://byk3nxbono87c" path="res://Art/TileArt.png" id="2_bqtnl"]
+
+[resource]
+script = ExtResource("1_b3kho")
+name = "Warrior"
+texture = ExtResource("2_bqtnl")

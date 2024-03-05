@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dkvhyi7tr5mja"]
 
-[ext_resource type="Script" path="res://UI/HeroShop/HeroShop.gd" id="1_1ulwn"]
-[ext_resource type="PackedScene" uid="uid://bh4kd4tdp6wrf" path="res://UI/HeroIcons/HeroIcon.tscn" id="2_7qc6p"]
-[ext_resource type="PackedScene" uid="uid://b7qoonppusl0e" path="res://UI/HeroPanels/shop_panel.tscn" id="3_2pw3m"]
-[ext_resource type="PackedScene" uid="uid://cos46j3ppybq6" path="res://UI/HeroPanels/drag_panel.tscn" id="4_2j2n2"]
+[ext_resource type="Script" path="res://UI/oldUI/HeroShop/HeroShop.gd" id="1_1ulwn"]
+[ext_resource type="PackedScene" uid="uid://bh4kd4tdp6wrf" path="res://UI/oldUI/HeroIcons/HeroIcon.tscn" id="2_7qc6p"]
+[ext_resource type="PackedScene" uid="uid://b7qoonppusl0e" path="res://UI/oldUI/HeroPanels/shop_panel.tscn" id="3_2pw3m"]
+[ext_resource type="PackedScene" uid="uid://cos46j3ppybq6" path="res://UI/oldUI/HeroPanels/drag_panel.tscn" id="4_2j2n2"]
 
 [node name="HeroShop" type="Control"]
 layout_mode = 3

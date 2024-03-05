@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://uit57ouifxxn"]
 
-[ext_resource type="Script" path="res://UI/UnitControls/UnitController.gd" id="1_pmwpa"]
+[ext_resource type="Script" path="res://UI/oldUI/UnitControls/UnitController.gd" id="1_pmwpa"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scenes/Levels/BaseLevel.tscn" id="2_fj0j2"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/Levels/spawn_positions.tscn" id="3_fri5r"]
-[ext_resource type="Script" path="res://UI/UnitControls/Camera2D.gd" id="4_71ewd"]
+[ext_resource type="Script" path="res://UI/oldUI/UnitControls/Camera2D.gd" id="4_71ewd"]
 [ext_resource type="PackedScene" uid="uid://1no2wnxq1rbi" path="res://Scenes/Units/Enemies/RogueSkeleton.tscn" id="5_aj410"]
 [ext_resource type="PackedScene" uid="uid://dvv6hayk4kcun" path="res://Scenes/Units/Enemies/RangedSkeleton.tscn" id="7_lgfh8"]
 

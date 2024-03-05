@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://mtt2amyra80x"]
 
-[ext_resource type="Script" path="res://UI/HeroIcons/HeroIcon.gd" id="1_ddlyp"]
+[ext_resource type="Script" path="res://UI/oldUI/HeroIcons/HeroIcon.gd" id="1_ddlyp"]
 
 [node name="Archer1Data" type="Node2D"]
 script = ExtResource("1_ddlyp")

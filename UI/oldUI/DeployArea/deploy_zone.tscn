@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://qgij7kskhhhg"]
 
-[ext_resource type="Script" path="res://UI/Tweeners/SlideInUI.gd" id="1_71jqk"]
+[ext_resource type="Script" path="res://UI/oldUI/Tweeners/SlideInUI.gd" id="1_71jqk"]
 [ext_resource type="Texture2D" uid="uid://b83sdt1m7s25b" path="res://Art/StartButtons1.png" id="2_wknob"]
 [ext_resource type="Texture2D" uid="uid://dw5suyq414m44" path="res://Art/StartButtons3.png" id="3_q1xfj"]
 [ext_resource type="Texture2D" uid="uid://c4wgljp44rdc5" path="res://Art/StartButtons2.png" id="4_jwymq"]
-[ext_resource type="PackedScene" uid="uid://dysjvo3gsiwfg" path="res://UI/Panels/DeploySpace.tscn" id="5_2pl71"]
+[ext_resource type="PackedScene" uid="uid://dysjvo3gsiwfg" path="res://UI/oldUI/Panels/DeploySpace.tscn" id="5_2pl71"]
 
 [node name="DeployZone" type="Control"]
 layout_mode = 3

@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://c05cqors27ki7"]
 
-[ext_resource type="Script" path="res://UI/UnitControls/UnitController.gd" id="1_uly2x"]
+[ext_resource type="Script" path="res://UI/oldUI/UnitControls/UnitController.gd" id="1_uly2x"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/Levels/spawn_positions.tscn" id="2_woe8w"]
 [ext_resource type="PackedScene" uid="uid://db5rq673kdhik" path="res://Scenes/Levels/BaseLevel.tscn" id="3_2owsu"]
-[ext_resource type="Script" path="res://UI/UnitControls/Camera2D.gd" id="4_gg4n0"]
+[ext_resource type="Script" path="res://UI/oldUI/UnitControls/Camera2D.gd" id="4_gg4n0"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/DefaultWeapon/MeleeSkeleton.tscn" id="5_73vln"]
 [ext_resource type="PackedScene" uid="uid://dm5nafv3bkhex" path="res://Scenes/Units/Enemies/MageSkeleton.tscn" id="7_im5ij"]
 

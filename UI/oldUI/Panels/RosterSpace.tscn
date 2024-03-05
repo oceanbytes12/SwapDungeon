@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bk43t6h5qswor"]
 
-[ext_resource type="Script" path="res://UI/Panels/RosterSpace.gd" id="1_bw8ej"]
-[ext_resource type="Script" path="res://UI/Tweeners/SpinInUI.gd" id="2_x6uum"]
+[ext_resource type="Script" path="res://UI/oldUI/Panels/RosterSpace.gd" id="1_bw8ej"]
+[ext_resource type="Script" path="res://UI/oldUI/Tweeners/SpinInUI.gd" id="2_x6uum"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Art/MikeCrushSheet.png" id="3_1tck8"]
 [ext_resource type="AudioStream" uid="uid://08xbdwqhcsad" path="res://Sound/SFX/Place_unit_v1.wav" id="4_amh18"]
 

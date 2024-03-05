@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://nnokprcx8wyi"]
 
-[ext_resource type="Script" path="res://UI/UnitControls/HeroSpawnPosition.gd" id="1_0gcb0"]
+[ext_resource type="Script" path="res://UI/oldUI/UnitControls/HeroSpawnPosition.gd" id="1_0gcb0"]
 
 [node name="SpawnPositions" type="Node2D"]
 

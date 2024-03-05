@@ -1,38 +1,143 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxgalpram8qcb"]
+[gd_scene load_steps=10 format=3 uid="uid://bxgalpram8qcb"]
 
-[ext_resource type="Script" path="res://UI/GameUI.gd" id="1_ljg2h"]
-[ext_resource type="PackedScene" uid="uid://ct563bad0ifvj" path="res://Scenes/HeroDatas/Archer1Data.tscn" id="2_x8r06"]
-[ext_resource type="PackedScene" uid="uid://bh4kd4tdp6wrf" path="res://UI/HeroIcons/HeroIcon.tscn" id="3_kqi7e"]
-[ext_resource type="PackedScene" uid="uid://db2bmrfjuccta" path="res://Scenes/Levels/Level1.tscn" id="5_2sahv"]
-[ext_resource type="PackedScene" uid="uid://dn8y8e1qbyjbj" path="res://Scenes/Levels/Level2.tscn" id="6_1sj3a"]
-[ext_resource type="PackedScene" uid="uid://bl8kwwtmf1wup" path="res://UI/PartyRoster/party_roster.tscn" id="6_dbpm7"]
-[ext_resource type="PackedScene" uid="uid://dkvhyi7tr5mja" path="res://UI/HeroShop/hero_shop.tscn" id="10_tucnc"]
+[ext_resource type="Script" path="res://UI/GameUINew.gd" id="1_umth1"]
+[ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Art/MikeCrushSheet.png" id="2_4y5mj"]
+[ext_resource type="Resource" uid="uid://v58jheo5v1x" path="res://UI/hero_cards/Warrior.tres" id="2_lbkls"]
+[ext_resource type="PackedScene" uid="uid://b7qoonppusl0e" path="res://UI/oldUI/HeroPanels/shop_panel.tscn" id="3_gmvpf"]
+[ext_resource type="Texture2D" uid="uid://b83sdt1m7s25b" path="res://Art/StartButtons1.png" id="8_d04tq"]
+[ext_resource type="Texture2D" uid="uid://dw5suyq414m44" path="res://Art/StartButtons3.png" id="9_umjcp"]
+[ext_resource type="Texture2D" uid="uid://c4wgljp44rdc5" path="res://Art/StartButtons2.png" id="10_ick32"]
 [ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Scenes/Levels/tile_map.tscn" id="25_tsa70"]
-[ext_resource type="Script" path="res://UI/MoneyManager.gd" id="26_qcadi"]
 [ext_resource type="Texture2D" uid="uid://bfincd5804dwt" path="res://Art/MoneyPouch.png" id="27_vraty"]
 
 [node name="GameUI" type="Node2D"]
-script = ExtResource("1_ljg2h")
-HeroDataScenes = Array[PackedScene]([ExtResource("2_x8r06")])
-iconScene = ExtResource("3_kqi7e")
-levels = Array[PackedScene]([ExtResource("5_2sahv"), ExtResource("6_1sj3a")])
-heros = Array[PackedScene]([null])
+
+[node name="Background" parent="." instance=ExtResource("25_tsa70")]
 
 [node name="GameUI" type="CanvasLayer" parent="."]
+script = ExtResource("1_umth1")
+hero_cards = Array[Resource("res://UI/hero_cards/hero_card.gd")]([ExtResource("2_lbkls")])
+hero_panal_scene = ExtResource("3_gmvpf")
 
-[node name="PartyRoster" parent="GameUI" instance=ExtResource("6_dbpm7")]
+[node name="Shop" type="Control" parent="GameUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="HeroShop" parent="GameUI" node_paths=PackedStringArray("PartyRoster") instance=ExtResource("10_tucnc")]
-PartyRoster = NodePath("../PartyRoster")
+[node name="ShopDisplay" type="GridContainer" parent="GameUI/Shop"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+columns = 6
 
-[node name="PlayerMoney" type="Control" parent="GameUI"]
+[node name="SkipButton" type="Button" parent="GameUI/Shop"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = -150.0
+offset_right = -82.0
+offset_bottom = -119.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Skip"
+icon_alignment = 1
+expand_icon = true
+
+[node name="RerollButton" type="Button" parent="GameUI/Shop"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -134.0
+offset_top = -109.0
+offset_right = -80.0
+offset_bottom = -78.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Reroll"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Text" type="Label" parent="GameUI/Shop"]
+modulate = Color(1, 0.74902, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = 39.0
+offset_right = 96.0
+offset_bottom = 62.0
+grow_horizontal = 2
+text = "ADD NEW PARTY MEMBER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Roster" type="Control" parent="GameUI"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Background" type="NinePatchRect" parent="GameUI/Roster"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4y5mj")
+region_rect = Rect2(5, 68, 53, 54)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Roster" type="GridContainer" parent="GameUI/Roster/Background"]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 187.0
+offset_bottom = 64.0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/h_separation = 2
+columns = 9
+
+[node name="Money" type="Control" parent="GameUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 39.0
 offset_bottom = 25.0
-script = ExtResource("26_qcadi")
 
-[node name="Label" type="Label" parent="GameUI/PlayerMoney"]
+[node name="Label" type="Label" parent="GameUI/Money"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -53,7 +158,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
 
-[node name="TextureRect" type="TextureRect" parent="GameUI/PlayerMoney"]
+[node name="TextureRect" type="TextureRect" parent="GameUI/Money"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,4 +169,171 @@ texture = ExtResource("27_vraty")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Background" parent="GameUI" instance=ExtResource("25_tsa70")]
+[node name="Deployment" type="Control" parent="GameUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StartBattleButton" type="TextureButton" parent="GameUI/Deployment"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2875
+anchor_top = 0.664815
+anchor_right = 0.3
+anchor_bottom = 0.664815
+offset_left = -23.0
+offset_top = -15.5
+offset_right = 23.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("8_d04tq")
+texture_pressed = ExtResource("9_umjcp")
+texture_hover = ExtResource("10_ick32")
+metadata/_edit_use_anchors_ = true
+
+[node name="DeploySpace1" type="Control" parent="GameUI/Deployment"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 65.0
+offset_top = 90.0
+offset_right = 125.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+
+[node name="Front_Panel" type="Panel" parent="GameUI/Deployment/DeploySpace1"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+mouse_filter = 2
+
+[node name="NinePatchRectFront" type="NinePatchRect" parent="GameUI/Deployment/DeploySpace1/Front_Panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+texture = ExtResource("2_4y5mj")
+region_rect = Rect2(68, 4, 24, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="DeploySpace2" type="Control" parent="GameUI/Deployment"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 44.0
+offset_right = 64.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+
+[node name="Front_Panel" type="Panel" parent="GameUI/Deployment/DeploySpace2"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+mouse_filter = 2
+
+[node name="NinePatchRectFront" type="NinePatchRect" parent="GameUI/Deployment/DeploySpace2/Front_Panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+texture = ExtResource("2_4y5mj")
+region_rect = Rect2(68, 4, 24, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="DeploySpace3" type="Control" parent="GameUI/Deployment"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 135.0
+offset_right = 64.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+
+[node name="Front_Panel" type="Panel" parent="GameUI/Deployment/DeploySpace3"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+mouse_filter = 2
+
+[node name="NinePatchRectFront" type="NinePatchRect" parent="GameUI/Deployment/DeploySpace3/Front_Panel"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(30, 30)
+texture = ExtResource("2_4y5mj")
+region_rect = Rect2(68, 4, 24, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Label" type="Label" parent="GameUI/Deployment"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 39.0
+offset_right = 314.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.929412, 0.737255, 0.054902, 1)
+text = "READY YOUR TEAM"
+horizontal_alignment = 1

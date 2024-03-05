@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl8kwwtmf1wup"]
 
-[ext_resource type="Script" path="res://UI/PartyRoster/party_roster.gd" id="1_d158y"]
+[ext_resource type="Script" path="res://UI/oldUI/PartyRoster/party_roster.gd" id="1_d158y"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Art/MikeCrushSheet.png" id="1_goe2r"]
 
 [node name="PartyRoster" type="Control"]

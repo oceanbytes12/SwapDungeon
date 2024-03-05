@@ -1,12 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqppco1s6evwj"]
+[gd_scene load_steps=4 format=3 uid="uid://s6pvfixrc808"]
 
-[ext_resource type="Script" path="res://UI/Panels/ShopPanel.gd" id="1_gphoo"]
-[ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Art/MikeCrushSheet.png" id="2_1p46c"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ls6dh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_63y8u"]
-size = Vector2(48, 48)
+[ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Art/MikeCrushSheet.png" id="1_qlf6r"]
+[ext_resource type="Texture2D" uid="uid://byk3nxbono87c" path="res://Art/TileArt.png" id="2_8ny4f"]
 
 [sub_resource type="FontFile" id="FontFile_m3bx3"]
 cache/0/16/0/ascent = 0.0
@@ -16,7 +11,7 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="AddableHero" type="Control"]
+[node name="DefaultHeroPanal" type="Control"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 3
 anchors_preset = 0
@@ -26,7 +21,6 @@ offset_right = 32.0
 offset_bottom = 32.0
 mouse_filter = 1
 mouse_default_cursor_shape = 2
-script = ExtResource("1_gphoo")
 metadata/_edit_group_ = true
 
 [node name="Back_Panel" type="Panel" parent="."]
@@ -49,7 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_1p46c")
+texture = ExtResource("1_qlf6r")
 region_rect = Rect2(70, 68, 54, 54)
 
 [node name="Front_Panel" type="Panel" parent="."]
@@ -74,18 +68,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(32, 32)
-texture = SubResource("CompressedTexture2D_ls6dh")
+texture = ExtResource("1_qlf6r")
 region_rect = Rect2(4, 4, 54, 54)
 
-[node name="Area2D" type="Area2D" parent="Front_Panel"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Front_Panel/Area2D"]
-position = Vector2(32, 32)
-shape = SubResource("RectangleShape2D_63y8u")
-
 [node name="HighLightPanel" type="Panel" parent="Front_Panel"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
-z_index = 999
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
 anchors_preset = 15
@@ -106,14 +94,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(32, 32)
-texture = SubResource("CompressedTexture2D_ls6dh")
+texture = ExtResource("1_qlf6r")
 region_rect = Rect2(68, 36, 24, 24)
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
+[node name="TextureRect" type="TextureRect" parent="Front_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8ny4f")
+
 [node name="Price" type="Label" parent="Front_Panel"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -133,5 +137,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[connection signal="mouse_entered" from="Front_Panel/Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Front_Panel/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[node name="MouseOverArea" type="TextureRect" parent="Front_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="mouse_entered" from="Front_Panel/MouseOverArea" to="." method="_on_mouse_test_mouse_entered"]
+[connection signal="mouse_exited" from="Front_Panel/MouseOverArea" to="." method="_on_mouse_test_mouse_exited"]

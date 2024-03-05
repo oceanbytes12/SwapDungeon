@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7qoonppusl0e"]
-
-[ext_resource type="PackedScene" uid="uid://s6pvfixrc808" path="res://UI/HeroPanels/default_panel.tscn" id="1_1h3ut"]
-[ext_resource type="Script" path="res://UI/HeroPanels/shop_panel.gd" id="2_00chg"]
-
-[node name="ShopPanel" instance=ExtResource("1_1h3ut")]
-script = ExtResource("2_00chg")
