@@ -1,14 +1,18 @@
 extends Marker2D
 
-@export var attack_effect_scene : PackedScene
+@export var long_range_attack_effect_scene : PackedScene
+@export var close_range_attack_effect_scene : PackedScene
+
 @export var own_body : CharacterBody2D
 @export var state_machine : Node
 @export var attack_state : State
 @export var approach_state: State
-@export var damage : float
+@export var long_range_damage : float
+@export var close_range_damage : float
 @export var knockback_amount : float
 @export var cooldown : float
 @export var weapon_range : float
+@export var short_range_limit : float = 100
 
 var target = null
 var walk = Vector2.ZERO
@@ -43,22 +47,26 @@ func _process(_delta):
 		look_at(Vector2.RIGHT+global_position)
 
 func _on_attack(_target):
-	if has_node("WeaponAnimation"):
-		$WeaponAnimations.play("Attack")
+	if(global_position.distance_to(target.global_position) > short_range_limit):
+		long_range_attack()
 	else:
-		run_attack()
-
-func run_attack():
-	var attack_node = attack_effect_scene.instantiate()
+		short_range_attack()
+		
+	
+func short_range_attack():
+	var attack_node = close_range_attack_effect_scene.instantiate()
 	attack_node.set_transform_params($AttackPoint.global_position, rotation)
-	attack_node.set_params(own_body, damage, knockback_amount, target)
+	attack_node.set_params(own_body, close_range_damage, knockback_amount, target)
 	own_body.get_parent().add_child(attack_node)
-
+		
+func long_range_attack():
+	var attack_node = long_range_attack_effect_scene.instantiate()
+	attack_node.set_transform_params($AttackPoint.global_position, rotation)
+	attack_node.set_params(own_body, long_range_damage, knockback_amount, target)
+	own_body.get_parent().add_child(attack_node)
+	
 func _on_new_target(new_target):
 	target = new_target
 
 func _on_new_walk(new_walk):
 	walk = new_walk
-
-func _on_weapon_animations_animation_finished(_anim_name):
-	run_attack()

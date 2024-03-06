@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://7kn54eee4y5o"]
+[gd_scene load_steps=5 format=3 uid="uid://7kn54eee4y5o"]
 
 [ext_resource type="PackedScene" uid="uid://b1m6pccxxude2" path="res://Scenes/Weapons/BaseWeapon.tscn" id="1_ti7vp"]
+[ext_resource type="Script" path="res://Scenes/Weapons/RangeSelectWeapon.gd" id="2_34l08"]
 [ext_resource type="PackedScene" uid="uid://d4gs1w0lgl7hp" path="res://Scenes/Effects/AttacksEffects/Hook_attack/Hook_Attack.tscn" id="2_b71hg"]
+[ext_resource type="PackedScene" uid="uid://cbjcpkicuuhru" path="res://Scenes/Effects/AttacksEffects/SlashAttack/slash_attack_effect.tscn" id="4_rji28"]
 
 [node name="Hook" instance=ExtResource("1_ti7vp")]
-attack_effect_scene = ExtResource("2_b71hg")
-cooldown = 5.0
-weapon_range = 30.0
+script = ExtResource("2_34l08")
+long_range_attack_effect_scene = ExtResource("2_b71hg")
+close_range_attack_effect_scene = ExtResource("4_rji28")
+long_range_damage = 10.0
+close_range_damage = 20.0
+knockback_amount = 0.0
+cooldown = 0.0
+weapon_range = 0.0
 
 [node name="AttackPoint" parent="." index="0"]
 position = Vector2(10, 1)

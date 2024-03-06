@@ -1,15 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddbp721o5gtra"]
+[gd_scene load_steps=16 format=3 uid="uid://481l6leva4fn"]
 
-[ext_resource type="Script" path="res://Levels/TestingLevels/UnitController.gd" id="1_wv4a4"]
-[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Levels/tile_map.tscn" id="2_7258g"]
-[ext_resource type="PackedScene" uid="uid://clmlld4jbk2kr" path="res://Scenes/Units/Heros/Warrior.tscn" id="3_ndhl7"]
-[ext_resource type="PackedScene" uid="uid://d0g10wiclxn4b" path="res://Scenes/Units/Enemies/PullerSkeleton.tscn" id="3_q5aa3"]
-[ext_resource type="PackedScene" uid="uid://dfxjs6aqdsic2" path="res://Scenes/Units/Heros/Mage.tscn" id="4_bwknb"]
-[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="5_jubsa"]
-[ext_resource type="Texture2D" uid="uid://dyhbvux0iui25" path="res://Art/TileArt/Wall1.png" id="7_s0nhm"]
-[ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="8_i032p"]
-[ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="9_ayxap"]
-[ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="10_4k76r"]
+[ext_resource type="Script" path="res://Levels/TestingLevels/UnitController.gd" id="1_3l1xy"]
+[ext_resource type="PackedScene" uid="uid://uj53la3pg8ix" path="res://Levels/tile_map.tscn" id="2_otqxf"]
+[ext_resource type="PackedScene" uid="uid://d0g10wiclxn4b" path="res://Scenes/Units/Enemies/PullerSkeleton.tscn" id="3_as4sl"]
+[ext_resource type="PackedScene" uid="uid://clmlld4jbk2kr" path="res://Scenes/Units/Heros/Warrior.tscn" id="4_x4ire"]
+[ext_resource type="PackedScene" uid="uid://dfxjs6aqdsic2" path="res://Scenes/Units/Heros/Mage.tscn" id="5_lkmjm"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="6_ujt0c"]
+[ext_resource type="Texture2D" uid="uid://dyhbvux0iui25" path="res://Art/TileArt/Wall1.png" id="7_qrq6s"]
+[ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="8_1wxyb"]
+[ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="9_ev64t"]
+[ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="10_h0kes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o37bt"]
 size = Vector2(514, 20)
@@ -36,7 +36,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r8tbf"]
 resource_local_to_scene = true
-shader = ExtResource("5_jubsa")
+shader = ExtResource("6_ujt0c")
 shader_parameter/flash_opacity = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 
@@ -54,7 +54,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_wv4a4")
+script = ExtResource("1_3l1xy")
 
 [node name="WallTop" type="StaticBody2D" parent="." groups=["wall"]]
 
@@ -83,18 +83,21 @@ rotation = 1.5708
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
 shape = SubResource("RectangleShape2D_o37bt")
 
-[node name="TileMap" parent="." instance=ExtResource("2_7258g")]
+[node name="TileMap" parent="." instance=ExtResource("2_otqxf")]
 position = Vector2(0, 0)
 
 [node name="Units" type="Node" parent="."]
 
-[node name="Puller" parent="Units" instance=ExtResource("3_q5aa3")]
+[node name="Puller" parent="Units" instance=ExtResource("3_as4sl")]
+position = Vector2(41, 3)
 type = "enemy"
+starting_health = 300.0
 
-[node name="Warrior" parent="Units" instance=ExtResource("3_ndhl7")]
-position = Vector2(-104, 0)
+[node name="Warrior" parent="Units" instance=ExtResource("4_x4ire")]
+position = Vector2(-104, -57)
+move_speed = 0.0
 
-[node name="Mage" parent="Units" instance=ExtResource("4_bwknb")]
+[node name="Mage" parent="Units" instance=ExtResource("5_lkmjm")]
 position = Vector2(-153, 14)
 
 [node name="Front" parent="Units/Mage/Looks/CharacterArt/Torso" index="0"]
@@ -105,28 +108,28 @@ material = SubResource("ShaderMaterial_r8tbf")
 
 [node name="Wall1" type="Sprite2D" parent="."]
 position = Vector2(48.5, -117)
-texture = ExtResource("7_s0nhm")
+texture = ExtResource("7_qrq6s")
 
 [node name="Wall2" type="Sprite2D" parent="."]
 position = Vector2(-209.5, -117)
-texture = ExtResource("7_s0nhm")
+texture = ExtResource("7_qrq6s")
 region_enabled = true
 region_rect = Rect2(0, 0, 139, 44)
 
 [node name="WallSide2" type="Sprite2D" parent="."]
 position = Vector2(225, 209)
-texture = ExtResource("8_i032p")
+texture = ExtResource("8_1wxyb")
 region_enabled = true
 region_rect = Rect2(0, 0, 26, 204)
 
 [node name="WallSide" type="Sprite2D" parent="."]
 position = Vector2(225, 5)
-texture = ExtResource("8_i032p")
+texture = ExtResource("8_1wxyb")
 region_enabled = true
 region_rect = Rect2(0, 0, 26, 204)
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("box")]
-script = ExtResource("9_ayxap")
+script = ExtResource("9_ev64t")
 box = NodePath("../UI/SelectionPanel")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -151,7 +154,7 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_4k76r")
+texture = ExtResource("10_h0kes")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
