@@ -102,7 +102,6 @@ material = SubResource("ShaderMaterial_ok2vh")
 material = SubResource("ShaderMaterial_r8tbf")
 
 [node name="Assassin" parent="Units" instance=ExtResource("6_gjayb")]
-starting_health = 500.0
 
 [node name="Wall1" type="Sprite2D" parent="."]
 position = Vector2(48.5, -117)

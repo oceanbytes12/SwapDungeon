@@ -2,10 +2,9 @@ extends State
 class_name BaseApproach
 
 @export var timeout := 10.0
-
+@export var speed : float = 40
 var timeout_timer
 var weapon_range : float
-var speed = 40
 
 func Enter(_own_body, _current_target, _target_list):
 	timeout_timer = timeout

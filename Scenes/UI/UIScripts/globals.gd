@@ -1,15 +1,36 @@
-extends Node
+extends Object
 
 var spawnPositions = []
 var AlexTester
 var unitManager
 var Icons
 
-func _GetChildNodeOfType(parent, DesiredClass, allowInvisible = false):
+static func _GetChildNodeOfType(parent, DesiredClass, allowInvisible = false):
 	for child in parent.get_children():
 		if is_instance_of(child, DesiredClass):
 			if(allowInvisible or child.visible):
 				return child
+
+static func closest_target(targets: Array, global_position):  
+	var closest = null  
+	var shortest_distance: float = 10000.0  
+	for target in targets:  
+		var distance = global_position.distance_squared_to(target.position)  
+		if  distance < shortest_distance:  
+			shortest_distance = distance  
+			closest= target  
+
+static func farthest_target(targets: Array, global_position):  
+	var furthest = null  
+	var longest_distance: float = -10000.0  
+	for target in targets:  
+		var distance = global_position.distance_squared_to(target.position) 
+		print(str(distance) + " is distance, and longest is: " + str(longest_distance))
+		if  distance > longest_distance:  
+			print("Happening!")
+			longest_distance = distance  
+			furthest= target  
+	return furthest
 
 #func _LoadPackedScenesInPath(path):
 	#var ret = []
@@ -29,7 +50,7 @@ func _GetChildNodeOfType(parent, DesiredClass, allowInvisible = false):
 	#dir.list_dir_end()
 	#return ret
 	
-func _ModulateChildren(node, newcolor):
+static func _ModulateChildren(node, newcolor):
 	for child in node.get_children():
 		if child is Sprite2D:
 			# Modify the modulate property for each Sprite

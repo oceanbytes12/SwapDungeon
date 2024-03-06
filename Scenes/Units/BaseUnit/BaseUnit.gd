@@ -31,7 +31,7 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 func take_hit(source_body, damage, knockback_amount, knockback_direction, freeze_time=0):
-	print("Taking hit: " + source_body.name + " damage: " + str(damage))
+	#print("Taking hit: " + source_body.name + " damage: " + str(damage))
 	health -= damage
 	health_bar.value = health
 	var hit_splat = hit_splat_scene.instantiate()

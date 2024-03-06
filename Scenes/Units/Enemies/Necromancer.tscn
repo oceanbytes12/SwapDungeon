@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://StateDisplay.gd" id="13_c3cdt"]
 [ext_resource type="Script" path="res://Scenes/Units/BaseUnit/StateMachine.gd" id="14_ymrid"]
 [ext_resource type="Script" path="res://Scenes/States/StunStates/StateChangeStun.gd" id="15_lff0m"]
-[ext_resource type="Script" path="res://Scenes/States/Teleport.gd" id="16_e4kpe"]
+[ext_resource type="Script" path="res://Scenes/States/CornerTeleport.gd" id="16_e4kpe"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/SummonUnits.gd" id="17_a1dq7"]
 [ext_resource type="Script" path="res://Scenes/States/BaseApproach.gd" id="18_07abp"]
 [ext_resource type="PackedScene" uid="uid://bvn3tt13mn8wl" path="res://Scenes/Units/Enemies/MeleeSkeleton.tscn" id="18_ub2so"]

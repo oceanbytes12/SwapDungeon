@@ -1,5 +1,5 @@
 extends State
-class_name Teleport
+class_name CornerTeleport
 
 @export var own_body : CharacterBody2D
 @export var nextState : String
