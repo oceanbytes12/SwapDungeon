@@ -3,6 +3,9 @@ extends Area2D
 @export var spawnedMagic : PackedScene
 @export var numberToSpawn : float
 @export var interval : float
+@export var xOffRange : int = 30
+@export var yOffRange : int = 30
+
 @onready var currentInterval = interval
 
 var own_body
@@ -34,9 +37,10 @@ func _process(delta):
 		#print("Spawning Magic Attack")
 		currentInterval = interval
 		numberToSpawn=numberToSpawn-1
+	
 		var attackNode = spawnedMagic.instantiate()
-		var randomX = -randi()%30
-		var randomY = -randi()%30
+		var randomX = -randi()%xOffRange
+		var randomY = -randi()%yOffRange
 		var randomOff = Vector2(randomX,randomY)
 		attackNode.global_position = $AttackPoint.global_position + randomOff
 		var randomPositionOffset = randf_range(-10.0, 10.0) * Vector2.ONE

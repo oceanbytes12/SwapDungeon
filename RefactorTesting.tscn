@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dfxjs6aqdsic2" path="res://Scenes/Units/Heros/Mage.tscn" id="4_dymnt"]
 [ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="5_1krqr"]
 [ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="5_532g4"]
-[ext_resource type="PackedScene" uid="uid://djwjq51r2pgyi" path="res://Scenes/Units/Heros/Assassin.tscn" id="6_gjayb"]
+[ext_resource type="PackedScene" uid="uid://di03w5jiy43rs" path="res://Scenes/Units/Enemies/Dropper.tscn" id="6_gcw0e"]
 [ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="6_u75t2"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="7_a3vur"]
 
@@ -91,9 +91,11 @@ position = Vector2(0, 0)
 [node name="Warrior" parent="Units" instance=ExtResource("3_xjcyb")]
 position = Vector2(-104, -57)
 move_speed = 0.0
+starting_health = 500.0
 
 [node name="Mage" parent="Units" instance=ExtResource("4_dymnt")]
 position = Vector2(-153, 14)
+starting_health = 500.0
 
 [node name="Front" parent="Units/Mage/Looks/CharacterArt/Torso" index="0"]
 material = SubResource("ShaderMaterial_ok2vh")
@@ -101,7 +103,9 @@ material = SubResource("ShaderMaterial_ok2vh")
 [node name="Front" parent="Units/Mage/Looks/CharacterArt/Head" index="0"]
 material = SubResource("ShaderMaterial_r8tbf")
 
-[node name="Assassin" parent="Units" instance=ExtResource("6_gjayb")]
+[node name="Dropper" parent="Units" instance=ExtResource("6_gcw0e")]
+position = Vector2(124, 5)
+type = "enemy"
 starting_health = 500.0
 
 [node name="Wall1" type="Sprite2D" parent="."]

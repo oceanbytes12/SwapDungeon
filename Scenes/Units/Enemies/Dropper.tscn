@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://di03w5jiy43rs"]
+
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/BaseUnit/BaseUnit.tscn" id="1_s8bj2"]
+[ext_resource type="Texture2D" uid="uid://vho0618wfc86" path="res://Art/CharacterArt/MageArt.png" id="2_gnjnt"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="3_ft2ok"]
+[ext_resource type="PackedScene" uid="uid://b7ylkyvx2xpbo" path="res://Scenes/Weapons/drop_staff.tscn" id="4_kcjxk"]
+[ext_resource type="Script" path="res://Scenes/States/StunStates/StateChangeStun.gd" id="5_cotfn"]
+[ext_resource type="Script" path="res://Scenes/States/CornerTeleport.gd" id="6_jf1x8"]
+
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvjhy"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tyugn"]
+resource_local_to_scene = true
+shader = ExtResource("3_ft2ok")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[node name="Dropper" instance=ExtResource("1_s8bj2")]
+starting_health = 200.0
+
+[node name="Front" parent="Looks/CharacterArt/Torso" index="0"]
+material = SubResource("ShaderMaterial_bvjhy")
+position = Vector2(1, 1)
+texture = ExtResource("2_gnjnt")
+region_rect = Rect2(33, 12, 18, 14)
+
+[node name="Back" parent="Looks/CharacterArt/Torso" index="1"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gnjnt")
+region_rect = Rect2(32, 29, 18, 14)
+
+[node name="Front" parent="Looks/CharacterArt/Head" index="0"]
+material = SubResource("ShaderMaterial_tyugn")
+position = Vector2(1, 1)
+texture = ExtResource("2_gnjnt")
+region_rect = Rect2(4, 7, 22, 19)
+
+[node name="Back" parent="Looks/CharacterArt/Head" index="1"]
+position = Vector2(1, 1)
+texture = ExtResource("2_gnjnt")
+region_rect = Rect2(4, 29, 22, 19)
+
+[node name="RightLeg" parent="Looks/CharacterArt" index="2"]
+visible = false
+
+[node name="LeftLeg" parent="Looks/CharacterArt" index="3"]
+visible = false
+
+[node name="DropStaff" parent="Looks/Weapon" index="0" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state") instance=ExtResource("4_kcjxk")]
+own_body = NodePath("../../..")
+state_machine = NodePath("../../../StateMachine")
+attack_state = NodePath("../../../StateMachine/Attack")
+approach_state = NodePath("../../../StateMachine/Approach")
+cooldown = 0.5
+weapon_range = 300.0
+
+[node name="Stun" parent="StateMachine" index="2" node_paths=PackedStringArray("own_body")]
+script = ExtResource("5_cotfn")
+own_body = NodePath("../..")
+stunTime = 0.5
+threshold_state = "Teleport"
+damageTaken = 0
+damageThreshold = 20
+
+[node name="Teleport" type="Node" parent="StateMachine" index="5" node_paths=PackedStringArray("own_body")]
+script = ExtResource("6_jf1x8")
+own_body = NodePath("../..")
+nextState = "Approach"
+state_duration = 1.0
+
+[node name="CollisionBox" parent="." index="3"]
+visible = false

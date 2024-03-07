@@ -13,17 +13,17 @@ var Positions := [
 	Vector2(180, -80)
 ]
 
-@onready var currentPositions = Positions
+var currentPositions = []
 
 func Enter(_own_body, _target, _target_list):
 	current_state_duration = state_duration
 	own_body.velocity = Vector2.ZERO
+	if(currentPositions.size() == 0):
+		currentPositions = Positions.duplicate(true)
+		
 	currentPositions.shuffle()
 	own_body.position = currentPositions[0]
 	currentPositions.remove_at(0)
-	
-	if(currentPositions.size() == 0):
-		currentPositions = Positions
 
 func Update(_delta, own_body, current_target, target_list, walk_target):
 	current_state_duration -= _delta

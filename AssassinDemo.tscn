@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://clmlld4jbk2kr" path="res://Scenes/Units/Heros/Warrior.tscn" id="3_ed4h4"]
 [ext_resource type="PackedScene" uid="uid://dfxjs6aqdsic2" path="res://Scenes/Units/Heros/Mage.tscn" id="4_obmyl"]
 [ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="5_y8ju3"]
-[ext_resource type="PackedScene" uid="uid://djwjq51r2pgyi" path="res://Scenes/Units/Heros/Assassin.tscn" id="6_0ewxs"]
+[ext_resource type="PackedScene" uid="uid://djwjq51r2pgyi" path="res://Scenes/Units/Enemies/Assassin.tscn" id="6_0ewxs"]
 [ext_resource type="Texture2D" uid="uid://dyhbvux0iui25" path="res://Art/TileArt/Wall1.png" id="7_xq2dn"]
 [ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="8_2ohmf"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="9_5xhke"]
