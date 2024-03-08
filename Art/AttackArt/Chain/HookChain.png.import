@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duyircp1x1h5m"
-path="res://.godot/imported/icicle.png-600243054559d13664009a77f8185642.ctex"
+uid="uid://dups8pknc0csl"
+path="res://.godot/imported/HookChain.png-b5b3e1dc59bb146a9150881dcb7e123c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/icicle.png"
-dest_files=["res://.godot/imported/icicle.png-600243054559d13664009a77f8185642.ctex"]
+source_file="res://Art/AttackArt/Chain/HookChain.png"
+dest_files=["res://.godot/imported/HookChain.png-b5b3e1dc59bb146a9150881dcb7e123c.ctex"]
 
 [params]
 

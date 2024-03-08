@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://86mjys1jsoha"
-path="res://.godot/imported/HookHead.png-32d4bf5c23500bc50f7755d607bd05c1.ctex"
+uid="uid://xgtgtaqmcua4"
+path="res://.godot/imported/goblet2flameani6.png-af3bbe62641bb744569efcc310b4767d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/HookHead.png"
-dest_files=["res://.godot/imported/HookHead.png-32d4bf5c23500bc50f7755d607bd05c1.ctex"]
+source_file="res://Art/TorchArt/goblet2flameani6.png"
+dest_files=["res://.godot/imported/goblet2flameani6.png-af3bbe62641bb744569efcc310b4767d.ctex"]
 
 [params]
 

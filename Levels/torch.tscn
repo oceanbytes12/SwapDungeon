@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://dkud4tqaci7o3"]
+
+[ext_resource type="Texture2D" uid="uid://bxhrj3svxulsc" path="res://Art/TorchArt/goblet2flameani1.png" id="1_c8jhl"]
+[ext_resource type="Texture2D" uid="uid://jwgyep165dxa" path="res://Art/TorchArt/goblet2flameani2.png" id="2_rio48"]
+[ext_resource type="Texture2D" uid="uid://b5r1mjco1id5c" path="res://Art/TorchArt/goblet2flameani3.png" id="3_1g4xw"]
+[ext_resource type="Texture2D" uid="uid://c1mopkey4d0e6" path="res://Art/TorchArt/goblet2flameani4.png" id="4_6gvwv"]
+[ext_resource type="Texture2D" uid="uid://b620fgvwgch74" path="res://Art/TorchArt/goblet2flameani5.png" id="5_r0kmt"]
+[ext_resource type="Texture2D" uid="uid://xgtgtaqmcua4" path="res://Art/TorchArt/goblet2flameani6.png" id="6_8w84n"]
+[ext_resource type="Texture2D" uid="uid://c46navq848n7i" path="res://Art/TorchArt/goblet2flameani7.png" id="7_hwdkj"]
+[ext_resource type="Texture2D" uid="uid://2ibnxo2s7llr" path="res://Art/TorchArt/walltorch4.png" id="8_jm24i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ig02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c8jhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rio48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1g4xw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6gvwv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r0kmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8w84n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_hwdkj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_phu1q"]
+offsets = PackedFloat32Array(0, 0.819629)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dchfu"]
+gradient = SubResource("Gradient_phu1q")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Torch" type="Node2D"]
+position = Vector2(50, 50)
+
+[node name="FireSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_4ig02")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.200256
+
+[node name="TorchSprite" type="Sprite2D" parent="."]
+texture = ExtResource("8_jm24i")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -5)
+texture = SubResource("GradientTexture2D_dchfu")

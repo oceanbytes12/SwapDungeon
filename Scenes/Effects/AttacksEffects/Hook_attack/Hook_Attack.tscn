@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://d4gs1w0lgl7hp"]
 
 [ext_resource type="Script" path="res://Scenes/Effects/AttacksEffects/Hook_attack/Hook_Attack.gd" id="1_cfqxv"]
-[ext_resource type="Texture2D" uid="uid://dups8pknc0csl" path="res://Art/HookChain.png" id="3_7gg3u"]
+[ext_resource type="Texture2D" uid="uid://dups8pknc0csl" path="res://Art/AttackArt/Chain/HookChain.png" id="3_7gg3u"]
 [ext_resource type="AudioStream" uid="uid://70wbo0wupoco" path="res://SFX/Druid_vine_v1.wav" id="3_d37ri"]
-[ext_resource type="Texture2D" uid="uid://86mjys1jsoha" path="res://Art/HookHead.png" id="4_ac5vv"]
+[ext_resource type="Texture2D" uid="uid://86mjys1jsoha" path="res://Art/AttackArt/Chain/HookHead.png" id="4_ac5vv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w3hqt"]
 height = 22.0

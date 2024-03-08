@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ptsn2r46nul"
-path="res://.godot/imported/smoke..png-d1d9aa41b04221f5a6278a1a5b72a597.ctex"
+uid="uid://c46navq848n7i"
+path="res://.godot/imported/goblet2flameani7.png-5222aeb39c03d8976f44cbbd898737da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/smoke..png"
-dest_files=["res://.godot/imported/smoke..png-d1d9aa41b04221f5a6278a1a5b72a597.ctex"]
+source_file="res://Art/TorchArt/goblet2flameani7.png"
+dest_files=["res://.godot/imported/goblet2flameani7.png-5222aeb39c03d8976f44cbbd898737da.ctex"]
 
 [params]
 

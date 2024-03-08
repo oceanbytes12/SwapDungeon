@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="3_8wte7"]
 [ext_resource type="PackedScene" uid="uid://bmjkc0bg5bxpb" path="res://Scenes/Weapons/iron_sword.tscn" id="4_gtgkr"]
 [ext_resource type="Script" path="res://StateDisplay.gd" id="5_acmk2"]
-[ext_resource type="Texture2D" uid="uid://8ptsn2r46nul" path="res://Art/smoke..png" id="6_3flxk"]
+[ext_resource type="Texture2D" uid="uid://8ptsn2r46nul" path="res://Art/AttackArt/smoke..png" id="6_3flxk"]
 [ext_resource type="Script" path="res://Scenes/States/BackLineTeleport.gd" id="7_qf6tc"]
 
 [sub_resource type="Shader" id="Shader_2y081"]

@@ -1,5 +1,7 @@
 extends Camera2D
 
+class_name CameraController
+
 # Draws a rectangle when player left clicks and drags mouse
 signal area_selected
 signal start_move_selection
@@ -15,16 +17,24 @@ var end = Vector2()
 var endV = Vector2()
 var isDragging = false
 
+var Shaker : CameraShaker
+static var cam
+
 func _ready():
+	cam = self
+	Shaker = CameraShaker.new(self)
+	
 	draw_area(false) # Prevents box from being drawn on load. Can also do this by setting default size to 0 in Inspector
 
 # Handle mouse input
 func _process(_delta):
+	Shaker._tick(_delta)
 	if Input.is_action_just_pressed("LeftClick"):
 		start = mousePosGlobal
 		startV = mousePos
 		isDragging = true
-	
+		#Shaker.add_trauma(30)
+		
 	if isDragging:
 		end = mousePosGlobal
 		endV = mousePos

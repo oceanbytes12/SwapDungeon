@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3gfiua6ybi06"]
+
+[ext_resource type="Texture2D" uid="uid://dwge6xl4gnk03" path="res://Art/AttackArt/Crack.png" id="2_ddpwu"]
+[ext_resource type="Script" path="res://Scenes/Effects/AttacksEffects/CrackAttack/crack_attack.gd" id="2_wq32l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v20ub"]
+radius = 8.0
+height = 198.0
+
+[sub_resource type="Animation" id="Animation_5imhg"]
+resource_name = "Crack"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"crack"
+}, {
+"args": [],
+"method": &"die"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_7bo1s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rp00b"]
+_data = {
+"Crack": SubResource("Animation_5imhg"),
+"RESET": SubResource("Animation_7bo1s")
+}
+
+[node name="SlashAttackEffect" type="Node2D"]
+z_index = -2
+script = ExtResource("2_wq32l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(105, 0)
+rotation = -1.5708
+texture = ExtResource("2_ddpwu")
+hframes = 22
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(100, -8.52651e-14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v20ub")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rp00b")
+}
+autoplay = "Crack"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

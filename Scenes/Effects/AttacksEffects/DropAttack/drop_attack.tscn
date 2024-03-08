@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dphppe531qtlo"]
 
 [ext_resource type="Script" path="res://Scenes/Effects/AttacksEffects/DropAttack/drop_attack.gd" id="1_dl66r"]
-[ext_resource type="Texture2D" uid="uid://duyircp1x1h5m" path="res://Art/icicle.png" id="2_alx63"]
+[ext_resource type="Texture2D" uid="uid://duyircp1x1h5m" path="res://Art/AttackArt/icicle.png" id="2_alx63"]
 [ext_resource type="AudioStream" uid="uid://cjar8mkpffp5b" path="res://SFX/Necro_spell_cast_v1.wav" id="3_ku2nc"]
 [ext_resource type="AudioStream" uid="uid://06nasvdu5228" path="res://SFX/Necro_spell_hit_v1.wav" id="4_2jhdv"]
 
