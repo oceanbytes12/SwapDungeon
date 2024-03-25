@@ -200,10 +200,10 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 anchors_preset = 0
-offset_left = 65.0
-offset_top = 90.0
-offset_right = 125.0
-offset_bottom = 150.0
+offset_left = 67.0
+offset_top = 84.0
+offset_right = 127.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(32, 32)
@@ -239,6 +239,8 @@ patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
+
+[node name="ShopPanel" parent="GameUI/Deployment/DeploySpace1" instance=ExtResource("3_gmvpf")]
 
 [node name="DeploySpace2" type="Control" parent="GameUI/Deployment"]
 custom_minimum_size = Vector2(60, 60)
