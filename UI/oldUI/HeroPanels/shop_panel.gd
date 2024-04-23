@@ -6,8 +6,10 @@ signal panel_chosen
 var mouse_target = false
 var hero_card : HeroCard
 var index : int
+var location : String
 
-func set_hero_card(new_hero_card, new_index):
+func set_hero_card(new_hero_card, new_index, new_location):
+	location = new_location
 	index = new_index
 	hero_card = new_hero_card
 	$Front_Panel/TextureRect.texture = hero_card.texture
@@ -15,7 +17,7 @@ func set_hero_card(new_hero_card, new_index):
 func _input(event):
 	if event.is_action_released("LeftClick") and mouse_target:
 		$Front_Panel.visible = false
-		panel_chosen.emit(index)
+		panel_chosen.emit(index, location)
 
 func _on_mouse_test_mouse_entered():
 	scale = Vector2.ONE * 1.1

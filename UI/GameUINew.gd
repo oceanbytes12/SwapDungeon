@@ -3,47 +3,48 @@ extends CanvasLayer
 @export var hero_cards : Array[HeroCard]
 @export var shop_size : int = 3
 @export var hero_panal_scene : PackedScene
-var shop_display : Array[HeroCard]
-var player_roster : Array[HeroCard]
-var deployment : Array[HeroCard]
+var shop_cards : Array[HeroCard]
+var roster_cards : Array[HeroCard]
+var deployment_cards : Array[HeroCard]
 
 func _ready():
 	$Deployment.visible = false
 	for i in shop_size:
 		add_panel_to_shop(i)
 
+func initialize_panel(new_hero_card, index, location):
+	var new_hero_panel = hero_panal_scene.instantiate()
+	new_hero_panel.set_hero_card(new_hero_card, index, location)
+	new_hero_panel.panel_chosen.connect(on_panel_chosen)
+	return new_hero_panel
+
 func add_panel_to_shop(index):
 	var random_index = randi_range(0, hero_cards.size())-1
 	var new_hero_card = hero_cards[random_index]
-	var new_hero_panel = hero_panal_scene.instantiate()
-	new_hero_panel.set_hero_card(new_hero_card, index)
-	new_hero_panel.panel_chosen.connect(on_shop_panel_chosen)
-	$Shop/ShopDisplay.add_child(new_hero_panel)
-	shop_display.append(new_hero_card)
+	shop_cards.append(new_hero_card)
+	var new_panel = initialize_panel(new_hero_card, index, "shop")
+	$Shop/ShopDisplay.add_child(new_panel)
 
-func add_panel_to_roster(new_hero_card):
-	player_roster.append(new_hero_card)
-	var new_hero_panel = hero_panal_scene.instantiate()
-	var new_panel_index = hero_cards.size()
-	new_hero_panel.set_hero_card(new_hero_card, new_panel_index)
-	new_hero_panel.panel_chosen.connect(on_roster_panel_chosen)
-	$Roster/Background/Roster.add_child(new_hero_panel)
+func add_roster_panel(new_hero_card):
+	roster_cards.append(new_hero_card)
+	var index = hero_cards.size()-1
+	var new_panel = initialize_panel(new_hero_card, index, "roster")
+	$Roster/Background/Roster.add_child(new_panel)
 
-func add_panel_to_deployment(new_hero_card):
-	deployment.append(new_hero_card)
-	var new_hero_panel = hero_panal_scene.instantiate()
-	var new_panel_index = hero_cards.size()
-	new_hero_panel.set_hero_card(new_hero_card, new_panel_index)
-	new_hero_panel.panel_chosen.connect(on_roster_panel_chosen)
-	$Roster/Background/Roster.add_child(new_hero_panel)
-
-func on_shop_panel_chosen(index):
-	$Shop.visible = false
-	$Deployment.visible = true
-	var chosen_hero_card = shop_display[index]
-	add_panel_to_roster(chosen_hero_card)
-
-func on_roster_panel_chosen(index):
-	pass
-	#var chosen_hero_card = player_roster[index]
-
+func add_deployment_panel(new_card):
+	deployment_cards.append(new_card)
+	var index = hero_cards.size()-1
+	var new_panel = initialize_panel(new_card, index, "deployment")
+	#$Deployment/
+	
+func on_panel_chosen(index, location):
+	print(location)
+	if location == "shop":
+		$Shop.visible = false
+		$Deployment.visible = true
+		add_roster_panel(shop_cards[index])
+	elif location == "roster":
+		print(roster_cards)
+		print(index)
+		add_deployment_panel(roster_cards[index])
+		
