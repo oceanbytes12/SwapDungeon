@@ -47,4 +47,4 @@ func on_panel_chosen(index, location):
 		print(roster_cards)
 		print(index)
 		add_deployment_panel(roster_cards[index])
-		
+
