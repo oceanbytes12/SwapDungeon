@@ -357,9 +357,8 @@ visible = false
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_pv03d")
 
-[node name="SM" type="Node" parent="." node_paths=PackedStringArray("initial_state", "own_body")]
+[node name="SM" type="Node" parent="." node_paths=PackedStringArray("own_body")]
 script = ExtResource("6_hrabr")
-initial_state = NodePath("")
 own_body = NodePath("..")
 
 [node name="SightRange" type="Area2D" parent="."]
