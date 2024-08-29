@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://UI/GameUINew.gd" id="1_umth1"]
 [ext_resource type="Texture2D" uid="uid://kjhjksp483uo" path="res://Art/MikeCrushSheet.png" id="2_4y5mj"]
 [ext_resource type="Resource" uid="uid://v58jheo5v1x" path="res://UI/hero_cards/Warrior.tres" id="2_lbkls"]
-[ext_resource type="PackedScene" uid="uid://b7qoonppusl0e" path="res://UI/oldUI/HeroPanels/shop_panel.tscn" id="3_gmvpf"]
+[ext_resource type="PackedScene" uid="uid://doja5v01ay3ae" path="res://UI/inventory_panel.tscn" id="4_pojua"]
 [ext_resource type="Texture2D" uid="uid://b83sdt1m7s25b" path="res://Art/StartButtons1.png" id="8_d04tq"]
 [ext_resource type="Texture2D" uid="uid://dw5suyq414m44" path="res://Art/StartButtons3.png" id="9_umjcp"]
 [ext_resource type="Texture2D" uid="uid://c4wgljp44rdc5" path="res://Art/StartButtons2.png" id="10_ick32"]
@@ -17,7 +17,7 @@
 [node name="GameUI" type="CanvasLayer" parent="."]
 script = ExtResource("1_umth1")
 hero_cards = Array[Resource("res://UI/hero_cards/hero_card.gd")]([ExtResource("2_lbkls")])
-hero_panal_scene = ExtResource("3_gmvpf")
+hero_panal_scene = ExtResource("4_pojua")
 
 [node name="Text" type="Label" parent="GameUI"]
 modulate = Color(1, 0.74902, 0, 1)

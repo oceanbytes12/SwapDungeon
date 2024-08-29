@@ -35,16 +35,13 @@ func add_deployment_panel(new_card):
 	deployment_cards.append(new_card)
 	var index = hero_cards.size()-1
 	var new_panel = initialize_panel(new_card, index, "deployment")
-	#$Deployment/
+	$Deployment/Grid/Space1.add_child(new_panel)
 	
 func on_panel_chosen(index, location):
-	print(location)
 	if location == "shop":
 		$Shop.visible = false
 		$Deployment.visible = true
 		add_roster_panel(shop_cards[index])
 	elif location == "roster":
-		print(roster_cards)
-		print(index)
 		add_deployment_panel(roster_cards[index])
 

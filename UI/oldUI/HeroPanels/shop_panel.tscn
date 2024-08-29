@@ -1,7 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7qoonppusl0e"]
 
-[ext_resource type="PackedScene" uid="uid://s6pvfixrc808" path="res://UI/oldUI/HeroPanels/default_panel.tscn" id="1_1h3ut"]
-[ext_resource type="Script" path="res://UI/oldUI/HeroPanels/shop_panel.gd" id="2_00chg"]
+[ext_resource type="Script" path="res://UI/inventory_panel.gd" id="1_kxim1"]
+[ext_resource type="PackedScene" uid="uid://cos46j3ppybq6" path="res://UI/oldUI/HeroPanels/drag_panel.tscn" id="3_5t3ih"]
 
-[node name="ShopPanel" instance=ExtResource("1_1h3ut")]
-script = ExtResource("2_00chg")
+[node name="ShopPanel" type="Control"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+script = ExtResource("1_kxim1")
+drag_panel = ExtResource("3_5t3ih")

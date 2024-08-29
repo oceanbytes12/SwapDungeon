@@ -72,7 +72,6 @@ texture = ExtResource("1_qlf6r")
 region_rect = Rect2(4, 4, 54, 54)
 
 [node name="HighLightPanel" type="Panel" parent="Front_Panel"]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
@@ -117,7 +116,6 @@ grow_vertical = 2
 texture = ExtResource("2_8ny4f")
 
 [node name="Price" type="Label" parent="Front_Panel"]
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

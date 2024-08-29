@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://yohummwofvhe"]
+
+[ext_resource type="PackedScene" uid="uid://s6pvfixrc808" path="res://UI/oldUI/HeroPanels/default_panel.tscn" id="1_lo6ox"]
+[ext_resource type="Script" path="res://UI/drag_panel.gd" id="2_vngjj"]
+
+[node name="DragPanel" instance=ExtResource("1_lo6ox")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 60.0
+offset_bottom = 60.0
+script = ExtResource("2_vngjj")
+
+[node name="Front_Panel" parent="." index="1"]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 1
+grow_vertical = 1
+pivot_offset = Vector2(0, 0)
+
+[node name="HighLightPanel" parent="Front_Panel" index="1"]
+visible = false
+
+[node name="Price" parent="Front_Panel" index="3"]
+visible = false

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://doja5v01ay3ae"]
+
+[ext_resource type="PackedScene" uid="uid://s6pvfixrc808" path="res://UI/oldUI/HeroPanels/default_panel.tscn" id="1_oj5w8"]
+[ext_resource type="Script" path="res://UI/inventory_panel.gd" id="2_pfd51"]
+[ext_resource type="PackedScene" uid="uid://yohummwofvhe" path="res://UI/drag_panel.tscn" id="3_jye2q"]
+
+[node name="InventoryPanel" instance=ExtResource("1_oj5w8")]
+script = ExtResource("2_pfd51")
+drag_panel = ExtResource("3_jye2q")
+
+[node name="HighLightPanel" parent="Front_Panel" index="1"]
+visible = false
+
+[node name="NinePatchRectHighlight" parent="Front_Panel/HighLightPanel" index="0"]
+visible = false
+
+[node name="Price" parent="Front_Panel" index="3"]
+visible = false

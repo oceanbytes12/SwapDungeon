@@ -2,6 +2,7 @@ extends Control
 class_name HeroRosterPanel
 
 signal panel_chosen
+@export var drag_panel : PackedScene
 
 var mouse_target = false
 var hero_card : HeroCard
@@ -18,6 +19,12 @@ func _input(event):
 	if event.is_action_released("LeftClick") and mouse_target:
 		$Front_Panel.visible = false
 		panel_chosen.emit(index, location)
+	elif event.is_action_pressed("LeftClick") and mouse_target:
+		$Front_Panel.visible = false
+		var new_panel = drag_panel.instantiate()
+		new_panel.click_offset = get_global_mouse_position() - global_position
+		get_parent().get_parent().add_child(new_panel)
+		
 
 func _on_mouse_test_mouse_entered():
 	scale = Vector2.ONE * 1.1
