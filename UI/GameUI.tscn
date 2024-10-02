@@ -17,6 +17,7 @@
 [node name="GameUI" type="CanvasLayer" parent="."]
 script = ExtResource("1_umth1")
 hero_cards = Array[Resource("res://UI/hero_cards/hero_card.gd")]([ExtResource("2_lbkls")])
+shop_size = 1
 hero_panal_scene = ExtResource("4_pojua")
 
 [node name="Text" type="Label" parent="GameUI"]

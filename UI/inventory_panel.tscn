@@ -8,11 +8,16 @@
 script = ExtResource("2_pfd51")
 drag_panel = ExtResource("3_jye2q")
 
-[node name="HighLightPanel" parent="Front_Panel" index="1"]
-visible = false
+[node name="Front_Panel" parent="." index="1"]
+visible = true
 
 [node name="NinePatchRectHighlight" parent="Front_Panel/HighLightPanel" index="0"]
 visible = false
 
 [node name="Price" parent="Front_Panel" index="3"]
 visible = false
+
+[connection signal="mouse_entered" from="Back_Panel/BackBox" to="." method="_on_back_box_mouse_entered"]
+[connection signal="mouse_exited" from="Back_Panel/BackBox" to="." method="_on_back_box_mouse_exited"]
+[connection signal="mouse_entered" from="Front_Panel/FrontBox" to="." method="_on_front_box_mouse_entered"]
+[connection signal="mouse_exited" from="Front_Panel/FrontBox" to="." method="_on_front_box_mouse_exited"]

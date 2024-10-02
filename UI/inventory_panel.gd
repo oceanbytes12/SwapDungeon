@@ -8,6 +8,7 @@ var mouse_target = false
 var hero_card : HeroCard
 var index : int
 var location : String
+var drag_timer: float = 0.0
 
 func set_hero_card(new_hero_card, new_index, new_location):
 	location = new_location
@@ -26,10 +27,19 @@ func _input(event):
 		get_parent().get_parent().add_child(new_panel)
 		
 
-func _on_mouse_test_mouse_entered():
-	scale = Vector2.ONE * 1.1
+func _on_front_box_mouse_entered():
+	$Front_Panel.scale = Vector2.ONE * 1.1
 	mouse_target = true
 
-func _on_mouse_test_mouse_exited():
-	scale  = Vector2.ONE
+
+func _on_front_box_mouse_exited():
+	$Front_Panel.scale  = Vector2.ONE
 	mouse_target = false
+
+
+func _on_back_box_mouse_entered():
+	print("Entered")
+
+
+func _on_back_box_mouse_exited():
+	print("Exited")

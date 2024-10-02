@@ -46,7 +46,27 @@ grow_vertical = 2
 texture = ExtResource("1_qlf6r")
 region_rect = Rect2(70, 68, 54, 54)
 
+[node name="Highlight" type="NinePatchRect" parent="Back_Panel"]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 62.0
+offset_bottom = 63.0
+texture = ExtResource("1_qlf6r")
+region_rect = Rect2(68, 4, 23, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="BackBox" type="TextureRect" parent="Back_Panel"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
 [node name="Front_Panel" type="Panel" parent="."]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
@@ -135,13 +155,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="MouseOverArea" type="TextureRect" parent="Front_Panel"]
+[node name="FrontBox" type="TextureRect" parent="Front_Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[connection signal="mouse_entered" from="Front_Panel/MouseOverArea" to="." method="_on_mouse_test_mouse_entered"]
-[connection signal="mouse_exited" from="Front_Panel/MouseOverArea" to="." method="_on_mouse_test_mouse_exited"]

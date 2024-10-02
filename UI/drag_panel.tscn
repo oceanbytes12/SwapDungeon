@@ -10,8 +10,11 @@ offset_right = 60.0
 offset_bottom = 60.0
 script = ExtResource("2_vngjj")
 
-[node name="Front_Panel" parent="." index="1"]
+[node name="Back_Panel" parent="." index="1"]
 visible = false
+
+[node name="Front_Panel" parent="." index="2"]
+visible = true
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
