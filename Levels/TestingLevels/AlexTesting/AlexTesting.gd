@@ -5,17 +5,11 @@ var targeted_unit = null
 var is_Ctrl_pressed = false
 @export var use_context_cursors = true
 #@export var mouse_pointer: Resource
-@onready var mouse_pointer = preload("res://Art/MousePointer1.png")
-@onready var mouse_grab = preload("res://Art/MousePointer2.png")
-@onready var mouse_open = preload("res://Art/MousePointer3.png")
-@onready var mouse_attack = preload("res://Art/MousePointer4.png")
 
 @onready var cameraScript = $Camera
-@export var click_effect = preload("res://Scenes/MouseEffects/ClickEffect.tscn")
-@export var attack_effect = preload("res://Scenes/MouseEffects/AttackEffect.tscn")
 
-func _ready():
-	Globals.AlexTester = self		
+#func _ready():
+	#Globals.AlexTester = self		
 
 # Get all units within the bounds of the drawn rectangle
 func get_units_in_area(area):

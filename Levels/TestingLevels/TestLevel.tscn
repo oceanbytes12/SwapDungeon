@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqqo5fabixeal"]
+[gd_scene load_steps=9 format=3 uid="uid://cqqo5fabixeal"]
 
 [ext_resource type="Script" path="res://Levels/TestingLevels/AlexTesting/AlexTesting.gd" id="1_iqb71"]
 [ext_resource type="PackedScene" uid="uid://nnokprcx8wyi" path="res://Scenes/UI/spawn_positions.tscn" id="2_wdnob"]
 [ext_resource type="Texture2D" uid="uid://cg18fhd8cv06e" path="res://Art/TileArt/DungeonTiles.png" id="3_ksch6"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="4_dpfmg"]
-[ext_resource type="PackedScene" uid="uid://8m6kuwd85l7w" path="res://Scenes/Units/Heros/Mage2.tscn" id="5_nw5yx"]
 [ext_resource type="PackedScene" uid="uid://uqy1sjp6o7qv" path="res://Scenes/Weapons/MeleeSkeleton.tscn" id="5_sky41"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iq15"]
@@ -89,38 +88,42 @@ layer_0/tile_data = PackedInt32Array(327688, 196609, 1, 262152, 196609, 1, 19661
 [node name="Camera" type="Camera2D" parent="."]
 script = ExtResource("4_dpfmg")
 
-[node name="Mage2" parent="." instance=ExtResource("5_nw5yx")]
+[node name="Mage2" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 position = Vector2(-129, 2)
+script = null
 
 [node name="Melee2" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(151, -58)
-weaponRange = 100.0
 
 [node name="Melee3" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(189, -97)
-weaponRange = 100.0
 
 [node name="Melee5" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(94, 53)
-weaponRange = 100.0
 
 [node name="Melee6" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(70, -13)
-weaponRange = 100.0
 
 [node name="Melee7" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(120, -104)
-weaponRange = 100.0
 
 [node name="Melee4" parent="." instance=ExtResource("5_sky41")]
 z_index = 1
 position = Vector2(154, 33)
-weaponRange = 100.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 
