@@ -5,8 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://yohummwofvhe" path="res://UI/drag_panel.tscn" id="3_jye2q"]
 
 [node name="InventoryPanel" instance=ExtResource("1_oj5w8")]
+z_index = 1
 script = ExtResource("2_pfd51")
 drag_panel = ExtResource("3_jye2q")
+
+[node name="Back_Panel" parent="." index="0"]
+visible = false
 
 [node name="Front_Panel" parent="." index="1"]
 visible = true

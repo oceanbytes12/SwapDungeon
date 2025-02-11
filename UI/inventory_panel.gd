@@ -9,6 +9,14 @@ var hero_card : HeroCard
 var index : int
 var location : String
 var drag_timer: float = 0.0
+var state : String = "shop"
+
+var click_offset = Vector2(0, 0)
+var origin_position = Vector2(0, 0)
+
+func _process(delta):
+	if state == "drag":
+		global_position = get_global_mouse_position() - click_offset
 
 func set_hero_card(new_hero_card, new_index, new_location):
 	location = new_location
@@ -17,14 +25,17 @@ func set_hero_card(new_hero_card, new_index, new_location):
 	$Front_Panel/TextureRect.texture = hero_card.texture
 
 func _input(event):
-	if event.is_action_released("LeftClick") and mouse_target:
-		$Front_Panel.visible = false
-		panel_chosen.emit(index, location)
-	elif event.is_action_pressed("LeftClick") and mouse_target:
-		$Front_Panel.visible = false
-		var new_panel = drag_panel.instantiate()
-		new_panel.click_offset = get_global_mouse_position() - global_position
-		get_parent().get_parent().add_child(new_panel)
+	#if event.is_action_released("LeftClick") and mouse_target:
+		#$Front_Panel.visible = false
+		#panel_chosen.emit(index, location)
+	if event.is_action_pressed("LeftClick") and mouse_target:
+		state = "drag"
+		origin_position = global_position
+		click_offset = get_global_mouse_position() - global_position
+
+	if event.is_action_released("LeftClick") and state == "drag":
+		state = "shop"
+		global_position = origin_position
 		
 
 func _on_front_box_mouse_entered():

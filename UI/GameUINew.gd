@@ -24,6 +24,8 @@ func add_panel_to_shop(index):
 	shop_cards.append(new_hero_card)
 	var new_panel = initialize_panel(new_hero_card, index, "shop")
 	$Shop/ShopDisplay.add_child(new_panel)
+	new_panel.origin_position = new_panel.position
+	print(new_panel.origin_position)
 
 func add_roster_panel(new_hero_card):
 	roster_cards.append(new_hero_card)
@@ -44,4 +46,3 @@ func on_panel_chosen(index, location):
 		add_roster_panel(shop_cards[index])
 	elif location == "roster":
 		add_deployment_panel(roster_cards[index])
-
