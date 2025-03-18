@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckhs531w84cqw"]
+[gd_scene load_steps=11 format=3 uid="uid://d0c0vamebt2lq"]
 
 [ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/BaseUnit/BaseUnit.tscn" id="1_m613j"]
 [ext_resource type="Texture2D" uid="uid://ccuorn767b0n" path="res://Art/CharacterArt/WarriorArt.png" id="2_v5m5v"]

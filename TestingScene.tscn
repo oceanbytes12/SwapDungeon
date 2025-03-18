@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://Scenes/States/BaseAttack.gd" id="18_q6qbu"]
 [ext_resource type="Script" path="res://Scenes/States/BaseWalk.gd" id="19_ntljb"]
 [ext_resource type="PackedScene" uid="uid://dfxjs6aqdsic2" path="res://Scenes/Units/Heros/Mage.tscn" id="20_6gsco"]
-[ext_resource type="PackedScene" uid="uid://ckhs531w84cqw" path="res://Scenes/Units/Enemies/Crusher.tscn" id="21_pj2xn"]
+[ext_resource type="PackedScene" uid="uid://d0c0vamebt2lq" path="res://Scenes/Units/Enemies/Crusher.tscn" id="21_pj2xn"]
 [ext_resource type="Script" path="res://Scenes/UI/UIScripts/Camera2D.gd" id="22_k8ean"]
 [ext_resource type="Texture2D" uid="uid://dx5pggfgv14dn" path="res://Art/UIArt/Ui9Patch.png" id="23_v2vg1"]
 [ext_resource type="Texture2D" uid="uid://cnj82qgysij07" path="res://Art/TileArt/WallSide.png" id="24_ysnhq"]
@@ -518,6 +518,9 @@ material = SubResource("ShaderMaterial_ok2vh")
 
 [node name="Front" parent="Units/Mage/Looks/CharacterArt/Head" index="0"]
 material = SubResource("ShaderMaterial_r8tbf")
+
+[node name="CollisionShape2D" parent="Units/Mage/HitBox" index="0"]
+visible = true
 
 [node name="Archer" parent="Units" instance=ExtResource("3_gqwjn")]
 position = Vector2(-93, 74)
