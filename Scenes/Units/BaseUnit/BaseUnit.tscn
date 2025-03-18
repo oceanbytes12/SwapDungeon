@@ -223,7 +223,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0), Vector2(0, -2)]
 }
 tracks/1/type = "value"
@@ -235,7 +235,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector2(4, 7), Vector2(4, 7), Vector2(4, 8), Vector2(4, 7)]
 }
 tracks/2/type = "value"
@@ -247,7 +247,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector2(-4, 9), Vector2(-4, 8), Vector2(-4, 8), Vector2(-4, 8)]
 }
 tracks/3/type = "value"
@@ -259,7 +259,7 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [-0.0349066, 0.0349066]
 }
 tracks/4/type = "value"
@@ -271,7 +271,7 @@ tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, -12), Vector2(0, -10)]
 }
 tracks/5/type = "value"
@@ -283,7 +283,7 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0), Vector2(0, -2)]
 }
 
@@ -419,6 +419,7 @@ script = ExtResource("4_hr32h")
 script = ExtResource("18_5ditg")
 
 [node name="CollisionBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_ysvin")
 
@@ -426,6 +427,7 @@ shape = SubResource("CircleShape2D_ysvin")
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+visible = false
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_g8o30")
 

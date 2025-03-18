@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://d0c0vamebt2lq"]
+
+[ext_resource type="PackedScene" uid="uid://c4dyy4kax1ogv" path="res://Scenes/Units/BaseUnit/BaseUnit.tscn" id="1_m613j"]
+[ext_resource type="Texture2D" uid="uid://ccuorn767b0n" path="res://Art/CharacterArt/WarriorArt.png" id="2_v5m5v"]
+[ext_resource type="Shader" path="res://Art/Shaders/hitEffect.gdshader" id="3_yct14"]
+[ext_resource type="Script" path="res://Scenes/Weapons/RangeSelectWeapon.gd" id="4_prbkb"]
+[ext_resource type="PackedScene" uid="uid://d3gfiua6ybi06" path="res://Scenes/Effects/AttacksEffects/CrackAttack/crack_attack_effect.tscn" id="5_fmnms"]
+[ext_resource type="Texture2D" uid="uid://dbvb5q7nll6yw" path="res://Art/NewArt/BaseUnits.png" id="6_1n0ho"]
+[ext_resource type="PackedScene" uid="uid://cbjcpkicuuhru" path="res://Scenes/Effects/AttacksEffects/SlashAttack/slash_attack_effect.tscn" id="6_fgru3"]
+
+[sub_resource type="Shader" id="Shader_2y081"]
+code = "shader_type canvas_item;
+
+uniform float flash_opacity = 0;
+uniform vec4 flash_color : source_color = vec4(1.0,1.0,1.0,1.0);
+
+void fragment() {
+	vec4 tex_color = texture(TEXTURE, UV);
+    vec3 blended_color = mix(tex_color.rgb, flash_color.rgb, flash_opacity); // Use only the RGB components for blending
+
+	COLOR.rgb = blended_color;
+	COLOR.a = tex_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2asep"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2y081")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uljvj"]
+resource_local_to_scene = true
+shader = ExtResource("3_yct14")
+shader_parameter/flash_opacity = 0.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[node name="Warrior" instance=ExtResource("1_m613j")]
+scale = Vector2(2, 2)
+type = "enemy"
+starting_health = 400.0
+
+[node name="Front" parent="Looks/CharacterArt/Torso" index="0"]
+material = SubResource("ShaderMaterial_2asep")
+position = Vector2(0, -1)
+region_rect = Rect2(7, 81, 18, 9)
+
+[node name="Back" parent="Looks/CharacterArt/Torso" index="1"]
+position = Vector2(0, -1)
+texture = ExtResource("2_v5m5v")
+region_rect = Rect2(4, 47, 18, 9)
+
+[node name="Front" parent="Looks/CharacterArt/Head" index="0"]
+material = SubResource("ShaderMaterial_uljvj")
+position = Vector2(0, 2)
+region_rect = Rect2(7, 57, 18, 17)
+
+[node name="Back" parent="Looks/CharacterArt/Head" index="1"]
+position = Vector2(0, 2)
+texture = ExtResource("2_v5m5v")
+region_rect = Rect2(34, 2, 18, 17)
+
+[node name="RightLegArt" parent="Looks/CharacterArt/RightLeg" index="0"]
+region_rect = Rect2(17, 90, 6, 5)
+
+[node name="LeftLegArt" parent="Looks/CharacterArt/LeftLeg" index="0"]
+region_rect = Rect2(9, 90, 6, 5)
+
+[node name="IronSword" type="Marker2D" parent="Looks/Weapon" index="0" node_paths=PackedStringArray("own_body", "state_machine", "attack_state", "approach_state")]
+script = ExtResource("4_prbkb")
+long_range_attack_effect_scene = ExtResource("5_fmnms")
+close_range_attack_effect_scene = ExtResource("6_fgru3")
+own_body = NodePath("../../..")
+state_machine = NodePath("../../../StateMachine")
+attack_state = NodePath("../../../StateMachine/Attack")
+approach_state = NodePath("../../../StateMachine/Approach")
+long_range_damage = 100.0
+close_range_damage = 60.0
+knockback_amount = 10.0
+cooldown = 4.0
+weapon_range = 300.0
+
+[node name="AttackPoint" type="Marker2D" parent="Looks/Weapon/IronSword" index="0"]
+position = Vector2(10, 0)
+
+[node name="WeaponArt" type="Sprite2D" parent="Looks/Weapon/IronSword" index="1"]
+position = Vector2(10, -6)
+texture = ExtResource("6_1n0ho")
+region_enabled = true
+region_rect = Rect2(67, 70, 10, 25)
+
+[node name="LeftHand" type="Sprite2D" parent="Looks/Weapon/IronSword" index="2"]
+position = Vector2(-6, 3)
+texture = ExtResource("6_1n0ho")
+region_enabled = true
+region_rect = Rect2(68, 54, 6, 6)
+
+[node name="Approach" parent="StateMachine" index="0"]
+speed = 20.0
+
+[node name="SightRange" parent="." index="5"]
+visible = true
+
+[node name="CollisionShape2D" parent="SightRange" index="0"]
+visible = false

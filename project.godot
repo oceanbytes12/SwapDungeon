@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SwapDungeon"
-run/main_scene="res://RefactorTesting.tscn"
+run/main_scene="res://TestingScene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Art/UIArt/SwapText.png"
 
